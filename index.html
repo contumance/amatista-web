@@ -4,604 +4,269 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AMATISTA · Efectos digitales boutique</title>
-  <meta name="description" content="AMATISTA: efectos digitales boutique con estética minimalista, precisión sonora y una obsesión sana por el detalle." />
+  <meta name="description" content="AMATISTA: efectos digitales boutique. Minimalismo, precisión y carácter." />
   <meta name="theme-color" content="#0b0b0f" />
-
-  <style>
-    :root{
-      --bg: #0b0b0f;
-      --panel: rgba(255,255,255,0.06);
-      --panel-2: rgba(255,255,255,0.04);
-      --border: rgba(255,255,255,0.10);
-      --text: rgba(255,255,255,0.92);
-      --muted: rgba(255,255,255,0.68);
-      --muted2: rgba(255,255,255,0.52);
-      --accent: #a78bfa; /* violeta amatista */
-      --accent2: #c4b5fd;
-      --shadow: 0 24px 60px rgba(0,0,0,0.55);
-      --radius: 18px;
-      --radius2: 26px;
-      --max: 1120px;
-    }
-
-    *{ box-sizing: border-box; }
-    html, body{ height: 100%; }
-    body{
-      margin: 0;
-      background:
-        radial-gradient(900px 500px at 70% 10%, rgba(167,139,250,0.12), transparent 55%),
-        radial-gradient(700px 400px at 25% 18%, rgba(255,255,255,0.06), transparent 55%),
-        radial-gradient(800px 520px at 30% 110%, rgba(167,139,250,0.08), transparent 60%),
-        var(--bg);
-      color: var(--text);
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      letter-spacing: 0.2px;
-      overflow-x: hidden;
-    }
-
-    a{ color: inherit; text-decoration: none; }
-    a:hover{ opacity: 0.92; }
-
-    .wrap{
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 28px 18px 60px;
-    }
-
-    /* Top nav (minimal) */
-    .topbar{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 14px;
-      padding: 10px 4px 22px;
-    }
-    .brand-mini{
-      display:flex;
-      align-items:center;
-      gap: 10px;
-      min-width: 220px;
-    }
-    .brand-mini img{
-      width: 28px;
-      height: 28px;
-      object-fit: contain;
-      filter: drop-shadow(0 10px 18px rgba(0,0,0,0.55));
-      opacity: 0.95;
-    }
-    .brand-mini .name{
-      font-weight: 650;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      font-size: 13px;
-      color: rgba(255,255,255,0.85);
-    }
-    .navlinks{
-      display:flex;
-      align-items:center;
-      gap: 16px;
-      color: var(--muted);
-      font-size: 13px;
-    }
-    .navlinks a{
-      padding: 10px 10px;
-      border-radius: 12px;
-      border: 1px solid transparent;
-    }
-    .navlinks a:hover{
-      border-color: rgba(255,255,255,0.10);
-      background: rgba(255,255,255,0.03);
-    }
-
-    /* Hero */
-    .hero{
-      display:grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 24px;
-      align-items: center;
-      margin-top: 10px;
-      padding: 26px 0 12px;
-    }
-    .hero-card{
-      border: 1px solid var(--border);
-      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
-      border-radius: var(--radius2);
-      box-shadow: var(--shadow);
-      padding: 28px 26px;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-card:before{
-      content:"";
-      position:absolute;
-      inset: -2px;
-      background: radial-gradient(600px 240px at 20% 0%, rgba(167,139,250,0.18), transparent 60%);
-      pointer-events:none;
-      filter: blur(0px);
-      opacity: 0.9;
-    }
-    .hero-inner{ position: relative; z-index: 1; }
-    .kicker{
-      display:inline-flex;
-      align-items:center;
-      gap: 10px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.10);
-      background: rgba(255,255,255,0.03);
-      color: var(--muted);
-      font-size: 12px;
-      letter-spacing: 0.10em;
-      text-transform: uppercase;
-    }
-    .dot{
-      width: 7px;
-      height: 7px;
-      border-radius: 99px;
-      background: var(--accent);
-      box-shadow: 0 0 0 6px rgba(167,139,250,0.12);
-    }
-    h1{
-      margin: 14px 0 10px;
-      font-size: clamp(32px, 4.2vw, 52px);
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      line-height: 1.05;
-    }
-    .sub{
-      margin: 0;
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.65;
-      max-width: 60ch;
-    }
-    .cta{
-      display:flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 18px;
-    }
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap: 10px;
-      padding: 12px 14px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.05);
-      color: rgba(255,255,255,0.88);
-      font-size: 13px;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      transition: transform .12s ease, background .12s ease, border-color .12s ease;
-      will-change: transform;
-    }
-    .btn:hover{
-      transform: translateY(-1px);
-      border-color: rgba(167,139,250,0.30);
-      background: rgba(167,139,250,0.10);
-    }
-    .btn.primary{
-      border-color: rgba(167,139,250,0.40);
-      background: linear-gradient(180deg, rgba(167,139,250,0.22), rgba(167,139,250,0.10));
-    }
-    .btn .arrow{
-      display:inline-block;
-      transform: translateY(-0.5px);
-      opacity: 0.9;
-    }
-
-    /* Side visual */
-    .hero-visual{
-      border-radius: var(--radius2);
-      border: 1px solid rgba(255,255,255,0.10);
-      background: rgba(255,255,255,0.03);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      position: relative;
-      min-height: 380px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-    }
-    .hero-visual:before{
-      content:"";
-      position:absolute;
-      inset:-10px;
-      background: radial-gradient(500px 260px at 50% 20%, rgba(167,139,250,0.16), transparent 60%);
-      pointer-events:none;
-    }
-    .hero-visual img{
-      width: min(420px, 85%);
-      height: auto;
-      filter: drop-shadow(0 30px 40px rgba(0,0,0,0.55));
-      opacity: 0.98;
-      position: relative;
-      z-index: 1;
-    }
-    .caption-mini{
-      position:absolute;
-      bottom: 14px;
-      left: 14px;
-      right: 14px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 10px;
-      z-index: 2;
-      color: rgba(255,255,255,0.58);
-      font-size: 12px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-    .pill{
-      padding: 8px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.10);
-      background: rgba(0,0,0,0.25);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-    }
-
-    /* Section */
-    .section{
-      margin-top: 34px;
-      padding-top: 10px;
-    }
-    .section-head{
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap: 14px;
-      margin: 16px 2px;
-    }
-    .section-head h2{
-      margin: 0;
-      font-size: 16px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.84);
-    }
-    .section-head p{
-      margin: 0;
-      color: var(--muted2);
-      font-size: 13px;
-      line-height: 1.5;
-      max-width: 60ch;
-    }
-
-    /* Cards grid */
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin-top: 14px;
-    }
-    .card{
-      border-radius: var(--radius);
-      border: 1px solid rgba(255,255,255,0.10);
-      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
-      box-shadow: 0 16px 40px rgba(0,0,0,0.35);
-      overflow:hidden;
-      display:flex;
-      flex-direction: column;
-      min-height: 340px;
-    }
-    .card .media{
-      position: relative;
-      aspect-ratio: 16/10;
-      background: rgba(0,0,0,0.25);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      overflow:hidden;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-    .card .media img{
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.95;
-      transform: scale(1.02);
-    }
-    .card .body{
-      padding: 16px 16px 14px;
-      display:flex;
-      flex-direction: column;
-      gap: 10px;
-      flex: 1;
-    }
-    .card .title{
-      font-size: 13px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.86);
-      margin: 0;
-    }
-    .card .text{
-      margin: 0;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.6;
-    }
-    .card .meta{
-      margin-top:auto;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 10px;
-      padding-top: 10px;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      color: rgba(255,255,255,0.55);
-      font-size: 12px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-    .link{
-      color: rgba(255,255,255,0.82);
-      border-bottom: 1px solid rgba(167,139,250,0.35);
-      padding-bottom: 2px;
-    }
-    .link:hover{
-      border-bottom-color: rgba(167,139,250,0.70);
-    }
-
-    /* Footer */
-    footer{
-      margin-top: 46px;
-      padding-top: 18px;
-      border-top: 1px solid rgba(255,255,255,0.10);
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 14px;
-      color: rgba(255,255,255,0.60);
-      font-size: 13px;
-    }
-    .social{
-      display:flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      align-items:center;
-      justify-content:flex-end;
-    }
-    .social a{
-      padding: 10px 12px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.10);
-      background: rgba(255,255,255,0.03);
-      letter-spacing: 0.10em;
-      text-transform: uppercase;
-      font-size: 12px;
-    }
-    .social a:hover{
-      border-color: rgba(167,139,250,0.35);
-      background: rgba(167,139,250,0.08);
-    }
-
-    /* Responsive */
-    @media (max-width: 980px){
-      .hero{ grid-template-columns: 1fr; }
-      .hero-visual{ min-height: 320px; }
-      .grid{ grid-template-columns: 1fr; }
-      .topbar{ flex-wrap: wrap; justify-content: center; }
-      .brand-mini{ justify-content:center; }
-      .navlinks{ justify-content:center; flex-wrap: wrap; }
-      footer{ flex-direction: column; align-items:flex-start; }
-      .social{ justify-content:flex-start; }
-    }
-
-    /* Reduced motion */
-    @media (prefers-reduced-motion: reduce){
-      .btn{ transition: none; }
-      .btn:hover{ transform:none; }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
-  <div class="wrap">
-    <!-- Top -->
-    <header class="topbar">
-      <div class="brand-mini">
-        <img src="amatista-logo.png" alt="AMATISTA logo" />
-        <div class="name">AMATISTA</div>
-      </div>
-
-      <nav class="navlinks" aria-label="Navegación">
-        <a href="#about">Marca</a>
-        <a href="#collection">Colección</a>
-        <a href="#shop">Tienda</a>
-        <a href="#contact">Contacto</a>
-      </nav>
-    </header>
-
-    <!-- Hero -->
-    <main class="hero" id="about">
-      <section class="hero-card">
-        <div class="hero-inner">
-          <div class="kicker"><span class="dot"></span> EFECTOS DIGITALES BOUTIQUE</div>
-
-          <h1>AMATISTA</h1>
-
-          <p class="sub">
-            Pedales virtuales con alma de aluminio: minimalismo, precisión y carácter.
-            AMATISTA nace de una búsqueda obsesiva por el detalle, una estética sobria y una idea simple:
-            <span style="color:var(--accent2)">que cada knob se sienta como una decisión</span>.
-          </p>
-
-          <div class="cta">
-            <!-- Reemplaza # con tu link real (Gumroad, LemonSqueezy, Shopify, etc.) -->
-            <a class="btn primary" href="#shop">
-              Ver la tienda <span class="arrow">↗</span>
-            </a>
-            <a class="btn" href="#collection">
-              Explorar pedales <span class="arrow">↓</span>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <aside class="hero-visual" aria-label="Visual de producto">
-        <img src="amatista-pedal.png" alt="Pedal AMATISTA Distortion" />
-        <div class="caption-mini">
-          <span class="pill">AMATISTA · Distortion</span>
-          <span class="pill">Minimal · Dark · Boutique</span>
-        </div>
-      </aside>
-    </main>
-
-    <!-- Entries -->
-    <section class="section" id="collection">
-      <div class="section-head">
-        <div>
-          <h2>Colección</h2>
-          <p>Entradas breves para presentar cada release, feature o pedal. Podés linkear a demos, docs y la tienda.</p>
-        </div>
-      </div>
-
-      <div class="grid">
-        <!-- Card 1 -->
-        <article class="card">
-          <div class="media">
-            <!-- Podés reemplazar por una captura del plugin, render, etc. -->
-            <img src="amatista-pedal.png" alt="AMATISTA Distortion" />
-          </div>
-          <div class="body">
-            <h3 class="title">AMATISTA · Distortion</h3>
-            <p class="text">
-              Saturación con estructura: desde grano apretado y moderno hasta una pared más abierta.
-              Pensado para riffs con peso y leads que cortan sin gritar.
-            </p>
-            <div class="meta">
-              <span>Release</span>
-              <a class="link" href="#" id="shop">Ir a tienda</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Card 2 -->
-        <article class="card">
-          <div class="media">
-            <img src="amatista-logo.png" alt="AMATISTA identidad" />
-          </div>
-          <div class="body">
-            <h3 class="title">Estética & UX</h3>
-            <p class="text">
-              Interfaz sobria, legible, sin ruido. Materialidad “space gray” y acentos violetas.
-              Todo lo que no suma, se va. Todo lo que suma, se siente.
-            </p>
-            <div class="meta">
-              <span>Diseño</span>
-              <a class="link" href="#">Ver más</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Card 3 -->
-        <article class="card">
-          <div class="media">
-            <!-- Reemplaza por una imagen del próximo pedal -->
-            <img src="amatista-pedal.png" alt="Próximos pedales" />
-          </div>
-          <div class="body">
-            <h3 class="title">Próximamente</h3>
-            <p class="text">
-              Carbonado (Boost), Obsidiana (Fuzz), Ónix (Overdrive) y Amatista (Distortion).
-              Cuatro piedras, cuatro filosofías de ganancia.
-            </p>
-            <div class="meta">
-              <span>Roadmap</span>
-              <a class="link" href="#">Suscribirme</a>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- Shop / Info -->
-    <section class="section" id="shop">
-      <div class="section-head">
-        <div>
-          <h2>Tienda</h2>
-          <p>Dejá aquí tus links reales. Ej: Gumroad, LemonSqueezy, Shopify, o una página propia.</p>
-        </div>
-      </div>
-
-      <div class="grid">
-        <article class="card">
-          <div class="media">
-            <img src="amatista-logo.png" alt="Pack AMATISTA" />
-          </div>
-          <div class="body">
-            <h3 class="title">Pack completo</h3>
-            <p class="text">
-              Un bundle para tener toda la paleta AMATISTA. Ideal si querés consistencia estética y sonora en tu cadena.
-            </p>
-            <div class="meta">
-              <span>Bundle</span>
-              <a class="link" href="#">Comprar pack</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="media">
-            <img src="amatista-pedal.png" alt="Descarga" />
-          </div>
-          <div class="body">
-            <h3 class="title">Descargas & Licencias</h3>
-            <p class="text">
-              Instaladores simples, licencias claras y documentación sin vueltas. Un producto boutique también se nota en el soporte.
-            </p>
-            <div class="meta">
-              <span>Docs</span>
-              <a class="link" href="#">Leer políticas</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card" id="contact">
-          <div class="media">
-            <img src="amatista-logo.png" alt="Contacto" />
-          </div>
-          <div class="body">
-            <h3 class="title">Contacto</h3>
-            <p class="text">
-              Prensa, collabs, testers o soporte. Escribime y lo hacemos prolijo.
-            </p>
-            <div class="meta">
-              <span>Email</span>
-              <!-- Reemplaza por tu correo -->
-              <a class="link" href="mailto:hola@amatista.audio">hola@amatista.audio</a>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-      <div>
-        <div style="letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.72); font-size:12px;">
-          AMATISTA · Efectos digitales boutique
-        </div>
-        <div style="margin-top:6px; color:rgba(255,255,255,0.50); font-size:12px;">
-          © <span id="year"></span> · Hecho en la sombra, afinado al detalle.
-        </div>
-      </div>
-
-      <div class="social" aria-label="Redes sociales">
-        <!-- Reemplaza por tu link real -->
-        <a href="https://instagram.com/amatista.efectos" target="_blank" rel="noopener noreferrer">Instagram</a>
-      </div>
-    </footer>
+  <!-- Parallax background layers -->
+  <div class="bg" aria-hidden="true">
+    <div class="bg__layer bg__layer--a"></div>
+    <div class="bg__layer bg__layer--b"></div>
+    <div class="bg__layer bg__layer--c"></div>
+    <div class="bg__vignette"></div>
+    <div class="bg__grain"></div>
   </div>
 
+  <!-- Top nav (minimal) -->
+  <header class="top">
+    <a class="top__brand" href="#top">
+      <img src="amatista-logo.png" alt="AMATISTA" class="top__mark" />
+      <span class="top__word">AMATISTA</span>
+    </a>
+
+    <nav class="top__nav" aria-label="Navegación">
+      <a href="#collection">Colección</a>
+      <a href="#shop">Tienda</a>
+      <a href="#contact">Contacto</a>
+    </nav>
+  </header>
+
+  <main id="top" class="wrap">
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="hero__card" id="heroCard">
+        <div class="hero__row">
+          <img src="amatista-logo.png" alt="AMATISTA logo" class="hero__logo" />
+          <div class="hero__stack">
+            <h1 class="hero__title">AMATISTA</h1>
+            <div class="hero__tag">EFECTOS DIGITALES BOUTIQUE</div>
+          </div>
+        </div>
+
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#shop" aria-label="Ir a la tienda">
+            <span class="btn__icon" aria-hidden="true">▣</span>
+            <span>Tienda</span>
+          </a>
+          <a class="btn" href="#collection" aria-label="Ver colección">
+            <span class="btn__icon" aria-hidden="true">⌁</span>
+            <span>Colección</span>
+          </a>
+          <a class="btn" href="https://instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <span class="btn__icon" aria-hidden="true">◎</span>
+            <span>IG</span>
+          </a>
+        </div>
+
+        <!-- Minimal icon info -->
+        <div class="iconbar" aria-label="Características">
+          <div class="iconchip" title="Minimal UI">
+            <span class="i" aria-hidden="true">◧</span><span class="t">Minimal</span>
+          </div>
+          <div class="iconchip" title="Boutique feel">
+            <span class="i" aria-hidden="true">◈</span><span class="t">Boutique</span>
+          </div>
+          <div class="iconchip" title="Precisión sonora">
+            <span class="i" aria-hidden="true">⟡</span><span class="t">Precisión</span>
+          </div>
+          <div class="iconchip" title="Oscuro / elegante">
+            <span class="i" aria-hidden="true">⬟</span><span class="t">Dark</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Visual -->
+      <aside class="hero__visual" aria-label="Producto">
+        <img src="amatista-pedal.png" alt="AMATISTA Distortion" class="hero__product" />
+        <div class="hero__caption">
+          <span class="pill">AMATISTA · Distortion</span>
+          <span class="pill pill--accent">Violet glow</span>
+        </div>
+      </aside>
+    </section>
+
+    <!-- COLLECTION (icon-first) -->
+    <section class="section" id="collection">
+      <div class="section__head">
+        <h2 class="section__title">Colección</h2>
+        <div class="section__hint">Icon-first · detalles al pasar</div>
+      </div>
+
+      <div class="grid">
+        <a class="tile" href="#shop" aria-label="AMATISTA Distortion">
+          <div class="tile__top">
+            <span class="tile__icon">⬣</span>
+            <span class="tile__name">AMATISTA</span>
+          </div>
+          <div class="tile__meta">Distortion</div>
+          <div class="tile__hover">Estructura · grano · presencia</div>
+        </a>
+
+        <a class="tile" href="#shop" aria-label="CARBONADO Boost">
+          <div class="tile__top">
+            <span class="tile__icon">◆</span>
+            <span class="tile__name">CARBONADO</span>
+          </div>
+          <div class="tile__meta">Boost</div>
+          <div class="tile__hover">Tight · ataque · control</div>
+        </a>
+
+        <a class="tile" href="#shop" aria-label="OBSIDIANA Fuzz">
+          <div class="tile__top">
+            <span class="tile__icon">⬢</span>
+            <span class="tile__name">OBSIDIANA</span>
+          </div>
+          <div class="tile__meta">Fuzz</div>
+          <div class="tile__hover">Corte · caos · brillo</div>
+        </a>
+
+        <a class="tile" href="#shop" aria-label="ÓNIX Overdrive">
+          <div class="tile__top">
+            <span class="tile__icon">⬡</span>
+            <span class="tile__name">ÓNIX</span>
+          </div>
+          <div class="tile__meta">Overdrive</div>
+          <div class="tile__hover">Pulish · edge · cuerpo</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- FEATURE STRIP (very light text, mostly icon) -->
+    <section class="strip" aria-label="Highlights">
+      <div class="strip__item">
+        <div class="strip__icon">◌</div>
+        <div class="strip__label">UI limpia</div>
+      </div>
+      <div class="strip__item">
+        <div class="strip__icon">⟐</div>
+        <div class="strip__label">Materialidad</div>
+      </div>
+      <div class="strip__item">
+        <div class="strip__icon">⌬</div>
+        <div class="strip__label">Gain staging</div>
+      </div>
+      <div class="strip__item">
+        <div class="strip__icon">⟠</div>
+        <div class="strip__label">Boutique</div>
+      </div>
+    </section>
+
+    <!-- SHOP (cards with image + tiny caption) -->
+    <section class="section" id="shop">
+      <div class="section__head">
+        <h2 class="section__title">Tienda</h2>
+        <div class="section__hint">Links listos para Gumroad</div>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <div class="card__media">
+            <img src="amatista-pedal.png" alt="AMATISTA Distortion" />
+          </div>
+          <div class="card__foot">
+            <div class="card__left">
+              <div class="card__name">AMATISTA</div>
+              <div class="card__sub">Distortion</div>
+            </div>
+            <a class="card__cta" href="#" aria-label="Comprar AMATISTA">
+              Comprar <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card__media card__media--soft">
+            <img src="amatista-logo.png" alt="Pack AMATISTA" />
+          </div>
+          <div class="card__foot">
+            <div class="card__left">
+              <div class="card__name">PACK</div>
+              <div class="card__sub">Colección completa</div>
+            </div>
+            <a class="card__cta" href="#" aria-label="Comprar Pack">
+              Comprar <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <div class="section__head">
+        <h2 class="section__title">Contacto</h2>
+        <div class="section__hint">Rápido y directo</div>
+      </div>
+
+      <div class="contact">
+        <a class="contact__chip" href="mailto:hola@amatista.audio">
+          <span class="contact__icon" aria-hidden="true">✉</span>
+          <span>hola@amatista.audio</span>
+        </a>
+        <a class="contact__chip" href="https://instagram.com/" target="_blank" rel="noopener noreferrer">
+          <span class="contact__icon" aria-hidden="true">◎</span>
+          <span>Instagram</span>
+        </a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer__left">
+        <span class="footer__brand">AMATISTA</span>
+        <span class="footer__sep">·</span>
+        <span class="footer__muted">Efectos digitales boutique</span>
+      </div>
+      <div class="footer__right">
+        <span class="footer__muted">©</span>
+        <span id="year" class="footer__muted"></span>
+      </div>
+    </footer>
+  </main>
+
   <script>
-    // Año automático
+    // Year
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Parallax: move background layers based on scroll
+    const layers = [
+      { el: document.querySelector(".bg__layer--a"), factor: 0.10 },
+      { el: document.querySelector(".bg__layer--b"), factor: 0.18 },
+      { el: document.querySelector(".bg__layer--c"), factor: 0.26 },
+    ];
+
+    const onScroll = () => {
+      const y = window.scrollY || 0;
+      for (const l of layers) {
+        if (!l.el) continue;
+        l.el.style.transform = `translate3d(0, ${y * l.factor}px, 0)`;
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+
+    // Subtle "tilt" on hero card with mouse move (desktop only)
+    const hero = document.getElementById("heroCard");
+    const canTilt = window.matchMedia("(pointer:fine)").matches && !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (hero && canTilt) {
+      const clamp = (v, min, max) => Math.min(max, Math.max(min, v));
+      window.addEventListener("mousemove", (e) => {
+        const rect = hero.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        const dx = (e.clientX - cx) / rect.width;
+        const dy = (e.clientY - cy) / rect.height;
+        const rx = clamp(-dy * 6, -6, 6);
+        const ry = clamp(dx * 8, -8, 8);
+        hero.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) translateY(-1px)`;
+      }, { passive: true });
+
+      window.addEventListener("mouseleave", () => {
+        hero.style.transform = "rotateX(0deg) rotateY(0deg) translateY(0)";
+      });
+    }
   </script>
 </body>
 </html>
