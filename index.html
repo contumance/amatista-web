@@ -4,232 +4,97 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AMATISTA · Efectos digitales boutique</title>
-  <meta name="description" content="AMATISTA: efectos digitales boutique." />
+  <meta name="description" content="AMATISTA: efectos digitales boutique. Pedales virtuales con estética minimalista y carácter moderno." />
   <meta name="theme-color" content="#0b0b0f" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
-  <!-- Parallax background layers -->
-  <div class="bg" aria-hidden="true">
-    <div class="bg__layer bg__layer--a"></div>
-    <div class="bg__layer bg__layer--b"></div>
-    <div class="bg__layer bg__layer--c"></div>
-    <div class="bg__vignette"></div>
-    <div class="bg__grain"></div>
-  </div>
+  <div class="page">
+    <!-- HEADER -->
+    <header class="header">
+      <img class="brand-logo" src="logo-amatista.PNG" alt="AMATISTA" />
+      <h1 class="brand-title">AMATISTA</h1>
+      <div class="brand-subtitle">EFECTOS DIGITALES BOUTIQUE</div>
+    </header>
 
-  <!-- Top nav (minimal) -->
-  <header class="top">
-    <a class="top__brand" href="#top">
-      <img src="amatista-logo.PNG" alt="AMATISTA" class="top__mark" />
-      <span class="top__word">AMATISTA</span>
-    </a>
+    <!-- INTRO -->
+    <section class="intro">
+      <p>
+        Descripción del proyecto AMATISTA… Una suite boutique de pedales digitales con estética minimalista,
+        foco en sensación “hardware” y carácter moderno.
+      </p>
+    </section>
 
-    <nav class="top__nav" aria-label="Navegación">
-      <a href="#collection">Colección</a>
-      <a href="#shop">Tienda</a>
-      <a href="#contact">Contacto</a>
-    </nav>
-  </header>
-
-  <main id="top" class="wrap">
-    <!-- HERO -->
-    <section class="hero" id="hero">
-      <div class="hero__card" id="heroCard">
-        <div class="hero__row">
-          <img src="amatista-logo.PNG" alt="AMATISTA logo" class="hero__logo" />
-          <div class="hero__stack">
-            <h1 class="hero__title">AMATISTA</h1>
-            <div class="hero__tag">EFECTOS DIGITALES BOUTIQUE</div>
-          </div>
+    <!-- LIST -->
+    <main class="list">
+      <!-- CARD: Carbonado -->
+      <article class="card">
+        <div class="card-body">
+          <h2 class="card-title">CARBONADO <span class="card-title-soft">Boost</span></h2>
+          <p class="card-desc">Descripción…</p>
+          <a class="card-link" href="#" target="_blank" rel="noopener noreferrer">Link a tienda…</a>
         </div>
 
-        <div class="hero__actions">
-          <a class="btn btn--primary" href="#shop" aria-label="Ir a la tienda">
-            <span class="btn__icon" aria-hidden="true">▣</span>
-            <span>Tienda</span>
-          </a>
-          <a class="btn" href="#collection" aria-label="Ver colección">
-            <span class="btn__icon" aria-hidden="true">⌁</span>
-            <span>Colección</span>
-          </a>
-          <a class="btn" href="https://instagram.com/amatista.efectos" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-            <span class="btn__icon" aria-hidden="true">◎</span>
-            <span>IG</span>
-          </a>
+        <div class="card-media">
+          <img src="pedal-carbonado.png" alt="CARBONADO Boost" />
+        </div>
+      </article>
+
+      <!-- CARD: Ónix -->
+      <article class="card">
+        <div class="card-body">
+          <h2 class="card-title">ÓNIX <span class="card-title-soft">Overdrive</span></h2>
+          <p class="card-desc">Descripción…</p>
+          <a class="card-link" href="#" target="_blank" rel="noopener noreferrer">Link a tienda…</a>
         </div>
 
-      <!-- Visual -->
-      <aside class="hero__visual" aria-label="Producto">
-        <img src="amatista-boost.PNG" alt="CARBONADO Boost" class="hero__product" />
-        <div class="hero__caption">
-          <span class="pill">CARBONADO · Boost</span>
-          <span class="pill pill--accent">Violet glow</span>
+        <div class="card-media">
+          <img src="pedal-onix.png" alt="ÓNIX Overdrive" />
         </div>
-      </aside>
-    </section>
+      </article>
 
-    <!-- COLLECTION (icon-first) -->
-    <section class="section" id="collection">
-      <div class="section__head">
-        <h2 class="section__title">Colección</h2>
-        <div class="section__hint">Icon-first · detalles al pasar</div>
-      </div>
+      <!-- CARD: Amatista -->
+      <article class="card">
+        <div class="card-body">
+          <h2 class="card-title">AMATISTA <span class="card-title-soft">Distortion</span></h2>
+          <p class="card-desc">Descripción…</p>
+          <a class="card-link" href="#" target="_blank" rel="noopener noreferrer">Link a tienda…</a>
+        </div>
 
-      <div class="grid">
-        <a class="tile" href="#shop" aria-label="AMATISTA Distortion">
-          <div class="tile__top">
-            <span class="tile__icon">⬣</span>
-            <span class="tile__name">AMATISTA</span>
-          </div>
-          <div class="tile__meta">Distortion</div>
-          <div class="tile__hover">Estructura · grano · presencia</div>
-        </a>
+        <div class="card-media">
+          <img src="pedal-amatista.png" alt="AMATISTA Distortion" />
+        </div>
+      </article>
 
-        <a class="tile" href="#shop" aria-label="CARBONADO Boost">
-          <div class="tile__top">
-            <span class="tile__icon">◆</span>
-            <span class="tile__name">CARBONADO</span>
-          </div>
-          <div class="tile__meta">Boost</div>
-          <div class="tile__hover">Tight · ataque · control</div>
-        </a>
+      <!-- CARD: Obsidiana -->
+      <article class="card">
+        <div class="card-body">
+          <h2 class="card-title">OBSIDIANA <span class="card-title-soft">Fuzz</span></h2>
+          <p class="card-desc">Descripción…</p>
+          <a class="card-link" href="#" target="_blank" rel="noopener noreferrer">Link a tienda…</a>
+        </div>
 
-        <a class="tile" href="#shop" aria-label="OBSIDIANA Fuzz">
-          <div class="tile__top">
-            <span class="tile__icon">⬢</span>
-            <span class="tile__name">OBSIDIANA</span>
-          </div>
-          <div class="tile__meta">Fuzz</div>
-          <div class="tile__hover">Corte · caos · brillo</div>
-        </a>
+        <div class="card-media">
+          <img src="pedal-obsidiana.png" alt="OBSIDIANA Fuzz" />
+        </div>
+      </article>
+    </main>
 
-        <a class="tile" href="#shop" aria-label="ÓNIX Overdrive">
-          <div class="tile__top">
-            <span class="tile__icon">⬡</span>
-            <span class="tile__name">ÓNIX</span>
-          </div>
-          <div class="tile__meta">Overdrive</div>
-          <div class="tile__hover">Pulish · edge · cuerpo</div>
-        </a>
-      </div>
-    </section>
-
-    <!-- SHOP (cards with image + tiny caption) -->
-    <section class="section" id="shop">
-      <div class="section__head">
-        <h2 class="section__title">Tienda</h2>
-        <div class="section__hint">Links listos para Gumroad</div>
-      </div>
-
-      <div class="cards">
-        <article class="card">
-          <div class="card__media">
-            <img src="carbonado-pedal.png" alt="CARBONADO Boost" />
-          </div>
-          <div class="card__foot">
-            <div class="card__left">
-              <div class="card__name">CARBONADO</div>
-              <div class="card__sub">Boost</div>
-            </div>
-            <a class="card__cta" href="#" aria-label="Comprar CARBONADO">
-              Comprar <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="card__media card__media--soft">
-            <img src="amatista-logo.PNG" alt="Pack AMATISTA" />
-          </div>
-          <div class="card__foot">
-            <div class="card__left">
-              <div class="card__name">PACK</div>
-              <div class="card__sub">Colección completa</div>
-            </div>
-            <a class="card__cta" href="#" aria-label="Comprar Pack">
-              Comprar <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="section" id="contact">
-      <div class="section__head">
-        <h2 class="section__title">Contacto</h2>
-        <div class="section__hint">Rápido y directo</div>
-      </div>
-
-      <div class="contact">
-        <a class="contact__chip" href="mailto:hola@amatista.audio">
-          <span class="contact__icon" aria-hidden="true">✉</span>
-          <span>hola@amatista.audio</span>
-        </a>
-        <a class="contact__chip" href="https://instagram.com/amatista.efectos" target="_blank" rel="noopener noreferrer">
-          <span class="contact__icon" aria-hidden="true">◎</span>
-          <span>Instagram</span>
-        </a>
-      </div>
-    </section>
-
+    <!-- FOOTER -->
     <footer class="footer">
-      <div class="footer__left">
-        <span class="footer__brand">AMATISTA</span>
-        <span class="footer__sep">·</span>
-        <span class="footer__muted">Efectos digitales boutique</span>
-      </div>
-      <div class="footer__right">
-        <span class="footer__muted">©</span>
-        <span id="year" class="footer__muted"></span>
+      <a class="footer-ig" href="https://instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a>
+
+      <div class="footer-meta">
+        <span>© <span id="year"></span> AMATISTA</span>
+        <span class="dot">•</span>
+        <span>Todos los derechos reservados</span>
       </div>
     </footer>
-  </main>
+  </div>
 
   <script>
-    // Year
     document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Parallax: move background layers based on scroll
-    const layers = [
-      { el: document.querySelector(".bg__layer--a"), factor: 0.10 },
-      { el: document.querySelector(".bg__layer--b"), factor: 0.18 },
-      { el: document.querySelector(".bg__layer--c"), factor: 0.26 },
-    ];
-
-    const onScroll = () => {
-      const y = window.scrollY || 0;
-      for (const l of layers) {
-        if (!l.el) continue;
-        l.el.style.transform = `translate3d(0, ${y * l.factor}px, 0)`;
-      }
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-
-    // Subtle "tilt" on hero card with mouse move (desktop only)
-    const hero = document.getElementById("heroCard");
-    const canTilt = window.matchMedia("(pointer:fine)").matches && !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    if (hero && canTilt) {
-      const clamp = (v, min, max) => Math.min(max, Math.max(min, v));
-      window.addEventListener("mousemove", (e) => {
-        const rect = hero.getBoundingClientRect();
-        const cx = rect.left + rect.width / 2;
-        const cy = rect.top + rect.height / 2;
-        const dx = (e.clientX - cx) / rect.width;
-        const dy = (e.clientY - cy) / rect.height;
-        const rx = clamp(-dy * 6, -6, 6);
-        const ry = clamp(dx * 8, -8, 8);
-        hero.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) translateY(-1px)`;
-      }, { passive: true });
-
-      window.addEventListener("mouseleave", () => {
-        hero.style.transform = "rotateX(0deg) rotateY(0deg) translateY(0)";
-      });
-    }
   </script>
 </body>
 </html>
