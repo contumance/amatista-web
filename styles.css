@@ -203,20 +203,14 @@ a{ color: inherit; text-decoration: none; }
   align-self: center;
 }
 
-.card-badge-dev{
-  margin-left: 0.6rem;
-  padding: 0.15rem 0.45rem;
-  font-size: 0.65rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-
+.card-badge--dev{
   color: rgba(167,139,250,0.95);          /* violeta amatista */
   border-color: rgba(167,139,250,0.95);
-  background: rgba(167,139,250,0.12);
-       /* halo amatista suave */
+  background: rgba(167,139,250,0.12);     /* halo amatista suave */
   opacity: 0.94;
   box-shadow: 0 0 16px rgba(167,139,250,0.18);
 }
+
 
 /* Info+ (details/summary) */
 .info{
