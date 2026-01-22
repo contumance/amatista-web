@@ -269,7 +269,6 @@ a{ color: inherit; text-decoration: none; }
   color: rgba(255,255,255,0.50);
   font-size: 12px;
   letter-spacing: 0.10em;
-  text-transform: uppercase;
   display: inline-flex;
   gap: 10px;
   align-items: center;
