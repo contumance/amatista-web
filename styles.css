@@ -201,6 +201,15 @@ a{ color: inherit; text-decoration: none; }
   align-self: center;
 }
 
+.card-badge--dev{
+  color: var(--accent);                 /* violeta amatista */
+  border-color: var(--accent);
+  background: rgba(167,139,250,0.10);   /* halo suave amatista */
+  opacity: 0.92;
+  box-shadow: 0 0 18px rgba(167,139,250,0.14);
+}
+
+
 /* Info+ (details/summary) */
 .info{
   border-radius: 18px;
