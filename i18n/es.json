@@ -3,9 +3,13 @@
   "subtitle": "EFECTOS DIGITALES BOUTIQUE",
   "intro": "AMATISTA es una línea de efectos digitales boutique diseñada con una obsesión por el detalle, la estética minimalista y una sensación sonora inspirada en hardware real. Herramientas precisas para guitarras modernas, afinaciones bajas y sonidos contemporáneos.",
 
+  "tabCore": "Core",
+  "tabCollabs": "Colaboraciones",
+  "tabMedia": "Media",
+
   "infoPlus": "Info+",
   "shopLink": "Link a tienda…",
-  "wishLink": "Add to whishlist",
+  "wishLink": "Agregar a wishlist",
   "instagram": "Instagram",
   "rights": "Todos los derechos reservados",
   "copyrightA": "©",
@@ -14,6 +18,15 @@
   "familyLabel": "Familia",
   "familyName": "IMPULSO PRIMARIO",
   "familySubtitle": "ARQUITECTURA DE LA SATURACIÓN",
+
+  "collabsTitle": "COLABORACIONES",
+  "collabsSubtitle": "Plugins creados junto a artistas y emprendimientos.",
+  "collabsSoon": "MUY PRONTO",
+
+  "mediaTitle": "MEDIA",
+  "mediaSubtitle": "Demos, videos y contenido.",
+  "mediaHint": "Aquí podés dejar links o embeber videos de YouTube.",
+  "mediaLinkPlaceholder": "Link…",
 
   "freeBadge": "GRATIS",
   "devBadge": "PRONTO",
