@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  width="1000"
+  height="1000"
+  viewBox="0 0 1000 1000"
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  stroke="white"
+  stroke-width="26"
+  stroke-linecap="round"
+  stroke-linejoin="round">
+
+  <!-- Centro -->
+  <g transform="translate(500 500)">
+
+    <!-- Círculo exterior -->
+    <circle cx="0" cy="0" r="420"/>
+
+    <!-- Cristal base (vertical) -->
+    <g id="crystal">
+      <polygon points="
+        0,-230
+        55,-90
+        0,50
+        -55,-90
+      "/>
+      <line x1="0" y1="-230" x2="20" y2="-90"/>
+      <line x1="20" y1="-90" x2="0" y2="50"/>
+    </g>
+
+    <!-- Repeticiones radiales -->
+    <use href="#crystal" transform="rotate(0)"/>
+    <use href="#crystal" transform="rotate(72)"/>
+    <use href="#crystal" transform="rotate(144)"/>
+    <use href="#crystal" transform="rotate(216)"/>
+    <use href="#crystal" transform="rotate(288)"/>
+
+  </g>
+</svg>
