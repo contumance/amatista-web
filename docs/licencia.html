@@ -1,0 +1,668 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AMATISTA · License of Trust · Creative Pact</title>
+
+  <style>
+    :root{
+      --bg: #0b0d10;
+      --ink: #e9edf2;
+      --muted: rgba(233,237,242,.70);
+      --line: rgba(233,237,242,.10);
+      --accent: #b79cff;
+      --accent2: #7cf1c6;
+      --shadow: 0 12px 36px rgba(0,0,0,.50);
+    }
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      background:
+        radial-gradient(1200px 700px at 20% 10%, rgba(183,156,255,.12), transparent 60%),
+        radial-gradient(900px 600px at 80% 20%, rgba(124,241,198,.06), transparent 60%),
+        radial-gradient(900px 700px at 50% 120%, rgba(255,255,255,.06), transparent 55%),
+        var(--bg);
+      color: var(--ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      line-height:1.55;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+    .wrap{ max-width:920px; margin:56px auto; padding:0 20px 64px; }
+
+    .top{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:16px; margin-bottom:22px;
+    }
+    .brand{ display:flex; flex-direction:column; gap:6px; }
+    .brand .name{
+      font-weight:800; letter-spacing:.14em; text-transform:uppercase;
+      font-size:14px; color:var(--ink);
+    }
+    .brand .tag{
+      font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+      color:var(--muted);
+    }
+    .meta{
+      text-align:right; font-size:12px; color:var(--muted);
+      letter-spacing:.08em; text-transform:uppercase; white-space:nowrap;
+    }
+
+    .card{
+      position:relative;
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid var(--line);
+      border-radius:18px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .card::before{
+      content:""; position:absolute; inset:-2px;
+      background:
+        radial-gradient(1200px 500px at 10% 0%, rgba(183,156,255,.10), transparent 55%),
+        radial-gradient(900px 500px at 90% 0%, rgba(124,241,198,.05), transparent 55%),
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0));
+      pointer-events:none; opacity:.9;
+    }
+
+    .hero{
+      position:relative; padding:28px 28px 18px;
+      border-bottom:1px solid var(--line);
+    }
+    .kicker{
+      display:inline-flex; align-items:center; gap:10px;
+      font-size:12px; color:var(--muted);
+      letter-spacing:.14em; text-transform:uppercase;
+    }
+    .dot{
+      width:8px; height:8px; border-radius:99px; background:var(--accent);
+      box-shadow:0 0 0 6px rgba(183,156,255,.10);
+      flex:0 0 auto;
+    }
+    h1{ margin:12px 0 8px; font-size:28px; line-height:1.15; letter-spacing:.02em; }
+    .subtitle{ margin:0; color:var(--muted); font-size:14px; max-width:70ch; }
+
+    .content{
+      position:relative; padding:26px 28px 30px;
+      display:grid; grid-template-columns: 1.3fr .7fr; gap:24px;
+    }
+    @media (max-width: 860px){
+      .content{ grid-template-columns:1fr; }
+      .meta{ display:none; }
+      h1{ font-size:26px; }
+    }
+
+    h2{
+      margin:22px 0 10px;
+      font-size:14px; letter-spacing:.12em; text-transform:uppercase;
+      color:rgba(233,237,242,.86);
+    }
+    p{ margin:10px 0; color:rgba(233,237,242,.88); font-size:14px; }
+    .muted{ color:var(--muted); }
+    .rule{ height:1px; background:var(--line); margin:18px 0; }
+
+    ul{ margin:10px 0 12px; padding-left:18px; }
+    li{ margin:7px 0; color:rgba(233,237,242,.86); font-size:14px; }
+
+    .side{ border-left:1px solid var(--line); padding-left:22px; }
+    @media (max-width: 860px){
+      .side{ border-left:none; padding-left:0; border-top:1px solid var(--line); padding-top:18px; }
+    }
+
+    .badge{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.22);
+      margin-bottom:12px;
+      width:100%;
+    }
+    .badge strong{
+      font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+    }
+    .badge span{
+      font-size:12px; color:var(--muted); margin-left:auto;
+      letter-spacing:.06em; text-transform:uppercase;
+    }
+
+    .callout{
+      border:1px solid rgba(183,156,255,.22);
+      background: rgba(183,156,255,.06);
+      border-radius:14px;
+      padding:14px 14px 12px;
+      margin-top:14px;
+    }
+    .callout .t{
+      font-weight:700;
+      letter-spacing:.10em; text-transform:uppercase;
+      font-size:12px; color:rgba(233,237,242,.92);
+      margin-bottom:6px;
+    }
+    .callout p{ margin:0; font-size:13px; color:rgba(233,237,242,.84); }
+
+    /* Contact section */
+    .contact{
+      margin-top: 18px;
+      border-top: 1px solid var(--line);
+      padding-top: 16px;
+    }
+    .contact .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 560px){
+      .contact .grid{ grid-template-columns: 1fr; }
+    }
+    .contactCard{
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.18);
+      border-radius: 14px;
+      padding: 14px;
+    }
+    .contactLabel{
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(233,237,242,.88);
+      margin: 0 0 8px;
+      font-weight: 700;
+    }
+    .contactLine{
+      font-size: 13px;
+      color: rgba(233,237,242,.84);
+      margin: 6px 0;
+      word-break: break-word;
+    }
+    .contactLine a{
+      color: rgba(233,237,242,.92);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(233,237,242,.22);
+      padding-bottom: 1px;
+    }
+    .contactLine a:hover{
+      border-bottom-color: rgba(183,156,255,.55);
+    }
+    .copyright{
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: .06em;
+    }
+
+    .footer{
+      position:relative;
+      padding:16px 28px 22px;
+      border-top:1px solid var(--line);
+      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+      color:var(--muted);
+      font-size:12px; letter-spacing:.06em;
+    }
+    .sig{ color:rgba(233,237,242,.86); letter-spacing:.10em; text-transform:uppercase; }
+
+    /* Language switch */
+    .langbar{
+      display:flex; gap:10px; align-items:center; justify-content:flex-end;
+      margin: 8px 0 18px;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+      user-select:none;
+    }
+    .langbtn{
+      appearance:none;
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.22);
+      color: rgba(233,237,242,.86);
+      border-radius: 12px;
+      padding: 8px 10px;
+      font: inherit;
+      cursor: pointer;
+    }
+    .langbtn[aria-pressed="true"]{
+      border-color: rgba(183,156,255,.35);
+      background: rgba(183,156,255,.10);
+      color: rgba(233,237,242,.92);
+    }
+
+    @media print{
+      :root{
+        --bg:#ffffff;
+        --ink:#111827;
+        --muted: rgba(17,24,39,.72);
+        --line: rgba(17,24,39,.14);
+        --accent:#5b3fd6;
+        --shadow:none;
+      }
+      body{ background:#ffffff !important; color: var(--ink) !important; }
+      .wrap{ margin:0; padding:0; max-width:none; }
+      .card{ border-radius:0; box-shadow:none; border:1px solid var(--line); }
+      .card::before{ display:none; }
+      .langbar{ display:none; }
+      .meta{ display:block; }
+      h1,h2{ break-after: avoid-page; }
+      p,li{ break-inside: avoid; }
+      a{ color: inherit; text-decoration: none; border: none; }
+      @page{ size:A4; margin:18mm; }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+    <header class="top" aria-label="Header">
+      <div class="brand">
+        <div class="name" id="brandName">AMATISTA</div>
+        <div class="tag" id="brandTag">Boutique Digital Effects</div>
+      </div>
+      <div class="meta">
+        <span id="metaTop">License of Trust · Creative Pact</span><br/>
+        <span id="metaVersion">Version 1.0</span>
+      </div>
+    </header>
+
+    <div class="langbar" aria-label="Language selector">
+      <span id="langLabel">Language</span>
+      <button class="langbtn" id="btnEN" aria-pressed="true" type="button">EN</button>
+      <button class="langbtn" id="btnES" aria-pressed="false" type="button">ES</button>
+    </div>
+
+    <section class="card" role="document" aria-label="License">
+      <div class="hero">
+        <div class="kicker">
+          <span class="dot" aria-hidden="true"></span>
+          <span id="docKicker">License document</span>
+        </div>
+        <h1 id="title">License of Trust · Creative Pact</h1>
+        <p class="subtitle" id="subtitle">
+          AMATISTA is an independent boutique digital effects project. No DRM, no intrusive activation. We choose trust.
+        </p>
+      </div>
+
+      <div class="content">
+        <article>
+          <p id="p1"></p>
+          <p id="p2"></p>
+          <p class="muted" id="p3"></p>
+
+          <div class="rule" role="separator"></div>
+
+          <h2 id="h_support"></h2>
+          <p id="support_p1"></p>
+          <p id="support_p2"></p>
+          <ul id="support_li"></ul>
+          <p id="support_p3"></p>
+
+          <h2 id="h_can"></h2>
+          <ul id="can_li"></ul>
+          <p class="muted" id="can_p1"></p>
+
+          <h2 id="h_ask"></h2>
+          <ul id="ask_li"></ul>
+          <p class="muted" id="ask_p1"></p>
+
+          <h2 id="h_belong"></h2>
+          <p id="belong_p1"></p>
+          <p id="belong_p2"></p>
+          <ul id="belong_li"></ul>
+          <p class="muted" id="belong_p3"></p>
+
+          <h2 id="h_ifcant"></h2>
+          <p id="ifcant_p1"></p>
+          <p id="ifcant_p2"></p>
+
+          <h2 id="h_last"></h2>
+          <p id="last_p1"></p>
+          <p id="last_p2"></p>
+          <p><strong id="last_p3"></strong></p>
+
+          <!-- Contact + community section -->
+          <section class="contact" aria-label="Contact and community">
+            <h2 id="h_contact"></h2>
+            <p class="muted" id="contact_intro"></p>
+
+            <div class="grid">
+              <div class="contactCard">
+                <div class="contactLabel" id="contact_card1_title"></div>
+                <div class="contactLine">
+                  <span id="contact_email_label"></span>
+                  <a id="contact_email" href="mailto:amatista.efectos@icloud.com">amatista.efectos@icloud.com</a>
+                </div>
+                <div class="contactLine">
+                  <span id="contact_ig_label"></span>
+                  <a id="contact_ig" href="https://instagram.com/amatista.efectos" target="_blank" rel="noopener noreferrer">@amatista.efectos</a>
+                </div>
+              </div>
+
+              <div class="contactCard">
+                <div class="contactLabel" id="contact_card2_title"></div>
+                <div class="contactLine">
+                  <span id="contact_web_label"></span>
+                  <a id="contact_web" href="https://amatista-efectos.online" target="_blank" rel="noopener noreferrer">amatista-efectos.online</a>
+                </div>
+                <div class="copyright" id="copyright"></div>
+              </div>
+            </div>
+          </section>
+        </article>
+
+        <aside class="side" aria-label="Summary">
+          <div id="badges"></div>
+
+          <div class="callout">
+            <div class="t" id="aside_note_title"></div>
+            <p id="aside_note_body"></p>
+          </div>
+
+          <div class="callout" style="border-color: rgba(124,241,198,.22); background: rgba(124,241,198,.06);">
+            <div class="t" id="aside_part_title"></div>
+            <p id="aside_part_body"></p>
+          </div>
+        </aside>
+      </div>
+
+      <footer class="footer" aria-label="Footer">
+        <div class="sig" id="footerLeft"></div>
+        <div id="footerRight"></div>
+      </footer>
+    </section>
+  </main>
+
+  <!-- Embedded i18n JSON -->
+  <script id="i18n" type="application/json">
+  {
+    "en": {
+      "langLabel": "Language",
+
+      "docKicker": "License document",
+      "title": "License of Trust · Creative Pact",
+      "subtitle": "AMATISTA is an independent boutique digital effects project. No DRM, no intrusive activation. We choose trust.",
+      "metaTop": "License of Trust · Creative Pact",
+      "metaVersion": "Version 1.0",
+      "brandName": "AMATISTA",
+      "brandTag": "Boutique Digital Effects",
+
+      "p1": "AMATISTA is an independent boutique digital effects project. Each plugin is born at the intersection of sound design, musical judgment, and real development time.",
+      "p2": "We don’t use activation systems, DRM, or intrusive licensing. We choose trust.",
+      "p3": "This license is not a rulebook. It’s a creative pact between the builder and the people who use these tools.",
+
+      "h_support": "What supporting AMATISTA means",
+      "support_p1": "When you buy an AMATISTA plugin, you’re not paying for a file.",
+      "support_p2": "You’re supporting:",
+      "support_li": [
+        "hours of development and testing,",
+        "design and tone decisions,",
+        "maintenance, improvements, and future evolution,",
+        "the possibility for the project to grow honestly and independently."
+      ],
+      "support_p3": "Buying is a way of saying: this helps me, this has value, keep it alive.",
+
+      "h_can": "What you can do",
+      "can_li": [
+        "Use the plugin freely in personal or commercial projects.",
+        "Install it on your personal computers.",
+        "Integrate it into your creative workflow without technical restrictions."
+      ],
+      "can_p1": "No activations. No artificial limits. No interruptions in your creative process.",
+
+      "h_ask": "What we ask from you",
+      "ask_li": [
+        "Please don’t publicly redistribute the plugin as if it were your own.",
+        "If you share it with someone to try, invite them to support the project if they decide to use it.",
+        "Respect that this work exists thanks to a relationship built on trust."
+      ],
+      "ask_p1": "Not out of obligation. Out of coherence.",
+
+      "h_belong": "Belonging and participation",
+      "belong_p1": "People who support AMATISTA become an active part of the project.",
+      "belong_p2": "That means:",
+      "belong_li": [
+        "access to roadmap votes for upcoming plugins,",
+        "the ability to influence ideas, approaches, and priorities,",
+        "participation in an open and transparent development process."
+      ],
+      "belong_p3": "Not everyone decides everything. But every contribution leaves a real mark on what comes next.",
+
+      "h_ifcant": "If you can’t pay right now",
+      "ifcant_p1": "Use the plugin anyway.",
+      "ifcant_p2": "If it sticks with you, if it becomes part of your sound, if it starts showing up in your sessions and creative decisions, supporting the project later is the natural way to close the circle.",
+
+      "h_last": "One last agreement",
+      "last_p1": "AMATISTA is built with the same honesty with which it’s delivered: no invasive protections, no technical traps, no unnecessary noise.",
+      "last_p2": "We trust that people who value these tools also value that they can keep existing.",
+      "last_p3": "Thanks for being part of it.",
+
+      "aside_badges": [
+        { "label": "Principle", "value": "Trust" },
+        { "label": "Ethics", "value": "Respect" },
+        { "label": "Identity", "value": "Independent" },
+        { "label": "Belonging", "value": "Community" }
+      ],
+      "aside_note_title": "Note",
+      "aside_note_body": "Buying doesn’t unlock a file. It unlocks continuity: evolution, maintenance, and the next AMATISTA artifacts.",
+      "aside_part_title": "Participation",
+      "aside_part_body": "Supporters have a voice in the roadmap: votes, priorities, and the project’s direction.",
+
+      "h_contact": "Contact and community",
+      "contact_intro": "For support, feedback, suggestions, or questions:",
+      "contact_card1_title": "Direct",
+      "contact_card2_title": "Links",
+      "contact_email_label": "Email: ",
+      "contact_ig_label": "Instagram: ",
+      "contact_web_label": "Website: ",
+      "copyright": "© AMATISTA boutique digital effects",
+
+      "footerLeft": "AMATISTA · Boutique Digital Effects",
+      "footerRight": "License of Trust · Creative Pact · v1.0"
+    },
+
+    "es": {
+      "langLabel": "Idioma",
+
+      "docKicker": "Documento de licencia",
+      "title": "Licencia de Confianza · Pacto Creativo",
+      "subtitle": "AMATISTA es un proyecto independiente de efectos digitales boutique. No usamos DRM ni activaciones intrusivas. Elegimos confiar.",
+      "metaTop": "Licencia de Confianza · Pacto Creativo",
+      "metaVersion": "Versión 1.0",
+      "brandName": "AMATISTA",
+      "brandTag": "Efectos Digitales Boutique",
+
+      "p1": "AMATISTA es un proyecto independiente de efectos digitales boutique. Cada plugin nace del cruce entre diseño sonoro, criterio musical y tiempo real de desarrollo.",
+      "p2": "No usamos sistemas de activación, DRM ni licencias intrusivas. Elegimos confiar.",
+      "p3": "Esta licencia no es un reglamento. Es un pacto creativo entre quien desarrolla y quien usa estas herramientas.",
+
+      "h_support": "Qué significa apoyar AMATISTA",
+      "support_p1": "Al comprar un plugin AMATISTA no estás pagando solo un archivo digital.",
+      "support_p2": "Estás apoyando:",
+      "support_li": [
+        "horas de desarrollo y testing,",
+        "decisiones de diseño y sonido,",
+        "mantenimiento, mejoras y evolución futura,",
+        "la posibilidad de que el proyecto siga creciendo de forma honesta e independiente."
+      ],
+      "support_p3": "Comprar es una forma de decir: esto me sirve, esto tiene valor, quiero que continúe.",
+
+      "h_can": "Lo que podés hacer",
+      "can_li": [
+        "Usar el plugin libremente en proyectos personales o comerciales.",
+        "Instalarlo en tus equipos personales.",
+        "Integrarlo en tu flujo creativo sin restricciones técnicas."
+      ],
+      "can_p1": "No hay activaciones. No hay límites artificiales. No hay interrupciones en tu proceso creativo.",
+
+      "h_ask": "Lo que te pedimos",
+      "ask_li": [
+        "No redistribuir el plugin públicamente como si fuera propio.",
+        "Si lo compartís con alguien para probarlo, invitá a que apoye el proyecto si decide usarlo.",
+        "Respetar que este trabajo existe gracias a una relación de confianza."
+      ],
+      "ask_p1": "No por obligación. Por coherencia.",
+
+      "h_belong": "Pertenencia y participación",
+      "belong_p1": "Quienes apoyan AMATISTA forman parte activa del proyecto.",
+      "belong_p2": "Eso significa:",
+      "belong_li": [
+        "acceso a votaciones sobre el rumbo de futuros plugins,",
+        "posibilidad de influir en ideas, enfoques y prioridades,",
+        "participación en un desarrollo abierto y transparente."
+      ],
+      "belong_p3": "No todos deciden todo. Pero cada apoyo deja una huella real en lo que viene.",
+
+      "h_ifcant": "Si no podés pagar ahora",
+      "ifcant_p1": "Usá el plugin igual.",
+      "ifcant_p2": "Si te acompaña, si se vuelve parte de tu sonido, si empieza a aparecer en tus sesiones y decisiones creativas, apoyar el proyecto más adelante es la forma natural de cerrar el círculo.",
+
+      "h_last": "Un último acuerdo",
+      "last_p1": "AMATISTA se desarrolla con la misma honestidad con la que se entrega: sin protecciones invasivas, sin trampas técnicas, sin ruido innecesario.",
+      "last_p2": "Confiamos en que quienes valoran estas herramientas también valoran que puedan seguir existiendo.",
+      "last_p3": "Gracias por ser parte.",
+
+      "aside_badges": [
+        { "label": "Principio", "value": "Confianza" },
+        { "label": "Ética", "value": "Respeto" },
+        { "label": "Identidad", "value": "Independiente" },
+        { "label": "Pertenencia", "value": "Comunidad" }
+      ],
+      "aside_note_title": "Nota",
+      "aside_note_body": "Comprar no desbloquea un archivo. Desbloquea continuidad: evolución, mantenimiento y próximos artefactos AMATISTA.",
+      "aside_part_title": "Participación",
+      "aside_part_body": "Quienes apoyan tienen voz en el roadmap: votaciones, prioridades y dirección del proyecto.",
+
+      "h_contact": "Contacto y comunidad",
+      "contact_intro": "Para soporte, feedback, sugerencias o consultas:",
+      "contact_card1_title": "Directo",
+      "contact_card2_title": "Enlaces",
+      "contact_email_label": "Email: ",
+      "contact_ig_label": "Instagram: ",
+      "contact_web_label": "Sitio web: ",
+      "copyright": "© AMATISTA efectos digitales boutique",
+
+      "footerLeft": "AMATISTA · Efectos Digitales Boutique",
+      "footerRight": "Licencia de Confianza · Pacto Creativo · v1.0"
+    }
+  }
+  </script>
+
+  <script>
+    const i18n = JSON.parse(document.getElementById("i18n").textContent);
+
+    function fillList(ulId, items){
+      const ul = document.getElementById(ulId);
+      ul.innerHTML = "";
+      items.forEach(txt => {
+        const li = document.createElement("li");
+        li.textContent = txt;
+        ul.appendChild(li);
+      });
+    }
+
+    function escapeHtml(str){
+      return String(str)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+    }
+
+    function renderBadges(badges){
+      const host = document.getElementById("badges");
+      host.innerHTML = "";
+      badges.forEach(b => {
+        const el = document.createElement("div");
+        el.className = "badge";
+        el.innerHTML = `<strong>${escapeHtml(b.label)}</strong><span>${escapeHtml(b.value)}</span>`;
+        host.appendChild(el);
+      });
+    }
+
+    function setLang(lang){
+      const t = i18n[lang] || i18n.en;
+      document.documentElement.lang = lang;
+
+      // header
+      document.getElementById("brandName").textContent = t.brandName;
+      document.getElementById("brandTag").textContent = t.brandTag;
+      document.getElementById("metaTop").textContent = t.metaTop;
+      document.getElementById("metaVersion").textContent = t.metaVersion;
+
+      // language label
+      document.getElementById("langLabel").textContent = t.langLabel;
+
+      // hero
+      document.getElementById("docKicker").textContent = t.docKicker;
+      document.getElementById("title").textContent = t.title;
+      document.getElementById("subtitle").textContent = t.subtitle;
+      document.title = `AMATISTA · ${t.title}`;
+
+      // body
+      document.getElementById("p1").textContent = t.p1;
+      document.getElementById("p2").textContent = t.p2;
+      document.getElementById("p3").textContent = t.p3;
+
+      document.getElementById("h_support").textContent = t.h_support;
+      document.getElementById("support_p1").textContent = t.support_p1;
+      document.getElementById("support_p2").textContent = t.support_p2;
+      fillList("support_li", t.support_li);
+      document.getElementById("support_p3").textContent = t.support_p3;
+
+      document.getElementById("h_can").textContent = t.h_can;
+      fillList("can_li", t.can_li);
+      document.getElementById("can_p1").textContent = t.can_p1;
+
+      document.getElementById("h_ask").textContent = t.h_ask;
+      fillList("ask_li", t.ask_li);
+      document.getElementById("ask_p1").textContent = t.ask_p1;
+
+      document.getElementById("h_belong").textContent = t.h_belong;
+      document.getElementById("belong_p1").textContent = t.belong_p1;
+      document.getElementById("belong_p2").textContent = t.belong_p2;
+      fillList("belong_li", t.belong_li);
+      document.getElementById("belong_p3").textContent = t.belong_p3;
+
+      document.getElementById("h_ifcant").textContent = t.h_ifcant;
+      document.getElementById("ifcant_p1").textContent = t.ifcant_p1;
+      document.getElementById("ifcant_p2").textContent = t.ifcant_p2;
+
+      document.getElementById("h_last").textContent = t.h_last;
+      document.getElementById("last_p1").textContent = t.last_p1;
+      document.getElementById("last_p2").textContent = t.last_p2;
+      document.getElementById("last_p3").textContent = t.last_p3;
+
+      // aside
+      renderBadges(t.aside_badges);
+      document.getElementById("aside_note_title").textContent = t.aside_note_title;
+      document.getElementById("aside_note_body").textContent = t.aside_note_body;
+      document.getElementById("aside_part_title").textContent = t.aside_part_title;
+      document.getElementById("aside_part_body").textContent = t.aside_part_body;
+
+      // contact
+      document.getElementById("h_contact").textContent = t.h_contact;
+      document.getElementById("contact_intro").textContent = t.contact_intro;
+      document.getElementById("contact_card1_title").textContent = t.contact_card1_title;
+      document.getElementById("contact_card2_title").textContent = t.contact_card2_title;
+      document.getElementById("contact_email_label").textContent = t.contact_email_label;
+      document.getElementById("contact_ig_label").textContent = t.contact_ig_label;
+      document.getElementById("contact_web_label").textContent = t.contact_web_label;
+      document.getElementById("copyright").textContent = t.copyright;
+
+      // footer
+      document.getElementById("footerLeft").textContent = t.footerLeft;
+      document.getElementById("footerRight").textContent = t.footerRight;
+
+      // toggle buttons
+      document.getElementById("btnEN").setAttribute("aria-pressed", lang === "en" ? "true" : "false");
+      document.getElementById("btnES").setAttribute("aria-pressed", lang === "es" ? "true" : "false");
+    }
+
+    document.getElementById("btnEN").addEventListener("click", () => setLang("en"));
+    document.getElementById("btnES").addEventListener("click", () => setLang("es"));
+
+    setLang("en");
+  </script>
+</body>
+</html>
