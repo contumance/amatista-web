@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>AMATISTA · Impulso Primario · Practical Manual</title>
+
+<style>
+:root{
+  --bg:#0b0d10;
+  --ink:#e9edf2;
+  --muted:rgba(233,237,242,.70);
+  --line:rgba(233,237,242,.10);
+  --accent:#b79cff;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+  line-height:1.55;
+}
+.wrap{max-width:900px;margin:48px auto;padding:0 20px 64px;}
+.top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:18px;}
+.brand .name{font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:14px;}
+.brand .tag{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
+.langbar{display:flex;justify-content:flex-end;gap:10px;margin-bottom:14px;}
+.langbtn{
+  border:1px solid var(--line);
+  background:rgba(0,0,0,.3);
+  color:var(--ink);
+  padding:6px 10px;
+  border-radius:10px;
+  cursor:pointer;
+}
+.langbtn[aria-pressed="true"]{background:rgba(183,156,255,.18);}
+.card{border:1px solid var(--line);border-radius:18px;}
+.hero{padding:26px 28px 18px;border-bottom:1px solid var(--line);}
+.kicker{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);}
+h1{margin:10px 0;font-size:28px;}
+.subtitle{color:var(--muted);max-width:70ch;}
+.content{padding:22px 28px;}
+h2{margin:22px 0 10px;font-size:14px;letter-spacing:.12em;text-transform:uppercase;}
+p{margin:10px 0;font-size:14px;}
+ul{padding-left:18px;margin:8px 0;}
+li{margin:6px 0;}
+.rule{height:1px;background:var(--line);margin:18px 0;}
+.callout{border:1px solid var(--line);border-radius:14px;padding:14px;margin-top:12px;}
+.muted{color:var(--muted);}
+@media print{
+  body{background:#fff;color:#000;}
+  .langbar{display:none;}
+  .card{border-radius:0;}
+  .muted{color:#444;}
+  a{color:#000;text-decoration:none;}
+  @page{size:A4;margin:18mm;}
+}
+</style>
+</head>
+
+<body>
+<main class="wrap">
+<header class="top">
+  <div class="brand">
+    <div class="name">AMATISTA</div>
+    <div class="tag">Efectos Digitales Boutique</div>
+  </div>
+</header>
+
+<div class="langbar">
+  <button class="langbtn" id="btnEN" aria-pressed="true">EN</button>
+  <button class="langbtn" id="btnES" aria-pressed="false">ES</button>
+</div>
+
+<section class="card">
+  <div class="hero">
+    <div class="kicker" id="kicker"></div>
+    <h1 id="title"></h1>
+    <p class="subtitle" id="subtitle"></p>
+  </div>
+
+  <div class="content" id="content"></div>
+</section>
+</main>
+
+<script id="i18n" type="application/json">
+{
+  "es":{
+    "kicker":"Manual práctico",
+    "title":"Impulso Primario · Arquitectura de la Saturación",
+    "subtitle":"Guía práctica de uso para Boost, Overdrive, Fuzz y Distortion.",
+    "content":[
+      "<h2>Filosofía</h2><p>Impulso Primario es el ecosistema de ganancia de AMATISTA. Cada pedal cumple una función clara. Combinados, forman una arquitectura coherente, estable y musical.</p>",
+      "<h2>Roles de cada pedal</h2><ul><li><strong>Carbonado Boost</strong>: prepara la señal, ajusta graves y empuja con control.</li><li><strong>Ónix Overdrive</strong>: moldea medios y grano, ideal para empujar distorsiones.</li><li><strong>Obsidiana Fuzz</strong>: densidad, textura y carácter.</li><li><strong>Amatista Distortion</strong>: núcleo hi-gain y definición final.</li></ul>",
+      "<h2>Órdenes recomendados</h2><ul><li><strong>Base:</strong> Carbonado → Ónix → Amatista</li><li><strong>Metal moderno:</strong> Carbonado → Ónix → Amatista</li><li><strong>Wall / Shoegaze:</strong> Obsidiana → Amatista</li></ul>",
+      "<h2>Recetas rápidas</h2><ul><li><strong>Riff tight:</strong> Carbonado medio, Ónix drive bajo, Amatista structure bajo.</li><li><strong>Pared densa:</strong> Obsidiana gain medio, Amatista structure medio-alto.</li><li><strong>Lead sustain:</strong> Ónix drive medio, Amatista gain medio-alto.</li></ul>",
+      "<h2>Solución rápida</h2><ul><li><strong>Mucho fizz:</strong> baja Presence o Tone.</li><li><strong>Graves embarrados:</strong> Carbonado primero, Body moderado.</li><li><strong>Poco ataque:</strong> menos Gain, más Level.</li></ul>",
+      "<p class='muted'>Pensá en Impulso Primario como bloques: orden, balance y control importan más que el gain extremo.</p>"
+    ]
+  },
+  "en":{
+    "kicker":"Practical manual",
+    "title":"Primary Impulse · Saturation Architecture",
+    "subtitle":"Practical usage guide for Boost, Overdrive, Fuzz and Distortion.",
+    "content":[
+      "<h2>Philosophy</h2><p>Primary Impulse is AMATISTA’s gain ecosystem. Each pedal has a clear role. Combined, they form a coherent and musical saturation architecture.</p>",
+      "<h2>Pedal roles</h2><ul><li><strong>Carbonado Boost</strong>: prepares the signal, tightens lows and pushes cleanly.</li><li><strong>Ónix Overdrive</strong>: shapes mids and texture, perfect as a gain driver.</li><li><strong>Obsidiana Fuzz</strong>: density, texture and character.</li><li><strong>Amatista Distortion</strong>: main hi-gain engine and final tone shaping.</li></ul>",
+      "<h2>Recommended orders</h2><ul><li><strong>Base:</strong> Carbonado → Ónix → Amatista</li><li><strong>Modern metal:</strong> Carbonado → Ónix → Amatista</li><li><strong>Wall / Shoegaze:</strong> Obsidiana → Amatista</li></ul>",
+      "<h2>Quick recipes</h2><ul><li><strong>Tight riffs:</strong> Medium Carbonado, low Ónix drive, low Amatista structure.</li><li><strong>Dense wall:</strong> Medium Obsidiana gain, mid-high Amatista structure.</li><li><strong>Lead sustain:</strong> Medium Ónix drive, mid-high Amatista gain.</li></ul>",
+      "<h2>Quick fixes</h2><ul><li><strong>Too fizzy:</strong> lower Presence or Tone.</li><li><strong>Muddy lows:</strong> Carbonado first, moderate Body.</li><li><strong>Lacks attack:</strong> less Gain, more Level.</li></ul>",
+      "<p class='muted'>Think of Primary Impulse as building blocks: order, balance and control matter more than extreme gain.</p>"
+    ]
+  }
+}
+</script>
+
+<script>
+const i18n = JSON.parse(document.getElementById("i18n").textContent);
+function setLang(lang){
+  const t = i18n[lang];
+  document.getElementById("kicker").textContent = t.kicker;
+  document.getElementById("title").textContent = t.title;
+  document.getElementById("subtitle").textContent = t.subtitle;
+  document.getElementById("content").innerHTML = t.content.join("");
+  document.getElementById("btnEN").setAttribute("aria-pressed",lang==="en");
+  document.getElementById("btnES").setAttribute("aria-pressed",lang==="es");
+}
+document.getElementById("btnEN").onclick=()=>setLang("en");
+document.getElementById("btnES").onclick=()=>setLang("es");
+setLang("en");
+</script>
+</body>
+</html>
