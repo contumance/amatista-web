@@ -230,108 +230,155 @@
     }
 
 @media print{
-  /* Fuerza una estética minimal y legible en PDF */
+  /* ===== PRINT: Blanco + Negro (legible) ===== */
+
   :root{
-    --bg: #ffffff;
-    --ink: #0b0d10;                /* negro suave */
-    --muted: rgba(11,13,16,.72);   /* gris legible */
-    --line: rgba(11,13,16,.16);    /* líneas suaves */
-    --accent: #0b0d10;             /* sin “color” en print */
-    --warn: #0b0d10;               /* warnings solo por forma, no color */
-    --shadow: none;
+    --bg:#ffffff;
+    --ink:#000000;
+    --muted:#333333;
+    --line:rgba(0,0,0,.20);
+    --accent:#000000;
+    --accent2:#000000;
+    --shadow:none;
   }
 
-  /* Evita que el browser “invente” colores raros */
+  /* Quita decoraciones que suelen “ensuciar” el PDF */
   *{
+    box-shadow:none !important;
+    text-shadow:none !important;
+    filter:none !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
 
+  html, body{
+    background:#fff !important;
+    color:#000 !important;
+    height:auto !important;
+    min-height:auto !important;
+    overflow:visible !important;
+  }
+
+  /* Mata el fondo con gradients del body */
   body{
-    background: #ffffff !important;
-    color: var(--ink) !important;
+    background: #fff !important;
   }
 
   /* Contenedor a página */
   .wrap{
-    margin: 0 !important;
-    padding: 0 !important;
-    max-width: none !important;
+    margin:0 !important;
+    padding:0 !important;
+    max-width:none !important;
+    height:auto !important;
   }
 
-  /* Apaga decoraciones visuales de pantalla */
+  /* Oculta UI de pantalla */
   .langbar{ display:none !important; }
+
+  /* Apaga overlays/decoraciones */
   .card::before{ display:none !important; }
+
+  /* Fuerza blanco en TODAS las cajas que en pantalla son oscuras */
+  .card,
+  .hero,
+  .content,
+  .side,
+  .badge,
+  .callout,
+  .footer,
+  .contact,
+  .contactCard,
+  .langbtn{
+    background:#fff !important;
+  }
+
+  /* Bordes en escala de grises */
   .card{
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    background: #ffffff !important;
-    border: 1px solid var(--line) !important;
+    border:1px solid var(--line) !important;
+    border-radius:0 !important;
   }
+  .hero{ border-bottom:1px solid var(--line) !important; }
+  .footer{ border-top:1px solid var(--line) !important; }
 
-  /* Header/hero minimal */
-  .hero{
-    background: #ffffff !important;
-    border-bottom: 1px solid var(--line) !important;
-  }
-
-  /* Texto */
-  h1, h2, h3{
-    color: #000 !important;
-  }
-
-  p, li, .infoLine{
-    color: #111 !important;
-  }
-
-  .muted, .meta, .brand .tag, .kicker{
-    color: rgba(0,0,0,.70) !important;
-  }
-
-  /* Panels: blancos, borde suave */
-  .panel{
-    background: #ffffff !important;
-    border: 1px solid var(--line) !important;
-  }
-
-  /* Side divider */
   .side{
-    border-left: 1px solid var(--line) !important;
+    border-left:1px solid var(--line) !important;
   }
 
-  /* Bloques de código: súper legibles */
-  pre{
-    background: #f5f5f7 !important;
-    border: 1px solid rgba(0,0,0,.18) !important;
-    color: #111 !important;
+  .badge,
+  .callout,
+  .contactCard{
+    border:1px solid var(--line) !important;
   }
 
-  /* Callouts: sin color, solo borde y tipografía */
-  .callout{
-    background: #ffffff !important;
-    border: 1px solid rgba(0,0,0,.22) !important;
-  }
-  .warnDot{
-    background: #000 !important;
-    box-shadow: none !important;
+  /* Tipografía: todo a negro/gris legible */
+  h1,h2,h3,
+  .brand .name,
+  .sig,
+  .contactLabel,
+  .callout .t{
+    color:#000 !important;
+    opacity:1 !important;
   }
 
-  /* Links: sin subrayado decorativo */
+  p, li,
+  .contactLine,
+  .meta{
+    color:#111 !important;
+    opacity:1 !important;
+  }
+
+  .muted,
+  .brand .tag,
+  .kicker,
+  .copyright{
+    color:#333 !important;
+    opacity:1 !important;
+  }
+
+  /* Dot sin glow */
+  .dot{
+    background:#000 !important;
+    box-shadow:none !important;
+  }
+
+  .rule{
+    background: var(--line) !important;
+  }
+
+  /* Links: negros y sin subrayados decorativos */
   a{
-    color: #000 !important;
-    text-decoration: none !important;
-    border: none !important;
+    color:#000 !important;
+    text-decoration:none !important;
+    border:none !important;
   }
 
-  /* Evitar cortes feos */
-  h1,h2,h3{ break-after: avoid-page; }
-  p,li,pre,.panel{ break-inside: avoid; }
+  /* Opcional (útil): imprimir la URL al lado del link */
+  /* 
+  a[href^="http"]:after{
+    content:" (" attr(href) ")";
+    font-size: 10px;
+    color:#444;
+  }
+  */
+
+  /* Paginación: evita cortes feos sin generar páginas en blanco */
+  h1,h2,h3{
+    break-after:avoid;
+    page-break-after:avoid;
+  }
+  .contactCard,
+  .badge,
+  .callout{
+    break-inside:avoid;
+    page-break-inside:avoid;
+  }
 
   @page{
-    size: A4;
-    margin: 18mm;
+    size:A4;
+    margin:16mm;
   }
 }
+
 
   </style>
 </head>
