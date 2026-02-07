@@ -450,3 +450,48 @@ a{ color: inherit; text-decoration: none; }
   .info__chev{ transition: none; }
   .tab{ transition: none; }
 }
+
+/* DOCUMENTATION */
+.docs{
+  margin-top: 34px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.docs-inner{
+  max-width: var(--max);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.docs-title{
+  margin: 0 0 14px;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+}
+
+.docs-list{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.docs-list a{
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: rgba(255,255,255,0.62);
+  border-bottom: 1px solid rgba(255,255,255,0.18);
+  padding-bottom: 2px;
+}
+
+.docs-list a:hover{
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+

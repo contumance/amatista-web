@@ -41,5 +41,11 @@
   "amatistaDesc": "AMATISTA es una distorsión moderna y estructurada. Su enfoque está en la tensión, la claridad y la presencia, ofreciendo desde saturaciones tight y controladas hasta muros densos de distorsión sin perder definición.",
 
   "obsidianaType": "Fuzz",
-  "obsidianaDesc": "OBSIDIANA transforma la distorsión cruda en una masa sólida de sonido. Su fuzz es denso, comprimido y expansivo, capaz de ocupar todo el espacio sin perder control. Desde texturas ásperas hasta saturaciones abrumadoras, permite moldear el caos con intención, equilibrando peso, filo y claridad. Diseñado para integrarse naturalmente con otros pedales de ganancia, OBSIDIANA se convierte en la base de tonos masivos, envolventes y profundamente expresivos."
+  "obsidianaDesc": "OBSIDIANA transforma la distorsión cruda en una masa sólida de sonido. Su fuzz es denso, comprimido y expansivo, capaz de ocupar todo el espacio sin perder control. Desde texturas ásperas hasta saturaciones abrumadoras, permite moldear el caos con intención, equilibrando peso, filo y claridad. Diseñado para integrarse naturalmente con otros pedales de ganancia, OBSIDIANA se convierte en la base de tonos masivos, envolventes y profundamente expresivos.",
+  
+  "docsTitle": "Documentación",
+  "docsWelcome": "Bienvenida",
+  "docsInstall":"Instalación",
+  "docsManuals": "Manuales",
+  "docsLicense": "Licencia"
 }
