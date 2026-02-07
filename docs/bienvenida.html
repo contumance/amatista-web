@@ -293,79 +293,210 @@
     }
 
 @media print{
-  /* Fuerza una estética minimal y legible en PDF */
+  /* ===== PRINT: blanco + negro (máxima legibilidad) ===== */
+
   :root{
-    --bg: #ffffff;
-    --ink: #0b0d10;                /* negro suave */
-    --muted: rgba(11,13,16,.72);   /* gris legible */
-    --line: rgba(11,13,16,.16);    /* líneas suaves */
-    --accent: #0b0d10;             /* sin “color” en print */
-    --warn: #0b0d10;               /* warnings solo por forma, no color */
-    --shadow: none;
+    --bg:#ffffff;
+    --ink:#0b0d10;               /* negro suave */
+    --muted: rgba(11,13,16,.72); /* gris legible */
+    --line: rgba(11,13,16,.16);  /* líneas suaves */
+    --accent:#0b0d10;
+    --accent2:#0b0d10;
+    --shadow:none;
   }
 
   *{
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
+    box-shadow: none !important;
+    text-shadow: none !important;
   }
 
-  body{
-    background: #ffffff !important;
+  html, body{
+    background:#fff !important;
     color: var(--ink) !important;
   }
 
+  /* Contenedor a página */
   .wrap{
     margin: 0 !important;
     padding: 0 !important;
     max-width: none !important;
   }
 
+  /* Oculta UI de pantalla */
   .langbar{ display:none !important; }
+
+  /* Apaga overlays/decoraciones */
   .card::before{ display:none !important; }
+
+  /* Fuerza fondos claros en TODAS las “cajas” */
+  .card,
+  .hero,
+  .content,
+  .infoCard,
+  .callout,
+  .footer{
+    background:#ffffff !important;
+  }
+
+  /* Bordes suaves */
   .card{
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    background: #ffffff !important;
-    border: 1px solid var(--line) !important;
+    border-radius:0 !important;
+    border:1px solid var(--line) !important;
   }
-
   .hero{
-    background: #ffffff !important;
-    border-bottom: 1px solid var(--line) !important;
+    border-bottom:1px solid var(--line) !important;
+  }
+  .footer{
+    border-top:1px solid var(--line) !important;
   }
 
-  h1, h2, h3{ color: #000 !important; }
-  p, li, .infoLine{ color: #111 !important; }
+  /* Side divider */
+  .side{
+    border-left: 1px solid var(--line) !important;
+  }
 
-  .muted, .meta, .brand .tag, .kicker{
+  /* Las infoCards (ojo: NO es .panel) */
+  .infoCard{
+    border:1px solid var(--line) !important;
+  }
+
+  /* Callouts sin “color”, solo borde */
+  .callout{
+    border:1px solid rgba(0,0,0,.22) !important;
+  }
+
+  /* Textos: forzar negro/escala de grises */
+  h1,h2,h3{ color:#000 !important; }
+  p,li,.infoLine{ color:#111 !important; }
+
+  .muted,
+  .meta,
+  .brand .tag,
+  .kicker{
     color: rgba(0,0,0,.70) !important;
   }
 
-  /* NOTE: en esta página los paneles son .infoCard, no .panel */
-  .infoCard{
-    background: #ffffff !important;
-    border: 1px solid var(--line) !important;
+  .brand .name,
+  .sig{
+    color:#000 !important;
   }
 
-  .callout{
-    background: #ffffff !important;
-    border: 1px solid rgba(0,0,0,.22) !important;
-  }
-
+  /* Links sin decoración */
   a{
-    color: #000 !important;
-    text-decoration: none !important;
-    border: none !important;
+    color:#000 !important;
+    text-decoration:none !important;
+    border:none !important;
   }
 
-  h1,h2,h3{ break-after: avoid-page; }
-  p,li,.infoCard,.callout{ break-inside: avoid; }
+  /* Ajustes visuales menores para print */
+  .dot{
+    background:#000 !important;
+    box-shadow:none !important;
+  }
+  .rule{
+    background: var(--line) !important;
+  }
 
+  /* Evitar cortes feos */
+  h1,h2,h3{ break-after: avoid-page; page-break-after: avoid; }
+  p,li,.infoCard,.callout,.hero,.footer{
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Títulos de tarjetas y callouts más oscuros */
+  .infoLabel{
+    padding-bottom: 6px !important;
+    border-bottom: 1px solid rgba(0,0,0,.18) !important;
+    margin-bottom: 10px !important;
+  }
+
+  .infoLabel,
+  .callout .t,
+  .kicker{
+    color: #000 !important;
+    opacity: 1 !important;
+  }
+
+  /* Si algún título está quedando “lavado” por letter-spacing o antialias,
+     le damos un poquito más de peso */
+  .infoLabel,
+  .callout .t{
+    font-weight: 800 !important;
+  }
+
+  /* Asegura que nada “muteado” dentro de tarjetas baje demasiado */
+  .infoCard .muted,
+  .callout .muted{
+    color: rgba(0,0,0,.72) !important;
+  }
+
+  /* ====== CONTROL TOTAL DE PAGINACIÓN ====== */
+
+  html, body{
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+  }
+
+  /* El contenedor NO debe forzar altura */
+  .wrap{
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: none !important;
+    height: auto !important;
+  }
+
+  /* La card puede partirse si hace falta */
+  .card{
+    break-inside: auto !important;
+    page-break-inside: auto !important;
+  }
+
+  /* HERO y FOOTER NO fuerzan página nueva */
+  .hero,
+  .footer{
+    break-before: auto !important;
+    page-break-before: auto !important;
+  }
+
+  /* Evita “huérfanos” pero NO fuerces salto */
+  h1,h2,h3{
+    break-after: avoid !important;
+    page-break-after: avoid !important;
+  }
+
+  /* Contenido principal flexible */
+  .content,
+  article,
+  aside{
+    break-inside: auto !important;
+    page-break-inside: auto !important;
+  }
+
+  /* Quita cualquier min-height escondido */
+  section,
+  main,
+  article,
+  aside{
+    min-height: auto !important;
+  }
+
+  /* Muy importante: elimina sombras que alteran cálculo */
+  *{
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Márgenes de página ajustados */
   @page{
     size: A4;
-    margin: 18mm;
+    margin: 16mm;
   }
 }
+
   </style>
 </head>
 
