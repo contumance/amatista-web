@@ -233,10 +233,19 @@ a{ color: inherit; text-decoration: none; }
 }
 
 /* LIST / CARDS */
+/* CAMBIO:2 cards por fila en desktop */
 .list{
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
   margin-top: 18px;
+}
+
+/* CAMBIO:breakpoint intermedio para volver a 1 columna */
+@media (max-width: 860px){
+  .list{
+    grid-template-columns: 1fr;
+  }
 }
 .card{
   border-radius: var(--radius);
@@ -248,6 +257,8 @@ a{ color: inherit; text-decoration: none; }
   grid-template-columns: 1.2fr 0.8fr;
   gap: 18px;
   align-items: center;
+    /*CAMBIO: evita overflow dentro del grid */
+  min-width: 0;
 }
 .card-body{
   padding: 6px 6px 6px 8px;
