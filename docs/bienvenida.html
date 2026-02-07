@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>AMATISTA · Bienvenida · CARBONADO BOOST</title>
+  <title>AMATISTA · Welcome</title>
 
   <style>
     :root{
@@ -44,7 +44,7 @@
       align-items:flex-end;
       justify-content:space-between;
       gap: 16px;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
     }
 
     .brand{
@@ -75,6 +75,34 @@
       letter-spacing: .08em;
       text-transform: uppercase;
       white-space: nowrap;
+    }
+
+    /* Language bar */
+    .langbar{
+      display:flex;
+      justify-content:flex-end;
+      gap:10px;
+      margin-bottom: 18px;
+      user-select:none;
+      font-size: 12px;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .langbtn{
+      appearance:none;
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.22);
+      color: rgba(233,237,242,.88);
+      border-radius: 12px;
+      padding: 8px 10px;
+      font: inherit;
+      cursor:pointer;
+    }
+    .langbtn[aria-pressed="true"]{
+      border-color: rgba(183,156,255,.35);
+      background: rgba(183,156,255,.10);
+      color: rgba(233,237,242,.92);
     }
 
     .card{
@@ -276,7 +304,6 @@
     --shadow: none;
   }
 
-  /* Evita que el browser “invente” colores raros */
   *{
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
@@ -287,14 +314,12 @@
     color: var(--ink) !important;
   }
 
-  /* Contenedor a página */
   .wrap{
     margin: 0 !important;
     padding: 0 !important;
     max-width: none !important;
   }
 
-  /* Apaga decoraciones visuales de pantalla */
   .langbar{ display:none !important; }
   .card::before{ display:none !important; }
   .card{
@@ -304,150 +329,179 @@
     border: 1px solid var(--line) !important;
   }
 
-  /* Header/hero minimal */
   .hero{
     background: #ffffff !important;
     border-bottom: 1px solid var(--line) !important;
   }
 
-  /* Texto */
-  h1, h2, h3{
-    color: #000 !important;
-  }
-
-  p, li, .infoLine{
-    color: #111 !important;
-  }
+  h1, h2, h3{ color: #000 !important; }
+  p, li, .infoLine{ color: #111 !important; }
 
   .muted, .meta, .brand .tag, .kicker{
     color: rgba(0,0,0,.70) !important;
   }
 
-  /* Panels: blancos, borde suave */
-  .panel{
+  /* NOTE: en esta página los paneles son .infoCard, no .panel */
+  .infoCard{
     background: #ffffff !important;
     border: 1px solid var(--line) !important;
   }
 
-  /* Side divider */
-  .side{
-    border-left: 1px solid var(--line) !important;
-  }
-
-  /* Bloques de código: súper legibles */
-  pre{
-    background: #f5f5f7 !important;
-    border: 1px solid rgba(0,0,0,.18) !important;
-    color: #111 !important;
-  }
-
-  /* Callouts: sin color, solo borde y tipografía */
   .callout{
     background: #ffffff !important;
     border: 1px solid rgba(0,0,0,.22) !important;
   }
-  .warnDot{
-    background: #000 !important;
-    box-shadow: none !important;
-  }
 
-  /* Links: sin subrayado decorativo */
   a{
     color: #000 !important;
     text-decoration: none !important;
     border: none !important;
   }
 
-  /* Evitar cortes feos */
   h1,h2,h3{ break-after: avoid-page; }
-  p,li,pre,.panel{ break-inside: avoid; }
+  p,li,.infoCard,.callout{ break-inside: avoid; }
 
   @page{
     size: A4;
     margin: 18mm;
   }
 }
-
   </style>
 </head>
 
 <body>
   <main class="wrap">
-    <header class="top" aria-label="Encabezado">
+    <header class="top" aria-label="Header">
       <div class="brand">
         <div class="name">AMATISTA</div>
         <div class="tag">Efectos Digitales Boutique</div>
       </div>
-      <div class="meta">
-        AMATISTA · CARBONADO BOOST<br/>
-        Versión 1.0.0
-      </div>
+      <div class="meta" id="metaText"></div>
     </header>
 
-    <section class="card" role="document" aria-label="Bienvenida">
+    <!-- Language selector -->
+    <div class="langbar" aria-label="Language selector">
+      <span id="langLabel"></span>
+      <button class="langbtn" id="btnES" aria-pressed="true" type="button">ES</button>
+      <button class="langbtn" id="btnEN" aria-pressed="false" type="button">EN</button>
+    </div>
+
+    <section class="card" role="document" aria-label="Welcome">
       <div class="hero">
         <div class="kicker">
           <span class="dot" aria-hidden="true"></span>
-          Bienvenido a AMATISTA
+          <span id="kickerText"></span>
         </div>
-        <h1>Gracias por adquirir <span style="color: rgba(233,237,242,.96);">CARBONADO BOOST</span></h1>
-        <p class="subhead">
-          y por formar parte del ecosistema <strong>AMATISTA</strong> efectos digitales boutique.
-        </p>
+        <h1 id="headline"></h1>
+        <p class="subhead" id="subhead"></p>
       </div>
 
       <div class="content">
-        <article>
-          <p>
-            AMATISTA nace como un proyecto independiente, enfocado en el desarrollo de pedales digitales minimalistas,
-            inspirados en el sonido del metal moderno, las afinaciones bajas y una filosofía clara:
-            <strong>controles simples, propósito definido y carácter sonoro sólido</strong>.
-          </p>
+        <article id="mainText"></article>
 
-          <p>
-            Cada plugin está diseñado con atención al detalle, tanto en sonido como en experiencia de uso,
-            priorizando herramientas que realmente aporten valor en un contexto musical real.
-          </p>
-
-          <div class="rule" role="separator"></div>
-
-          <div class="callout">
-            <div class="t">Tu apoyo deja huella</div>
-            <p>
-              AMATISTA se sostiene con comunidad. Tu compra ayuda a mejorar, mantener y crear los próximos artefactos.
-            </p>
-          </div>
-
-          <div class="callout" style="border-color: rgba(124,241,198,.22); background: rgba(124,241,198,.06);">
-            <div class="t">Influenciá el futuro</div>
-            <p>
-              Quienes apoyan AMATISTA participan en votaciones y feedback para definir el rumbo de próximos plugins.
-            </p>
-          </div>
-        </article>
-
-        <aside class="side" aria-label="Información rápida">
+        <aside class="side" aria-label="Quick info">
           <div class="infoCard">
-            <div class="infoLabel">Enlaces</div>
+            <div class="infoLabel" id="linksLabel"></div>
             <div class="infoLine"><a href="https://amatista-efectos.online" target="_blank" rel="noopener noreferrer">amatista-efectos.online</a></div>
             <div class="infoLine"><a href="https://instagram.com/amatista.efectos" target="_blank" rel="noopener noreferrer">@amatista.efectos</a></div>
           </div>
 
           <div class="infoCard">
-            <div class="infoLabel">Contacto y comunidad</div>
+            <div class="infoLabel" id="contactLabel"></div>
             <div class="infoLine">Email: <a href="mailto:amatista.efectos@icloud.com">amatista.efectos@icloud.com</a></div>
             <div class="infoLine">Instagram: <a href="https://instagram.com/amatista.efectos" target="_blank" rel="noopener noreferrer">@amatista.efectos</a></div>
-            <div class="infoLine">Sitio web: <a href="https://amatista-efectos.online" target="_blank" rel="noopener noreferrer">amatista-efectos.online</a></div>
-            <div class="infoLine muted" style="margin-top:10px;">© AMATISTA efectos digitales boutique</div>
+            <div class="infoLine"><span id="siteLabel"></span> <a href="https://amatista-efectos.online" target="_blank" rel="noopener noreferrer">amatista-efectos.online</a></div>
+            <div class="infoLine muted" style="margin-top:10px;" id="copyright"></div>
           </div>
         </aside>
       </div>
 
-      <footer class="footer" aria-label="Pie">
-        <div class="sig">AMATISTA · Efectos Digitales Boutique</div>
+      <footer class="footer" aria-label="Footer">
+        <div class="sig" id="footerSig"></div>
         <div><a href="https://amatista-efectos.online" target="_blank" rel="noopener noreferrer">amatista-efectos.online</a></div>
       </footer>
     </section>
   </main>
+
+<script id="i18n" type="application/json">
+{
+  "es":{
+    "langLabel":"Idioma",
+    "meta":"AMATISTA · Plugins<br/>Versión 1.0.0",
+    "kicker":"Bienvenido a AMATISTA",
+    "headline":"Gracias por ser parte de el ecosistema de AMATISTA",
+    "subhead":"y por formar parte del ecosistema <strong>AMATISTA</strong> efectos digitales boutique.",
+    "main":[
+      "<p>AMATISTA nace como un proyecto independiente, enfocado en el desarrollo de pedales digitales minimalistas, inspirados en el sonido del metal moderno, las afinaciones bajas y una filosofía clara: <strong>controles simples, propósito definido y carácter sonoro sólido</strong>.</p>",
+      "<p>Cada plugin está diseñado con atención al detalle, tanto en sonido como en experiencia de uso, priorizando herramientas que realmente aporten valor en un contexto musical real.</p>",
+      "<div class=\"rule\" role=\"separator\"></div>",
+      "<div class=\"callout\"><div class=\"t\">Tu apoyo deja huella</div><p>AMATISTA se sostiene con comunidad. Tu compra ayuda a mejorar, mantener y crear los próximos artefactos.</p></div>",
+      "<div class=\"callout\" style=\"border-color: rgba(124,241,198,.22); background: rgba(124,241,198,.06);\"><div class=\"t\">Influenciá el futuro</div><p>Quienes apoyan AMATISTA participan en votaciones y feedback para definir el rumbo de próximos plugins.</p></div>"
+    ],
+    "linksLabel":"Enlaces",
+    "contactLabel":"Contacto y comunidad",
+    "siteLabel":"Sitio web:",
+    "copyright":"© AMATISTA efectos digitales boutique",
+    "footerSig":"AMATISTA · Efectos Digitales Boutique"
+  },
+  "en":{
+    "langLabel":"Language",
+    "meta":"AMATISTA · Plugins<br/>Version 1.0.0",
+    "kicker":"Welcome to AMATISTA",
+    "headline":"Thanks for being part of the AMATISTA ecosystem.",
+    "subhead":"and for being part of the <strong>AMATISTA</strong> boutique digital effects ecosystem.",
+    "main":[
+      "<p>AMATISTA is an independent project focused on minimalist digital pedals, inspired by modern heavy tones, low tunings, and a clear philosophy: <strong>simple controls, defined purpose, and solid sonic character</strong>.</p>",
+      "<p>Each plugin is built with attention to detail in both sound and user experience, prioritizing tools that truly add value in real musical contexts.</p>",
+      "<div class=\"rule\" role=\"separator\"></div>",
+      "<div class=\"callout\"><div class=\"t\">Your support matters</div><p>AMATISTA grows through community. Your purchase helps improve, maintain, and build the next artifacts.</p></div>",
+      "<div class=\"callout\" style=\"border-color: rgba(124,241,198,.22); background: rgba(124,241,198,.06);\"><div class=\"t\">Influence what’s next</div><p>Supporters can join feedback rounds and votes to help shape upcoming plugins.</p></div>"
+    ],
+    "linksLabel":"Links",
+    "contactLabel":"Contact & community",
+    "siteLabel":"Website:",
+    "copyright":"© AMATISTA boutique digital effects",
+    "footerSig":"AMATISTA · Boutique Digital Effects"
+  }
+}
+</script>
+
+<script>
+  const i18n = JSON.parse(document.getElementById("i18n").textContent);
+
+  const btnES = document.getElementById("btnES");
+  const btnEN = document.getElementById("btnEN");
+
+  function setLang(lang){
+    const t = i18n[lang] || i18n.es;
+
+    document.documentElement.lang = lang;
+
+    document.getElementById("langLabel").textContent = t.langLabel;
+    document.getElementById("metaText").innerHTML = t.meta;
+
+    document.getElementById("kickerText").textContent = t.kicker;
+    document.getElementById("headline").innerHTML = t.headline;
+    document.getElementById("subhead").innerHTML = t.subhead;
+
+    document.getElementById("mainText").innerHTML = (t.main || []).join("");
+
+    document.getElementById("linksLabel").textContent = t.linksLabel;
+    document.getElementById("contactLabel").textContent = t.contactLabel;
+    document.getElementById("siteLabel").textContent = t.siteLabel;
+    document.getElementById("copyright").textContent = t.copyright;
+    document.getElementById("footerSig").textContent = t.footerSig;
+
+    btnES.setAttribute("aria-pressed", lang === "es" ? "true" : "false");
+    btnEN.setAttribute("aria-pressed", lang === "en" ? "true" : "false");
+  }
+
+  btnES.addEventListener("click", () => setLang("es"));
+  btnEN.addEventListener("click", () => setLang("en"));
+
+  // default
+  setLang("es");
+</script>
+
 </body>
 </html>
