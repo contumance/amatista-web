@@ -384,6 +384,16 @@ a{ color: inherit; text-decoration: none; }
 }
 .footer-meta .dot{ opacity: 0.55; }
 
+.footer-youtube{
+  display: inline-block;
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+}
+.footer-youtube:hover{ opacity: 0.9; }
+
+
 /* FAMILY */
 .family{
   margin: 22px auto 18px; /* leve ajuste para convivir con tabs */
