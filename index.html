@@ -202,38 +202,19 @@
     <!-- MEDIA                     -->
     <!-- ========================= -->
     <section class="section" data-section="media">
-      <section class="family">
-        <h2 class="family-title" data-i18n="mediaTitle">MEDIA</h2>
-        <div class="family-subtitle" data-i18n="mediaSubtitle">
-          Demos, videos y contenido.
-        </div>
-      </section>
-
-<div class="block">
-  <p class="media-hint" data-i18n="mediaHint"></p>
-
-  <div class="media-grid">
-    <div class="embed">
-      <iframe
-        src="https://www.youtube-nocookie.com/embed/MpFQYNvseI4"
-        title="YouTube Short"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen>
-      </iframe>
+  <section class="family">
+    <h2 class="family-title" data-i18n="mediaTitle">MEDIA</h2>
+    <div class="family-subtitle" data-i18n="mediaSubtitle">
+      Demos, videos y contenido.
     </div>
+  </section>
 
-    <a class="card-link"
-       href="https://youtube.com/shorts/MpFQYNvseI4"
-       target="_blank"
-       rel="noopener noreferrer">
-      Ver en YouTube
-    </a>
+  <div class="media-list">
+    <!-- Agregás videos SOLO pegando IDs -->
+    <div class="media-item" data-youtube-id="MpFQYNvseI4"></div>
+    <div class="media-item" data-youtube-id="gN-I8rfDbWw"></div>
   </div>
-</div>
-
-      
-    </section>
+</section>
 
     <!-- DOCUMENTATION -->
     <section class="docs">
@@ -287,5 +268,6 @@
   </div>
 
   <script src="js/i18n.js"></script>
+  <script src="js/media.js"></script>
 </body>
 </html>
