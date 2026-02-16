@@ -45,6 +45,31 @@
       font-size:12px; letter-spacing:.12em; text-transform:uppercase;
       color:var(--muted);
     }
+
+    /* Brand */
+    .brand-logo{
+      width: 96px;
+      height: 96px;
+      object-fit: contain;
+      opacity: 0.96;
+      filter: drop-shadow(0 20px 32px rgba(0,0,0,0.60));
+      margin-bottom: 4px;
+    }
+
+    .brand-title{
+      margin: 14px 0 6px;
+      font-size: 34px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 650;
+    }
+    .brand-subtitle{
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.68);
+    }
+
     .meta{
       text-align:right; font-size:12px; color:var(--muted);
       letter-spacing:.08em; text-transform:uppercase; white-space:nowrap;
@@ -387,8 +412,9 @@
   <main class="wrap">
     <header class="top" aria-label="Header">
       <div class="brand">
-        <div class="name" id="brandName">AMATISTA</div>
-        <div class="tag" id="brandTag">Boutique Digital Effects</div>
+      <img class="brand-logo" src="../amatista-logo-2.PNG" alt="AMATISTA" />
+      <h1 class="brand-title">AMATISTA</h1>
+      <div class="brand-subtitle" data-i18n="subtitle">EFECTOS DIGITALES BOUTIQUE</div>
       </div>
       <div class="meta">
         <span id="metaTop">License of Trust · Creative Pact</span><br/>
