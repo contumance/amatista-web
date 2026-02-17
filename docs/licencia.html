@@ -402,6 +402,25 @@
     size:A4;
     margin:16mm;
   }
+
+  /* 1) Subtítulo: estaba quedando blanco sobre blanco */
+  .brand-subtitle{
+    color:#000 !important;
+    opacity:1 !important;
+  }
+
+  /* 2) Logo: darle contraste real para impresión */
+  .brand-logo{
+    opacity:1 !important;
+    /* si tu logo en pantalla es blanco, en papel necesitás negro */
+    filter: invert(1) !important;
+    -webkit-filter: invert(1) !important;
+
+    /* ayuda a que no se vea “lavado” */
+    mix-blend-mode: normal !important;
+  }
+
+  
 }
 
 
