@@ -439,10 +439,12 @@ a{ color: inherit; text-decoration: none; }
     justify-content: center;
     flex-wrap: wrap;      /* permite 2 filas */
     gap: 8px;
+    box-sizing: border-box;
+
   }
 
   .tab{
-    flex: 1 1 calc(50% - 8px); /* 2 por fila */
+    flex: 1 1 calc(50% - 4px); /* 2 por fila */
     min-width: 0;                 /* clave para que puedan achicarse */
     text-align: center;
     padding: 10px 10px;
