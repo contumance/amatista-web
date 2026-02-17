@@ -436,16 +436,27 @@ a{ color: inherit; text-decoration: none; }
 
   .tabs{
     width: 100%;
-    justify-content: space-between;
+    justify-content: center;
+    flex-wrap: wrap;      /* permite 2 filas */
     gap: 8px;
-    padding: 6px;
   }
 
   .tab{
-    flex: 1;
+    flex: 1 1 calc(50% - 8px); /* 2 por fila */
+    min-width: 0;                 /* clave para que puedan achicarse */
     text-align: center;
     padding: 10px 10px;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.10em;       /* un pelín menos ayuda en mobile */
+  }
+
+  /* REAFIRMA el activo en mobile (porque .tab del media lo pisa) */
+  .tab.tab--active{
+    background:
+      radial-gradient(180px 60px at 50% 50%, rgba(167,139,250,0.18), transparent 60%),
+      rgba(167,139,250,0.10);
+    border-color: rgba(167,139,250,0.55);
+    color: rgba(255,255,255,0.95);
+    box-shadow: 0 0 18px rgba(167,139,250,0.18);
   }
 
   .card{
