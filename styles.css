@@ -476,6 +476,22 @@ a{ color: inherit; text-decoration: none; }
   }
   .card-media{ justify-content: center; }
   .card-media img{ width: 190px; }
+  
+
+  .tabs{
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+
+    padding: 0 !important;          /* saca el “marco” */
+    border-radius: 0 !important;     /* evita pill fantasma */
+    width: 100%;
+  }
+
+  /* opcional: un poquito de aire sin contenedor */
+  .tabs{ gap: 10px;}
 }
 
 @media (prefers-reduced-motion: reduce){
