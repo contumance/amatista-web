@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AMATISTA · Installation Manual</title>
+
+  <style>
+    :root{
+      --bg:#0b0d10;
+      --ink:#e9edf2;
+      --muted: rgba(233,237,242,.70);
+      --line: rgba(233,237,242,.10);
+      --accent:#b79cff;
+      --warn:#ffd27a;
+      --shadow: 0 12px 36px rgba(0,0,0,.50);
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      background:
+        radial-gradient(1100px 640px at 20% 10%, rgba(183,156,255,.12), transparent 60%),
+        radial-gradient(900px 600px at 80% 20%, rgba(124,241,198,.06), transparent 60%),
+        var(--bg);
+      color:var(--ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      line-height:1.55;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    .wrap{ max-width:980px; margin:56px auto; padding:0 20px 64px; }
+
+    .top{
+      display:flex; justify-content:space-between; align-items:flex-end;
+      margin-bottom:18px; gap: 16px;
+    }
+    .brand .name{
+      font-weight:800; letter-spacing:.14em; text-transform:uppercase; font-size:14px;
+    }
+    .brand .tag{
+      font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted);
+    }
+
+    /* Brand */
+    .brand-logo{
+      width: 96px;
+      height: 96px;
+      object-fit: contain;
+      opacity: 0.96;
+      filter: drop-shadow(0 20px 32px rgba(0,0,0,0.60));
+      margin-bottom: 4px;
+    }
+
+    .brand-title{
+      margin: 14px 0 6px;
+      font-size: 34px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 650;
+    }
+    .brand-subtitle{
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.68);
+    }
+
+    .meta{
+      text-align:right; font-size:12px; color:var(--muted);
+      letter-spacing:.08em; text-transform:uppercase; white-space: nowrap;
+    }
+
+    .langbar{
+      display:flex; justify-content:flex-end; gap:10px;
+      margin-bottom:14px;
+      font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+      color:var(--muted);
+      user-select: none;
+    }
+    .langbtn{
+      background:rgba(0,0,0,.25);
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:6px 10px;
+      color:var(--ink);
+      cursor:pointer;
+      font: inherit;
+    }
+    .langbtn[aria-pressed="true"]{
+      background:rgba(183,156,255,.15);
+      border-color:rgba(183,156,255,.4);
+    }
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid var(--line);
+      border-radius:18px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+
+    .hero{
+      padding:26px 28px 18px;
+      border-bottom:1px solid var(--line);
+    }
+    .kicker{
+      font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+      color:var(--muted);
+      display:flex; align-items:center; gap:10px;
+    }
+    .dot{
+      width:8px; height:8px; border-radius:99px;
+      background:var(--accent);
+      box-shadow:0 0 0 6px rgba(183,156,255,.12);
+      flex: 0 0 auto;
+    }
+    h1{ margin:12px 0 6px; font-size:28px; line-height: 1.15; }
+    .subtitle{ font-size:14px; color:var(--muted); max-width:75ch; margin:0; }
+
+    .content{
+      padding:22px 28px 26px;
+      display:grid;
+      grid-template-columns:1.35fr .65fr;
+      gap:24px;
+    }
+    @media(max-width:900px){
+      .content{ grid-template-columns:1fr; }
+      .meta{ display:none; }
+      h1{ font-size:26px; }
+    }
+
+    h2{
+      margin:18px 0 10px;
+      font-size:14px; letter-spacing:.12em; text-transform:uppercase;
+      color: rgba(233,237,242,.92);
+    }
+    h3{
+      margin:16px 0 8px;
+      font-size:13px; letter-spacing:.10em; text-transform:uppercase;
+      color: rgba(233,237,242,.90);
+    }
+    p{ margin:10px 0; font-size:14px; color:rgba(233,237,242,.88); }
+    ul{ padding-left:18px; margin:8px 0; }
+    li{ margin:6px 0; color:rgba(233,237,242,.86); }
+
+    .grid2{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+    }
+    @media(max-width:700px){
+      .grid2{ grid-template-columns:1fr; }
+    }
+
+    .panel{
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:rgba(0,0,0,.20);
+      padding:14px;
+    }
+
+    pre{
+      margin: 10px 0;
+      background:rgba(0,0,0,.30);
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:12px;
+      font-size:12.5px;
+      white-space:pre-wrap;
+      word-break: break-word;
+      color: rgba(233,237,242,.90);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+
+    .callout{
+      border:1px solid rgba(255,210,122,.35);
+      background:rgba(255,210,122,.10);
+      border-radius:14px;
+      padding:14px;
+      margin-top:14px;
+    }
+    .callout .t{
+      font-size:12px; font-weight:800;
+      letter-spacing:.12em; text-transform:uppercase;
+      display:flex; align-items:center; gap:10px;
+      margin-bottom: 6px;
+      color: rgba(233,237,242,.92);
+    }
+    .warnDot{
+      width:8px; height:8px; border-radius:99px;
+      background:var(--warn);
+      box-shadow:0 0 0 6px rgba(255,210,122,.20);
+      flex: 0 0 auto;
+    }
+
+    .muted{ color: var(--muted); }
+
+    .side{
+      border-left:1px solid var(--line);
+      padding-left:22px;
+    }
+    @media(max-width:900px){
+      .side{ border-left:none; padding-left:0; border-top:1px solid var(--line); padding-top:18px; }
+    }
+
+    a{
+      color:var(--ink);
+      text-decoration:none;
+      border-bottom:1px solid rgba(233,237,242,.25);
+      padding-bottom: 1px;
+    }
+
+    .rule{ height: 1px; background: var(--line); margin: 16px 0; }
+
+    footer{
+      padding:16px 28px;
+      border-top:1px solid var(--line);
+      font-size:12px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--muted);
+      display:flex; justify-content:space-between; gap: 12px; flex-wrap: wrap;
+    }
+
+@media print{
+  /* Fuerza una estética minimal y legible en PDF */
+  :root{
+    --bg: #ffffff;
+    --ink: #0b0d10;                /* negro suave */
+    --muted: rgba(11,13,16,.72);   /* gris legible */
+    --line: rgba(11,13,16,.16);    /* líneas suaves */
+    --accent: #0b0d10;             /* sin “color” en print */
+    --warn: #0b0d10;               /* warnings solo por forma, no color */
+    --shadow: none;
+  }
+
+  /* Evita que el browser “invente” colores raros */
+  *{
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body{
+    background: #ffffff !important;
+    color: var(--ink) !important;
+  }
+
+  /* Contenedor a página */
+  .wrap{
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: none !important;
+  }
+
+  /* Apaga decoraciones visuales de pantalla */
+  .langbar{ display:none !important; }
+  .card::before{ display:none !important; }
+  .card{
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+    border: 1px solid var(--line) !important;
+  }
+
+  /* Header/hero minimal */
+  .hero{
+    background: #ffffff !important;
+    border-bottom: 1px solid var(--line) !important;
+  }
+
+  /* Texto */
+  h1, h2, h3{
+    color: #000 !important;
+  }
+
+  p, li, .infoLine{
+    color: #111 !important;
+  }
+
+  .muted, .meta, .brand .tag, .kicker{
+    color: rgba(0,0,0,.70) !important;
+  }
+
+  /* Panels: blancos, borde suave */
+  .panel{
+    background: #ffffff !important;
+    border: 1px solid var(--line) !important;
+  }
+
+  /* Side divider */
+  .side{
+    border-left: 1px solid var(--line) !important;
+  }
+
+  /* Bloques de código: súper legibles */
+  pre{
+    background: #f5f5f7 !important;
+    border: 1px solid rgba(0,0,0,.18) !important;
+    color: #111 !important;
+  }
+
+  /* Callouts: sin color, solo borde y tipografía */
+  .callout{
+    background: #ffffff !important;
+    border: 1px solid rgba(0,0,0,.22) !important;
+  }
+  .warnDot{
+    background: #000 !important;
+    box-shadow: none !important;
+  }
+
+  /* Links: sin subrayado decorativo */
+  a{
+    color: #000 !important;
+    text-decoration: none !important;
+    border: none !important;
+  }
+
+  /* Evitar cortes feos */
+  h1,h2,h3{ break-after: avoid-page; }
+  p,li,pre,.panel{ break-inside: avoid; }
+
+  @page{
+    size: A4;
+    margin: 18mm;
+  }
+}
+
+  </style>
+</head>
+
+<body>
+<main class="wrap">
+  <header class="top">
+    <div class="brand">
+      <img class="brand-logo" src="../amatista-logo-2.PNG" alt="AMATISTA" />
+      <h1 class="brand-title">AMATISTA</h1>
+      <div class="brand-subtitle" data-i18n="subtitle">EFECTOS DIGITALES BOUTIQUE</div>
+    </div>
+    <div class="meta" id="metaTitle"></div>
+  </header>
+
+  <div class="langbar" aria-label="Language selector">
+    <span id="langLabel"></span>
+    <button class="langbtn" id="btnEN" aria-pressed="true" type="button">EN</button>
+    <button class="langbtn" id="btnES" aria-pressed="false" type="button">ES</button>
+  </div>
+
+  <section class="card" role="document" aria-label="Installation manual">
+    <div class="hero">
+      <div class="kicker"><span class="dot" aria-hidden="true"></span><span id="kicker"></span></div>
+      <h1 id="title"></h1>
+      <p class="subtitle" id="subtitle"></p>
+    </div>
+
+    <div class="content">
+      <article id="mainContent"></article>
+
+      <aside class="side" aria-label="Quick summary">
+        <div class="panel">
+          <h3 id="summaryTitle"></h3>
+          <div id="summaryBody"></div>
+        </div>
+      </aside>
+    </div>
+
+    <footer>
+      <div>AMATISTA · Boutique Digital Effects</div>
+      <div><a href="https://amatista-efectos.online" target="_blank" rel="noopener noreferrer">amatista-efectos.online</a></div>
+    </footer>
+  </section>
+</main>
+
+<script id="i18n" type="application/json">
+{
+  "en": {
+    "lang": "Language",
+    "meta": "Installation Manual · Windows / macOS",
+    "kicker": "Installation & troubleshooting",
+    "title": "Installation manual",
+    "subtitle": "Install instructions for VST3 on Windows and VST3 / Audio Unit on macOS. Includes guidance for unsigned builds.",
+
+    "systemRequirementsTitle": "System requirements",
+    "macTitle": "macOS",
+    "macReq": ["macOS 10.13 or later", "VST3 or Audio Unit compatible DAW"],
+    "winTitle": "Windows",
+    "winReq": ["Windows 10 or later", "VST3 compatible DAW"],
+
+    "testedTitle": "Tested in",
+    "testedNote": "Other VST3/AU compatible DAWs should work correctly.",
+    "testedDaws": ["Ableton Live", "Logic Pro", "Reaper", "Studio One (Fender Studio)"],
+
+    "installTitle": "Installation",
+    "winInstallTitle": "Windows (VST3)",
+    "copyLabel": "Copy:",
+    "toLabel": "To:",
+    "restartRescan": "Restart your DAW. If the plugin doesn’t appear, run a plugin rescan.",
+
+    "macInstallTitle": "macOS (Unsigned)",
+    "unsignedTitle": "Unsigned version",
+    "unsignedBody": "This plugin is not signed with an Apple Developer ID. macOS may block it until you manually allow it. This is normal for independent builds.",
+    "installPathsTitle": "Install paths:",
+    "auLabel": "AU (.component):",
+    "vst3Label": "VST3 (.vst3):",
+
+    "troublesTitle": "Troubleshooting",
+    "winTroubleTitle": "Windows",
+    "winTroubleHead": "The plugin doesn’t show up in my DAW:",
+    "winTroubleSteps": [
+      "Make sure the plugin is copied to the correct folder.",
+      "Restart the DAW.",
+      "Force a plugin rescan from your DAW settings.",
+      "Restarting the PC often fixes cache / scan issues."
+    ],
+
+    "macTroubleTitle": "macOS",
+    "macErrDamaged": "ERROR: “has been modified or damaged”",
+    "macFixTerminal": "Fix (Terminal):",
+    "macAfterRestartDaw": "Then restart your DAW.",
+    "macErrVerify": "ERROR: “developer cannot be verified”",
+    "macVerifyHint": "Same cause. Check:",
+    "privacyPath": "System Settings → Privacy & Security → Open Anyway",
+
+    "contactTitle": "Contact and community",
+    "contactIntro": "For support, feedback, suggestions, or questions:",
+    "emailLabel": "Email:",
+    "igLabel": "Instagram:",
+    "webLabel": "Website:",
+    "copyright": "© AMATISTA boutique digital effects",
+
+    "summaryTitle": "Quick summary",
+    "summaryWin": "Windows VST3:",
+    "summaryMac": "macOS paths:",
+    "vst3PathWin": "C:\\Program Files\\Common Files\\VST3\\",
+    "vst3PathMac": "/Library/Audio/Plug-Ins/VST3/",
+    "auPathMac": "/Library/Audio/Plug-Ins/Components/"
+  },
+
+  "es": {
+    "lang": "Idioma",
+    "meta": "Manual de instalación · Windows / macOS",
+    "kicker": "Instalación y solución de problemas",
+    "title": "Manual de instalación",
+    "subtitle": "Instrucciones para instalar VST3 en Windows y VST3 / Audio Unit en macOS. Incluye guía para versiones sin firmar.",
+
+    "systemRequirementsTitle": "Requisitos del sistema",
+    "macTitle": "macOS",
+    "macReq": ["macOS 10.13 o superior", "DAW compatible con VST3 o Audio Unit"],
+    "winTitle": "Windows",
+    "winReq": ["Windows 10 o superior", "DAW compatible con VST3"],
+
+    "testedTitle": "Probado en",
+    "testedNote": "Otros DAWs compatibles con VST3/AU deberían funcionar correctamente.",
+    "testedDaws": ["Ableton Live", "Logic Pro", "Reaper", "Studio One (Fender Studio)"],
+
+    "installTitle": "Instalación",
+    "winInstallTitle": "Windows (VST3)",
+    "copyLabel": "Copiar:",
+    "toLabel": "En:",
+    "restartRescan": "Reiniciá tu DAW. Si no aparece, realizá un re-escaneo de plugins.",
+
+    "macInstallTitle": "macOS (Unsigned)",
+    "unsignedTitle": "Versión sin firmar",
+    "unsignedBody": "Este plugin no está firmado con Developer ID. macOS puede bloquearlo hasta que lo habilites manualmente. Esto es normal en builds independientes.",
+    "installPathsTitle": "Rutas de instalación:",
+    "auLabel": "AU (.component):",
+    "vst3Label": "VST3 (.vst3):",
+
+    "troublesTitle": "Solución de problemas",
+    "winTroubleTitle": "Windows",
+    "winTroubleHead": "El plugin no aparece en mi DAW:",
+    "winTroubleSteps": [
+      "Asegurate de haber copiado el plugin en la carpeta correcta.",
+      "Reiniciá el DAW.",
+      "Forzá un re-escaneo de plugins desde el DAW.",
+      "Reiniciar la PC suele resolver problemas de caché / escaneo."
+    ],
+
+    "macTroubleTitle": "macOS",
+    "macErrDamaged": "ERROR: “has been modified or damaged”",
+    "macFixTerminal": "Solución (Terminal):",
+    "macAfterRestartDaw": "Luego reiniciá el DAW.",
+    "macErrVerify": "ERROR: “developer cannot be verified”",
+    "macVerifyHint": "Misma causa. Revisá:",
+    "privacyPath": "System Settings → Privacy & Security → Open Anyway",
+
+    "contactTitle": "Contacto y comunidad",
+    "contactIntro": "Para soporte, feedback, sugerencias o consultas:",
+    "emailLabel": "Email:",
+    "igLabel": "Instagram:",
+    "webLabel": "Sitio web:",
+    "copyright": "© AMATISTA efectos digitales boutique",
+
+    "summaryTitle": "Resumen rápido",
+    "summaryWin": "Windows VST3:",
+    "summaryMac": "Rutas macOS:",
+    "vst3PathWin": "C:\\Program Files\\Common Files\\VST3\\",
+    "vst3PathMac": "/Library/Audio/Plug-Ins/VST3/",
+    "auPathMac": "/Library/Audio/Plug-Ins/Components/"
+  }
+}
+</script>
+
+<script>
+  const i18n = JSON.parse(document.getElementById("i18n").textContent);
+
+  // EDITABLE: plugin filename + mac quarantine command target
+  const PLUGIN_FILE = "CarbonadoBoost.vst3";
+  const MAC_QUARANTINE_TARGET = "/Library/Audio/Plug-Ins/VST3/CarbonadoBoost.vst3";
+
+  function esc(s){
+    return String(s)
+      .replaceAll("&","&amp;")
+      .replaceAll("<","&lt;")
+      .replaceAll(">","&gt;")
+      .replaceAll('"',"&quot;")
+      .replaceAll("'","&#039;");
+  }
+
+  function list(items){
+    return `<ul>${items.map(i => `<li>${esc(i)}</li>`).join("")}</ul>`;
+  }
+
+  function setLang(lang){
+    const t = i18n[lang] || i18n.en;
+    document.documentElement.lang = lang;
+
+    document.getElementById("langLabel").textContent = t.lang;
+    document.getElementById("metaTitle").textContent = t.meta;
+    document.getElementById("kicker").textContent = t.kicker;
+    document.getElementById("title").textContent = t.title;
+    document.getElementById("subtitle").textContent = t.subtitle;
+
+    const main = [];
+    main.push(`<h2>${esc(t.systemRequirementsTitle)}</h2>`);
+    main.push(`<div class="grid2">`);
+      main.push(`<div class="panel"><h3>${esc(t.macTitle)}</h3>${list(t.macReq)}</div>`);
+      main.push(`<div class="panel"><h3>${esc(t.winTitle)}</h3>${list(t.winReq)}</div>`);
+    main.push(`</div>`);
+
+    main.push(`<div class="rule" role="separator"></div>`);
+
+    main.push(`<h2>${esc(t.testedTitle)}</h2>`);
+    main.push(`<p>${esc(t.testedDaws.join(", "))}</p>`);
+    main.push(`<p class="muted">${esc(t.testedNote)}</p>`);
+
+    main.push(`<div class="rule" role="separator"></div>`);
+
+    main.push(`<h2>${esc(t.installTitle)}</h2>`);
+    main.push(`<div class="grid2">`);
+
+      // Windows panel
+      main.push(`<div class="panel">`);
+      main.push(`<h3>${esc(t.winInstallTitle)}</h3>`);
+      main.push(`<p>${esc(t.copyLabel)}</p>`);
+      main.push(`<pre>${esc(PLUGIN_FILE)}</pre>`);
+      main.push(`<p>${esc(t.toLabel)}</p>`);
+      main.push(`<pre>${esc(t.vst3PathWin)}</pre>`);
+      main.push(`<p>${esc(t.restartRescan)}</p>`);
+      main.push(`</div>`);
+
+      // macOS panel
+      main.push(`<div class="panel">`);
+      main.push(`<h3>${esc(t.macInstallTitle)}</h3>`);
+      main.push(`<div class="callout"><div class="t"><span class="warnDot" aria-hidden="true"></span>${esc(t.unsignedTitle)}</div><p>${esc(t.unsignedBody)}</p></div>`);
+      main.push(`<p style="margin-top:12px;"><strong>${esc(t.installPathsTitle)}</strong></p>`);
+      main.push(`<p class="muted" style="margin:8px 0 6px;">${esc(t.auLabel)}</p>`);
+      main.push(`<pre>${esc(t.auPathMac)}</pre>`);
+      main.push(`<p class="muted" style="margin:10px 0 6px;">${esc(t.vst3Label)}</p>`);
+      main.push(`<pre>${esc(t.vst3PathMac)}</pre>`);
+      main.push(`<p>${esc(t.restartRescan)}</p>`);
+      main.push(`</div>`);
+
+    main.push(`</div>`);
+
+    main.push(`<div class="rule" role="separator"></div>`);
+
+    main.push(`<h2>${esc(t.troublesTitle)}</h2>`);
+    main.push(`<div class="grid2">`);
+
+      // Windows troubleshooting
+      main.push(`<div class="panel">`);
+      main.push(`<h3>${esc(t.winTroubleTitle)}</h3>`);
+      main.push(`<p><strong>${esc(t.winTroubleHead)}</strong></p>`);
+      main.push(list(t.winTroubleSteps));
+      main.push(`</div>`);
+
+      // macOS troubleshooting
+      main.push(`<div class="panel">`);
+      main.push(`<h3>${esc(t.macTroubleTitle)}</h3>`);
+      main.push(`<p><strong>${esc(t.macErrDamaged)}</strong></p>`);
+      main.push(`<p class="muted">${esc(t.macFixTerminal)}</p>`);
+      main.push(`<pre>sudo xattr -dr com.apple.quarantine "${esc(MAC_QUARANTINE_TARGET)}"</pre>`);
+      main.push(`<p class="muted">${esc(t.macAfterRestartDaw)}</p>`);
+      main.push(`<div class="rule" role="separator"></div>`);
+      main.push(`<p><strong>${esc(t.macErrVerify)}</strong></p>`);
+      main.push(`<p class="muted">${esc(t.macVerifyHint)}</p>`);
+      main.push(`<pre>${esc(t.privacyPath)}</pre>`);
+      main.push(`</div>`);
+
+    main.push(`</div>`);
+
+    main.push(`<div class="rule" role="separator"></div>`);
+
+    main.push(`<h2>${esc(t.contactTitle)}</h2>`);
+    main.push(`<p class="muted">${esc(t.contactIntro)}</p>`);
+    main.push(`<ul>`);
+    main.push(`<li>${esc(t.emailLabel)} <a href="mailto:amatista.efectos@icloud.com">amatista.efectos@icloud.com</a></li>`);
+    main.push(`<li>${esc(t.igLabel)} <a href="https://instagram.com/amatista.efectos" target="_blank" rel="noopener noreferrer">@amatista.efectos</a></li>`);
+    main.push(`<li>${esc(t.webLabel)} <a href="https://amatista-efectos.online" target="_blank" rel="noopener noreferrer">amatista-efectos.online</a></li>`);
+    main.push(`</ul>`);
+    main.push(`<p class="muted" style="margin-top:10px;">${esc(t.copyright)}</p>`);
+
+    document.getElementById("mainContent").innerHTML = main.join("");
+
+    // Summary sidebar
+    document.getElementById("summaryTitle").textContent = t.summaryTitle;
+    document.getElementById("summaryBody").innerHTML =
+      `<p><strong>${esc(t.summaryWin)}</strong><br><span class="muted">${esc(t.vst3PathWin)}</span></p>
+       <div class="rule" role="separator"></div>
+       <p><strong>${esc(t.summaryMac)}</strong><br>
+         <span class="muted">${esc(t.vst3PathMac)}</span><br>
+         <span class="muted">${esc(t.auPathMac)}</span>
+       </p>`;
+
+    // Buttons state
+    document.getElementById("btnEN").setAttribute("aria-pressed", lang === "en" ? "true" : "false");
+    document.getElementById("btnES").setAttribute("aria-pressed", lang === "es" ? "true" : "false");
+  }
+
+  document.getElementById("btnEN").addEventListener("click", () => setLang("en"));
+  document.getElementById("btnES").addEventListener("click", () => setLang("es"));
+
+  setLang("es");
+</script>
+</body>
+</html>

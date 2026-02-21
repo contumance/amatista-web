@@ -1,0 +1,663 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AMATISTA · Welcome</title>
+
+  <style>
+    :root{
+      --bg: #0b0d10;
+      --ink: #e9edf2;
+      --muted: rgba(233,237,242,.70);
+      --line: rgba(233,237,242,.10);
+      --accent: #b79cff;
+      --accent2: #7cf1c6;
+      --shadow: 0 12px 36px rgba(0,0,0,.50);
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+
+    body{
+      margin:0;
+      background:
+        radial-gradient(1100px 640px at 20% 10%, rgba(183,156,255,.12), transparent 60%),
+        radial-gradient(900px 600px at 80% 20%, rgba(124,241,198,.06), transparent 60%),
+        radial-gradient(900px 700px at 50% 120%, rgba(255,255,255,.06), transparent 55%),
+        var(--bg);
+      color: var(--ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      line-height:1.55;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+
+    .wrap{
+      max-width: 920px;
+      margin: 56px auto;
+      padding: 0 20px 64px;
+    }
+
+    .top{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+
+    .brand{
+      display:flex;
+      flex-direction:column;
+      gap: 6px;
+    }
+
+    .brand .name{
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      font-size: 14px;
+      color: var(--ink);
+    }
+
+    .brand .tag{
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* Brand */
+    .brand-logo{
+      width: 96px;
+      height: 96px;
+      object-fit: contain;
+      opacity: 0.96;
+      filter: drop-shadow(0 20px 32px rgba(0,0,0,0.60));
+      margin-bottom: 4px;
+    }
+
+    .brand-title{
+      margin: 14px 0 6px;
+      font-size: 34px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 650;
+    }
+    .brand-subtitle{
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.68);
+    }
+
+    .meta{
+      text-align:right;
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    /* Language bar */
+    .langbar{
+      display:flex;
+      justify-content:flex-end;
+      gap:10px;
+      margin-bottom: 18px;
+      user-select:none;
+      font-size: 12px;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .langbtn{
+      appearance:none;
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.22);
+      color: rgba(233,237,242,.88);
+      border-radius: 12px;
+      padding: 8px 10px;
+      font: inherit;
+      cursor:pointer;
+    }
+    .langbtn[aria-pressed="true"]{
+      border-color: rgba(183,156,255,.35);
+      background: rgba(183,156,255,.10);
+      color: rgba(233,237,242,.92);
+    }
+
+    .card{
+      position: relative;
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(1200px 500px at 10% 0%, rgba(183,156,255,.10), transparent 55%),
+        radial-gradient(900px 500px at 90% 0%, rgba(124,241,198,.05), transparent 55%),
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0));
+      pointer-events:none;
+      opacity: .9;
+    }
+
+    .hero{
+      position:relative;
+      padding: 26px 28px 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .dot{
+      width: 8px;
+      height: 8px;
+      border-radius: 99px;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(183,156,255,.10);
+      flex: 0 0 auto;
+    }
+
+    h1{
+      margin: 12px 0 6px;
+      font-size: 28px;
+      line-height: 1.15;
+      letter-spacing: .02em;
+    }
+
+    .subhead{
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 70ch;
+    }
+
+    .content{
+      position:relative;
+      padding: 22px 28px 26px;
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 860px){
+      .content{ grid-template-columns: 1fr; }
+      .meta{ display:none; }
+      h1{ font-size: 26px; }
+    }
+
+    h2{
+      margin: 18px 0 10px;
+      font-size: 14px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(233,237,242,.86);
+    }
+
+    p{
+      margin: 10px 0;
+      color: rgba(233,237,242,.88);
+      font-size: 14px;
+    }
+
+    .muted{ color: var(--muted); }
+
+    .rule{
+      height:1px;
+      background: var(--line);
+      margin: 16px 0;
+    }
+
+    .side{
+      border-left: 1px solid var(--line);
+      padding-left: 22px;
+    }
+
+    @media (max-width: 860px){
+      .side{
+        border-left: none;
+        padding-left: 0;
+        border-top: 1px solid var(--line);
+        padding-top: 18px;
+      }
+    }
+
+    .infoCard{
+      border: 1px solid var(--line);
+      background: rgba(0,0,0,.18);
+      border-radius: 14px;
+      padding: 14px;
+      margin-bottom: 12px;
+    }
+
+    .infoLabel{
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(233,237,242,.90);
+      margin: 0 0 8px;
+      font-weight: 700;
+    }
+
+    .infoLine{
+      font-size: 13px;
+      color: rgba(233,237,242,.84);
+      margin: 6px 0;
+      word-break: break-word;
+    }
+
+    a{
+      color: rgba(233,237,242,.92);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(233,237,242,.22);
+      padding-bottom: 1px;
+    }
+    a:hover{ border-bottom-color: rgba(183,156,255,.55); }
+
+    ul{ margin: 10px 0 0; padding-left: 18px; }
+    li{ margin: 7px 0; color: rgba(233,237,242,.86); font-size: 14px; }
+
+    .callout{
+      border: 1px solid rgba(183,156,255,.22);
+      background: rgba(183,156,255,.06);
+      border-radius: 14px;
+      padding: 14px 14px 12px;
+      margin-top: 14px;
+    }
+
+    .callout .t{
+      font-weight: 700;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+      font-size: 12px;
+      color: rgba(233,237,242,.92);
+      margin-bottom: 6px;
+    }
+
+    .callout p{
+      margin: 0;
+      font-size: 13px;
+      color: rgba(233,237,242,.84);
+    }
+
+    .footer{
+      position:relative;
+      padding: 16px 28px 22px;
+      border-top: 1px solid var(--line);
+      display:flex;
+      justify-content:space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: .06em;
+    }
+
+    .sig{
+      color: rgba(233,237,242,.86);
+      letter-spacing: .10em;
+      text-transform: uppercase;
+    }
+
+@media print{
+  /* ===== PRINT: blanco + negro (máxima legibilidad) ===== */
+
+  :root{
+    --bg:#ffffff;
+    --ink:#0b0d10;               /* negro suave */
+    --muted: rgba(11,13,16,.72); /* gris legible */
+    --line: rgba(11,13,16,.16);  /* líneas suaves */
+    --accent:#0b0d10;
+    --accent2:#0b0d10;
+    --shadow:none;
+  }
+
+  *{
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  html, body{
+    background:#fff !important;
+    color: var(--ink) !important;
+  }
+
+  /* Contenedor a página */
+  .wrap{
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: none !important;
+  }
+
+  /* Oculta UI de pantalla */
+  .langbar{ display:none !important; }
+
+  /* Apaga overlays/decoraciones */
+  .card::before{ display:none !important; }
+
+  /* Fuerza fondos claros en TODAS las “cajas” */
+  .card,
+  .hero,
+  .content,
+  .infoCard,
+  .callout,
+  .footer{
+    background:#ffffff !important;
+  }
+
+  /* Bordes suaves */
+  .card{
+    border-radius:0 !important;
+    border:1px solid var(--line) !important;
+  }
+  .hero{
+    border-bottom:1px solid var(--line) !important;
+  }
+  .footer{
+    border-top:1px solid var(--line) !important;
+  }
+
+  /* Side divider */
+  .side{
+    border-left: 1px solid var(--line) !important;
+  }
+
+  /* Las infoCards (ojo: NO es .panel) */
+  .infoCard{
+    border:1px solid var(--line) !important;
+  }
+
+  /* Callouts sin “color”, solo borde */
+  .callout{
+    border:1px solid rgba(0,0,0,.22) !important;
+  }
+
+  /* Textos: forzar negro/escala de grises */
+  h1,h2,h3{ color:#000 !important; }
+  p,li,.infoLine{ color:#111 !important; }
+
+  .muted,
+  .meta,
+  .brand .tag,
+  .kicker{
+    color: rgba(0,0,0,.70) !important;
+  }
+
+  .brand .name,
+  .sig{
+    color:#000 !important;
+  }
+
+  /* Links sin decoración */
+  a{
+    color:#000 !important;
+    text-decoration:none !important;
+    border:none !important;
+  }
+
+  /* Ajustes visuales menores para print */
+  .dot{
+    background:#000 !important;
+    box-shadow:none !important;
+  }
+  .rule{
+    background: var(--line) !important;
+  }
+
+  /* Evitar cortes feos */
+  h1,h2,h3{ break-after: avoid-page; page-break-after: avoid; }
+  p,li,.infoCard,.callout,.hero,.footer{
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Títulos de tarjetas y callouts más oscuros */
+  .infoLabel{
+    padding-bottom: 6px !important;
+    border-bottom: 1px solid rgba(0,0,0,.18) !important;
+    margin-bottom: 10px !important;
+  }
+
+  .infoLabel,
+  .callout .t,
+  .kicker{
+    color: #000 !important;
+    opacity: 1 !important;
+  }
+
+  /* Si algún título está quedando “lavado” por letter-spacing o antialias,
+     le damos un poquito más de peso */
+  .infoLabel,
+  .callout .t{
+    font-weight: 800 !important;
+  }
+
+  /* Asegura que nada “muteado” dentro de tarjetas baje demasiado */
+  .infoCard .muted,
+  .callout .muted{
+    color: rgba(0,0,0,.72) !important;
+  }
+
+  /* ====== CONTROL TOTAL DE PAGINACIÓN ====== */
+
+  html, body{
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+  }
+
+  /* El contenedor NO debe forzar altura */
+  .wrap{
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: none !important;
+    height: auto !important;
+  }
+
+  /* La card puede partirse si hace falta */
+  .card{
+    break-inside: auto !important;
+    page-break-inside: auto !important;
+  }
+
+  /* HERO y FOOTER NO fuerzan página nueva */
+  .hero,
+  .footer{
+    break-before: auto !important;
+    page-break-before: auto !important;
+  }
+
+  /* Evita “huérfanos” pero NO fuerces salto */
+  h1,h2,h3{
+    break-after: avoid !important;
+    page-break-after: avoid !important;
+  }
+
+  /* Contenido principal flexible */
+  .content,
+  article,
+  aside{
+    break-inside: auto !important;
+    page-break-inside: auto !important;
+  }
+
+  /* Quita cualquier min-height escondido */
+  section,
+  main,
+  article,
+  aside{
+    min-height: auto !important;
+  }
+
+  /* Muy importante: elimina sombras que alteran cálculo */
+  *{
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Márgenes de página ajustados */
+  @page{
+    size: A4;
+    margin: 16mm;
+  }
+}
+
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+    <header class="top" aria-label="Header">
+      <div class="brand">
+      <img class="brand-logo" src="../amatista-logo-2.PNG" alt="AMATISTA" />
+      <h1 class="brand-title">AMATISTA</h1>
+      <div class="brand-subtitle" data-i18n="subtitle">EFECTOS DIGITALES BOUTIQUE</div>
+      </div>
+      <div class="meta" id="metaText"></div>
+    </header>
+
+    <!-- Language selector -->
+    <div class="langbar" aria-label="Language selector">
+      <span id="langLabel"></span>
+      <button class="langbtn" id="btnES" aria-pressed="true" type="button">ES</button>
+      <button class="langbtn" id="btnEN" aria-pressed="false" type="button">EN</button>
+    </div>
+
+    <section class="card" role="document" aria-label="Welcome">
+      <div class="hero">
+        <div class="kicker">
+          <span class="dot" aria-hidden="true"></span>
+          <span id="kickerText"></span>
+        </div>
+        <h1 id="headline"></h1>
+        <p class="subhead" id="subhead"></p>
+      </div>
+
+      <div class="content">
+        <article id="mainText"></article>
+
+        <aside class="side" aria-label="Quick info">
+          <div class="infoCard">
+            <div class="infoLabel" id="linksLabel"></div>
+            <div class="infoLine"><a href="https://amatista-efectos.online" target="_blank" rel="noopener noreferrer">amatista-efectos.online</a></div>
+            <div class="infoLine"><a href="https://instagram.com/amatista.efectos" target="_blank" rel="noopener noreferrer">@amatista.efectos</a></div>
+          </div>
+
+          <div class="infoCard">
+            <div class="infoLabel" id="contactLabel"></div>
+            <div class="infoLine">Email: <a href="mailto:amatista.efectos@icloud.com">amatista.efectos@icloud.com</a></div>
+            <div class="infoLine">Instagram: <a href="https://instagram.com/amatista.efectos" target="_blank" rel="noopener noreferrer">@amatista.efectos</a></div>
+            <div class="infoLine"><span id="siteLabel"></span> <a href="https://amatista-efectos.online" target="_blank" rel="noopener noreferrer">amatista-efectos.online</a></div>
+            <div class="infoLine muted" style="margin-top:10px;" id="copyright"></div>
+          </div>
+        </aside>
+      </div>
+
+      <footer class="footer" aria-label="Footer">
+        <div class="sig" id="footerSig"></div>
+        <div><a href="https://amatista-efectos.online" target="_blank" rel="noopener noreferrer">amatista-efectos.online</a></div>
+      </footer>
+    </section>
+  </main>
+
+<script id="i18n" type="application/json">
+{
+  "es":{
+    "langLabel":"Idioma",
+    "meta":"AMATISTA · Plugins<br/>Versión 1.0.0",
+    "kicker":"Bienvenido a AMATISTA",
+    "headline":"Gracias por utilizar nuestros plugins",
+    "subhead":"y por formar parte del ecosistema <strong>AMATISTA</strong> efectos digitales boutique.",
+    "main":[
+      "<p>AMATISTA nace como un proyecto independiente, enfocado en el desarrollo de pedales digitales minimalistas, inspirados en el sonido del metal moderno, las afinaciones bajas y una filosofía clara: <strong>controles simples, propósito definido y carácter sonoro sólido</strong>.</p>",
+      "<p>Cada plugin está diseñado con atención al detalle, tanto en sonido como en experiencia de uso, priorizando herramientas que realmente aporten valor en un contexto musical real.</p>",
+      "<div class=\"rule\" role=\"separator\"></div>",
+      "<div class=\"callout\"><div class=\"t\">Tu apoyo deja huella</div><p>AMATISTA se sostiene con comunidad. Tu compra ayuda a mejorar, mantener y crear los próximos artefactos.</p></div>",
+      "<div class=\"callout\" style=\"border-color: rgba(124,241,198,.22); background: rgba(124,241,198,.06);\"><div class=\"t\">Influenciá el futuro</div><p>Quienes apoyan AMATISTA participan en votaciones y feedback para definir el rumbo de próximos plugins.</p></div>"
+    ],
+    "linksLabel":"Enlaces",
+    "contactLabel":"Contacto y comunidad",
+    "siteLabel":"Sitio web:",
+    "copyright":"© AMATISTA efectos digitales boutique",
+    "footerSig":"AMATISTA · Efectos Digitales Boutique"
+  },
+  "en":{
+    "langLabel":"Language",
+    "meta":"AMATISTA · Plugins<br/>Version 1.0.0",
+    "kicker":"Welcome to AMATISTA",
+    "headline":"Thank you for using our plugins",
+    "subhead":"and for being part of the <strong>AMATISTA</strong> boutique digital effects ecosystem.",
+    "main":[
+      "<p>AMATISTA is an independent project focused on minimalist digital pedals, inspired by modern heavy tones, low tunings, and a clear philosophy: <strong>simple controls, defined purpose, and solid sonic character</strong>.</p>",
+      "<p>Each plugin is built with attention to detail in both sound and user experience, prioritizing tools that truly add value in real musical contexts.</p>",
+      "<div class=\"rule\" role=\"separator\"></div>",
+      "<div class=\"callout\"><div class=\"t\">Your support matters</div><p>AMATISTA grows through community. Your purchase helps improve, maintain, and build the next artifacts.</p></div>",
+      "<div class=\"callout\" style=\"border-color: rgba(124,241,198,.22); background: rgba(124,241,198,.06);\"><div class=\"t\">Influence what’s next</div><p>Supporters can join feedback rounds and votes to help shape upcoming plugins.</p></div>"
+    ],
+    "linksLabel":"Links",
+    "contactLabel":"Contact & community",
+    "siteLabel":"Website:",
+    "copyright":"© AMATISTA boutique digital effects",
+    "footerSig":"AMATISTA · Boutique Digital Effects"
+  }
+}
+</script>
+
+<script>
+  const i18n = JSON.parse(document.getElementById("i18n").textContent);
+
+  const btnES = document.getElementById("btnES");
+  const btnEN = document.getElementById("btnEN");
+
+  function setLang(lang){
+    const t = i18n[lang] || i18n.es;
+
+    document.documentElement.lang = lang;
+
+    document.getElementById("langLabel").textContent = t.langLabel;
+    document.getElementById("metaText").innerHTML = t.meta;
+
+    document.getElementById("kickerText").textContent = t.kicker;
+    document.getElementById("headline").innerHTML = t.headline;
+    document.getElementById("subhead").innerHTML = t.subhead;
+
+    document.getElementById("mainText").innerHTML = (t.main || []).join("");
+
+    document.getElementById("linksLabel").textContent = t.linksLabel;
+    document.getElementById("contactLabel").textContent = t.contactLabel;
+    document.getElementById("siteLabel").textContent = t.siteLabel;
+    document.getElementById("copyright").textContent = t.copyright;
+    document.getElementById("footerSig").textContent = t.footerSig;
+
+    btnES.setAttribute("aria-pressed", lang === "es" ? "true" : "false");
+    btnEN.setAttribute("aria-pressed", lang === "en" ? "true" : "false");
+  }
+
+  btnES.addEventListener("click", () => setLang("es"));
+  btnEN.addEventListener("click", () => setLang("en"));
+
+  // default
+  setLang("es");
+</script>
+
+</body>
+</html>

@@ -114,7 +114,7 @@ a{ color: inherit; text-decoration: none; }
 
 /* INTRO */
 .intro{
-  margin: 18px auto 22px;
+  margin: 18px auto 14px; /* un poco menos para dejar respirar los tabs */
   text-align: center;
   color: var(--muted);
   padding: 0 10px;
@@ -123,6 +123,122 @@ a{ color: inherit; text-decoration: none; }
   margin: 0;
   font-size: 16px;
   line-height: 1.7;
+}
+
+/* ========================= */
+/* TABS (Core / Collabs / Media) */
+/* ========================= */
+.tabs{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 8px auto 18px;
+  padding: 6px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  width: fit-content;
+}
+
+.tab{
+  appearance: none;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(0,0,0,0.18);
+  color: rgba(255,255,255,0.76);
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  transition: transform .08s ease, background .14s ease, border-color .14s ease, color .14s ease;
+}
+
+.tab:hover{
+  border-color: rgba(167,139,250,0.40);
+  color: rgba(255,255,255,0.90);
+}
+
+.tab:active{ transform: translateY(1px); }
+
+.tab--active{
+  background:
+    radial-gradient(180px 60px at 50% 50%, rgba(167,139,250,0.18), transparent 60%),
+    rgba(167,139,250,0.10);
+  border-color: rgba(167,139,250,0.55);
+  color: rgba(255,255,255,0.95);
+  box-shadow: 0 0 18px rgba(167,139,250,0.18);
+}
+
+.tab:focus-visible{
+  box-shadow: 0 0 0 3px rgba(167,139,250,0.25);
+}
+
+/* Secciones (solo una visible) */
+.section{ display: none; }
+.section--active{ display: block; }
+
+/* ========================= */
+/* COLLABS / MEDIA blocks */
+/* ========================= */
+.block{
+  margin-top: 12px;
+}
+
+.soon{
+  text-align: center;
+  padding: 44px 14px;
+  border-radius: var(--radius);
+  border: 1px solid rgba(255,255,255,0.10);
+  background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(0,0,0,0.12));
+  box-shadow: var(--shadow);
+  color: rgba(255,255,255,0.88);
+  font-size: 13px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.media-hint{
+  margin: 0 0 14px;
+  text-align: center;
+  color: rgba(255,255,255,0.58);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.media-grid{
+  display: grid;
+  gap: 14px;
+  justify-items: center;
+}
+
+.media-list{
+  display: grid;
+  gap: 14px;
+  justify-items: center;
+}
+.media-item{
+  width: 100%;
+}
+
+.embed{
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(0,0,0,0.18);
+  box-shadow: var(--shadow);
+}
+
+.embed iframe{
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 /* LIST / CARDS */
@@ -277,9 +393,19 @@ a{ color: inherit; text-decoration: none; }
 }
 .footer-meta .dot{ opacity: 0.55; }
 
+.footer-youtube{
+  display: inline-block;
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+}
+.footer-youtube:hover{ opacity: 0.9; }
+
+
 /* FAMILY */
 .family{
-  margin: 28px auto 20px;
+  margin: 22px auto 18px; /* leve ajuste para convivir con tabs */
   text-align: center;
 }
 
@@ -317,13 +443,103 @@ a{ color: inherit; text-decoration: none; }
     width: fit-content;
   }
 
+  .tabs{
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;      /* permite 2 filas */
+    gap: 8px;
+    box-sizing: border-box;
+
+  }
+
+  .tab{
+    flex: 1 1 calc(50% - 4px); /* 2 por fila */
+    min-width: 0;                 /* clave para que puedan achicarse */
+    text-align: center;
+    padding: 10px 10px;
+    letter-spacing: 0.10em;       /* un pelín menos ayuda en mobile */
+  }
+
+  /* REAFIRMA el activo en mobile (porque .tab del media lo pisa) */
+  .tab.tab--active{
+    background:
+      radial-gradient(180px 60px at 50% 50%, rgba(167,139,250,0.18), transparent 60%),
+      rgba(167,139,250,0.10);
+    border-color: rgba(167,139,250,0.55);
+    color: rgba(255,255,255,0.95);
+    box-shadow: 0 0 18px rgba(167,139,250,0.18);
+  }
+
   .card{
     grid-template-columns: 1fr;
     text-align: left;
   }
   .card-media{ justify-content: center; }
   .card-media img{ width: 190px; }
+  
+
+  .tabs{
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+
+    padding: 0 !important;          /* saca el “marco” */
+    border-radius: 0 !important;     /* evita pill fantasma */
+    width: 100%;
+  }
+
+  /* opcional: un poquito de aire sin contenedor */
+  .tabs{ gap: 10px;}
 }
+
 @media (prefers-reduced-motion: reduce){
   .info__chev{ transition: none; }
+  .tab{ transition: none; }
 }
+
+/* DOCUMENTATION */
+.docs{
+  margin-top: 34px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.docs-inner{
+  max-width: var(--max);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.docs-title{
+  margin: 0 0 14px;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+}
+
+.docs-list{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.docs-list a{
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: rgba(255,255,255,0.62);
+  border-bottom: 1px solid rgba(255,255,255,0.18);
+  padding-bottom: 2px;
+}
+
+.docs-list a:hover{
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
