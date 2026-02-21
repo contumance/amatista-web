@@ -126,9 +126,13 @@
               </div>
             </details>
 
-            <!-- <a class="card-link" href="https://amatistaefectos.gumroad.com/l/onixoverdrive" target="_blank" rel="noopener noreferrer" data-i18n="wishLink">
-              Link a tienda…
-            </a> -->
+            <a class="card-link js-buy"
+              href="#"
+              data-shop-url="ssss"
+              data-product-name="ÓNIX"
+              rel="noopener noreferrer">
+              Comprar…
+            </a>
           </div>
 
           <div class="card-media">
@@ -163,9 +167,13 @@
               </div>
             </details>
 
-             <!--<a class="card-link" href="https://amatistaefectos.gumroad.com/l/obsidianafuzz" target="_blank" rel="noopener noreferrer" data-i18n="wishLink">
-              Link a tienda…
-            </a>-->
+            <a class="card-link js-buy"
+              href="#"
+              data-shop-url="ssss"
+              data-product-name="ÓNIX"
+              rel="noopener noreferrer">
+              Comprar…
+            </a>
           </div>
 
           <div class="card-media">
@@ -200,9 +208,13 @@
               </div>
             </details>
 
-             <!--<a class="card-link" href="https://amatistaefectos.gumroad.com/l/amatistadistortion" target="_blank" rel="noopener noreferrer" data-i18n="wishLink">
-              Link a tienda…
-            </a>-->
+            <a class="card-link js-buy"
+              href="#"
+              data-shop-url="ssss"
+              data-product-name="ÓNIX"
+              rel="noopener noreferrer">
+              Comprar…
+            </a>
           </div>
 
           <div class="card-media">
@@ -316,7 +328,74 @@
     </footer>
   </div>
 
+    <!-- BUY CONFIRM MODAL -->
+  <div class="modal" id="buyModal" aria-hidden="true">
+    <div class="modal__backdrop" data-modal-close></div>
+
+    <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="buyTitle" aria-describedby="buyDesc">
+      <button class="modal__close" type="button" aria-label="Cerrar" data-modal-close>✕</button>
+
+      <div class="modal__head">
+        <div class="modal__kicker">Confirmación previa</div>
+        <h3 class="modal__title" id="buyTitle">
+          Antes de ir a la tienda
+          <span class="modal__product" id="buyProduct">AMATISTA</span>
+        </h3>
+        <p class="modal__desc" id="buyDesc">
+          Para evitar problemas de instalación o compatibilidad, confirmá estos dos puntos.
+          Esto nos ayuda a que tu experiencia sea fluida desde el primer minuto.
+        </p>
+      </div>
+
+      <div class="modal__checks">
+        <label class="check">
+          <input class="check__input" type="checkbox" id="chkFree" />
+          <span class="check__box" aria-hidden="true"></span>
+          <span class="check__text">
+            Instalé el plugin gratuito y me funcionó bien en mi equipo/DAW.
+          </span>
+        </label>
+
+        <label class="check">
+          <input class="check__input" type="checkbox" id="chkReq" />
+          <span class="check__box" aria-hidden="true"></span>
+          <span class="check__text">
+            Leí y entiendo los requisitos de sistema operativo y compatibilidad.
+          </span>
+        </label>
+      </div>
+
+      <div class="modal__note">
+        <p class="modal__noteTitle">Nota importante</p>
+        <p class="modal__noteText">
+          Si luego de comprar el plugin surge un problema por incompatibilidad (sistema operativo/DAW),
+          la gestión de reembolsos queda sujeta a la política de Gumroad.
+        </p>
+      </div>
+
+      <div class="modal__actions">
+        <a class="modal__primary is-disabled"
+          id="goShop"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-disabled="true">
+          Ir a Gumroad
+        </a>
+
+        <button class="modal__secondary" type="button" data-modal-close>
+          Cancelar
+        </button>
+      </div>
+
+      <div class="modal__fineprint">
+        Consejo: si tenés dudas, revisá “Instalación” y “Licencia” en la documentación antes de comprar.
+      </div>
+    </div>
+  </div>
+
   <script src="js/i18n.js"></script>
   <script src="js/media.js"></script>
+  <script src="js/buy-modal.js"></script>
 </body>
 </html>
