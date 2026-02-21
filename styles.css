@@ -357,8 +357,10 @@ a{ color: inherit; text-decoration: none; }
 }
 
 .os-pill--mac{
-  border-color: rgba(167,139,250,0.55);
-  background: rgba(167,139,250,0.10);
+  border-color: rgba(168, 38, 63, 0.75);   /* rubí profundo */
+  background: rgba(168, 38, 63, 0.10);     /* halo tenue */
+  color: rgba(255, 215, 220, 0.92);        /* rojo claro elegante */
+  box-shadow: 0 0 14px rgba(168, 38, 63, 0.18);
 }
 
 .os-text{ letter-spacing: 0.08em; }
@@ -367,7 +369,7 @@ a{ color: inherit; text-decoration: none; }
   font-size: 0.60rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.60);
+  color: rgba(255, 190, 200, 0.85);
 }
 
 /* Info+ (details/summary) */
