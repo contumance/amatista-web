@@ -266,6 +266,10 @@ a{ color: inherit; text-decoration: none; }
   font-size: 26px;
   letter-spacing: 0.02em;
   font-weight: 600;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
 }
 .card-title-soft{
   color: rgba(255,255,255,0.72);
@@ -327,6 +331,44 @@ a{ color: inherit; text-decoration: none; }
   box-shadow: 0 0 16px rgba(167,139,250,0.18);
 }
 
+/* OS compatibility pills */
+.os{
+  display: inline-flex;
+  gap: 8px;
+  margin-left: 10px;
+  vertical-align: middle;
+  flex-wrap: wrap;
+}
+
+.os-pill{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.18rem 0.45rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  color: rgba(255,255,255,0.78);
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 999px;
+  background: rgba(0,0,0,0.16);
+  opacity: 0.92;
+}
+
+.os-pill--mac{
+  border-color: rgba(167,139,250,0.55);
+  background: rgba(167,139,250,0.10);
+}
+
+.os-text{ letter-spacing: 0.08em; }
+
+.os-note{
+  font-size: 0.60rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.60);
+}
 
 /* Info+ (details/summary) */
 .info{
