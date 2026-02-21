@@ -271,6 +271,8 @@ a{ color: inherit; text-decoration: none; }
 .card-title-soft{
   color: rgba(255,255,255,0.72);
   font-weight: 500;
+  font-size: 0.72em;      /* más pequeño que el nombre */
+  letter-spacing: 0.06em; /* un poco más fino */
 }
 .card-desc{
   margin: 0;
