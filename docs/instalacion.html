@@ -663,7 +663,15 @@
       main.push(`<div class="callout"><div class="t"><span class="warnDot" aria-hidden="true"></span>${esc(t.unsignedTitle)}</div><p>${esc(t.unsignedBody)}</p></div>`);
       main.push(`<p style="margin-top:12px;"><strong>${esc(t.installPathsTitle)}</strong></p>`);
       main.push(`<p class="muted" style="margin:8px 0 6px;">${esc(t.auLabel)}</p>`);
-      main.push(`<pre>${esc(t.auPathMac)}</pre>`);
+      main.push(`
+        <div class="pathWrap">
+          <div class="pathTag">
+            <span class="pill"><span class="pulse" aria-hidden="true"></span>DESTINO OBLIGATORIO</span>
+            <span class="muted">Ruta AU en macOS</span>
+          </div>
+          <pre class="pathbox">${esc(t.auPathMac)}</pre>
+        </div>
+      `);
       main.push(`<p class="muted" style="margin:10px 0 6px;">${esc(t.vst3Label)}</p>`);
       main.push(`
         <div class="pathWrap">
