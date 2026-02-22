@@ -173,6 +173,64 @@
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     }
 
+        /* ====== RUTA OBLIGATORIA (énfasis en instalación) ====== */
+    .pathWrap{
+      margin: 10px 0 12px;
+    }
+
+    .pathTag{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-size:12px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      font-weight:850;
+      color: rgba(233,237,242,.92);
+      margin: 0 0 8px;
+    }
+
+    .pathTag .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(183,156,255,.45);
+      background: rgba(183,156,255,.14);
+    }
+
+    .pathTag .pulse{
+      width:8px; height:8px; border-radius:99px;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(183,156,255,.14);
+    }
+
+    /* Se aplica al <pre> que contiene la ruta */
+    pre.pathbox{
+      border-color: rgba(183,156,255,.55);
+      background: rgba(183,156,255,.10);
+      box-shadow:
+        0 0 0 3px rgba(183,156,255,.10),
+        0 16px 34px rgba(0,0,0,.40);
+      font-weight: 800;
+      font-size: 13.5px;
+    }
+
+    /* Mini resaltado inline (sidebar / resumen) */
+    .pathInline{
+      display:inline-block;
+      padding: 3px 8px;
+      border-radius: 10px;
+      border: 1px solid rgba(183,156,255,.40);
+      background: rgba(183,156,255,.10);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-weight: 800;
+      color: rgba(233,237,242,.92);
+    }
+
+   
+
     .callout{
       border:1px solid rgba(255,210,122,.35);
       background:rgba(255,210,122,.10);
@@ -300,6 +358,36 @@
     color: #111 !important;
   }
 
+   /* ====== PRINT: énfasis sin depender del color ====== */
+
+  .pathTag{
+    color:#000 !important;
+  }
+  .pathTag .pill{
+    border: 2px solid #000 !important;
+    background: #fff !important;
+  }
+  .pathTag .pulse{
+    background:#000 !important;
+    box-shadow:none !important;
+  }
+
+  pre.pathbox{
+    background: #f5f5f7 !important;
+    border: 2px solid #000 !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    font-weight: 900 !important;
+    font-size: 13.5px !important;
+  }
+
+  .pathInline{
+    border: 2px solid #000 !important;
+    background:#fff !important;
+    color:#000 !important;
+    font-weight: 900 !important;
+  }
+
   /* Callouts: sin color, solo borde y tipografía */
   .callout{
     background: #ffffff !important;
@@ -325,6 +413,7 @@
     size: A4;
     margin: 18mm;
   }
+
 }
 
   </style>
@@ -408,7 +497,7 @@
     "winTroubleTitle": "Windows",
     "winTroubleHead": "The plugin doesn’t show up in my DAW:",
     "winTroubleSteps": [
-      "Make sure the plugin is copied to the correct folder.",
+      "Make sure the plugin is copied EXACTLY to: C:\\Program Files\\Common Files\\VST3\\",
       "Restart the DAW.",
       "Force a plugin rescan from your DAW settings.",
       "Restarting the PC often fixes cache / scan issues."
@@ -471,7 +560,7 @@
     "winTroubleTitle": "Windows",
     "winTroubleHead": "El plugin no aparece en mi DAW:",
     "winTroubleSteps": [
-      "Asegurate de haber copiado el plugin en la carpeta correcta.",
+      "Asegurate de copiar el plugin EXACTAMENTE en: C:\\Program Files\\Common Files\\VST3\\",
       "Reiniciá el DAW.",
       "Forzá un re-escaneo de plugins desde el DAW.",
       "Reiniciar la PC suele resolver problemas de caché / escaneo."
@@ -556,7 +645,15 @@
       main.push(`<p>${esc(t.copyLabel)}</p>`);
       main.push(`<pre>${esc(PLUGIN_FILE)}</pre>`);
       main.push(`<p>${esc(t.toLabel)}</p>`);
-      main.push(`<pre>${esc(t.vst3PathWin)}</pre>`);
+      main.push(`
+        <div class="pathWrap">
+          <div class="pathTag">
+            <span class="pill"><span class="pulse" aria-hidden="true"></span>DESTINO OBLIGATORIO</span>
+            <span class="muted">Copiá el .vst3 exactamente acá</span>
+          </div>
+          <pre class="pathbox">${esc(t.vst3PathWin)}</pre>
+        </div>
+      `);
       main.push(`<p>${esc(t.restartRescan)}</p>`);
       main.push(`</div>`);
 
@@ -568,7 +665,15 @@
       main.push(`<p class="muted" style="margin:8px 0 6px;">${esc(t.auLabel)}</p>`);
       main.push(`<pre>${esc(t.auPathMac)}</pre>`);
       main.push(`<p class="muted" style="margin:10px 0 6px;">${esc(t.vst3Label)}</p>`);
-      main.push(`<pre>${esc(t.vst3PathMac)}</pre>`);
+      main.push(`
+        <div class="pathWrap">
+          <div class="pathTag">
+            <span class="pill"><span class="pulse" aria-hidden="true"></span>DESTINO OBLIGATORIO</span>
+            <span class="muted">Ruta VST3 en macOS</span>
+          </div>
+          <pre class="pathbox">${esc(t.vst3PathMac)}</pre>
+        </div>
+      `);
       main.push(`<p>${esc(t.restartRescan)}</p>`);
       main.push(`</div>`);
 
@@ -617,12 +722,14 @@
     // Summary sidebar
     document.getElementById("summaryTitle").textContent = t.summaryTitle;
     document.getElementById("summaryBody").innerHTML =
-      `<p><strong>${esc(t.summaryWin)}</strong><br><span class="muted">${esc(t.vst3PathWin)}</span></p>
-       <div class="rule" role="separator"></div>
-       <p><strong>${esc(t.summaryMac)}</strong><br>
-         <span class="muted">${esc(t.vst3PathMac)}</span><br>
-         <span class="muted">${esc(t.auPathMac)}</span>
-       </p>`;
+      `<p><strong>${esc(t.summaryWin)}</strong><br>
+        <span class="pathInline">${esc(t.vst3PathWin)}</span>
+      </p>
+      <div class="rule" role="separator"></div>
+      <p><strong>${esc(t.summaryMac)}</strong><br>
+        <span class="pathInline">${esc(t.vst3PathMac)}</span><br>
+        <span class="muted">${esc(t.auPathMac)}</span>
+      </p>`;
 
     // Buttons state
     document.getElementById("btnEN").setAttribute("aria-pressed", lang === "en" ? "true" : "false");
