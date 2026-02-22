@@ -486,6 +486,11 @@
     "toLabel": "To:",
     "restartRescan": "Restart your DAW. If the plugin doesn’t appear, run a plugin rescan.",
 
+    "requiredDestTag": "Required destination",
+    "requiredDestHintWin": "Copy the .vst3 exactly here",
+    "requiredDestHintAu": "AU path on macOS",
+    "requiredDestHintVst3": "VST3 path on macOS",
+
     "macInstallTitle": "macOS (Unsigned)",
     "unsignedTitle": "Unsigned version",
     "unsignedBody": "This plugin is not signed with an Apple Developer ID. macOS may block it until you manually allow it. This is normal for independent builds.",
@@ -548,6 +553,11 @@
     "copyLabel": "Copiar:",
     "toLabel": "En:",
     "restartRescan": "Reiniciá tu DAW. Si no aparece, realizá un re-escaneo de plugins.",
+
+    "requiredDestTag": "Destino obligatorio",
+    "requiredDestHintWin": "Copiá el .vst3 exactamente acá",
+    "requiredDestHintAu": "Ruta AU en macOS",
+    "requiredDestHintVst3": "Ruta VST3 en macOS",
 
     "macInstallTitle": "macOS (Unsigned)",
     "unsignedTitle": "Versión sin firmar",
@@ -648,8 +658,8 @@
       main.push(`
         <div class="pathWrap">
           <div class="pathTag">
-            <span class="pill"><span class="pulse" aria-hidden="true"></span>DESTINO OBLIGATORIO</span>
-            <span class="muted">Copiá el .vst3 exactamente acá</span>
+            <span class="pill"><span class="pulse" aria-hidden="true"></span>${esc(t.requiredDestTag)}</span>
+            <span class="muted">${esc(t.requiredDestHintWin)}</span>
           </div>
           <pre class="pathbox">${esc(t.vst3PathWin)}</pre>
         </div>
@@ -666,8 +676,8 @@
       main.push(`
         <div class="pathWrap">
           <div class="pathTag">
-            <span class="pill"><span class="pulse" aria-hidden="true"></span>DESTINO OBLIGATORIO</span>
-            <span class="muted">Ruta AU en macOS</span>
+            <span class="pill"><span class="pulse" aria-hidden="true"></span>${esc(t.requiredDestTag)}</span>
+            <span class="muted">${esc(t.requiredDestHintAu)}</span>
           </div>
           <pre class="pathbox">${esc(t.auPathMac)}</pre>
         </div>
@@ -676,8 +686,8 @@
       main.push(`
         <div class="pathWrap">
           <div class="pathTag">
-            <span class="pill"><span class="pulse" aria-hidden="true"></span>DESTINO OBLIGATORIO</span>
-            <span class="muted">Ruta VST3 en macOS</span>
+            <span class="pill"><span class="pulse" aria-hidden="true"></span>${esc(t.requiredDestTag)}</span>
+            <span class="muted">${esc(t.requiredDestHintVst3)}</span>
           </div>
           <pre class="pathbox">${esc(t.vst3PathMac)}</pre>
         </div>
