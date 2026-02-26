@@ -1,46 +1,57 @@
+// js/buy-modal.js
 document.addEventListener("DOMContentLoaded", () => {
-  const modal = document.getElementById("buyModal");
+  const modal     = document.getElementById("buyModal");
   const productEl = document.getElementById("buyProduct");
-  const goShop = document.getElementById("goShop");
-  const chkFree = document.getElementById("chkFree");
-  const chkReq  = document.getElementById("chkReq");
+  const goShop    = document.getElementById("goShop");
+  const chkFree   = document.getElementById("chkFree");
+  const chkReq    = document.getElementById("chkReq");
+
+  if (!modal || !productEl || !goShop || !chkFree || !chkReq) {
+    // Fail-safe: si falta algo en el DOM, no rompemos la página
+    return;
+  }
 
   let lastFocus = null;
 
   const isOpen = () => modal.classList.contains("is-open");
 
+  const setCTAState = (enabled) => {
+    goShop.classList.toggle("is-disabled", !enabled);
+    goShop.setAttribute("aria-disabled", enabled ? "false" : "true");
+
+    // Solo exponemos el href real cuando está habilitado (anti “copiar link”).
+    if (enabled) {
+      const url = goShop.dataset.url || "";
+      goShop.setAttribute("href", url || "#");
+    } else {
+      goShop.setAttribute("href", "#");
+    }
+  };
+
   const resetModal = () => {
     chkFree.checked = false;
     chkReq.checked = false;
-    goShop.classList.add("is-disabled");
-    goShop.setAttribute("aria-disabled", "true");
-    goShop.setAttribute("href", "#");
+    setCTAState(false);
   };
 
   const updateCTA = () => {
-    const ok = chkFree.checked && chkReq.checked;
-    if (ok) {
-      goShop.classList.remove("is-disabled");
-      goShop.setAttribute("aria-disabled", "false");
-    } else {
-      goShop.classList.add("is-disabled");
-      goShop.setAttribute("aria-disabled", "true");
-    }
+    const ok = chkFree.checked && chkReq.checked && !!(goShop.dataset.url);
+    setCTAState(ok);
   };
 
   const openModal = ({ url, name }) => {
     lastFocus = document.activeElement;
 
+    resetModal();                 // ✅ primero reset (evita estados raros)
     productEl.textContent = name || "AMATISTA";
-    goShop.dataset.url = url;
+    goShop.dataset.url = url;     // ✅ guardamos url después del reset
 
-    resetModal();
     modal.classList.add("is-open");
     modal.setAttribute("aria-hidden", "false");
 
     // foco al close para accesibilidad
     const closeBtn = modal.querySelector(".modal__close");
-    closeBtn && closeBtn.focus();
+    if (closeBtn) closeBtn.focus();
   };
 
   const closeModal = () => {
@@ -57,7 +68,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!a) return;
 
     e.preventDefault();
-    const url = a.dataset.shopUrl;
+
+    const url  = a.dataset.shopUrl;
     const name = a.dataset.productName || a.textContent?.trim() || "AMATISTA";
     if (!url) return;
 
@@ -75,25 +87,25 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.key === "Escape") closeModal();
   });
 
-  // Habilitar CTA si ambos checks ok
+  // Actualizar estado CTA al tildar checks
   chkFree.addEventListener("change", updateCTA);
   chkReq.addEventListener("change", updateCTA);
 
-  // En el click del CTA, si está habilitado, recién ahí setea href real
+  // Click del CTA: si no está habilitado, no navega.
+  // ✅ Importante: NO cerramos el modal aquí, para no pisar el href en el mismo tick.
   goShop.addEventListener("click", (e) => {
-    const ok = chkFree.checked && chkReq.checked;
-    if (!ok) {
+    const enabled = goShop.getAttribute("aria-disabled") === "false";
+    const url = goShop.getAttribute("href");
+
+    if (!enabled || !url || url === "#") {
       e.preventDefault();
       return;
     }
-    const url = goShop.dataset.url;
-    if (!url) {
-      e.preventDefault();
-      return;
-    }
-    // seteo final del href para evitar “copiar link” antes de aceptar
-    goShop.setAttribute("href", url);
-    // opcional: cerrar modal después de click
-    closeModal();
+
+    // Si querés “limpiar” el modal, hacelo luego de que el navegador ya abrió la pestaña.
+    // (Esto evita el bug que te llevaba a /#)
+    setTimeout(() => {
+      if (isOpen()) closeModal();
+    }, 250);
   });
 });
