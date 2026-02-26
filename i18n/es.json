@@ -54,5 +54,18 @@
   "docsWelcome": "Bienvenida",
   "docsInstall":"Instalación",
   "docsManuals": "Impulso primario",
-  "docsLicense": "Licencia"
+  "docsLicense": "Licencia",
+
+  
+  "modalKicker": "Confirmación previa",
+  "modalTitle": "Antes de ir a la tienda",
+  "modalDesc": "Para evitar problemas de instalación o compatibilidad, confirmá estos dos puntos. Esto ayuda a que tu experiencia sea fluida desde el primer minuto.",
+  "modalCheckFree": "Instalé el plugin gratuito y me funcionó correctamente en mi equipo/DAW.",
+  "modalCheckReq": "Leí y entiendo los requisitos de sistema operativo y compatibilidad.",
+  "modalNoteTitle": "Nota importante",
+  "modalNoteText": "Si luego de comprar el plugin surge un problema por incompatibilidad (sistema operativo/DAW), la gestión de reembolsos queda sujeta a la política de Gumroad.",
+  "modalGoShop": "Ir a Gumroad",
+  "modalCancel": "Cancelar",
+  "modalFineprint": "Consejo: si tenés dudas, revisá “Instalación” y “Licencia” en la documentación antes de comprar."
+
 }

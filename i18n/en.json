@@ -54,7 +54,20 @@
   "docsWelcome": "Welcome",
   "docsInstall":"Installation",
   "docsManuals": "Primary impulse",
-  "docsLicense": "License"
+  "docsLicense": "License", 
+
+  
+  "modalKicker": "Pre-check",
+  "modalTitle": "Before heading to the store",
+  "modalDesc": "To avoid installation or compatibility issues, please confirm these two points. This helps ensure everything runs smoothly from the first minute.",
+  "modalCheckFree": "I installed the free plugin and it worked well on my computer/DAW.",
+  "modalCheckReq": "I’ve read and understand the operating system requirements and compatibility notes.",
+  "modalNoteTitle": "Important note",
+  "modalNoteText": "If you purchase the plugin and later run into an issue due to incompatibility (operating system/DAW), refunds are subject to Gumroad’s policy.",
+  "modalGoShop": "Go to Gumroad",
+  "modalCancel": "Cancel",
+  "modalFineprint": "Tip: if you’re unsure, check “Installation” and “License” in the documentation before buying."
+
 
 
 
