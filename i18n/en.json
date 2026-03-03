@@ -37,9 +37,13 @@
 
   "freeBadge": "FREE",
   "devBadge": "SOON",
+  "newBadge": "NEW",
 
   "carbonadoType": "Boost",
   "carbonadoDesc": "CARBONADO is a minimalist boost inspired by modern metal and djent. Designed for low-tuned guitars, it tightens the low end, hardens the attack, and enhances definition without changing the core character of the amplifier. Ideal for tightening high-gain tones, improving palm mutes, and keeping complex riffs clear and focused.",
+
+  "impulsoPrimarioType": "Pack",
+  "impulsoPrimarioDesc": "Primary Impulse is AMATISTA’s gain ecosystem. Each pedal has a clear role. They’re not meant to compete, but to stack into one coherent architecture",
 
   "onixType": "Overdrive",
   "onixDesc": "ÓNIX is a controlled-grain overdrive with a dynamic response. It adds body, edge, and cohesion, working both as a subtle push or as a primary drive for articulate riffs and defined leads.",
