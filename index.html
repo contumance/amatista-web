@@ -1,494 +1,291 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AMATISTA · Efectos digitales boutique</title>
-  <meta name="description" content="AMATISTA: efectos digitales boutique. Pedales virtuales con estética minimalista y carácter moderno." />
-  <meta name="theme-color" content="#0b0b0f" />
-  <link rel="stylesheet" href="styles.css" />
-  <!-- Favicon estándar -->
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amatista Efectos - High End Modern Metal Audio Plugins</title>
+    <meta name="description" content="Amatista Efectos: Premium audio plugins for modern metal and djent guitar tones.">
+    <!-- Google Fonts: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Favicon estándar -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
 </head>
 
 <body>
-  <div class="page">
-    <!-- HEADER -->
-    <header class="header">
-      <div class="lang">
-        <label class="lang__label" for="langSelect" data-i18n="langLabel">Idioma</label>
-        <select id="langSelect" class="lang__select" aria-label="Seleccionar idioma">
-          <option value="es" selected>ES</option>
-          <option value="en">EN</option>
-        </select>
-      </div>
-
-      <img class="brand-logo" src="amatista-logo-2.PNG" alt="AMATISTA" />
-      <h1 class="brand-title">AMATISTA</h1>
-      <div class="brand-subtitle" data-i18n="subtitle">EFECTOS DIGITALES BOUTIQUE</div>
-    </header>
-
-    <!-- INTRO -->
-    <section class="intro">
-      <p data-i18n="intro">
-        Descripción del proyecto AMATISTA… Una suite boutique de pedales digitales con estética minimalista,
-        foco en sensación “hardware” y carácter moderno.
-      </p>
-    </section>
-
-    <!-- NAV TABS -->
-    <nav class="tabs" aria-label="Sections">
-      <button class="tab tab--active" type="button" data-tab="guitarra" data-i18n="tabGuitarra">Guitarra</button>
-      <button class="tab" type="button" data-tab="bajo" data-i18n="tabBajo">Bajo</button>
-      <button class="tab" type="button" data-tab="collabs" data-i18n="tabCollabs">Colaboraciones</button>
-      <button class="tab" type="button" data-tab="media" data-i18n="tabMedia">Media</button>
+    <!-- Navbar -->
+    <nav id="navbar" class="navbar">
+        <div class="nav-container">
+            <a href="#" class="brand-logo">
+                <span class="logo-icon"></span>
+                AMATISTA
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about" data-i18n="nav-about">Sobre Nosotros</a></li>
+                <li><a href="#plugins" data-i18n="nav-plugins">Plugins</a></li>
+                <li><a href="#media" data-i18n="nav-media">Media</a></li>
+            </ul>
+            <div class="nav-right">
+                <div class="lang-switch">
+                    <button class="lang-btn active" data-lang="es">ES</button>
+                    <span class="lang-sep">|</span>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                </div>
+                <a href="#plugins" class="cta-button" data-i18n="nav-cta">Ver Catálogo</a>
+            </div>
+        </div>
     </nav>
 
-    <!-- ========================= -->
-    <!-- GUITARRA    -->
-    <!-- ========================= -->
-    <section class="section section--active" data-section="guitarra">
-      <!-- FAMILY -->
-      <section class="family">
-        <h2 class="family-title" data-i18n="familyName">IMPULSO PRIMARIO</h2>
-        <div class="family-subtitle" data-i18n="familySubtitle">
-          ARQUITECTURA DE LA SATURACIÓN
+    <!-- Hero Section -->
+    <header class="hero" id="home">
+        <canvas id="parallax-bg"></canvas>
+        <canvas id="hero-particles"></canvas>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title" data-i18n="hero-title">SONIDO <span class="highlight">EN ESTADO PURO</span></h1>
+            <p class="hero-subtitle" data-i18n="hero-subtitle">Efectos digitales boutique diseñados con una obsesión por el detalle y estética minimalista. Creamos herramientas de alta resolución para el músico contemporáneo, logrando una sensación sonora inspirada en hardware real para definir tonos modernos y afinaciones bajas con precisión absoluta.</p>
+            <div class="hero-actions">
+                <a href="#plugins" class="btn btn-primary glow-effect" data-i18n="hero-btn-primary">Descubrir
+                    Plugins</a>
+                <a href="#about" class="btn btn-secondary" data-i18n="hero-btn-secondary">Conocer la Marca</a>
+            </div>
         </div>
-      </section>
+    </header>
 
-      <!-- LIST -->
-      <main class="list">
-
-        
-        <!-- CARD: Carbonado -->
-        <article class="card">
-          <div class="card-body">
-            <h2 class="card-title">
-              <span class="card-name">CARBONADO</span>
-              <span class="card-title-soft" data-i18n="carbonadoType">Boost</span>
-
-              <span class="card-meta">
-                  <span class="card-badge" data-i18n="freeBadge">FREE</span>
-                  <span class="os" aria-label="Compatibilidad del sistema">
-                    <span class="os-pill" title="Windows"><span class="os-text">Windows</span></span>
-                    <span class="os-pill os-pill--mac" title="macOS (unsigned)">
-                      <span class="os-text">macOS</span>
-                      <span class="os-note">unsigned</span>
-                    </span>
-                  </span>
-              </span>
-            </h2>
-
-            <details class="info">
-              <summary class="info__summary">
-                <span class="info__label" data-i18n="infoPlus">Info+</span>
-                <span class="info__chev" aria-hidden="true">▾</span>
-              </summary>
-              <div class="info__content">
-                <p class="card-desc" data-i18n="carbonadoDesc">
-                  Descripción… Tight boost para apretar graves, definir ataque y empujar el amp/saturación.
-                </p>
-              </div>
-            </details>
-
-            <a class="card-cta"
-              href="https://amatistaefectos.gumroad.com/l/carbonadoboostfree"
-              target="_blank"
-              rel="noopener noreferrer">
-              Descargar
-              <span class="card-cta__icon" aria-hidden="true">↗</span>
-            </a>
-          </div>
-
-          <div class="card-media">
-            <img src="pedal-carbonado.png" alt="CARBONADO Boost" />
-          </div>
-        </article>
-
-        <!-- CARD: BUNDLE IMPULSO PRIMARIO -->
-        <article class="card">
-          <div class="card-body">
-            <h2 class="card-title">
-              <span class="card-name">IMPULSO PRIMARIO</span>
-              <span class="card-title-soft" data-i18n="impulsoPrimarioType">Pack</span>
-
-              <span class="card-meta">
-                  <span class="card-badge card-badge--dev" data-i18n="newBadge">NUEVO</span>
-                  <!-- NUEVO: precio -->
-                  <span class="card-badge card-badge--price" data-i18n="impulspprimarioPrice">30 USD</span>
-
-                  <span class="os" aria-label="Compatibilidad del sistema">
-                    <span class="os-pill" title="Windows"><span class="os-text">Windows</span></span>
-                  </span>
-              </span>
-            </h2>
-
-            <details class="info">
-              <summary class="info__summary">
-                <span class="info__label" data-i18n="infoPlus">Info+</span>
-                <span class="info__chev" aria-hidden="true">▾</span>
-              </summary>
-              <div class="info__content">
-                <p class="card-desc" data-i18n="impulsoPrimarioDesc">
-                  Familia impulso primario
-                </p>
-              </div>
-            </details>
-
-            <a class="card-cta js-buy"
-              href="https://amatistaefectos.gumroad.com/l/impulsoprimario"
-              data-shop-url="https://amatistaefectos.gumroad.com/l/impulsoprimario"
-              data-product-name="IMPULSO PRIMARIO">
-              Comprar
-              <span class="card-cta__icon" aria-hidden="true">↗</span>
-            </a>
-            <!-- COMPRA DESHABILITADA
-            <a class="card-cta is-disabled"
-              href="#"
-              aria-disabled="true">
-              Próximamente
-            </a>
-             -->
-          </div>
-
-          <div class="card-media">
-            <img src="impulso-primario.PNG" alt="Impulso primario" />
-          </div>
-        </article>
-
-        <!-- CARD: Ónix -->
-        <article class="card">
-          <div class="card-body">
-            <h2 class="card-title">
-              <span class="card-name">ÓNIX</span>
-              <span class="card-title-soft" data-i18n="onixType">Overdrive</span>
-
-              <span class="card-meta">
-                  <span class="card-badge card-badge--dev" data-i18n="newBadge">NUEVO</span>
-                  <!-- NUEVO: precio -->
-                  <span class="card-badge card-badge--price" data-i18n="onixPrice">12 USD</span>
-                  <span class="os" aria-label="Compatibilidad del sistema">
-                    <span class="os-pill" title="Windows"><span class="os-text">Windows</span></span>
-                  </span>
-              </span>
-            </h2>
-
-            <details class="info">
-              <summary class="info__summary">
-                <span class="info__label" data-i18n="infoPlus">Info+</span>
-                <span class="info__chev" aria-hidden="true">▾</span>
-              </summary>
-              <div class="info__content">
-                <p class="card-desc" data-i18n="onixDesc">
-                  Descripción… Overdrive con grano controlado, cuerpo y edge para riffs articulados.
-                </p>
-              </div>
-            </details>
-
-            <a class="card-cta js-buy"
-              href="https://amatistaefectos.gumroad.com/l/onixoverdrive"
-              data-shop-url="https://amatistaefectos.gumroad.com/l/onixoverdrive"
-              data-product-name="ÓNIX">
-              Comprar
-              <span class="card-cta__icon" aria-hidden="true">↗</span>
-            </a>
-            <!-- COMPRA DESHABILITADA
-            <a class="card-cta is-disabled"
-              href="#"
-              aria-disabled="true">
-              Próximamente
-            </a>
-             -->
-          </div>
-
-          <div class="card-media">
-            <img src="pedal-onix.png" alt="ÓNIX Overdrive" />
-          </div>
-        </article>
-
-        <!-- CARD: Obsidiana -->
-        <article class="card">
-          <div class="card-body">
-            <h2 class="card-title">
-              <span class="card-name">OBSIDIANA</span>
-              <span class="card-title-soft" data-i18n="obsidianaType">Fuzz</span>
-
-              <span class="card-meta">
-                  <span class="card-badge card-badge--dev" data-i18n="newBadge">NUEVO</span>
-                  <!-- NUEVO: precio -->
-                  <span class="card-badge card-badge--price" data-i18n="obsidianaPrice">14 USD</span>
-                  <span class="os" aria-label="Compatibilidad del sistema">
-                    <span class="os-pill" title="Windows"><span class="os-text">Windows</span></span>
-                  </span>
-              </span>
-            </h2>
-
-            <details class="info">
-              <summary class="info__summary">
-                <span class="info__label" data-i18n="infoPlus">Info+</span>
-                <span class="info__chev" aria-hidden="true">▾</span>
-              </summary>
-              <div class="info__content">
-                <p class="card-desc" data-i18n="obsidianaDesc">
-                  Descripción… Fuzz con filo y textura, del grano oscuro a un caos brillante controlado.
-                </p>
-              </div>
-            </details>
-
-            <a class="card-cta js-buy"
-              href="https://amatistaefectos.gumroad.com/l/obsidianafuzz"
-              data-shop-url="https://amatistaefectos.gumroad.com/l/obsidianafuzz"
-              data-product-name="OBSIDIANA">
-              Comprar
-              <span class="card-cta__icon" aria-hidden="true">↗</span>
-            </a>
-
-            <!-- COMPRA DESHABILITADA 
-            <a class="card-cta is-disabled"
-              href="#"
-              aria-disabled="true">
-              Próximamente
-            </a>
-            -->
-          </div>
-
-          <div class="card-media">
-            <img src="pedal-obsidiana.png" alt="OBSIDIANA Fuzz" />
-          </div>
-        </article>
-
-        <!-- CARD: Amatista -->
-        <article class="card">
-          <div class="card-body">
-            <h2 class="card-title">
-              <span class="card-name">AMATISTA</span>
-              <span class="card-title-soft" data-i18n="amatistaType">Distortion</span>
-              
-              <span class="card-meta">
-                  <span class="card-badge card-badge--dev" data-i18n="newBadge">NUEVO</span>
-                  <!-- NUEVO: precio -->
-                  <span class="card-badge card-badge--price" data-i18n="iPrice">14 USD</span>
-                  <span class="os" aria-label="Compatibilidad del sistema">
-                    <span class="os-pill" title="Windows"><span class="os-text">Windows</span></span>
-                  </span>
-              </span>     
-            </h2>
-
-            <details class="info">
-              <summary class="info__summary">
-                <span class="info__label" data-i18n="infoPlus">Info+</span>
-                <span class="info__chev" aria-hidden="true">▾</span>
-              </summary>
-              <div class="info__content">
-                <p class="card-desc" data-i18n="amatistaDesc">
-                  Descripción… Distortion con filo y textura, del grano oscuro a un caos brillante controlado.
-                </p>
-              </div>
-            </details>
-
-            <a class="card-cta js-buy"
-              href="https://amatistaefectos.gumroad.com/l/amatistadistortion"
-              data-shop-url="https://amatistaefectos.gumroad.com/l/amatistadistortion"
-              data-product-name="AMATISTA">
-              Comprar
-              <span class="card-cta__icon" aria-hidden="true">↗</span>
-            </a>
-
-            <!-- COMPRA DESHABILITADA
-            <a class="card-cta is-disabled"
-              href="#"
-              aria-disabled="true">
-              Próximamente
-            </a>
-             -->
-
-          </div>
-
-          <div class="card-media">
-            <img src="pedal-amatista.png" alt="AMATISTA Distortion" />
-          </div>
-        </article>
-
-      </main>
-    </section>
-
-    <!-- ========================= -->
-    <!-- BAJO                      -->
-    <!-- ========================= -->
-    <section class="section" data-section="bajo">
-      <section class="family">
-        <h2 class="family-title" data-i18n="bajoTitle">BAJO</h2>
-        <div class="family-subtitle" data-i18n="bajoSubtitle">
-          Saturación y carácter para frecuencias profundas.
+    <!-- About Section -->
+    <section id="about" class="section about-section">
+        <div class="container fade-in-section">
+            <div class="about-grid">
+                <div class="about-text">
+                    <h2 class="section-title" data-i18n="about-title">Ingeniería <span class="highlight">Sónica</span>
+                    </h2>
+                    <p data-i18n="about-p1">En <strong>Amatista Efectos</strong> nos dedicamos a esculpir el sonido
+                        definitivo para los géneros más extremos y exigentes de la actualidad. Nuestros plugins están
+                        diseñados desde cero con un enfoque láser en la precisión, la pegada (punch) y la claridad
+                        necesaria para el <em>modern metal</em> y el <em>djent</em>.</p>
+                    <p data-i18n="about-p2">Olvídate del fango en las frecuencias bajas. Nuestro procesamiento interno a
+                        64 bits asegura que cada nota articulada en tu 8 cuerdas atraviese la mezcla con agresividad y
+                        definición inigualables.</p>
+                </div>
+                <div class="about-visual">
+                    <div class="abstract-shape">
+                        <div class="glow-orb"></div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </section>
-
-      <div class="block">
-        <div class="soon" data-i18n="bajoSoon">MUY PRONTO</div>
-      </div>
     </section>
 
+    <!-- Plugins Section -->
+    <section id="plugins" class="section plugins-section">
+        <div class="container fade-in-section">
+            <h2 class="section-title center" data-i18n="plugins-title">Nuestros <span class="highlight">Plugins</span>
+            </h2>
 
-    <!-- ========================= -->
-    <!-- COLABORACIONES            -->
-    <!-- ========================= -->
-    <section class="section" data-section="collabs">
-      <section class="family">
-        <h2 class="family-title" data-i18n="collabsTitle">COLABORACIONES</h2>
-        <div class="family-subtitle" data-i18n="collabsSubtitle">
-          Plugins creados junto a artistas y marcas.
+            <!-- Tabs Navigation -->
+            <div class="tabs-nav">
+                <button class="tab-btn active" data-target="tab-guitar" data-i18n="tab-guitar">Guitarra</button>
+                <button class="tab-btn" data-target="tab-bass" data-i18n="tab-bass">Bajo</button>
+                <button class="tab-btn" data-target="tab-collab" data-i18n="tab-collab">Colaboraciones</button>
+            </div>
+
+            <!-- Tabs Content -->
+            <div class="tabs-content">
+                <!-- Guitarra Tab -->
+                <div id="tab-guitar" class="tab-pane active fade-in-section is-visible">
+                    <div class="plugin-family">
+                        <h3 class="family-title" data-i18n="family-impulso">Familia <span class="highlight">Impulso
+                                Primario</span></h3>
+                        <div class="plugins-grid">
+                            <!-- Plugin 1: Carbonado Boost (Free) -->
+                            <div class="plugin-card">
+                                <div class="plugin-image-container">
+                                    <img src="assets/carbonado.png" alt="Carbonado Boost Plugin" class="plugin-img">
+                                    <div class="overlay-glow"></div>
+                                </div>
+                                <div class="plugin-info">
+                                    <h3>Carbonado Boost <span class="tag tag-free" data-i18n="tag-free">Gratis</span>
+                                    </h3>
+                                    <p data-i18n="desc-carbonado">Empuje transparente para limpiar y apretar tu señal
+                                        antes del amplificador. Claridad de diamante.</p>
+                                    <ul class="features">
+                                        <li data-i18n="feat-carb-1">+20dB de limpieza pura</li>
+                                        <li data-i18n="feat-carb-2">Ecualizador de un solo botón</li>
+                                    </ul>
+                                    <div class="plugin-action">
+                                        <p class="os-alert" style="font-size: 0.75rem; color: var(--clr-text-muted); margin-bottom: 5px; text-align: center;"><span data-i18n="os-win-mac">Windows / macOS (Unsigned)</span></p>
+                                        <a href="https://gumroad.com" target="_blank" class="btn btn-primary btn-block"
+                                            data-i18n="btn-download" style="margin-top: 5px;">Descargar Gratis</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Plugin 2: Onix Overdrive -->
+                            <div class="plugin-card">
+                                <div class="plugin-image-container">
+                                    <img src="assets/onix.png" alt="Onix Overdrive Plugin" class="plugin-img">
+                                    <div class="overlay-glow"></div>
+                                </div>
+                                <div class="plugin-info">
+                                    <h3>Onix Overdrive <span class="tag tag-paid" data-i18n="tag-paid">Premium</span>
+                                    </h3>
+                                    <p data-i18n="desc-onix">El empuje perfecto de alta ganancia. Aprieta los bajos y
+                                        define los medios altos con violencia analógica oscura.</p>
+                                    <ul class="features">
+                                        <li data-i18n="feat-onix-1">Filtro 'Tight' variable</li>
+                                        <li data-i18n="feat-onix-2">Ruido base ultra bajo</li>
+                                    </ul>
+                                    <div class="plugin-action">
+                                        <div class="price">$19.00 USD</div>
+                                        <p class="os-alert" style="font-size: 0.75rem; color: #ff9800; margin-bottom: 5px; text-align: center;">⚠️ <span data-i18n="os-win-only">Solo Windows (macOS próximamente)</span></p>
+                                        <a href="https://gumroad.com" target="_blank" class="btn btn-primary btn-block"
+                                            data-i18n="btn-buy" style="margin-top: 5px;">Adquirir en Gumroad</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Plugin 3: Obsidiana Fuzz -->
+                            <div class="plugin-card">
+                                <div class="plugin-image-container">
+                                    <img src="assets/obsidiana.png" alt="Obsidiana Fuzz Plugin" class="plugin-img">
+                                    <div class="overlay-glow"></div>
+                                </div>
+                                <div class="plugin-info">
+                                    <h3>Obsidiana Fuzz <span class="tag tag-paid" data-i18n="tag-paid">Premium</span>
+                                    </h3>
+                                    <p data-i18n="desc-obsidiana">Fuzz denso y masivo. Un muro de sonido oscuro e
+                                        impenetrable para afinaciones extremadamente graves.</p>
+                                    <ul class="features">
+                                        <li data-i18n="feat-obs-1">Sustain infinito</li>
+                                        <li data-i18n="feat-obs-2">Control de "Doom"</li>
+                                    </ul>
+                                    <div class="plugin-action">
+                                        <div class="price">$25.00 USD</div>
+                                        <p class="os-alert" style="font-size: 0.75rem; color: #ff9800; margin-bottom: 5px; text-align: center;">⚠️ <span data-i18n="os-win-only">Solo Windows (macOS próximamente)</span></p>
+                                        <a href="https://gumroad.com" target="_blank" class="btn btn-primary btn-block"
+                                            data-i18n="btn-buy" style="margin-top: 5px;">Adquirir en Gumroad</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Plugin 4: Amatista Distortion -->
+                            <div class="plugin-card">
+                                <div class="plugin-image-container">
+                                    <img src="assets/amatista.png" alt="Amatista Distortion Plugin" class="plugin-img">
+                                    <div class="overlay-glow"></div>
+                                </div>
+                                <div class="plugin-info">
+                                    <h3>Amatista Dist. <span class="tag tag-paid" data-i18n="tag-paid">Premium</span>
+                                    </h3>
+                                    <p data-i18n="desc-amatista">La distorsión definitiva. Corte afilado, agudos
+                                        precisos y el tono insignia de la marca.</p>
+                                    <ul class="features">
+                                        <li data-i18n="feat-ama-1">Gate integrado (Lookahead)</li>
+                                        <li data-i18n="feat-ama-2">Oversampling 4x/8x</li>
+                                    </ul>
+                                    <div class="plugin-action">
+                                        <div class="price">$39.00 USD</div>
+                                        <p class="os-alert" style="font-size: 0.75rem; color: #ff9800; margin-bottom: 5px; text-align: center;">⚠️ <span data-i18n="os-win-only">Solo Windows (macOS próximamente)</span></p>
+                                        <a href="https://gumroad.com" target="_blank" class="btn btn-primary btn-block"
+                                            data-i18n="btn-buy" style="margin-top: 5px;">Adquirir en Gumroad</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bajo Tab -->
+                <div id="tab-bass" class="tab-pane">
+                    <div class="coming-soon-container fade-in-section">
+                        <div class="coming-soon-icon">🔒</div>
+                        <h3 data-i18n="coming-soon-title">Próximamente</h3>
+                        <p data-i18n="coming-soon-bass">Estamos forjando las herramientas de frecuencias subgraves.</p>
+                    </div>
+                </div>
+
+                <!-- Colaboraciones Tab -->
+                <div id="tab-collab" class="tab-pane">
+                    <div class="coming-soon-container fade-in-section">
+                        <div class="coming-soon-icon">🤝</div>
+                        <h3 data-i18n="coming-soon-title">Próximamente</h3>
+                        <p data-i18n="coming-soon-collab">Alianzas con artistas del metal moderno en camino.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </section>
-
-      <div class="block">
-        <div class="soon" data-i18n="collabsSoon">MUY PRONTO</div>
-      </div>
     </section>
 
-    <!-- ========================= -->
-    <!-- MEDIA                     -->
-    <!-- ========================= -->
-    <section class="section" data-section="media">
-  <section class="family">
-    <h2 class="family-title" data-i18n="mediaTitle">MEDIA</h2>
-    <div class="family-subtitle" data-i18n="mediaSubtitle">
-      Demos, videos y contenido.
-    </div>
-  </section>
-
-  <div class="media-list">
-    <!-- Agregás videos SOLO pegando IDs -->
-    <div class="media-item" data-youtube-id="HSu0zbJ30ag"></div>
-    <div class="media-item" data-youtube-id="gN-I8rfDbWw"></div>
-    <div class="media-item" data-youtube-id="MpFQYNvseI4"></div>
-  </div>
-</section>
-
-    <!-- DOCUMENTATION -->
-    <section class="docs">
-      <div class="docs-inner">
-        <h3 class="docs-title" data-i18n="docsTitle">Documentación</h3>
-
-        <ul class="docs-list">
-          <li>
-            <a href="docs/bienvenida.html" data-i18n="docsWelcome">
-              Bienvenida
-            </a>
-          </li>
-          <li>
-            <a href="docs/instalacion.html" data-i18n="docsInstall">
-              Instalación
-            </a>
-          </li>
-          <li>
-            <a href="docs/impulsoPrimario.html" data-i18n="docsManuals">
-              Manuales
-            </a>
-          </li>
-          <li>
-            <a href="docs/licencia.html" data-i18n="docsLicense">
-              Licencia
-            </a>
-          </li>
-        </ul>
-      </div>
+    <!-- Media Section -->
+    <section id="media" class="section media-section">
+        <div class="container fade-in-section">
+            <h2 class="section-title center" data-i18n="media-title">En <span class="highlight">Acción</span></h2>
+            <div class="media-grid">
+                <div class="video-container">
+                    <!-- Placeholder for embedded video -->
+                    <div class="video-placeholder">
+                        <span class="play-btn">▶</span>
+                        <p data-i18n="media-vid-1">Odin's Grip - Playthrough en mezcla</p>
+                    </div>
+                </div>
+                <div class="video-container">
+                    <!-- Placeholder for embedded video -->
+                    <div class="video-placeholder">
+                        <span class="play-btn">▶</span>
+                        <p data-i18n="media-vid-2">Void Gate - Prueba extrema</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-
-    <!-- FOOTER -->
+    <!-- Footer -->
     <footer class="footer">
-      <a class="footer-ig" href="https://instagram.com/amatista.efectos" target="_blank" rel="noopener noreferrer" data-i18n="instagram">
-        Instagram
-      </a>
-      
-      <a class="footer-youtube" href="https://youtube.com/@amatistaefectos" target="_blank" rel="noopener noreferrer" data-i18n="youtube">
-      YouTube
-      </a>
-
-      <div class="footer-meta">
-        <span data-i18n="copyrightA">©</span>
-        <span id="year"></span>
-        <span data-i18n="copyrightB">AMATISTA</span>
-        <span class="dot">•</span>
-        <span data-i18n="rights">Todos los derechos reservados</span>
-      </div>
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <a href="#" class="brand-logo footer-logo">
+                    <span class="logo-icon small"></span>
+                    AMATISTA
+                </a>
+                <p data-i18n="footer-desc">Plugins de grado de estudio para el metal del futuro.</p>
+            </div>
+            <div class="footer-links">
+                <div class="link-column">
+                    <h4 data-i18n="footer-nav">Navegación</h4>
+                    <ul>
+                        <li><a href="#home" data-i18n="footer-home">Inicio</a></li>
+                        <li><a href="#about" data-i18n="nav-about">Sobre Nosotros</a></li>
+                        <li><a href="#plugins" data-i18n="nav-plugins">Plugins</a></li>
+                    </ul>
+                </div>
+                <div class="link-column">
+                    <h4>Social</h4>
+                    <ul>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">YouTube</a></li>
+                        <li><a href="#">TikTok</a></li>
+                    </ul>
+                </div>
+                <div class="link-column">
+                    <h4 data-i18n="footer-legal">Legal & Help</h4>
+                    <ul>
+                        <li><a href="docs.html" data-i18n="footer-docs">Manuales y Docs</a></li>
+                        <li><a href="#" data-i18n="footer-terms">Términos de Servicio</a></li>
+                        <li><a href="#" data-i18n="footer-privacy">Privacidad</a></li>
+                        <li><a href="#" data-i18n="footer-support">Soporte</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p data-i18n="footer-copy">&copy; 2026 Amatista Efectos. Todos los derechos reservados.</p>
+        </div>
     </footer>
-  </div>
 
-    <!-- BUY CONFIRM MODAL -->
-  <div class="modal" id="buyModal" aria-hidden="true">
-    <div class="modal__backdrop" data-modal-close></div>
-
-    <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="buyTitle" aria-describedby="buyDesc">
-      <button class="modal__close" type="button" aria-label="Cerrar" data-modal-close>✕</button>
-
-      <div class="modal__head">
-        <div class="modal__kicker">Confirmación previa</div>
-        <h3 class="modal__title" id="buyTitle">
-          Antes de ir a la tienda
-          <span class="modal__product" id="buyProduct">AMATISTA</span>
-        </h3>
-        <p class="modal__desc" id="buyDesc">
-          Para evitar problemas de instalación o compatibilidad, confirmá estos dos puntos.
-          Esto nos ayuda a que tu experiencia sea fluida desde el primer minuto.
-        </p>
-      </div>
-
-      <div class="modal__checks">
-        <label class="check">
-          <input class="check__input" type="checkbox" id="chkFree" />
-          <span class="check__box" aria-hidden="true"></span>
-          <span class="check__text">
-            Instalé el plugin gratuito y me funcionó bien en mi equipo/DAW.
-          </span>
-        </label>
-
-        <label class="check">
-          <input class="check__input" type="checkbox" id="chkReq" />
-          <span class="check__box" aria-hidden="true"></span>
-          <span class="check__text">
-            Leí y entiendo los requisitos de sistema operativo y compatibilidad.
-            <a href="http://amatista-efectos.online/docs/instalacion.html"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="check__link">
-              Leer aquí
-            </a>
-          </span>
-        </label>
-      </div>
-
-      <div class="modal__note">
-        <p class="modal__noteTitle">Nota importante</p>
-        <p class="modal__noteText">
-          Si luego de comprar el plugin surge un problema por incompatibilidad (sistema operativo/DAW),
-          la gestión de reembolsos queda sujeta a la política de Gumroad.
-        </p>
-      </div>
-
-      <div class="modal__actions">
-        <a class="modal__primary is-disabled"
-          id="goShop"
-          href="#"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-disabled="true">
-          Ir a Gumroad
-        </a>
-
-        <button class="modal__secondary" type="button" data-modal-close>
-          Cancelar
-        </button>
-      </div>
-
-      <div class="modal__fineprint">
-        Consejo: si tenés dudas, revisá “Instalación” y “Licencia” en la documentación antes de comprar.
-      </div>
-    </div>
-  </div>
-
-  <script src="js/i18n.js"></script>
-  <script src="js/media.js"></script>
-  <script src="js/buy-modal.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
