@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const translations = {
         es: {
             // Navbar
-            "nav-about": "Sobre Nosotros",
+            "nav-about": "Sobre Amatista",
             "nav-plugins": "Plugins",
             "nav-media": "Media",
             "nav-cta": "Ver Catálogo",
@@ -100,9 +100,9 @@ document.addEventListener('DOMContentLoaded', () => {
             "hero-btn-primary": "Descubrir Plugins",
             "hero-btn-secondary": "Conocer la Marca",
             // About
-            "about-title": "Ingeniería <span class=\"highlight\">Sónica</span>",
-            "about-p1": "En <strong>Amatista Efectos</strong> nos dedicamos a esculpir el sonido definitivo para los géneros más extremos y exigentes de la actualidad. Nuestros plugins están diseñados desde cero con un enfoque láser en la precisión, la pegada (punch) y la claridad necesaria para el <em>modern metal</em> y el <em>djent</em>.",
-            "about-p2": "Olvídate del fango en las frecuencias bajas. Nuestro procesamiento interno a 64 bits asegura que cada nota articulada en tu 8 cuerdas atraviese la mezcla con agresividad y definición inigualables.",
+            "about-title": "Sobre <span class=\"highlight\">Amatista</span>",
+            "about-p1": "¡Hola, soy Álvaro! Soy de <strong>Uruguay</strong>. Lic. en Sistemas es mi profesión, y desde hace mucho tiempo mi pasión ha estado en la <strong>música</strong>, específicamente en el <strong>metal</strong>. Sé lo obsesivos que podemos ser buscando ese tono ideal para nuestros instrumentos.",
+            "about-p2": "Decidí unir mis dos mundos: la <strong>tecnología y la música</strong>. Así nació <strong>Amatista Efectos</strong>, como un proyecto personal impulsado por un desafío técnico inmenso. Me sumergí de lleno en el aprendizaje del <strong>DSP (Digital Signal Processing)</strong> con un objetivo claro: emular la física del sonido hasta el más mínimo detalle. Más que código, estos plugins son mi forma de poner a disposición de otros músicos las herramientas que yo mismo siempre quise tener.",
             // Plugins
             "plugins-title": "Nuestros <span class=\"highlight\">Plugins</span>",
             "tab-guitar": "Guitarra",
@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         en: {
             // Navbar
-            "nav-about": "About Us",
+            "nav-about": "About Amatista",
             "nav-plugins": "Plugins",
             "nav-media": "Media",
             "nav-cta": "View Catalog",
@@ -163,9 +163,9 @@ document.addEventListener('DOMContentLoaded', () => {
             "hero-btn-primary": "Discover Plugins",
             "hero-btn-secondary": "Know the Brand",
             // About
-            "about-title": "Sonic <span class=\"highlight\">Engineering</span>",
-            "about-p1": "At <strong>Amatista Efectos</strong> we are dedicated to sculpting the ultimate sound for today's most extreme and demanding genres. Our plugins are designed from the ground up with a laser focus on the precision, punch, and clarity needed for <em>modern metal</em> and <em>djent</em>.",
-            "about-p2": "Forget about low-end mud. Our internal 64-bit processing ensures every articulated note on your 8-string cuts through the mix with unmatched aggression and definition.",
+            "about-title": "About <span class=\"highlight\">Amatista</span>",
+            "about-p1": "Hi, I'm Álvaro! I'm from <strong>Uruguay</strong>. A Systems Graduate by profession, and for a long time my passion has been in <strong>music</strong>, specifically in <strong>metal</strong>. I know how obsessive we can be looking for that ideal tone for our instruments.",
+            "about-p2": "I decided to merge my two worlds: <strong>technology and music</strong>. That's how <strong>Amatista Efectos</strong> was born, as a personal project driven by an immense technical challenge. I dove fully into learning <strong>DSP (Digital Signal Processing)</strong> with a clear goal: to emulate the physics of sound down to the smallest detail. More than code, these plugins are my way of making the tools I always wanted available to other musicians.",
             // Plugins
             "plugins-title": "Our <span class=\"highlight\">Plugins</span>",
             "tab-guitar": "Guitar",
