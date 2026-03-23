@@ -86,6 +86,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // correo
+    const EMAIL_ADDRESS = "amatista.efectos@icloud.com";
+
     // 5. Language Switcher Logic
     const translations = {
         es: {
@@ -101,34 +104,40 @@ document.addEventListener('DOMContentLoaded', () => {
             "hero-btn-secondary": "Conocer la Marca",
             // About
             "about-title": "Sobre <span class=\"highlight\">Amatista</span>",
-            "about-p1": "¡Hola, soy Álvaro! Soy de <strong>Uruguay</strong>. Lic. en Sistemas es mi profesión, y desde hace mucho tiempo mi pasión ha estado en la <strong>música</strong>, específicamente en el <strong>metal</strong>. Sé lo obsesivos que podemos ser buscando ese tono ideal para nuestros instrumentos.",
-            "about-p2": "Decidí unir mis dos mundos: la <strong>tecnología y la música</strong>. Así nació <strong>Amatista Efectos</strong>, como un proyecto personal impulsado por un desafío técnico inmenso. Me sumergí de lleno en el aprendizaje del <strong>DSP (Digital Signal Processing)</strong> con un objetivo claro: emular la física del sonido hasta el más mínimo detalle. Más que código, estos plugins son mi forma de poner a disposición de otros músicos las herramientas que yo mismo siempre quise tener.",
+            "about-p1": "¡Hola, soy Álvaro! Desde Uruguay, combino mi profesión con mi mayor pasión: la <strong>música</strong> y, muy especialmente, el <strong>metal</strong>. Como músico aficionado, sé de primera mano lo obsesivos que podemos llegar a ser en la búsqueda de ese tono perfecto para nuestros instrumentos.",
+            "about-p2": "De la intersección de estos dos mundos —<strong>el desarrollo de software y la música</strong>— surge <strong>Amatista Efectos</strong>. Me sumergí en el apasionante mundo del <strong>DSP</strong> (Digital Signal Processing) con un objetivo claro: emular la física del sonido al detalle y crear herramientas diseñadas para la exigencia de este género. Más que simples líneas de código, estos plugins son mi forma de compartir mi visión sobre estas herramientas musicales.",
+            "about-p3": "Este proyecto no evoluciona en solitario. Quiero agradecer de corazón a todos los <strong>músicos y testers</strong> que colaboran actualmente y a los que lo harán en el futuro, probando los plugins. Su feedback constante y su nivel de exigencia son el motor que hace posible la mejora continua, asegurando que cada actualización suene y se sienta mejor que la anterior.",
             // Plugins
             "plugins-title": "Nuestros <span class=\"highlight\">Plugins</span>",
             "tab-guitar": "Guitarra",
             "tab-bass": "Bajo",
             "tab-collab": "Colaboraciones",
             "family-impulso": "Familia <span class=\"highlight\">Impulso Primario</span>",
+            "family-frecuencia-base": "Familia <span class=\"highlight\">Frecuencia Base</span>",
             "tag-free": "Gratis",
             "tag-paid": "Premium",
-            "btn-buy": "Adquirir en Gumroad",
+            "btn-buy": "Adquirir",
             "btn-download": "Descargar Gratis",
 
             "desc-carbonado": "Empuje transparente para limpiar y apretar tu señal antes del amplificador. Claridad de diamante.",
             "feat-carb-1": "+20dB de limpieza pura",
             "feat-carb-2": "Ecualizador de un solo botón",
 
+            "desc-impulsoprimario": "Impulso Primario es el ecosistema de ganancia de AMATISTA, con un enfoque moderno y versátil.",
+            "feat-impulsoprimario-1": "Arquitectura coherente",
+            "feat-impulsoprimario-2": "Cada pedal cumple su función",
+
             "desc-onix": "El empuje perfecto de alta ganancia. Aprieta los bajos y define los medios altos con violencia analógica oscura.",
             "feat-onix-1": "Filtro 'Tight' variable",
-            "feat-onix-2": "Ruido base ultra bajo",
+            "feat-onix-2": "Riffs articulados y leads definidos",
 
             "desc-obsidiana": "Fuzz denso y masivo. Un muro de sonido oscuro e impenetrable para afinaciones extremadamente graves.",
             "feat-obs-1": "Sustain infinito",
-            "feat-obs-2": "Control de \"Doom\"",
+            "feat-obs-2": "Moldea el caos con intención",
 
             "desc-amatista": "La distorsión definitiva. Corte afilado, agudos precisos y el tono insignia de la marca.",
-            "feat-ama-1": "Gate integrado (Lookahead)",
-            "feat-ama-2": "Oversampling 4x/8x",
+            "feat-ama-1": "Preamp + Power Stage condensado en un pedal",
+            "feat-ama-2": "Tono moderno, claridad y presencia",
 
             "os-win-only": "Solo Windows (macOS próximamente)",
             "os-win-mac": "Windows / macOS (Unsigned)",
@@ -139,16 +148,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Media
             "media-title": "En <span class=\"highlight\">Acción</span>",
-            "media-vid-1": "Odin's Grip - Playthrough en mezcla",
-            "media-vid-2": "Void Gate - Prueba extrema",
             // Footer
-            "footer-desc": "Plugins de grado de estudio para el metal del futuro.",
+            "footer-desc": "Efectos digitales boutique.",
             "footer-nav": "Navegación",
             "footer-home": "Inicio",
             "footer-legal": "Legal",
             "footer-terms": "Términos de Servicio",
             "footer-privacy": "Privacidad",
-            "footer-support": "Soporte",
+            "footer-support": `Soporte: ${EMAIL_ADDRESS}`,
             "footer-copy": "&copy; 2026 Amatista Efectos. Todos los derechos reservados."
         },
         en: {
@@ -164,34 +171,44 @@ document.addEventListener('DOMContentLoaded', () => {
             "hero-btn-secondary": "Know the Brand",
             // About
             "about-title": "About <span class=\"highlight\">Amatista</span>",
-            "about-p1": "Hi, I'm Álvaro! I'm from <strong>Uruguay</strong>. A Systems Graduate by profession, and for a long time my passion has been in <strong>music</strong>, specifically in <strong>metal</strong>. I know how obsessive we can be looking for that ideal tone for our instruments.",
-            "about-p2": "I decided to merge my two worlds: <strong>technology and music</strong>. That's how <strong>Amatista Efectos</strong> was born, as a personal project driven by an immense technical challenge. I dove fully into learning <strong>DSP (Digital Signal Processing)</strong> with a clear goal: to emulate the physics of sound down to the smallest detail. More than code, these plugins are my way of making the tools I always wanted available to other musicians.",
+            "about-p1": "Hi, I'm Álvaro! From <strong>Uruguay</strong>, I combine my profession with my greatest passion: <strong>music</strong> and, very especially, <strong>metal</strong>. As a musician amateur, I know firsthand how obsessive we can get when searching for that perfect tone for our instruments.",
+            "about-p2": "To unite these two worlds—<strong>software development and music</strong>—I created <strong>Amatista Efectos</strong>. What started as a huge technical challenge led me to dive deep into <strong>DSP (Digital Signal Processing)</strong> with a clear goal: to emulate the physics of sound in detail and create tools designed specifically for the demands of this genre. More than just lines of code, these plugins are my way of sharing the tools I always wanted with other musicians.",
+            "about-p3": "This project doesn't evolve alone. I want to sincerely thank all the <strong>musicians and testers</strong> who currently collaborate and those who will do so in the future by testing the plugins. Your constant feedback and high standards are the driving force behind continuous improvement, ensuring that each update sounds and feels better than the last.",
             // Plugins
             "plugins-title": "Our <span class=\"highlight\">Plugins</span>",
             "tab-guitar": "Guitar",
             "tab-bass": "Bass",
             "tab-collab": "Collaborations",
             "family-impulso": "Family <span class=\"highlight\">Primal Impulse</span>",
+            "family-frecuencia-base": "Family <span class=\"highlight\">Frecuencia Base</span>",
             "tag-free": "Free",
             "tag-paid": "Premium",
-            "btn-buy": "Get it on Gumroad",
+            "btn-buy": "Get it",
             "btn-download": "Download Free",
 
             "desc-carbonado": "Transparent boost to clean and tighten your signal before the amp. Diamond clarity.",
             "feat-carb-1": "+20dB of pure clean boost",
             "feat-carb-2": "One-knob EQ design",
 
+            "desc-impulsoprimario": "Primal Impulse is the AMATISTA gain ecosystem, with a modern and versatile approach.",
+            "feat-impulsoprimario-1": "Coherent architecture",
+            "feat-impulsoprimario-2": "Each pedal serves its purpose",
+
             "desc-onix": "The perfect high-gain push. Tighten the lows and define the high-mids with dark analog violence.",
             "feat-onix-1": "Variable 'Tight' filter",
-            "feat-onix-2": "Ultra-low noise floor",
+            "feat-onix-2": "Articulate riffs and defined leads",
 
             "desc-obsidiana": "Dense and massive fuzz. A dark and impenetrable wall of sound for extremely low tunings.",
             "feat-obs-1": "Infinite sustain",
-            "feat-obs-2": "\"Doom\" control",
+            "feat-obs-2": "Shape the chaos with intention",
 
             "desc-amatista": "The ultimate distortion. Razor-sharp cut, precise highs, and the brand's flagship tone.",
-            "feat-ama-1": "Built-in Gate (Lookahead)",
-            "feat-ama-2": "4x/8x Oversampling",
+            "feat-ama-1": "Preamp + Power Stage condensed in one pedal",
+            "feat-ama-2": "Modern tone, clarity and presence",
+
+            "desc-granate": "Saturación moderna con procesamiento paralelo: mantiene el low-end sólido mientras aporta carácter y textura al rango medio.",
+            "feat-granate-1": "Mezcla controlada (Clean/Drive)",
+            "feat-granate-2": "Definición en afinaciones graves",
 
             "os-win-only": "Windows only (macOS coming soon)",
             "os-win-mac": "Windows / macOS (Unsigned)",
@@ -202,16 +219,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Media
             "media-title": "In <span class=\"highlight\">Action</span>",
-            "media-vid-1": "Odin's Grip - In the mix playthrough",
-            "media-vid-2": "Void Gate - Extreme test",
             // Footer
-            "footer-desc": "Studio-grade plugins for the metal of the future.",
+            "footer-desc": "Boutique digital effects.",
             "footer-nav": "Navigation",
             "footer-home": "Home",
             "footer-legal": "Legal",
             "footer-terms": "Terms of Service",
             "footer-privacy": "Privacy",
-            "footer-support": "Support",
+            "footer-support": `Support: ${EMAIL_ADDRESS}`,
             "footer-copy": "&copy; 2026 Amatista Efectos. All rights reserved."
         }
     };
@@ -275,7 +290,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         document.addEventListener('mousemove', (e) => {
             targetMouseX = e.clientX;
-            targetMouseY = e.clientY; 
+            targetMouseY = e.clientY;
         });
 
         class Particle {
@@ -284,7 +299,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.reset();
                 this.y = Math.random() * height; // initial random y
             }
-            
+
             reset() {
                 this.x = Math.random() * width;
                 this.y = height + Math.random() * 100;
@@ -293,7 +308,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.speedY = this.isForeground ? -(Math.random() * 0.4 + 0.1) : -(Math.random() * 0.2 + 0.05);
                 this.speedX = (Math.random() - 0.5) * 0.3;
                 this.opacity = this.isForeground ? Math.random() * 0.4 + 0.1 : Math.random() * 0.08 + 0.02;
-                
+
                 const colors = ['138, 43, 226', '176, 102, 255', '200, 200, 255', '255, 255, 255'];
                 this.color = colors[Math.floor(Math.random() * colors.length)];
                 this.parallaxFactor = this.isForeground ? 0.04 : 0.015;
@@ -302,7 +317,7 @@ document.addEventListener('DOMContentLoaded', () => {
             update(mx, my) {
                 this.y += this.speedY;
                 this.x += this.speedX;
-                
+
                 if (this.y < -50 || this.x < -50 || this.x > width + 50) {
                     this.reset();
                 }
@@ -349,4 +364,65 @@ document.addEventListener('DOMContentLoaded', () => {
 
         animate();
     }
+    // =========================================
+    // RENDERIZADO DINÁMICO DE VIDEOS (YOUTUBE)
+    // =========================================
+
+    // 1. Define tu catálogo de videos aquí
+    const youtubeVideos = [
+        {
+            id: "HSu0zbJ30ag", // Reemplaza con el ID real de YouTube (ej: dQw4w9WgXcQ)
+            title: "Tazrus"
+        },
+        {
+            id: "gN-I8rfDbWw",
+            title: "Wil"
+        },
+        {
+            id: "BYmKtey9NVg",
+            title: "Wil"
+        },
+        {
+            id: "aB9-BHBiv2M",
+            title: "Wil"
+        },
+        {
+            id: "Xu1i8GOV_Lg",
+            title: "Wil"
+        }
+
+        // Puedes agregar más objetos aquí en el futuro
+    ];
+
+    // 2. Función para inyectar los videos en el DOM
+    function renderizarVideos() {
+        const gallery = document.getElementById('youtube-gallery');
+
+        // Si el contenedor no existe en esta página, detenemos la ejecución
+        if (!gallery) return;
+
+        let HTMLContenido = '';
+
+        youtubeVideos.forEach(video => {
+            HTMLContenido += `
+                <div class="video-container">
+                    <iframe 
+                        src="https://www.youtube-nocookie.com/embed/${video.id}?rel=0&modestbranding=1" 
+                        title="${video.title}" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen
+                        loading="lazy">
+                    </iframe>
+                </div>
+            `;
+        });
+
+        // Inyectamos todo el HTML generado de una sola vez (mejor para el rendimiento)
+        gallery.innerHTML = HTMLContenido;
+    }
+
+    // 3. Ejecutar al cargar
+    renderizarVideos();
 });
