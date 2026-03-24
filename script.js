@@ -118,6 +118,18 @@ document.addEventListener('DOMContentLoaded', () => {
             "tag-paid": "Premium",
             "btn-buy": "Adquirir",
             "btn-download": "Descargar Gratis",
+            "btn-learn-more": "Ver más",
+            "btn-back": "← Volver al catálogo",
+            "btn-read-manual": "Leer manual de usuario",
+            "plugin-features-title": "Características Principales",
+
+            "modal-donate-title": "Apoyar el Proyecto",
+            "modal-donate-desc": "Tu apoyo me permite seguir desarrollando herramientas de audio de alta calidad y mantener muchas de ellas accesibles.",
+            "modal-paypal": "Donar vía PayPal",
+            "modal-paypal-desc": "Internacional, rápido y seguro.",
+            "modal-prex": "Transferencia PREX",
+            "modal-prex-desc": "Transferencia directa (LATAM).",
+            "modal-prex-name": "A nombre de Álvaro",
 
             "desc-carbonado": "Empuje transparente para limpiar y apretar tu señal antes del amplificador. Claridad de diamante.",
             "feat-carb-1": "+20dB de limpieza pura",
@@ -156,7 +168,8 @@ document.addEventListener('DOMContentLoaded', () => {
             "footer-terms": "Términos de Servicio",
             "footer-privacy": "Privacidad",
             "footer-support": `Soporte: ${EMAIL_ADDRESS}`,
-            "footer-copy": "&copy; 2026 Amatista Efectos. Todos los derechos reservados."
+            "footer-copy": "&copy; 2026 Amatista Efectos. Todos los derechos reservados.",
+            "footer-donate": "Apoyar a Amatista"
         },
         en: {
             // Navbar
@@ -185,6 +198,18 @@ document.addEventListener('DOMContentLoaded', () => {
             "tag-paid": "Premium",
             "btn-buy": "Get it",
             "btn-download": "Download Free",
+            "btn-learn-more": "Learn more",
+            "btn-back": "← Back to catalog",
+            "btn-read-manual": "Read user manual",
+            "plugin-features-title": "Key Features",
+
+            "modal-donate-title": "Support the Project",
+            "modal-donate-desc": "Your support allows me to continue developing high-quality audio tools and keeping many of them accessible.",
+            "modal-paypal": "Donate via PayPal",
+            "modal-paypal-desc": "International, fast and secure.",
+            "modal-prex": "PREX Transfer",
+            "modal-prex-desc": "Direct transfer (LATAM region).",
+            "modal-prex-name": "In the name of Álvaro",
 
             "desc-carbonado": "Transparent boost to clean and tighten your signal before the amp. Diamond clarity.",
             "feat-carb-1": "+20dB of pure clean boost",
@@ -227,7 +252,8 @@ document.addEventListener('DOMContentLoaded', () => {
             "footer-terms": "Terms of Service",
             "footer-privacy": "Privacy",
             "footer-support": `Support: ${EMAIL_ADDRESS}`,
-            "footer-copy": "&copy; 2026 Amatista Efectos. All rights reserved."
+            "footer-copy": "&copy; 2026 Amatista Efectos. All rights reserved.",
+            "footer-donate": "Support Amatista"
         }
     };
 
@@ -341,7 +367,24 @@ document.addEventListener('DOMContentLoaded', () => {
         const bgParticles = Array.from({ length: 30 }, () => new Particle(false));
         const fgParticles = Array.from({ length: 45 }, () => new Particle(true));
 
+        let isAnimating = true;
+        const heroSection = document.querySelector('.hero');
+
+        // Performance optimization: Pause particle animation when hero is off-screen
+        const heroObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                isAnimating = entry.isIntersecting;
+                if (isAnimating) {
+                    requestAnimationFrame(animate);
+                }
+            });
+        }, { threshold: 0 });
+
+        if (heroSection) heroObserver.observe(heroSection);
+
         function animate() {
+            if (!isAnimating) return;
+
             // Smooth mouse interpolation (easing)
             mouseX += (targetMouseX - mouseX) * 0.05;
             mouseY += (targetMouseY - mouseY) * 0.05;
@@ -372,27 +415,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const youtubeVideos = [
         {
             id: "NYB2dtHThKo",
-            title: "GFF"
+            title: "GFF Impulso Primario (Review)"
         },
         {
             id: "HSu0zbJ30ag",
-            title: "Tazrus"
+            title: "Tazrus Carbonado (Demo)"
         },
         {
             id: "gN-I8rfDbWw",
-            title: "Wil"
+            title: "Wil Carbonado (Review)"
         },
         {
             id: "BYmKtey9NVg",
-            title: "Wil"
+            title: "Wil Onix (Demo)"
         },
         {
             id: "aB9-BHBiv2M",
-            title: "Wil"
+            title: "Wil Obsidiana (Demo)"
         },
         {
             id: "Xu1i8GOV_Lg",
-            title: "Wil"
+            title: "Wil Amatista (Demo)"
         }
 
         // Puedes agregar más objetos aquí en el futuro
@@ -402,31 +445,121 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderizarVideos() {
         const gallery = document.getElementById('youtube-gallery');
 
-        // Si el contenedor no existe en esta página, detenemos la ejecución
         if (!gallery) return;
 
         let HTMLContenido = '';
 
+        // Performance Optimization: Lazy Load YouTube videos using static placeholder and Facade pattern
         youtubeVideos.forEach(video => {
             HTMLContenido += `
-                <div class="video-container">
-                    <iframe 
-                        src="https://www.youtube-nocookie.com/embed/${video.id}?rel=0&modestbranding=1" 
-                        title="${video.title}" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        referrerpolicy="strict-origin-when-cross-origin"
-                        allowfullscreen
-                        loading="lazy">
-                    </iframe>
+                <div class="video-container lazy-video" data-videoid="${video.id}" data-title="${video.title}">
+                    <div class="video-placeholder" style="background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.8) 0%, rgba(20, 20, 24, 0.4) 100%), url('https://img.youtube.com/vi/${video.id}/sddefault.jpg');">
+                        <div class="play-btn">▶</div>
+                        <p>${video.title}</p>
+                    </div>
                 </div>
             `;
         });
 
-        // Inyectamos todo el HTML generado de una sola vez (mejor para el rendimiento)
         gallery.innerHTML = HTMLContenido;
+
+        // Attach click listener to hot-load the iframe only on demand
+        document.querySelectorAll('.lazy-video').forEach(videoNode => {
+            videoNode.addEventListener('click', function () {
+                const vid = this.dataset.videoid;
+                const vtit = this.dataset.title;
+                this.innerHTML = `
+                    <iframe 
+                        src="https://www.youtube-nocookie.com/embed/${vid}?autoplay=1&rel=0&modestbranding=1" 
+                        title="${vtit}" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen>
+                    </iframe>
+                `;
+            });
+        });
     }
 
     // 3. Ejecutar al cargar
     renderizarVideos();
+
+    // Make plugin image containers clickable linking to their plugin pages
+    document.querySelectorAll('.plugin-card').forEach(card => {
+        const learnMoreBtn = card.querySelector('a[href^="plugin.html?id="]');
+        const imgContainer = card.querySelector('.plugin-image-container');
+        if (learnMoreBtn && imgContainer) {
+            imgContainer.style.cursor = 'pointer';
+            imgContainer.addEventListener('click', () => {
+                window.location.href = learnMoreBtn.href;
+            });
+        }
+    });
+
+    // ==========================================
+    // DONATION COMPONENT LOGIC
+    // ==========================================
+    function createDonationModal() {
+        if (document.getElementById('donation-modal')) return;
+
+        const modalHTML = `
+            <div class="modal-overlay" id="donation-modal">
+                <div class="modal-content">
+                    <button class="modal-close" id="close-donation">&times;</button>
+                    <div class="modal-header">
+                        <h3 data-i18n="modal-donate-title">Apoyar el Proyecto</h3>
+                        <p data-i18n="modal-donate-desc">Tu apoyo me permite seguir desarrollando herramientas de audio de alta calidad y mantener muchas de ellas accesibles.</p>
+                    </div>
+                    <div class="donation-options">
+                        <a href="https://paypal.me/alvagonz" target="_blank" class="donate-btn-option">
+                            <strong data-i18n="modal-paypal">Donar vía PayPal</strong>
+                            <span data-i18n="modal-paypal-desc">Internacional, rápido y seguro.</span>
+                        </a>
+                        <div class="donate-btn-option" id="btn-prex-trigger">
+                            <strong data-i18n="modal-prex">Transferencia PREX</strong>
+                            <span data-i18n="modal-prex-desc">Transferencia directa (LATAM).</span>
+                        </div>
+                        <div id="prex-details" class="prex-details-card">
+                            <p style="margin-bottom: 5px; color: var(--clr-text-muted); font-size: 0.9rem;" data-i18n="modal-prex-name">A nombre de Álvaro</p>
+                            <h4 style="color: white; letter-spacing: 2px; font-size: 1.4rem;">PREX: <span id="prex-account">1840539</span></h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        document.body.insertAdjacentHTML('beforeend', modalHTML);
+
+        // Events
+        const modal = document.getElementById('donation-modal');
+        const closeBtn = document.getElementById('close-donation');
+        const prexTrigger = document.getElementById('btn-prex-trigger');
+        const prexDetails = document.getElementById('prex-details');
+
+        closeBtn.addEventListener('click', () => modal.classList.remove('active'));
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) modal.classList.remove('active');
+        });
+
+        prexTrigger.addEventListener('click', () => {
+            prexDetails.classList.toggle('show');
+        });
+    }
+
+    // Capture all clicks on any element with .btn-donate globally
+    document.body.addEventListener('click', (e) => {
+        const donateBtn = e.target.closest('.btn-donate');
+        if (donateBtn) {
+            e.preventDefault();
+            createDonationModal();
+
+            // Force translation pass on the new modal HTML
+            const savedLang = localStorage.getItem('amatista_lang') || 'es';
+            setLanguage(savedLang);
+
+            // Show modal
+            document.getElementById('donation-modal').classList.add('active');
+        }
+    });
+
 });
