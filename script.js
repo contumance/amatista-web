@@ -371,7 +371,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. Define tu catálogo de videos aquí
     const youtubeVideos = [
         {
-            id: "HSu0zbJ30ag", // Reemplaza con el ID real de YouTube (ej: dQw4w9WgXcQ)
+            id: "NYB2dtHThKo",
+            title: "GFF"
+        },
+        {
+            id: "HSu0zbJ30ag",
             title: "Tazrus"
         },
         {

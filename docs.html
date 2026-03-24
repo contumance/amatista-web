@@ -79,14 +79,37 @@
         .docs-nav h3 {
             margin-top: 0;
             color: var(--docs-heading);
-            margin-bottom: 15px;
+            margin-bottom: 0;
+        }
+
+        .docs-nav details > summary {
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .docs-nav details > summary::-webkit-details-marker {
+            display: none;
+        }
+        
+        .docs-nav details > summary::after {
+            content: '▼';
+            font-size: 0.8em;
+            color: var(--docs-accent);
+            transition: transform 0.3s ease;
+        }
+        
+        .docs-nav details[open] > summary::after {
+            transform: rotate(-180deg);
         }
 
         .docs-nav ul {
             list-style: none;
             padding-left: 0;
-            column-count: 2;
-            column-gap: 20px;
+            column-count: 1;
+            margin-top: 20px;
         }
 
         .docs-nav li {
@@ -251,6 +274,48 @@
             padding-left: 10px;
             margin-top: 30px;
         }
+
+        /* Botones de impresión por sección */
+        .print-btn {
+            background: none;
+            border: 1px solid var(--docs-accent);
+            border-radius: 4px;
+            cursor: pointer;
+            color: var(--docs-accent);
+            opacity: 0.5;
+            margin-left: 10px;
+            font-size: 0.70rem;
+            padding: 2px 6px;
+            vertical-align: text-bottom;
+            transition: all 0.2s ease;
+            font-family: inherit;
+            font-weight: 600;
+        }
+        
+        .print-btn:hover {
+            opacity: 1;
+            background: rgba(111, 66, 193, 0.1);
+        }
+
+        #print-container {
+            display: none;
+        }
+
+        @media print {
+            body.is-printing-single > .docs-container {
+                display: none !important;
+            }
+            body.is-printing-single #print-container {
+                display: block !important;
+                background: white;
+                padding: 20px;
+                max-width: 900px;
+                margin: 0 auto;
+            }
+            body.is-printing-single .print-btn {
+                display: none !important;
+            }
+        }
     </style>
 </head>
 
@@ -274,13 +339,51 @@
 
         <!-- Índice -->
         <nav class="docs-nav">
-            <h3 data-i18n="indexTitle">Índice</h3>
-            <ul>
-                <li><a href="#bienvenida" data-i18n="idx1">1. Bienvenida</a></li>
-                <li><a href="#pacto-creativo" data-i18n="idx2">2. Nuestro Pacto Creativo</a></li>
-                <li><a href="#instalacion" data-i18n="idx3">3. Guía de Instalación</a></li>
-                <li><a href="#manuales" data-i18n="idx4">4. Manuales de Plugins</a></li>
-            </ul>
+            <details open>
+                <summary>
+                    <h3 data-i18n="indexTitle" style="margin: 0;">Índice</h3>
+                </summary>
+                <ul>
+                    <li style="margin-bottom: 12px;">
+                        <a href="#bienvenida" data-i18n="idx1">1. Bienvenida</a>
+                        <button class="print-btn" onclick="printSection('bienvenida')" title="Imprimir sección a PDF">PDF</button>
+                    </li>
+                    <li style="margin-bottom: 12px;">
+                        <a href="#pacto-creativo" data-i18n="idx2">2. Nuestro Pacto Creativo</a>
+                        <button class="print-btn" onclick="printSection('pacto-creativo')" title="Imprimir sección a PDF">PDF</button>
+                    </li>
+                    <li style="margin-bottom: 12px;">
+                        <a href="#instalacion" data-i18n="idx3">3. Guía de Instalación</a>
+                        <button class="print-btn" onclick="printSection('instalacion')" title="Imprimir sección a PDF">PDF</button>
+                    </li>
+                    <li style="margin-bottom: 12px;">
+                        <a href="#manuales" data-i18n="idx4">4. Manuales de Plugins</a>
+                        <button class="print-btn" onclick="printSection('manuales')" title="Imprimir todos los manuales a PDF">PDF</button>
+                        <ul style="padding-left: 20px; list-style-type: none; margin-top: 10px; border-left: 2px solid var(--docs-border); margin-left: 5px;">
+                            <li style="margin-bottom: 8px;">
+                                <a href="#carbonado" style="font-weight: 400; font-size: 0.95rem; text-decoration: none;">&bull; Carbonado Boost</a>
+                                <button class="print-btn" onclick="printSection('carbonado')" title="Imprimir manual a PDF">PDF</button>
+                            </li>
+                            <li style="margin-bottom: 8px;">
+                                <a href="#onix" style="font-weight: 400; font-size: 0.95rem; text-decoration: none;">&bull; Ónix Overdrive</a>
+                                <button class="print-btn" onclick="printSection('onix')" title="Imprimir manual a PDF">PDF</button>
+                            </li>
+                            <li style="margin-bottom: 8px;">
+                                <a href="#amatista" style="font-weight: 400; font-size: 0.95rem; text-decoration: none;">&bull; Amatista Distortion</a>
+                                <button class="print-btn" onclick="printSection('amatista')" title="Imprimir manual a PDF">PDF</button>
+                            </li>
+                            <li style="margin-bottom: 8px;">
+                                <a href="#obsidiana" style="font-weight: 400; font-size: 0.95rem; text-decoration: none;">&bull; Obsidiana Fuzz</a>
+                                <button class="print-btn" onclick="printSection('obsidiana')" title="Imprimir manual a PDF">PDF</button>
+                            </li>
+                            <li style="margin-bottom: 8px;">
+                                <a href="#granate" style="font-weight: 400; font-size: 0.95rem; text-decoration: none;">&bull; Granate Bass Saturator</a>
+                                <button class="print-btn" onclick="printSection('granate')" title="Imprimir manual a PDF">PDF</button>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </details>
         </nav>
 
         <!-- Secciones Dinámicas -->
@@ -300,6 +403,44 @@
 
     <!-- Script de traducciones de la documentación -->
     <script src="docs.js"></script>
+    <script>
+        function printSection(id) {
+            const el = document.getElementById(id);
+            if (!el) {
+                console.warn('No se encontró el elemento a imprimir:', id);
+                return;
+            }
+
+            let printContainer = document.getElementById('print-container');
+            if (!printContainer) {
+                printContainer = document.createElement('div');
+                printContainer.id = 'print-container';
+                document.body.appendChild(printContainer);
+            }
+
+            printContainer.innerHTML = '';
+            
+            const header = document.querySelector('.docs-header');
+            if(header) {
+                const headClone = header.cloneNode(true);
+                headClone.style.marginBottom = "2rem";
+                printContainer.appendChild(headClone);
+            }
+
+            const clone = el.cloneNode(true);
+            clone.style.margin = "0";
+            clone.style.boxShadow = "none";
+            
+            printContainer.appendChild(clone);
+
+            document.body.classList.add('is-printing-single');
+            
+            setTimeout(() => {
+                window.print();
+                document.body.classList.remove('is-printing-single');
+            }, 100);
+        }
+    </script>
 </body>
 
 </html>
