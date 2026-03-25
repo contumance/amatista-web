@@ -63,9 +63,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // 3. Smooth scrolling for internal anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-
             const targetId = this.getAttribute('href');
+            
+            // Si el href cambió dinámicamente y ya no es un ancla, no hacemos nada
+            if (!targetId || !targetId.startsWith('#')) return;
+            
+            e.preventDefault();
             if (targetId === '#') return;
 
             const targetElement = document.querySelector(targetId);
