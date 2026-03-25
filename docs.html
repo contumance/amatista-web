@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manuales y Documentación | Amatista Efectos</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Docs Specific CSS -->
+    <style>
+        /* CSS específico para la página de documentación orientada a lectura/impresión */
+        :root {
+            --docs-bg: #f8f9fa;
+            --docs-text: #212529;
+            --docs-heading: #121416;
+            --docs-border: #dee2e6;
+            --docs-accent: #6f42c1;
+            /* Púrpura más oscuro y legible sobre blanco */
+        }
+
+        body.docs-page {
+            background-color: var(--docs-bg);
+            color: var(--docs-text);
+            font-family: 'Outfit', sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Overrides to prevent styles.css dark theme from hiding text */
+        .docs-page p, .docs-page ul, .docs-page ol, .docs-page li {
+            color: var(--docs-text) !important;
+        }
+        
+        .docs-page strong, .docs-page b {
+            color: var(--docs-heading) !important;
+        }
+        
+        .docs-page .muted {
+            color: #6c757d !important;
+        }
+
+        .docs-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: white;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            min-height: 100vh;
+        }
+
+        .docs-header {
+            text-align: center;
+            padding-bottom: 2rem;
+            margin-bottom: 3rem;
+            border-bottom: 2px solid var(--docs-border);
+        }
+
+        .docs-header h1 {
+            color: var(--docs-heading);
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: -1px;
+        }
+
+        .docs-header p {
+            color: #6c757d;
+            font-size: 1.1rem;
+        }
+
+        .docs-nav {
+            background: #f1f3f5;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 3rem;
+        }
+
+        .docs-nav h3 {
+            margin-top: 0;
+            color: var(--docs-heading);
+            margin-bottom: 0;
+        }
+
+        .docs-nav details > summary {
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .docs-nav details > summary::-webkit-details-marker {
+            display: none;
+        }
+        
+        .docs-nav details > summary::after {
+            content: '▼';
+            font-size: 0.8em;
+            color: var(--docs-accent);
+            transition: transform 0.3s ease;
+        }
+        
+        .docs-nav details[open] > summary::after {
+            transform: rotate(-180deg);
+        }
+
+        .docs-nav ul {
+            list-style: none;
+            padding-left: 0;
+            column-count: 1;
+            margin-top: 20px;
+        }
+
+        .docs-nav li {
+            margin-bottom: 8px;
+        }
+
+        .docs-nav a {
+            color: var(--docs-accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .docs-nav a:hover {
+            text-decoration: underline;
+        }
+
+        .docs-section {
+            margin-bottom: 4rem;
+        }
+
+        .docs-section h2 {
+            color: var(--docs-heading);
+            font-size: 1.8rem;
+            border-bottom: 1px solid var(--docs-border);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .docs-section h3 {
+            color: var(--docs-heading);
+            font-size: 1.4rem;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .plugin-manual {
+            background: #fff;
+            border: 1px solid var(--docs-border);
+            border-left: 4px solid var(--docs-accent);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+
+        .parameter-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .parameter-list li {
+            margin-bottom: 10px;
+            display: flex;
+        }
+
+        .parameter-list strong {
+            min-width: 120px;
+            color: var(--docs-heading);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--docs-accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Utilidad para evitar cortes feos al imprimir */
+        .page-break {
+            page-break-before: always;
+        }
+
+        /* Optimizaciones para impresión */
+        @media print {
+            body.docs-page {
+                background: white;
+            }
+
+            .docs-container {
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+                max-width: 100%;
+            }
+
+            .docs-nav,
+            .back-link {
+                display: none;
+                /* No imprimir la navegación ni el botón de volver */
+            }
+
+            .docs-section {
+                margin-bottom: 2rem;
+            }
+
+            a[href^="http"]:after {
+                content: " (" attr(href) ")";
+                font-size: 90%;
+            }
+
+            h2,
+            h3 {
+                page-break-after: avoid;
+            }
+
+            p,
+            ul,
+            .plugin-manual {
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Estilos Destacados para Pacto Creativo */
+        #pacto-creativo {
+            background: linear-gradient(135deg, #ffffff 0%, #f9f6fd 100%);
+            border: 2px solid var(--docs-accent);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(111, 66, 193, 0.12);
+            position: relative;
+            overflow: hidden;
+            margin-top: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        #pacto-creativo::before {
+            content: '✦';
+            position: absolute;
+            top: -20px;
+            right: 20px;
+            font-size: 150px;
+            color: var(--docs-accent);
+            opacity: 0.05;
+            line-height: 1;
+            transform: rotate(15deg);
+            pointer-events: none;
+        }
+
+        #pacto-creativo h2 {
+            color: var(--docs-accent);
+            border-bottom: none;
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            padding-bottom: 0;
+            letter-spacing: -0.5px;
+        }
+
+        #pacto-creativo p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        #pacto-creativo h3 {
+            color: var(--docs-heading);
+            border-left: 4px solid var(--docs-accent);
+            padding-left: 10px;
+            margin-top: 30px;
+        }
+
+        /* Botones de impresión por sección */
+        .print-btn {
+            background: none;
+            border: 1px solid var(--docs-accent);
+            border-radius: 4px;
+            cursor: pointer;
+            color: var(--docs-accent);
+            opacity: 0.5;
+            margin-left: 10px;
+            font-size: 0.70rem;
+            padding: 2px 6px;
+            vertical-align: text-bottom;
+            transition: all 0.2s ease;
+            font-family: inherit;
+            font-weight: 600;
+        }
+        
+        .print-btn:hover {
+            opacity: 1;
+            background: rgba(111, 66, 193, 0.1);
+        }
+
+        #print-container {
+            display: none;
+        }
+
+        @media print {
+            body.is-printing-single > .docs-container {
+                display: none !important;
+            }
+            body.is-printing-single #print-container {
+                display: block !important;
+                background: white;
+                padding: 20px;
+                max-width: 900px;
+                margin: 0 auto;
+            }
+            body.is-printing-single .print-btn {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="docs-page">
+
+    <div class="docs-container">
+        <!-- Top bar con Back y Lang Switcher -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <a href="index.html" class="back-link" style="margin-bottom:0;" data-i18n="back">← Volver a la Web Principal</a>
+            <div class="lang-switch docs-nav-btn" style="background: #f1f3f5; padding: 5px 15px; border-radius: 20px; border: 1px solid var(--docs-border);">
+                <button class="lang-btn active" data-lang="es" style="font-family: 'Outfit', sans-serif; background:none; border:none; cursor:pointer; font-weight:600; color:var(--docs-heading); font-size:14px;">ES</button>
+                <span class="lang-sep" style="color:#ccc; margin:0 5px;">|</span>
+                <button class="lang-btn" data-lang="en" style="font-family: 'Outfit', sans-serif; background:none; border:none; cursor:pointer; font-weight:400; color:#888; font-size:14px;">EN</button>
+            </div>
+        </div>
+
+        <header class="docs-header">
+            <h1 data-i18n="headerTitle">Amatista Efectos</h1>
+            <p data-i18n="headerDesc">Manuales de Usuario y Documentación Técnica</p>
+        </header>
+
+        <!-- Índice -->
+        <nav class="docs-nav">
+            <details open>
+                <summary>
+                    <h3 data-i18n="indexTitle" style="margin: 0;">Índice</h3>
+                </summary>
+                <ul>
+                    <li style="margin-bottom: 12px;">
+                        <a href="#bienvenida" data-i18n="idx1">1. Bienvenida</a>
+                        <button class="print-btn" onclick="printSection('bienvenida')" title="Imprimir sección a PDF">PDF</button>
+                    </li>
+                    <li style="margin-bottom: 12px;">
+                        <a href="#pacto-creativo" data-i18n="idx2">2. Nuestro Pacto Creativo</a>
+                        <button class="print-btn" onclick="printSection('pacto-creativo')" title="Imprimir sección a PDF">PDF</button>
+                    </li>
+                    <li style="margin-bottom: 12px;">
+                        <a href="#instalacion" data-i18n="idx3">3. Guía de Instalación</a>
+                        <button class="print-btn" onclick="printSection('instalacion')" title="Imprimir sección a PDF">PDF</button>
+                    </li>
+                    <li style="margin-bottom: 12px;">
+                        <a href="#manuales" data-i18n="idx4">4. Manuales de Plugins</a>
+                        <button class="print-btn" onclick="printSection('manuales')" title="Imprimir todos los manuales a PDF">PDF</button>
+                        <ul style="padding-left: 20px; list-style-type: none; margin-top: 10px; border-left: 2px solid var(--docs-border); margin-left: 5px;">
+                            <li style="margin-bottom: 8px;">
+                                <a href="#carbonado" style="font-weight: 400; font-size: 0.95rem; text-decoration: none;">&bull; Carbonado Boost</a>
+                                <button class="print-btn" onclick="printSection('carbonado')" title="Imprimir manual a PDF">PDF</button>
+                            </li>
+                            <li style="margin-bottom: 8px;">
+                                <a href="#onix" style="font-weight: 400; font-size: 0.95rem; text-decoration: none;">&bull; Ónix Overdrive</a>
+                                <button class="print-btn" onclick="printSection('onix')" title="Imprimir manual a PDF">PDF</button>
+                            </li>
+                            <li style="margin-bottom: 8px;">
+                                <a href="#amatista" style="font-weight: 400; font-size: 0.95rem; text-decoration: none;">&bull; Amatista Distortion</a>
+                                <button class="print-btn" onclick="printSection('amatista')" title="Imprimir manual a PDF">PDF</button>
+                            </li>
+                            <li style="margin-bottom: 8px;">
+                                <a href="#obsidiana" style="font-weight: 400; font-size: 0.95rem; text-decoration: none;">&bull; Obsidiana Fuzz</a>
+                                <button class="print-btn" onclick="printSection('obsidiana')" title="Imprimir manual a PDF">PDF</button>
+                            </li>
+                            <li style="margin-bottom: 8px;">
+                                <a href="#granate" style="font-weight: 400; font-size: 0.95rem; text-decoration: none;">&bull; Granate Bass Saturator</a>
+                                <button class="print-btn" onclick="printSection('granate')" title="Imprimir manual a PDF">PDF</button>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </details>
+        </nav>
+
+        <!-- Secciones Dinámicas -->
+        <section id="bienvenida" class="docs-section"></section>
+        
+        <section id="pacto-creativo" class="docs-section"></section>
+        
+        <div class="page-break"></div>
+        
+        <section id="instalacion" class="docs-section"></section>
+        
+        <div class="page-break"></div>
+        
+        <section id="manuales" class="docs-section"></section>
+
+    </div>
+
+    <!-- Script de traducciones de la documentación -->
+    <script src="docs.js"></script>
+    <script>
+        function printSection(id) {
+            const el = document.getElementById(id);
+            if (!el) {
+                console.warn('No se encontró el elemento a imprimir:', id);
+                return;
+            }
+
+            let printContainer = document.getElementById('print-container');
+            if (!printContainer) {
+                printContainer = document.createElement('div');
+                printContainer.id = 'print-container';
+                document.body.appendChild(printContainer);
+            }
+
+            printContainer.innerHTML = '';
+            
+            const header = document.querySelector('.docs-header');
+            if(header) {
+                const headClone = header.cloneNode(true);
+                headClone.style.marginBottom = "2rem";
+                printContainer.appendChild(headClone);
+            }
+
+            const clone = el.cloneNode(true);
+            clone.style.margin = "0";
+            clone.style.boxShadow = "none";
+            
+            printContainer.appendChild(clone);
+
+            document.body.classList.add('is-printing-single');
+            
+            setTimeout(() => {
+                window.print();
+                document.body.classList.remove('is-printing-single');
+            }, 100);
+        }
+    </script>
+</body>
+
+</html>
