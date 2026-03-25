@@ -975,14 +975,64 @@ strong {
     }
 }
 
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--clr-text-main);
+    cursor: pointer;
+    z-index: 1001;
+}
+
 @media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: block;
+    }
 
     .nav-links,
-    .cta-button {
+    .nav-right {
         display: none;
     }
 
-    /* Mobile menu needed in reality, simple version here */
+    .navbar.nav-active {
+        background: rgba(10, 10, 12, 0.98);
+        height: 100vh;
+        align-items: flex-start;
+    }
+
+    .navbar.nav-active .nav-container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        position: relative;
+    }
+
+    .navbar.nav-active .brand-logo {
+        position: absolute;
+        top: 1.5rem;
+        left: 2rem;
+    }
+
+    .navbar.nav-active .mobile-menu-btn {
+        position: absolute;
+        top: 1.5rem;
+        right: 2rem;
+    }
+
+    .navbar.nav-active .nav-links,
+    .navbar.nav-active .nav-right {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        width: 100%;
+    }
+
+    .navbar.nav-active .nav-right {
+        margin-top: 1rem;
+    }
+
     .hero-title {
         font-size: 3rem;
     }

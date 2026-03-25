@@ -14,6 +14,29 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // 1.5. Mobile Fullscreen Menu Logic
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    if (mobileMenuBtn && navbar) {
+        mobileMenuBtn.addEventListener('click', () => {
+            navbar.classList.toggle('nav-active');
+            
+            // Reemplazar icono si está activo o no
+            if(navbar.classList.contains('nav-active')) {
+                mobileMenuBtn.innerHTML = '<svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>';
+            } else {
+                mobileMenuBtn.innerHTML = '<svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>';
+            }
+        });
+        
+        const navItems = document.querySelectorAll('.nav-links a, .nav-right a');
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navbar.classList.remove('nav-active');
+                mobileMenuBtn.innerHTML = '<svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>';
+            });
+        });
+    }
+
     // 2. Intersection Observer for Fade-in effects
     const faders = document.querySelectorAll('.fade-in-section');
 
