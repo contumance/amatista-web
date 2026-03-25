@@ -195,7 +195,7 @@ const docsTranslations = {
     en: {
         common: {
             back: "← Back to Main Website",
-            headerTitle: "Amatista Effects",
+            headerTitle: "Amatista Efectos",
             headerDesc: "User Manuals & Technical Documentation",
             indexTitle: "Index",
             idx1: "1. Welcome",
