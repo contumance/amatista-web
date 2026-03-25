@@ -608,6 +608,52 @@ strong {
     justify-content: center;
 }
 
+/* =========================================
+   Pacto Creativo Highlights
+   ========================================= */
+.nav-pact {
+    color: var(--clr-text-muted) !important;
+    padding: 0.4rem 1rem;
+    border: 1px solid rgba(176, 102, 255, 0.3);
+    border-radius: 2px;
+    font-size: 0.75rem;
+    font-weight: 400 !important;
+    letter-spacing: 1px;
+    text-shadow: none;
+    transition: var(--trans-fast);
+}
+
+.nav-pact::after {
+    display: none !important;
+}
+
+.nav-pact:hover {
+    background: var(--clr-amethyst-main);
+    color: white !important;
+    box-shadow: 0 0 15px var(--clr-amethyst-glow);
+    border-color: var(--clr-amethyst-main);
+}
+
+.footer-pact {
+    color: var(--clr-text-muted) !important;
+    padding: 0.4rem 1rem;
+    border: 1px solid rgba(176, 102, 255, 0.3);
+    border-radius: 2px;
+    font-size: 0.75rem;
+    font-weight: 400 !important;
+    letter-spacing: 1px;
+    display: inline-block;
+    margin-bottom: 5px;
+    transition: var(--trans-fast);
+}
+
+.footer-pact:hover {
+    background: var(--clr-amethyst-main);
+    color: white !important;
+    box-shadow: 0 0 15px var(--clr-amethyst-glow);
+    border-color: var(--clr-amethyst-main);
+}
+
 .plugin-img {
     width: 65%;
     height: auto;
@@ -1256,4 +1302,31 @@ strong {
 
 .prex-details-card.show {
     display: block;
+}
+
+/* =========================================
+   Pacto Creativo Section Highlights
+   ========================================= */
+.pacto-container {
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, rgba(20, 20, 24, 0.8) 0%, rgba(138, 43, 226, 0.05) 100%);
+    border: 1px solid rgba(176, 102, 255, 0.2);
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.pacto-container::before {
+    content: '✦';
+    position: absolute;
+    top: -20px;
+    right: 20px;
+    font-size: 150px;
+    color: var(--clr-amethyst-main);
+    opacity: 0.03;
+    line-height: 1;
+    transform: rotate(15deg);
+    pointer-events: none;
 }

@@ -97,6 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "nav-plugins": "Plugins",
             "nav-media": "Media",
             "nav-cta": "Ver Catálogo",
+            "nav-pact": "Pacto Creativo",
             // Hero
             "hero-title": "SONIDO <span class=\"highlight\">EN ESTADO PURO</span>",
             "hero-subtitle": "Efectos digitales boutique diseñados con una obsesión por el detalle y estética minimalista. Creamos herramientas de alta resolución para el músico contemporáneo, logrando una sensación sonora inspirada en hardware real para definir tonos modernos y afinaciones bajas con precisión absoluta.",
@@ -160,6 +161,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Media
             "media-title": "En <span class=\"highlight\">Acción</span>",
+            // Pact
+            "pact-title": "Nuestro <span class=\"highlight\">Pacto Creativo</span>",
+            "pact-desc": "Creemos en la transparencia y el respeto por tu herramienta de trabajo. Sin suscripciones, sin DRM invasivo, sin obsolescencia programada. Herramientas que compras una vez y son tuyas para siempre.",
+            "pact-btn": "Leer el Pacto Completo",
             // Footer
             "footer-desc": "Efectos digitales boutique.",
             "footer-nav": "Navegación",
@@ -169,7 +174,8 @@ document.addEventListener('DOMContentLoaded', () => {
             "footer-privacy": "Privacidad",
             "footer-support": `Soporte: ${EMAIL_ADDRESS}`,
             "footer-copy": "&copy; 2026 Amatista Efectos. Todos los derechos reservados.",
-            "footer-donate": "Apoyar a Amatista"
+            "footer-donate": "Apoyar a Amatista",
+            "footer-pact": "Pacto Creativo"
         },
         en: {
             // Navbar
@@ -177,6 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "nav-plugins": "Plugins",
             "nav-media": "Media",
             "nav-cta": "View Catalog",
+            "nav-pact": "Creative Pact",
             // Hero
             "hero-title": "PURE <span class=\"highlight\">SOUND</span>",
             "hero-subtitle": "Boutique digital effects designed with an obsession for detail and minimalist aesthetics. We create high-resolution tools for the contemporary musician, achieving a hardware-inspired sonic feel to define modern tones and low tunings with absolute precision.",
@@ -244,6 +251,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Media
             "media-title": "In <span class=\"highlight\">Action</span>",
+            // Pact
+            "pact-title": "Our <span class=\"highlight\">Creative Pact</span>",
+            "pact-desc": "We believe in transparency and respect for your working tools. No subscriptions, no invasive DRM, no planned obsolescence. Tools you buy once and own forever.",
+            "pact-btn": "Read Full Pact",
             // Footer
             "footer-desc": "Boutique digital effects.",
             "footer-nav": "Navigation",
@@ -253,7 +264,8 @@ document.addEventListener('DOMContentLoaded', () => {
             "footer-privacy": "Privacy",
             "footer-support": `Support: ${EMAIL_ADDRESS}`,
             "footer-copy": "&copy; 2026 Amatista Efectos. All rights reserved.",
-            "footer-donate": "Support Amatista"
+            "footer-donate": "Support Amatista",
+            "footer-pact": "Creative Pact"
         }
     };
 
