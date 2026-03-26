@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     osText: "Solo Windows (macOS próximamente)",
                     title: "Ónix Overdrive",
                     family: "Familia Impulso Primario",
-                    description: "Ónix es la herramienta precisa para ajustar amplificadores high-gain en contextos modernos. Aprieta los bajos, añade mordida en los medios altos e inyecta la cantidad justa de agresión sin emborronar el sonido.<br><br>A diferencia de los overdrives clásicos, el Ónix posee una topología de Overdrive limpio (Clean-blend dinámico) que asimetrizado en combinación con un filtro Mid-Boost afinado a ~720Hz da a la guitarra articulación extrema.",
+                    description: "Ónix es la herramienta precisa para ajustar amplificadores high-gain en contextos modernos. Aprieta los bajos, añade mordida en los medios altos e inyecta la cantidad justa de agresión sin embarrar el sonido.<br><br>A diferencia de los overdrives clásicos, el Ónix posee una topología de Overdrive limpio (Clean-blend dinámico) que asimetrizado en combinación con un filtro Mid-Boost afinado a ~720Hz da a la guitarra articulación extrema.",
                     features: [
                         "Doble capa de filtrado: Pre-shaping en bajos e inyección en medios",
                         "Clipping asimétrico de tono orgánico",
