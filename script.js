@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "modal-prex-desc": "Transferencia directa (LATAM).",
             "modal-prex-name": "A nombre de Álvaro",
 
-            "desc-carbonado": "Empuje transparente para limpiar y apretar tu señal antes del amplificador. Claridad de diamante.",
+            "desc-carbonado": "Ideal en contexto de afinaciones bajas hi-gain. Empuje transparente para limpiar y apretar tu señal antes del amplificador. Endurece el ataque y mejora la definición.",
             "feat-carb-1": "+20dB de limpieza pura",
             "feat-carb-2": "Ecualizador de un solo botón",
 
