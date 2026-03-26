@@ -166,9 +166,9 @@ document.addEventListener('DOMContentLoaded', () => {
             "feat-impulsoprimario-1": "Arquitectura coherente",
             "feat-impulsoprimario-2": "Cada pedal cumple su función",
 
-            "desc-onix": "El empuje perfecto de alta ganancia. Aprieta los bajos y define los medios altos con violencia analógica oscura.",
+            "desc-onix": "Inspirado en lo clásico pero ajustado para rigs modernos. Empuje y presencia. Saturación para riffs articulados y leads definidos.",
             "feat-onix-1": "Filtro 'Tight' variable",
-            "feat-onix-2": "Riffs articulados y leads definidos",
+            "feat-onix-2": "Modelador de la señal, recorte controlado de low end, respuesta dinámica natural",
 
             "desc-obsidiana": "Fuzz denso y masivo. Un muro de sonido oscuro e impenetrable para afinaciones extremadamente graves.",
             "feat-obs-1": "Sustain infinito",
@@ -252,9 +252,9 @@ document.addEventListener('DOMContentLoaded', () => {
             "feat-impulsoprimario-1": "Coherent architecture",
             "feat-impulsoprimario-2": "Each pedal serves its purpose",
 
-            "desc-onix": "The perfect high-gain push. Tighten the lows and define the high-mids with dark analog violence.",
+            "desc-onix": "Inspired by the classics, but tuned for modern rigs. Push and presence. Saturation for articulate riffs and defined leads.",
             "feat-onix-1": "Variable 'Tight' filter",
-            "feat-onix-2": "Articulate riffs and defined leads",
+            "feat-onix-2": "Signal sculptor with controlled low-end trimming and a natural dynamic response.",
 
             "desc-obsidiana": "Dense and massive fuzz. A dark and impenetrable wall of sound for extremely low tunings.",
             "feat-obs-1": "Infinite sustain",
