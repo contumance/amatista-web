@@ -244,7 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "modal-prex-desc": "Direct transfer (LATAM region).",
             "modal-prex-name": "In the name of Álvaro",
 
-            "desc-carbonado": "Transparent boost to clean and tighten your signal before the amp. Diamond clarity.",
+            "desc-carbonado": "Ideal for low tunings in high-gain contexts. A transparent push to tighten and clean up your signal before the amplifier. It hardens the attack and enhances definition.",
             "feat-carb-1": "+20dB of pure clean boost",
             "feat-carb-2": "One-knob EQ design",
 

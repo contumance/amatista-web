@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         "+22dB de boost musical y agresivo",
                         "Control 'Pressure' de una perilla",
                         "High Pass filter pre configurado para guitarras modernas",
-                        "Ruta directa de Bypass limpia"
+                        "Mejora la definición sin alterar carácter del amp"
                     ]
                 },
                 en: {
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         "+22dB of aggressive, musical boost",
                         "Single-knob 'Pressure' control",
                         "Pre-configured High Pass filter for modern guitar",
-                        "Direct clean Bypass path"
+                        "Enhance the definition without altering the amp’s character"
                     ]
                 }
             }
