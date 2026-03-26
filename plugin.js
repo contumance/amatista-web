@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     osText: "Solo Windows (macOS próximamente)",
                     title: "Obsidiana Fuzz",
                     family: "Familia Impulso Primario",
-                    description: "Un artefacto no educado para invocar una marea de ruido densa e infranqueable. Obsidiana no es discreto, reacciona y devora frecuencias enteras ofreciendo distorsión no rectificada hasta rectificada estilo octavador, dependiendo de los impulsos que lo ataquen.<br><br>Construcción basada en una etapa limitadora tanh no lineal agresiva. Hecho para Doom, Sludge y Modern Metal masivo.",
+                    description: "Obsidiana no es discreto busca imponer presencia. Base sólida para tonos masivos y densos. Saturación orgánica, abierta con graves profundos y presentes. Muro de sonido y textura con carácter real.<br><br>Construcción basada en una etapa limitadora tanh no lineal agresiva. Hecho para Doom, Sludge y Modern Metal masivo.",
                     features: [
                         "Nivel de caos interactivo e implacable",
                         "Saturación de alta no-linealidad",
@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     osText: "Windows only (macOS coming soon)",
                     title: "Obsidiana Fuzz",
                     family: "Primal Impulse Family",
-                    description: "An unpolite artifact to invoke a dense and impenetrable tide of noise. Obsidiana isn't discreet, it reacts and devours whole frequencies offering unrectified down to rectified octave fuzz style distortion, depending on the impulses attaching it.<br><br>Construction based on an aggressive non-linear tanh limiting stage. Made for Doom, Sludge, and massive Modern Metal.",
+                    description: "Obsidiana isn’t subtle, it aims to dominate the mix. A solid foundation for massive, dense tones. Organic, open saturation with deep, present lows. A wall of sound and texture with real character.<br><br>Construction based on an aggressive non-linear tanh limiting stage. Made for Doom, Sludge, and massive Modern Metal.",
                     features: [
                         "Interactive and unrelenting level of chaos",
                         "High non-linearity saturation",
