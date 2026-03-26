@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     description: "El buque insignia de la marca. Amatista es un Preamp y Power Stage completamente independiente comprimido en el formato de un pedal analógico. Donde la mayoría destripa frecuencias, Amatista esculpe.<br><br>Cuenta con un mando de <strong>Structure</strong> radical: Entre 0 y 0.3 actúa como un amplificador ajustado de Djent. Más allá, la distorsión cambia las reglas y clippea fuertemente simulando un voltaje colapsando por caída de potencia (SAG effect).",
                     features: [
                         "Múltiples etapas de ganancia (Pre y Power)",
-                        "Perilla Structure (DNA): Cambia topología de simetría y headroom",
+                        "Perilla Structure(ADN): Cambia topología de simetría y headroom",
                         "Filtro dinámico De-Fizz integrado",
                         "EQ independiente de Cuerpo (120Hz) y Presencia (3.8kHz)"
                     ]
@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     osText: "Solo Windows (macOS próximamente)",
                     title: "Obsidiana Fuzz",
                     family: "Familia Impulso Primario",
-                    description: "Obsidiana no es discreto busca imponer presencia. Base sólida para tonos masivos y densos. Saturación orgánica, abierta con graves profundos y presentes. Muro de sonido y textura con carácter real.<br><br>Construcción basada en una etapa limitadora tanh no lineal agresiva. Hecho para Doom, Sludge y Modern Metal masivo.",
+                    description: "Obsidiana no es discreto, busca imponer presencia. Base sólida para tonos masivos y densos. Saturación orgánica, abierta con graves profundos y presentes. Muro de sonido y textura con carácter real.<br><br>Construcción basada en una etapa limitadora tanh no lineal agresiva. Hecho para Doom, Sludge y Modern Metal masivo.",
                     features: [
                         "Nivel de caos interactivo e implacable",
                         "Saturación de alta no-linealidad",
