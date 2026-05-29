@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
             osWinOnly: false,
             images: ["assets/carbonado.png"],
             price: "",
-            ctaLink: "https://amatistaefectos.gumroad.com/l/carbonadoboostfree",
+            downloadUrl: "",
             videoId: "gN-I8rfDbWw",
             docsHash: "#carbonado",
             translations: {
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "assets/obsidiana.png"
             ],
             price: "40.00",
-            ctaLink: "https://amatistaefectos.gumroad.com/l/impulsoprimario",
+            downloadUrl: "https://drive.google.com/drive/folders/1Z-aCW543kb4E2qTiFl2D2djY_utCkVoT?usp=drive_link",
             videoId: "NYB2dtHThKo",
             docsHash: "#manuales",
             translations: {
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
             osWinOnly: true,
             images: ["assets/onix.png"],
             price: "17.00",
-            ctaLink: "https://amatistaefectos.gumroad.com/l/onixoverdrive",
+            downloadUrl: "https://drive.google.com/uc?export=download&id=TU_ID_DEL_ARCHIVO_AQUI", // <-- ¡AQUÍ PONES TU ENLACE!
             videoId: "BYmKtey9NVg",
             docsHash: "#onix",
             translations: {
@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
             osWinOnly: true,
             images: ["assets/amatista.png"],
             price: "17.00",
-            ctaLink: "https://amatistaefectos.gumroad.com/l/amatistadistortion",
+            downloadUrl: "",
             videoId: "Xu1i8GOV_Lg",
             docsHash: "#amatista",
             translations: {
@@ -177,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
             osWinOnly: true,
             images: ["assets/obsidiana.png"],
             price: "17.00",
-            ctaLink: "https://amatistaefectos.gumroad.com/l/obsidianafuzz",
+            downloadUrl: "",
             videoId: "aB9-BHBiv2M",
             docsHash: "#obsidiana",
             translations: {
@@ -217,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
             osWinOnly: false,
             images: ["assets/granate.png"],
             price: "",
-            ctaLink: "https://amatistaefectos.gumroad.com/l/granatebasssaturatorfree",
+            downloadUrl: "",
             videoId: "",
             docsHash: "#granate",
             translations: {
@@ -326,7 +326,66 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // CTA & Docs Links
-    document.getElementById('pg-cta-btn').href = data.ctaLink;
+    const ctaBtn = document.getElementById('pg-cta-btn');
+    const paypalContainer = document.getElementById('paypal-button-container');
+    const downloadSection = document.getElementById('pg-download-section');
+    const downloadBtn = document.getElementById('pg-download-btn');
+
+    if (data.price) {
+        // Plugin de pago: Ocultar botón CTA normal y renderizar PayPal
+        ctaBtn.style.display = 'none';
+        paypalContainer.style.display = 'block';
+
+        if (window.paypal) {
+            window.paypal.Buttons({
+                style: {
+                    color: 'blue',
+                    shape: 'rect',
+                    label: 'pay'
+                },
+                createOrder: function (dataOrder, actions) {
+                    return actions.order.create({
+                        purchase_units: [{
+                            description: data.translations[currentLang].title || 'Amatista Plugin',
+                            amount: {
+                                currency_code: 'USD',
+                                value: data.price
+                            }
+                        }]
+                    });
+                },
+                onApprove: function (dataOrder, actions) {
+                    return actions.order.capture().then(function (details) {
+                        // Pago completado con éxito
+                        paypalContainer.style.display = 'none';
+                        downloadSection.style.display = 'block';
+
+                        // Configurar el enlace de descarga apuntando a GitHub Releases (repositorio privado / público)
+                        // NOTA: Para un repositorio privado, este enlace requiere un Personal Access Token
+                        // o debe apuntar a un intermediario (ej. un serverless function).
+                        const downloadUrl = data.downloadUrl || `https://github.com/TU_USUARIO/TU_REPO/releases/download/v1.0/${data.id}.zip`;
+                        downloadBtn.href = downloadUrl;
+
+                        // Opcional: Notificar al usuario por nombre
+                        const successMsg = document.getElementById('pg-success-msg');
+                        if (successMsg) {
+                            successMsg.innerText = `¡Gracias por tu compra, ${details.payer.name.given_name}!`;
+                        }
+                    });
+                },
+                onError: function (err) {
+                    console.error("Error en PayPal:", err);
+                    alert("Ocurrió un problema con el procesador de pago. Por favor, inténtalo más tarde.");
+                }
+            }).render('#paypal-button-container');
+        }
+    } else {
+        // Plugin gratuito: usar el enlace CTA predeterminado (por defecto link de descarga directo)
+        ctaBtn.style.display = 'block';
+        paypalContainer.style.display = 'none';
+        ctaBtn.href = data.downloadUrl || '#';
+    }
+
     if (data.docsHash) {
         document.getElementById('pg-docs-btn').href = `docs.html${data.docsHash}`;
     }
