@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "assets/obsidiana.png"
             ],
             price: "40.00",
-            downloadUrl: "https://drive.google.com/drive/folders/1Z-aCW543kb4E2qTiFl2D2djY_utCkVoT?usp=drive_link",
+            downloadUrl: "",
             videoId: "NYB2dtHThKo",
             docsHash: "#manuales",
             translations: {
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
             osWinOnly: true,
             images: ["assets/onix.png"],
             price: "17.00",
-            downloadUrl: "https://drive.google.com/uc?export=download&id=TU_ID_DEL_ARCHIVO_AQUI", // <-- ¡AQUÍ PONES TU ENLACE!
+            downloadUrl: "",
             videoId: "BYmKtey9NVg",
             docsHash: "#onix",
             translations: {
@@ -355,22 +355,37 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                 },
                 onApprove: function (dataOrder, actions) {
-                    return actions.order.capture().then(function (details) {
-                        // Pago completado con éxito
+                    return fetch('/api/verify-payment', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            orderID: dataOrder.orderID,
+                            pluginId: data.id
+                        })
+                    }).then(function(res) {
+                        return res.json();
+                    }).then(function(verifyData) {
+                        if (verifyData.error) {
+                            alert("Error verificando el pago: " + verifyData.error);
+                            return;
+                        }
+
+                        // Pago completado y verificado con éxito por el backend
                         paypalContainer.style.display = 'none';
                         downloadSection.style.display = 'block';
-
-                        // Configurar el enlace de descarga apuntando a GitHub Releases (repositorio privado / público)
-                        // NOTA: Para un repositorio privado, este enlace requiere un Personal Access Token
-                        // o debe apuntar a un intermediario (ej. un serverless function).
-                        const downloadUrl = data.downloadUrl || `https://github.com/TU_USUARIO/TU_REPO/releases/download/v1.0/${data.id}.zip`;
-                        downloadBtn.href = downloadUrl;
-
-                        // Opcional: Notificar al usuario por nombre
+                        
+                        // Configurar el enlace seguro generado por el backend
+                        downloadBtn.href = verifyData.downloadUrl;
+                        
                         const successMsg = document.getElementById('pg-success-msg');
                         if (successMsg) {
-                            successMsg.innerText = `¡Gracias por tu compra, ${details.payer.name.given_name}!`;
+                            successMsg.innerText = `¡Gracias por tu compra!`;
                         }
+                    }).catch(function(err) {
+                        console.error("Error contactando al backend:", err);
+                        alert("Hubo un error contactando al servidor seguro. Por favor, contacta a soporte.");
                     });
                 },
                 onError: function (err) {
