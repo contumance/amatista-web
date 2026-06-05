@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +11,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <!-- PayPal SDK (Reemplazar 'test' con el Client ID real de PayPal) -->
+    <script
+        src="https://www.paypal.com/sdk/js?client-id=Ae-QWSDr5lW5OZf7eVyXh2JJCToPpMjXiJ7YEtEnqbJx-0gwV4d1k5ZfXC4Yalgp5awa06sU4T-u_8Ig&currency=USD"></script>
 </head>
+
 <body>
     <nav id="navbar" class="navbar scrolled">
         <div class="nav-container">
@@ -32,7 +37,12 @@
                 <a href="index.html#plugins" class="cta-button" data-i18n="nav-cta">Ver Catálogo</a>
             </div>
             <button class="mobile-menu-btn" aria-label="Menu">
-                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="menu-icon"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round" class="menu-icon">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
             </button>
         </div>
     </nav>
@@ -64,9 +74,9 @@
                         <h1 id="pg-title">Plugin Title</h1>
                         <span class="tag" id="pg-badge">Premium</span>
                     </div>
-                    
+
                     <h3 class="family-label" id="pg-family">Familia</h3>
-                    
+
                     <div class="price-wrap" id="pg-price-container">
                         <span class="price-large" id="pg-price">$0.00 USD</span>
                     </div>
@@ -86,13 +96,32 @@
                         <p class="os-alert" id="pg-os-alert" style="font-size: 0.85rem; margin-bottom: 15px;">
                             <!-- OS Alert -->
                         </p>
-                        <a href="#" id="pg-cta-btn" target="_blank" class="btn btn-primary btn-block glow-effect">Adquirir</a>
-                        <a href="docs.html" id="pg-docs-btn" class="btn btn-secondary btn-block" style="margin-top: 10px;" data-i18n="btn-read-manual">Leer manual de usuario</a>
+                        <a href="#" id="pg-cta-btn" target="_blank"
+                            class="btn btn-primary btn-block glow-effect">Adquirir</a>
+
+                        <!-- PayPal Button Container -->
+                        <div id="paypal-button-container" style="display: none; margin-top: 15px;"></div>
+
+                        <!-- Download Section (Hidden until payment success) -->
+                        <div id="pg-download-section"
+                            style="display: none; margin-top: 15px; padding: 20px; background: rgba(30, 215, 96, 0.1); border: 1px solid rgba(30, 215, 96, 0.3); border-radius: var(--radius); text-align: center;">
+                            <h4 style="color: #1ed760; margin-bottom: 15px;" id="pg-success-msg">¡Pago Exitoso!</h4>
+                            <p style="font-size: 0.9rem; color: var(--clr-text-muted); margin-bottom: 15px;">Tu
+                                transacción se ha completado. Haz clic abajo para descargar tus archivos.</p>
+                            <a href="#" id="pg-download-btn" target="_blank"
+                                class="btn btn-primary btn-block glow-effect"
+                                style="background: #1ed760; color: #000; box-shadow: 0 0 15px rgba(30, 215, 96, 0.4);">Descargar
+                                Archivos</a>
+                        </div>
+
+                        <a href="docs.html" id="pg-docs-btn" class="btn btn-secondary btn-block"
+                            style="margin-top: 10px;" data-i18n="btn-read-manual">Leer manual de usuario</a>
                     </div>
                 </div>
             </div>
 
-            <div class="plugin-video-section fade-in-section" id="pg-video-section" style="display: none; margin-top: 6rem;">
+            <div class="plugin-video-section fade-in-section" id="pg-video-section"
+                style="display: none; margin-top: 6rem;">
                 <h2 class="section-title center" data-i18n="media-title">En <span class="highlight">Acción</span></h2>
                 <div class="single-video-container" id="pg-video-container">
                     <!-- Video injected via JS -->
@@ -130,9 +159,20 @@
                     <h4 data-i18n="footer-legal">Legal & Help</h4>
                     <ul>
                         <li><a href="docs.html" data-i18n="footer-docs">Manuales y Docs</a></li>
-                        <li><a href="docs.html#pacto-creativo" data-i18n="footer-pact" class="footer-pact">Pacto Creativo</a></li>
+                        <li><a href="docs.html#pacto-creativo" data-i18n="footer-pact" class="footer-pact">Pacto
+                                Creativo</a></li>
                         <li><a href="#" data-i18n="footer-support">Soporte: amatista.efectos@icloud.com</a></li>
-                        <li><a href="#" class="btn-donate" style="color: var(--clr-amethyst-light); font-weight: 600; display: inline-flex; align-items: center; gap: 6px;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" x2="6" y1="2" y2="4"/><line x1="10" x2="10" y1="2" y2="4"/><line x1="14" x2="14" y1="2" y2="4"/></svg> <span data-i18n="footer-donate">Apoyar a Amatista</span></a></li>
+                        <li><a href="#" class="btn-donate"
+                                style="color: var(--clr-amethyst-light); font-weight: 600; display: inline-flex; align-items: center; gap: 6px;"><svg
+                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M17 8h1a4 4 0 1 1 0 8h-1" />
+                                    <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z" />
+                                    <line x1="6" x2="6" y1="2" y2="4" />
+                                    <line x1="10" x2="10" y1="2" y2="4" />
+                                    <line x1="14" x2="14" y1="2" y2="4" />
+                                </svg> <span data-i18n="footer-donate">Apoyar a Amatista</span></a></li>
                     </ul>
                 </div>
             </div>
@@ -145,4 +185,5 @@
     <script src="script.js"></script>
     <script src="plugin.js"></script>
 </body>
+
 </html>
