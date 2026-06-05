@@ -1,93 +1,121 @@
-# Arquitectura Segura con Vercel y GitHub
+# Manual de Mantenimiento Web - Amatista Efectos
 
-He refactorizado tu página web para que sea 100% segura. Hemos pasado de una arquitectura puramente "Frontend" a una aplicación "Full-stack Serverless" utilizando **Vercel** y la API de **GitHub**.
+Este documento detalla los pasos necesarios para gestionar, mantener y actualizar la tienda web de Amatista Efectos.
 
-## Cambios Realizados
+---
 
-1. **Backend Creado (`api/verify-payment.js`):**
-   - He creado un endpoint seguro en el servidor.
-   - El código en el backend tiene tu nueva "Base de datos segura" (donde se configuran los precios oficiales y los IDs de los archivos de GitHub).
-   - Cuando alguien paga, el servidor contacta a PayPal en secreto y verifica que el usuario no haya alterado el precio en su navegador y que el pago esté `COMPLETED`.
+## 1. Agregar un Nuevo Plugin a la Tienda
 
-2. **Links Expirables Gratuitos:**
-   - He implementado la mejor solución 100% gratuita para enlaces expirables. 
-   - El backend solicita a la API de GitHub descargar el archivo desde tu repositorio **Privado**.
-   - GitHub responde con una URL temporal de Amazon S3 que **expira automáticamente a los 5 minutos**.
-   - El backend le entrega esa URL segura al cliente para la descarga final.
+Para agregar un nuevo producto, debes actualizar tres archivos clave: el frontend (catálogo), la base de datos del plugin y el backend de pagos.
 
-3. **Frontend Limpio (`plugin.js`):**
-   - He borrado todos los `downloadUrl` secretos de los plugins de pago en `plugin.js`.
-   - Modifiqué la lógica del botón de PayPal para que se comunique con `/api/verify-payment`.
+### Paso 1.1: Actualizar la base de datos en el Frontend (`plugin.js`)
+1. Abre el archivo `plugin.js`.
+2. Busca el objeto `pluginDatabase`.
+3. Añade un nuevo bloque para tu plugin siguiendo la estructura de los demás. Ejemplo:
+   ```javascript
+   "nuevo-plugin": {
+       id: "nuevo-plugin",
+       badgeClass: "tag-paid", // o "tag-free"
+       osWinOnly: true,
+       images: ["assets/nuevo-plugin.png"],
+       price: "17.00", // Deja en "" si es gratis
+       downloadUrl: "", // Solo usado para descargas directas gratuitas
+       videoId: "YOUTUBE_VIDEO_ID",
+       docsHash: "#nuevo-plugin",
+       translations: {
+           es: { ... },
+           en: { ... }
+       }
+   }
+   ```
 
-## Pasos para el Despliegue en Vercel
+### Paso 1.2: Agregar la tarjeta al Catálogo (`index.html`)
+1. Abre `index.html` y busca la sección `<div class="plugins-grid" id="guitar-plugins">` (o la pestaña correspondiente).
+2. Copia y pega todo el bloque HTML de un `.plugin-card` existente.
+3. Modifica la imagen, el título, y asegúrate de que el enlace del botón de "Ver más" apunte a tu nuevo ID:
+   `<a href="plugin.html?id=nuevo-plugin" class="btn btn-primary">Ver más</a>`
 
-Sigue estos pasos para poner tu nueva arquitectura segura en producción:
+### Paso 1.3: Registrar el producto en el Backend Seguro (`api/verify-payment.js`)
+1. Abre `api/verify-payment.js`.
+2. Busca el objeto `SECURE_DB` (aproximadamente en la línea 13).
+3. Añade una nueva línea con el ID exacto que usaste en `plugin.js`, su precio oficial y su Asset ID de GitHub:
+   ```javascript
+   "nuevo-plugin": { price: "17.00", githubAssetId: "AQUI_VA_EL_ID" }
+   ```
 
-### 1. Preparar los Archivos en GitHub
-1. Entra a tu cuenta de GitHub y crea un nuevo Repositorio **Privado** (ej. `amatista-releases`).
-2. Sube los archivos `.zip` de tus plugins creando una "Release" en ese repositorio.
-3. Consigue el `Asset ID` de cada `.zip` que subas (puedes usar la API de GitHub o herramientas online para obtener el ID de un asset de una release).
-4. Genera un **Personal Access Token (PAT)** en GitHub con permisos para leer repositorios privados.
+---
 
-### 2. Configurar la Base de Datos Segura
-Abre el archivo `api/verify-payment.js` en tu código local.
-Busca la sección `SECURE_DB` (línea 13) y reemplaza la palabra `"AQUI_TU_ASSET_ID"` por el número de Asset ID de GitHub correspondiente a cada plugin. También confirma que los precios sean correctos.
+## 2. Configurar GitHub Releases y Obtener el Asset ID
 
-### 3. Subir a Vercel
-1. Haz un commit y push de tu código actual (con la carpeta `api/` incluida) a tu repositorio web principal en GitHub (puede ser público).
-2. Entra a [Vercel.com](https://vercel.com) y vincula tu cuenta de GitHub.
-3. Haz clic en "Add New Project" y selecciona el repositorio de tu página web.
-4. En el apartado **Environment Variables**, añade estas variables críticas antes de darle a Deploy:
-   - `PAYPAL_CLIENT_ID`: Tu Client ID de PayPal (Test o Live).
-   - `PAYPAL_CLIENT_SECRET`: Tu llave secreta de PayPal (la consigues en el mismo lugar que el Client ID).
-   - `PAYPAL_ENV`: Escribe `live` o `sandbox` (según qué credenciales pusiste).
-   - `GITHUB_PAT`: El Token de acceso personal que creaste en GitHub.
-   - `GITHUB_OWNER`: Tu nombre de usuario en GitHub.
-   - `GITHUB_REPO`: El nombre de tu repositorio privado (ej. `amatista-releases`).
+Para que los clientes puedan descargar de forma segura, los archivos `.zip` se alojan en tu repositorio privado (`contumance/amatista-releases`).
 
-5. ¡Haz clic en **Deploy**!
+### Paso 2.1: Crear la Release en GitHub
+1. Comprime tu plugin en formato `.zip`.
+2. Ve a tu repositorio privado `amatista-releases` en GitHub.
+3. En el panel derecho, haz clic en **Releases** y luego en **Draft a new release**.
+4. Crea un nuevo **Tag** (por ejemplo, `nuevo-plugin-v1.0.0`).
+5. Ponle un título a la release.
+6. **Importante:** Arrastra y suelta tu archivo `.zip` en el recuadro inferior ("Attach binaries by dropping them here...").
+7. Haz clic en **Publish release**.
 
-> [!NOTE]
-> Una vez desplegado, Vercel compilará automáticamente tu sitio estático y detectará la carpeta `/api/` para convertir el archivo `verify-payment.js` en una Serverless Function lista para usarse de forma segura.
+### Paso 2.2: Obtener el Asset ID usando la Terminal
+Tu backend no lee el nombre del archivo, sino el número identificador único (Asset ID) que GitHub le asignó.
+Abre tu terminal y usa GitHub CLI (`gh`) con este comando, reemplazando `<NOMBRE-DEL-TAG>` por el tag que creaste en el paso 2.1:
 
-## Pruebas Locales
+```bash
+gh api repos/contumance/amatista-releases/releases/tags/<NOMBRE-DEL-TAG> --jq '.assets[] | {id, name}'
+```
 
-Si deseas hacer la prueba local del $1, ahora debes correr el servidor con **Vercel CLI** en lugar de usar Python, ya que Python no sabe interpretar las funciones de backend.
-1. Abre tu terminal.
-2. Escribe `npm i -g vercel` (si tienes Node.js instalado).
-3. Escribe `vercel dev` para levantar el servidor localmente con soporte de backend.
-
-
-
-## Notas practicas
-
-### 1.3 Ejemplos comandos gh
-
-`Alvaro@192 amatista-releases % gh api repos/contumance/amatista-releases/releases/tags/carbonado-v1.2.0 --jq '.assets[] | {id, name}'
-{
-  "id": 433285768,
-  "name": "CarbonadoBoost_1.2.0_Amatista.zip"
-}
-Alvaro@192 amatista-releases % gh api repos/contumance/amatista-releases/releases/tags/onix-overdrive-v1.0.0 --jq '.assets[] | {id, name}'
+**Ejemplo:**
+```bash
+gh api repos/contumance/amatista-releases/releases/tags/onix-overdrive-v1.0.0 --jq '.assets[] | {id, name}'
+```
+**Resultado:**
+```json
 {
   "id": 434434139,
   "name": "OnixOverdrive_1.0.0_Amatista.zip"
 }
-Alvaro@192 amatista-releases % gh api repos/contumance/amatista-releases/releases/tags/amatista-distortion-v1.0.0 --jq '.assets[] | {id, name}'
-{
-  "message": "Not Found",
-  "documentation_url": "https://docs.github.com/rest/releases/releases#get-a-release-by-tag-name",
-  "status": "404"
-}
-gh: Not Found (HTTP 404)
-Alvaro@192 amatista-releases % gh api repos/contumance/amatista-releases/releases/tags/amatista-v1.0.0 --jq '.assets[] | {id, name}' 
-{
-  "id": 434438509,
-  "name": "AmatistaDistortion_1.0.0_Amatista.zip"
-}
-Alvaro@192 amatista-releases % gh api repos/contumance/amatista-releases/releases/tags/obsidiana-v1.0.0 --jq '.assets[] | {id, name}'
-{
-  "id": 434442289,
-  "name": "ObsidianaFuzz_1.0.0_Amatista.zip"
-}
-Alvaro@192 amatista-releases %` 
+```
+8. Copia ese número (`434434139`) y pégalo en el `SECURE_DB` de `api/verify-payment.js`.
+
+---
+
+## 3. Cambiar entre Modo Sandbox (Pruebas) y Modo Live (Producción)
+
+Cuando necesites hacer pruebas sin gastar dinero, debes usar el entorno Sandbox de PayPal. Para salir al público, debes usar el modo Live. Ambos entornos requieren cambiar credenciales en **dos lugares**.
+
+### Paso 3.1: Configuración en el Backend
+Tienes que modificar las variables de entorno de tu servidor. 
+- **En tu computadora (Local):** Se cambian en el archivo `.env`.
+- **En Producción:** Se cambian en el panel de **Vercel** > Project Settings > Environment Variables.
+
+Debes actualizar tres variables según el modo que quieras usar:
+```env
+# MODO SANDBOX (Pruebas)
+PAYPAL_ENV=sandbox
+PAYPAL_CLIENT_ID=TU_CLIENT_ID_DE_SANDBOX
+PAYPAL_CLIENT_SECRET=TU_SECRET_DE_SANDBOX
+
+# MODO LIVE (Producción)
+PAYPAL_ENV=live
+PAYPAL_CLIENT_ID=TU_CLIENT_ID_LIVE_REAL
+PAYPAL_CLIENT_SECRET=TU_SECRET_LIVE_REAL
+```
+
+### Paso 3.2: Configuración en el Frontend (`plugin.html`)
+El SDK de PayPal en la página web también necesita saber en qué modo está trabajando para mostrar la ventana de pago correcta.
+Abre `plugin.html` y busca el `<script>` de PayPal en el `<head>`. Debes cambiar el parámetro `client-id` en la URL para que coincida con el modo que estás usando:
+
+**Para Sandbox:**
+```html
+<script src="https://www.paypal.com/sdk/js?client-id=TU_CLIENT_ID_DE_SANDBOX&currency=USD"></script>
+```
+
+**Para Live (Producción):**
+```html
+<script src="https://www.paypal.com/sdk/js?client-id=TU_CLIENT_ID_LIVE_REAL&currency=USD"></script>
+```
+
+> [!WARNING]
+> Si el Frontend está en modo Sandbox pero el Backend (`.env`) está en modo Live (o viceversa), **las compras fallarán** con un error de verificación al contactar al servidor. Asegúrate siempre de cambiar ambos lugares al mismo tiempo al pasar a producción.

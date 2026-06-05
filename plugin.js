@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
             osWinOnly: false,
             images: ["assets/carbonado.png"],
             price: "",
-            downloadUrl: "",
+            downloadUrl: "https://amatistaefectos.gumroad.com/l/carbonadoboostfree",
             videoId: "gN-I8rfDbWw",
             docsHash: "#carbonado",
             translations: {
@@ -364,9 +364,9 @@ document.addEventListener('DOMContentLoaded', () => {
                             orderID: dataOrder.orderID,
                             pluginId: data.id
                         })
-                    }).then(function(res) {
+                    }).then(function (res) {
                         return res.json();
-                    }).then(function(verifyData) {
+                    }).then(function (verifyData) {
                         if (verifyData.error) {
                             alert("Error verificando el pago: " + verifyData.error);
                             return;
@@ -375,15 +375,15 @@ document.addEventListener('DOMContentLoaded', () => {
                         // Pago completado y verificado con éxito por el backend
                         paypalContainer.style.display = 'none';
                         downloadSection.style.display = 'block';
-                        
+
                         // Configurar el enlace seguro generado por el backend
                         downloadBtn.href = verifyData.downloadUrl;
-                        
+
                         const successMsg = document.getElementById('pg-success-msg');
                         if (successMsg) {
                             successMsg.innerText = `¡Gracias por tu compra!`;
                         }
-                    }).catch(function(err) {
+                    }).catch(function (err) {
                         console.error("Error contactando al backend:", err);
                         alert("Hubo un error contactando al servidor seguro. Por favor, contacta a soporte.");
                     });
