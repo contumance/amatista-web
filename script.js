@@ -264,9 +264,9 @@ document.addEventListener('DOMContentLoaded', () => {
             "feat-ama-1": "Preamp + Power Stage condensed in one pedal",
             "feat-ama-2": "Modern tone, clarity and presence",
 
-            "desc-granate": "Saturación moderna con procesamiento paralelo: mantiene el low-end sólido mientras aporta carácter y textura al rango medio.",
-            "feat-granate-1": "Mezcla controlada (Clean/Drive)",
-            "feat-granate-2": "Definición en afinaciones graves",
+            "desc-granate": "Modern saturation with parallel processing: maintains a solid low-end while adding character and texture to the mid-range.",
+            "feat-granate-1": "Controlled blend (Clean/Drive)",
+            "feat-granate-2": "Definition in low tunings",
 
             "os-win-only": "Windows only (macOS coming soon)",
             "os-win-mac": "Windows / macOS (Unsigned)",
