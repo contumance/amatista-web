@@ -218,7 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
             images: ["assets/granate.png"],
             price: "",
             downloadUrl: "https://amatistaefectos.gumroad.com/l/granatebasssaturatorfree",
-            videoId: "",
+            videoId: "VEYRQPGR5eA",
             docsHash: "#granate",
             translations: {
                 es: {
