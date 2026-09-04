@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "modal-paypal-desc": "Internacional, rápido y seguro.",
             "modal-prex": "Transferencia PREX",
             "modal-prex-desc": "Transferencia directa (LATAM).",
-            "modal-prex-name": "A nombre de Álvaro",
+            "modal-prex-name": "A nombre de Álvaro (Cuenta Uruguay)",
 
             "desc-carbonado": "Ideal en contexto de afinaciones bajas hi-gain. Empuje transparente para limpiar y apretar tu señal antes del amplificador. Endurece el ataque y mejora la definición.",
             "feat-carb-1": "+20dB de limpieza pura",
@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "modal-paypal-desc": "International, fast and secure.",
             "modal-prex": "PREX Transfer",
             "modal-prex-desc": "Direct transfer (LATAM region).",
-            "modal-prex-name": "In the name of Álvaro",
+            "modal-prex-name": "In the name of Álvaro (Uruguay Account)",
 
             "desc-carbonado": "Ideal for low tunings in high-gain contexts. A transparent push to tighten and clean up your signal before the amplifier. It hardens the attack and enhances definition.",
             "feat-carb-1": "+20dB of pure clean boost",
