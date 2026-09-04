@@ -359,7 +359,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div id="plugin-prex-details" class="prex-details-card">
                     <p style="color: var(--clr-text-muted); font-size: 0.9rem; margin-bottom: 15px;">Monto exacto a transferir: <strong style="color: #1ed760; font-size: 1.1rem;">$${prexPrice} USD</strong></p>
-                    <p style="margin-bottom: 5px; color: var(--clr-text-muted); font-size: 0.9rem;">A nombre de Álvaro</p>
+                    <p style="margin-bottom: 5px; color: var(--clr-text-muted); font-size: 0.9rem;">A nombre de Álvaro (Cuenta Uruguay)</p>
                     <h4 style="color: white; letter-spacing: 2px; font-size: 1.4rem;">PREX: 1840539</h4>
                     <p style="color: var(--clr-text-muted); margin-top: 15px; font-size: 0.85rem; line-height: 1.4;">Envía tu comprobante de pago a <strong style="color: #fff;">amatista.efectos@icloud.com</strong> para recibir el plugin de forma manual a mitad de precio.</p>
                 </div>
