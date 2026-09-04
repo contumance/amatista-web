@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Gracias por tu compra! - Amatista Efectos</title>
+    <meta name="description" content="Descarga tu plugin de Amatista Efectos.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+
+<body>
+    <nav id="navbar" class="navbar scrolled">
+        <div class="nav-container">
+            <a href="index.html" class="brand-logo">
+                AMATISTA
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#plugins" data-i18n="nav-plugins">Plugins</a></li>
+                <li><a href="docs.html" data-i18n="nav-docs">Manuales</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div style="height: 100px;"></div>
+
+    <section class="section"
+        style="min-height: 60vh; display: flex; align-items: center; justify-content: center; text-align: center;">
+        <div class="container fade-in-section is-visible">
+            <h1 style="color: var(--clr-amethyst-light); font-size: 3rem; margin-bottom: 20px;">¡Gracias por tu compra!
+            </h1>
+            <p
+                style="font-size: 1.2rem; color: var(--clr-text-muted); margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                Tu transacción se ha completado correctamente. Estamos emocionados de que pruebes tu nuevo plugin.
+            </p>
+
+            <div id="download-box"
+                style="padding: 30px; background: rgba(30, 215, 96, 0.1); border: 1px solid rgba(30, 215, 96, 0.3); border-radius: var(--radius); max-width: 500px; margin: 0 auto; display: none;">
+                <h3 id="plugin-name" style="margin-bottom: 20px; color: white;">Tu descarga está lista</h3>
+                <a href="#" id="download-btn" class="btn btn-primary btn-block glow-effect"
+                    style="background: #1ed760; color: #000; box-shadow: 0 0 15px rgba(30, 215, 96, 0.4); text-decoration: none; display: inline-block;">Descargar
+                    Archivos (.zip)</a>
+            </div>
+
+            <div id="error-box" style="display: none; color: #ff4a4a; margin-top: 20px;">
+                <p>No se pudo identificar el plugin. Si tuviste un problema con tu compra, por favor contáctanos.</p>
+            </div>
+
+            <a href="index.html" class="btn btn-secondary" style="margin-top: 40px; display: inline-block;">Volver al
+                inicio</a>
+        </div>
+    </section>
+
+    <script>
+        // Mapeo simple de descargas para la página de gracias.
+        // IMPORTANTE: Asegúrate de reemplazar estos enlaces con los URLs públicos reales de tus archivos ZIP (ej: Google Drive, Dropbox directo, o GitHub Releases).
+        const downloads = {
+            "impulso-primario": "https://github.com/contumance/amatista-releases/releases/download/impulso-primario-v1.0.0/ImpulsoPrimario.zip",
+            "onix": "https://github.com/contumance/amatista-releases/releases/download/onix-overdrive-v1.0.0/OnixOverdrive_1.0.0_Amatista.zip",
+            "amatista": "https://github.com/contumance/amatista-releases/releases/download/amatista-v1.0.0/AmatistaDistortion_1.0.0_Amatista.zip",
+            "obsidiana": "https://github.com/contumance/amatista-releases/releases/download/obsidiana-v1.0.0/ObsidianaFuzz_1.0.0_Amatista.zip"
+        };
+
+        const names = {
+            "impulso-primario": "Impulso Primario Pack",
+            "onix": "Ónix Overdrive",
+            "amatista": "Amatista Distortion",
+            "obsidiana": "Obsidiana Fuzz"
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const pluginId = urlParams.get('id');
+
+            if (pluginId && downloads[pluginId]) {
+                document.getElementById('download-box').style.display = 'block';
+                document.getElementById('plugin-name').innerText = 'Descargar ' + names[pluginId];
+                document.getElementById('download-btn').href = downloads[pluginId];
+            } else {
+                document.getElementById('error-box').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+
+</html>

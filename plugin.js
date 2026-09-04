@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
             badgeClass: "tag-paid",
             osWinOnly: true,
             images: ["assets/onix.png"],
-            price: "1.00",
+            price: "17.00",
             downloadUrl: "",
             videoId: "BYmKtey9NVg",
             docsHash: "#onix",
@@ -332,68 +332,36 @@ document.addEventListener('DOMContentLoaded', () => {
     const downloadBtn = document.getElementById('pg-download-btn');
 
     if (data.price) {
-        // Plugin de pago: Ocultar botón CTA normal y renderizar PayPal
+        // Plugin de pago: Inyectar formulario de PayPal HTML
         ctaBtn.style.display = 'none';
         paypalContainer.style.display = 'block';
-
-        if (window.paypal) {
-            window.paypal.Buttons({
-                style: {
-                    color: 'blue',
-                    shape: 'rect',
-                    label: 'pay'
-                },
-                createOrder: function (dataOrder, actions) {
-                    return actions.order.create({
-                        purchase_units: [{
-                            description: data.translations[currentLang].title || 'Amatista Plugin',
-                            amount: {
-                                currency_code: 'USD',
-                                value: data.price
-                            }
-                        }]
-                    });
-                },
-                onApprove: function (dataOrder, actions) {
-                    return fetch('/api/verify-payment', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            orderID: dataOrder.orderID,
-                            pluginId: data.id
-                        })
-                    }).then(function (res) {
-                        return res.json();
-                    }).then(function (verifyData) {
-                        if (verifyData.error) {
-                            alert("Error verificando el pago: " + verifyData.error);
-                            return;
-                        }
-
-                        // Pago completado y verificado con éxito por el backend
-                        paypalContainer.style.display = 'none';
-                        downloadSection.style.display = 'block';
-
-                        // Configurar el enlace seguro generado por el backend
-                        downloadBtn.href = verifyData.downloadUrl;
-
-                        const successMsg = document.getElementById('pg-success-msg');
-                        if (successMsg) {
-                            successMsg.innerText = `¡Gracias por tu compra!`;
-                        }
-                    }).catch(function (err) {
-                        console.error("Error contactando al backend:", err);
-                        alert("Hubo un error contactando al servidor seguro. Por favor, contacta a soporte.");
-                    });
-                },
-                onError: function (err) {
-                    console.error("Error en PayPal:", err);
-                    alert("Ocurrió un problema con el procesador de pago. Por favor, inténtalo más tarde.");
-                }
-            }).render('#paypal-button-container');
-        }
+        
+        const langData = data.translations[currentLang];
+        
+        paypalContainer.innerHTML = `
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                <input type="hidden" name="cmd" value="_xclick">
+                <input type="hidden" name="business" value="alvaroh.gonz@gmail.com">
+                <input type="hidden" name="item_name" value="${langData.title}">
+                <input type="hidden" name="amount" value="${data.price}">
+                <input type="hidden" name="currency_code" value="USD">
+                <input type="hidden" name="return" value="${window.location.origin}/gracias.html?id=${data.id}">
+                <input type="hidden" name="cancel_return" value="${window.location.origin}/cancelado.html">
+                <button type="submit" class="btn btn-primary btn-block glow-effect" style="margin-top: 15px;">Comprar — $${data.price} USD</button>
+            </form>
+            <div style="margin-top: 20px; padding: 15px; border: 1px solid rgba(175, 122, 235, 0.3); border-radius: var(--radius); background: rgba(175, 122, 235, 0.05); text-align: center;">
+                <p style="color: var(--clr-amethyst-light); font-weight: 600; margin-bottom: 12px; font-size: 0.9rem;">¿Tienes PREX? (Argentina / Uruguay)</p>
+                <div class="donate-btn-option" style="cursor: pointer; margin-bottom: 0;" onclick="document.getElementById('plugin-prex-details').classList.toggle('show')">
+                    <strong>Transferencia PREX (50% OFF)</strong>
+                    <span>Pago directo y envío de comprobante.</span>
+                </div>
+                <div id="plugin-prex-details" class="prex-details-card">
+                    <p style="margin-bottom: 5px; color: var(--clr-text-muted); font-size: 0.9rem;">A nombre de Álvaro</p>
+                    <h4 style="color: white; letter-spacing: 2px; font-size: 1.4rem;">PREX: 1840539</h4>
+                    <p style="color: var(--clr-text-muted); margin-top: 15px; font-size: 0.85rem; line-height: 1.4;">Envía tu comprobante de pago a <strong style="color: #fff;">amatista.efectos@icloud.com</strong> para recibir el plugin de forma manual.</p>
+                </div>
+            </div>
+        `;
     } else {
         // Plugin gratuito: usar el enlace CTA predeterminado (por defecto link de descarga directo)
         ctaBtn.style.display = 'block';
