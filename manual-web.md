@@ -1,25 +1,26 @@
 # Manual de Mantenimiento Web - Amatista Efectos
 
-Este documento detalla los pasos necesarios para gestionar, mantener y actualizar la tienda web de Amatista Efectos.
+Este documento detalla los pasos para gestionar, mantener y actualizar la tienda web de Amatista Efectos. 
+El flujo actual utiliza una **arquitectura 100% estática sin backend**. Los pagos se realizan mediante formularios nativos de PayPal inyectados desde el frontend, y las descargas se entregan a través de enlaces directos de GitHub Releases.
 
 ---
 
-## 1. Agregar un Nuevo Plugin a la Tienda
+## 1. Agregar un Nuevo Plugin de Pago a la Tienda
 
-Para agregar un nuevo producto, debes actualizar tres archivos clave: el frontend (catálogo), la base de datos del plugin y el backend de pagos.
+Para publicar un nuevo producto, debes seguir estos tres pasos secuenciales:
 
-### Paso 1.1: Actualizar la base de datos en el Frontend (`plugin.js`)
+### Paso 1.1: Registrar el plugin en la Base de Datos (`plugin.js`)
 1. Abre el archivo `plugin.js`.
-2. Busca el objeto `pluginDatabase`.
-3. Añade un nuevo bloque para tu plugin siguiendo la estructura de los demás. Ejemplo:
+2. Busca el diccionario `pluginDatabase`.
+3. Añade un nuevo bloque para tu plugin. El campo `price` es crucial porque define el monto que se cobrará en PayPal.
    ```javascript
    "nuevo-plugin": {
        id: "nuevo-plugin",
-       badgeClass: "tag-paid", // o "tag-free"
-       osWinOnly: true,
+       badgeClass: "tag-paid",
+       osWinOnly: true, // o false si tiene versión mac
        images: ["assets/nuevo-plugin.png"],
-       price: "17.00", // Deja en "" si es gratis
-       downloadUrl: "", // Solo usado para descargas directas gratuitas
+       price: "20.00", // Precio oficial en USD
+       downloadUrl: "", // Deja en blanco para plugins de pago
        videoId: "YOUTUBE_VIDEO_ID",
        docsHash: "#nuevo-plugin",
        translations: {
@@ -29,93 +30,64 @@ Para agregar un nuevo producto, debes actualizar tres archivos clave: el fronten
    }
    ```
 
-### Paso 1.2: Agregar la tarjeta al Catálogo (`index.html`)
-1. Abre `index.html` y busca la sección `<div class="plugins-grid" id="guitar-plugins">` (o la pestaña correspondiente).
-2. Copia y pega todo el bloque HTML de un `.plugin-card` existente.
-3. Modifica la imagen, el título, y asegúrate de que el enlace del botón de "Ver más" apunte a tu nuevo ID:
+### Paso 1.2: Agregar la tarjeta visual al Catálogo (`index.html`)
+1. Abre `index.html` y ve a la sección de plugins (ej. `<div class="plugins-grid" id="guitar-plugins">`).
+2. Copia y pega un bloque HTML existente de otro plugin (como el de Ónix).
+3. Modifica la imagen, título, descripción y, lo más importante, el botón de "Ver más" para que apunte al nuevo ID:
    `<a href="plugin.html?id=nuevo-plugin" class="btn btn-primary">Ver más</a>`
 
-### Paso 1.3: Registrar el producto en el Backend Seguro (`api/verify-payment.js`)
-1. Abre `api/verify-payment.js`.
-2. Busca el objeto `SECURE_DB` (aproximadamente en la línea 13).
-3. Añade una nueva línea con el ID exacto que usaste en `plugin.js`, su precio oficial y su Asset ID de GitHub:
+### Paso 1.3: Habilitar la Descarga (`gracias.html`)
+1. Sube tu archivo `.zip` del plugin a GitHub Releases (en tu repositorio `amatista-releases`) y obtén el enlace directo de descarga pública.
+2. Abre el archivo `gracias.html`.
+3. Baja hasta la sección de scripts y busca el diccionario `downloads`.
+4. Agrega el nuevo enlace:
    ```javascript
-   "nuevo-plugin": { price: "17.00", githubAssetId: "AQUI_VA_EL_ID" }
+   const downloads = {
+       "onix": "https://...",
+       "nuevo-plugin": "https://github.com/contumance/amatista-releases/releases/download/.../nuevo.zip"
+   };
+   ```
+5. Actualiza también el diccionario `names` en el mismo archivo para que se muestre el nombre correcto en pantalla:
+   ```javascript
+   const names = {
+       "onix": "Ónix Overdrive",
+       "nuevo-plugin": "Nombre de mi Nuevo Plugin"
+   };
    ```
 
 ---
 
-## 2. Configurar GitHub Releases y Obtener el Asset ID
+## 2. Cambiar el Precio de un Plugin Existente
 
-Para que los clientes puedan descargar de forma segura, los archivos `.zip` se alojan en tu repositorio privado (`contumance/amatista-releases`).
+Cambiar un precio es sumamente rápido con la arquitectura actual.
 
-### Paso 2.1: Crear la Release en GitHub
-1. Comprime tu plugin en formato `.zip`.
-2. Ve a tu repositorio privado `amatista-releases` en GitHub.
-3. En el panel derecho, haz clic en **Releases** y luego en **Draft a new release**.
-4. Crea un nuevo **Tag** (por ejemplo, `nuevo-plugin-v1.0.0`).
-5. Ponle un título a la release.
-6. **Importante:** Arrastra y suelta tu archivo `.zip` en el recuadro inferior ("Attach binaries by dropping them here...").
-7. Haz clic en **Publish release**.
-
-### Paso 2.2: Obtener el Asset ID usando la Terminal
-Tu backend no lee el nombre del archivo, sino el número identificador único (Asset ID) que GitHub le asignó.
-Abre tu terminal y usa GitHub CLI (`gh`) con este comando, reemplazando `<NOMBRE-DEL-TAG>` por el tag que creaste en el paso 2.1:
-
-```bash
-gh api repos/contumance/amatista-releases/releases/tags/<NOMBRE-DEL-TAG> --jq '.assets[] | {id, name}'
-```
-
-**Ejemplo:**
-```bash
-gh api repos/contumance/amatista-releases/releases/tags/onix-overdrive-v1.0.0 --jq '.assets[] | {id, name}'
-```
-**Resultado:**
-```json
-{
-  "id": 434434139,
-  "name": "OnixOverdrive_1.0.0_Amatista.zip"
-}
-```
-8. Copia ese número (`434434139`) y pégalo en el `SECURE_DB` de `api/verify-payment.js`.
+1. Abre `plugin.js` y busca el plugin en `pluginDatabase`.
+2. Modifica la propiedad `price` al nuevo valor:
+   ```javascript
+   price: "15.00",
+   ```
+3. Guarda el archivo. El sistema actualizará automáticamente la etiqueta de precio en la página web y el monto real que se enviará en el formulario de pago a PayPal.
 
 ---
 
-## 3. Cambiar entre Modo Sandbox (Pruebas) y Modo Live (Producción)
+## 3. Pruebas y Simulaciones (Sandbox)
 
-Cuando necesites hacer pruebas sin gastar dinero, debes usar el entorno Sandbox de PayPal. Para salir al público, debes usar el modo Live. Ambos entornos requieren cambiar credenciales en **dos lugares**.
+Si deseas probar el proceso de pago **sin gastar dinero real**, debes apuntar el formulario al entorno de pruebas (Sandbox) de PayPal temporalmente.
 
-### Paso 3.1: Configuración en el Backend
-Tienes que modificar las variables de entorno de tu servidor. 
-- **En tu computadora (Local):** Se cambian en el archivo `.env`.
-- **En Producción:** Se cambian en el panel de **Vercel** > Project Settings > Environment Variables.
+1. Abre `plugin.js` y busca el texto `<form action="https://www.paypal.com/cgi-bin/webscr"`.
+2. Cambia la URL añadiendo `sandbox`:
+   ```html
+   <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" ...>
+   ```
+3. **Importante:** Al usar Sandbox, debes cambiar también la variable `business` para usar el correo electrónico ficticio de tu cuenta de vendedor en Sandbox (ej: `sb-12345@business.example.com`).
+4. Haz tu prueba local. Cuando termines, **deshaz estos cambios** (vuelve a `www.paypal.com` y usa tu correo real `alvaroh.gonz@gmail.com`).
 
-Debes actualizar tres variables según el modo que quieras usar:
-```env
-# MODO SANDBOX (Pruebas)
-PAYPAL_ENV=sandbox
-PAYPAL_CLIENT_ID=TU_CLIENT_ID_DE_SANDBOX
-PAYPAL_CLIENT_SECRET=TU_SECRET_DE_SANDBOX
+---
 
-# MODO LIVE (Producción)
-PAYPAL_ENV=live
-PAYPAL_CLIENT_ID=TU_CLIENT_ID_LIVE_REAL
-PAYPAL_CLIENT_SECRET=TU_SECRET_LIVE_REAL
-```
+## Consideraciones de Seguridad (Trade-offs)
 
-### Paso 3.2: Configuración en el Frontend (`plugin.html`)
-El SDK de PayPal en la página web también necesita saber en qué modo está trabajando para mostrar la ventana de pago correcta.
-Abre `plugin.html` y busca el `<script>` de PayPal en el `<head>`. Debes cambiar el parámetro `client-id` en la URL para que coincida con el modo que estás usando:
+Al no tener un servidor (backend) verificando que el pago sea válido antes de entregar el archivo, la lógica recae en el flujo natural del usuario:
 
-**Para Sandbox:**
-```html
-<script src="https://www.paypal.com/sdk/js?client-id=TU_CLIENT_ID_DE_SANDBOX&currency=USD"></script>
-```
-
-**Para Live (Producción):**
-```html
-<script src="https://www.paypal.com/sdk/js?client-id=TU_CLIENT_ID_LIVE_REAL&currency=USD"></script>
-```
-
-> [!WARNING]
-> Si el Frontend está en modo Sandbox pero el Backend (`.env`) está en modo Live (o viceversa), **las compras fallarán** con un error de verificación al contactar al servidor. Asegúrate siempre de cambiar ambos lugares al mismo tiempo al pasar a producción.
+- **Redirección de PayPal:** PayPal garantiza que el usuario solo llegará a `gracias.html` si completó exitosamente un pago.
+- **Transparencia:** Si alguien inspecciona el código fuente de `gracias.html` (Ver código fuente), podrá leer los enlaces directos a tus archivos `.zip` en GitHub.
+- **Beneficio:** Esta arquitectura reduce a cero tus costos de servidor, elimina mantenimientos complejos de backend, dependencias (`npm`, APIs) y asegura tiempos de respuesta instantáneos al estar alojado en GitHub Pages. Recomendado fuertemente para volumen de ventas inicial o intermedio en software indie.
