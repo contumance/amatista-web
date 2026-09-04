@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
             badgeClass: "tag-paid",
             osWinOnly: true,
             images: ["assets/onix.png"],
-            price: "17.00",
+            price: "1.00",
             downloadUrl: "",
             videoId: "BYmKtey9NVg",
             docsHash: "#onix",

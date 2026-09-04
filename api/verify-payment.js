@@ -12,7 +12,7 @@ export default async function handler(req, res) {
   // Base de datos segura en el backend
   const SECURE_DB = {
     "impulso-primario": { price: "40.00", githubAssetId: "434469762" }, //AQUI_TU_ASSET_ID
-    "onix": { price: "17.00", githubAssetId: "434434139" }, //AQUI_TU_ASSET_ID
+    "onix": { price: "1.00", githubAssetId: "434434139" }, //AQUI_TU_ASSET_ID
     "amatista": { price: "17.00", githubAssetId: "434438509" }, //AQUI_TU_ASSET_ID
     "obsidiana": { price: "17.00", githubAssetId: "434442289" } //AQUI_TU_ASSET_ID
   };
