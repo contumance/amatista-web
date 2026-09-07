@@ -36,15 +36,17 @@ Para publicar un nuevo producto, debes seguir estos tres pasos secuenciales:
 3. Modifica la imagen, título, descripción y, lo más importante, el botón de "Ver más" para que apunte al nuevo ID:
    `<a href="plugin.html?id=nuevo-plugin" class="btn btn-primary">Ver más</a>`
 
-### Paso 1.3: Habilitar la Descarga (`gracias.html`)
+### Paso 1.3: Habilitar la Descarga Ofuscada (`gracias.html`)
 1. Sube tu archivo `.zip` del plugin a GitHub Releases (en tu repositorio `amatista-releases`) y obtén el enlace directo de descarga pública.
-2. Abre el archivo `gracias.html`.
-3. Baja hasta la sección de scripts y busca el diccionario `downloads`.
-4. Agrega el nuevo enlace:
+2. **Importante:** Para evitar que cualquiera lea el enlace en el código fuente, debes ofuscarlo a **Base64**. Abre la consola de tu navegador (F12 > Console) y escribe:
+   `btoa("TU_ENLACE_DE_GITHUB_AQUI")`
+3. Copia el resultado encriptado (ej: `aHR0cHM...==`).
+4. Abre el archivo `gracias.html`, baja hasta la sección de scripts y busca el diccionario `downloads`.
+5. Agrega el nuevo enlace ofuscado:
    ```javascript
    const downloads = {
-       "onix": "https://...",
-       "nuevo-plugin": "https://github.com/contumance/amatista-releases/releases/download/.../nuevo.zip"
+       "onix": "aHR0cHM6Ly...",
+       "nuevo-plugin": "TU_ENLACE_BASE64_AQUI"
    };
    ```
 5. Actualiza también el diccionario `names` en el mismo archivo para que se muestre el nombre correcto en pantalla:
@@ -68,19 +70,33 @@ Cambiar un precio es sumamente rápido con la arquitectura actual.
    ```
 3. Guarda el archivo. El sistema actualizará automáticamente la etiqueta de precio en la página web y el monto real que se enviará en el formulario de pago a PayPal.
 
----
+## 3. Configuración de la Cuenta de PayPal (Producción vs Pruebas)
 
-## 3. Pruebas y Simulaciones (Sandbox)
+Actualmente, **la tienda está configurada en modo REAL (Producción)**. Cualquier persona que haga clic en comprar, enviará dinero real a la cuenta configurada.
 
-Si deseas probar el proceso de pago **sin gastar dinero real**, debes apuntar el formulario al entorno de pruebas (Sandbox) de PayPal temporalmente.
+### 3.1 Cambiar la cuenta que recibe el dinero
+Si necesitas cambiar a qué cuenta de PayPal llega el dinero de las ventas:
+1. Abre el archivo `plugin.js`.
+2. Busca la línea (aprox. línea 345) que tiene el campo `business`:
+   ```html
+   <input type="hidden" name="business" value="nathiamaro@gmail.com">
+   ```
+3. Reemplaza ese correo electrónico por el nuevo correo de PayPal. **Asegúrate de que sea una cuenta válida que pueda recibir pagos.**
 
-1. Abre `plugin.js` y busca el texto `<form action="https://www.paypal.com/cgi-bin/webscr"`.
-2. Cambia la URL añadiendo `sandbox`:
+### 3.2 Hacer pruebas sin gastar dinero (Modo Sandbox)
+Si vas a realizar modificaciones estructurales y quieres probar el flujo de pago sin usar una tarjeta de crédito real, debes usar el entorno de pruebas de PayPal (Sandbox).
+
+1. En `plugin.js`, busca la acción del formulario:
+   ```html
+   <form action="https://www.paypal.com/cgi-bin/webscr" ...>
+   ```
+2. Modifica la URL para añadir la palabra `sandbox`:
    ```html
    <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" ...>
    ```
-3. **Importante:** Al usar Sandbox, debes cambiar también la variable `business` para usar el correo electrónico ficticio de tu cuenta de vendedor en Sandbox (ej: `sb-12345@business.example.com`).
-4. Haz tu prueba local. Cuando termines, **deshaz estos cambios** (vuelve a `www.paypal.com` y usa tu correo real `alvaroh.gonz@gmail.com`).
+3. **Importante:** Al usar Sandbox, el correo de la variable `business` (paso 3.1) **no puede ser tu correo real**. Debes usar un correo ficticio de "Vendedor" proporcionado por el portal de desarrolladores de PayPal (ej: `sb-xxx@business.example.com`).
+4. Haz tus pruebas locales usando una cuenta de "Comprador" ficticia de Sandbox.
+5. **CRÍTICO:** Cuando termines las pruebas, **debes deshacer estos cambios**. Vuelve a colocar la URL real (`www.paypal.com`) y el correo real de la tienda (ej: `nathiamaro@gmail.com`) antes de subir los cambios a GitHub. De lo contrario, los clientes no podrán comprar.
 
 ---
 
