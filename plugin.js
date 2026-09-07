@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
             badgeClass: "tag-paid",
             osWinOnly: true,
             images: ["assets/onix.png"],
-            price: "17.00",
+            price: "2.00",
             downloadUrl: "",
             videoId: "BYmKtey9NVg",
             docsHash: "#onix",
@@ -339,11 +339,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const langData = data.translations[currentLang];
 
         const prexPrice = (parseFloat(data.price) / 2).toFixed(2);
-        
+
         paypalContainer.innerHTML = `
             <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
                 <input type="hidden" name="cmd" value="_xclick">
-                <input type="hidden" name="business" value="alvaroh.gonz@gmail.com">
+                <input type="hidden" name="business" value="nathiamaro@gmail.com">
                 <input type="hidden" name="item_name" value="${langData.title}">
                 <input type="hidden" name="amount" value="${data.price}">
                 <input type="hidden" name="currency_code" value="USD">
