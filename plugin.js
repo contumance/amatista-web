@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "assets/obsidiana.png"
             ],
             price: "40.00",
+            gumroadUrl: "https://amatistaefectos.gumroad.com/l/impulsoprimario",
             downloadUrl: "",
             videoId: "NYB2dtHThKo",
             docsHash: "#manuales",
@@ -96,7 +97,8 @@ document.addEventListener('DOMContentLoaded', () => {
             badgeClass: "tag-paid",
             osWinOnly: true,
             images: ["assets/onix.png"],
-            price: "2.00",
+            price: "17.00",
+            gumroadUrl: "https://amatistaefectos.gumroad.com/l/onixoverdrive",
             downloadUrl: "",
             videoId: "BYmKtey9NVg",
             docsHash: "#onix",
@@ -137,6 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
             osWinOnly: true,
             images: ["assets/amatista.png"],
             price: "17.00",
+            gumroadUrl: "https://amatistaefectos.gumroad.com/l/amatistadistortion",
             downloadUrl: "",
             videoId: "Xu1i8GOV_Lg",
             docsHash: "#amatista",
@@ -177,6 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
             osWinOnly: true,
             images: ["assets/obsidiana.png"],
             price: "17.00",
+            gumroadUrl: "https://amatistaefectos.gumroad.com/l/obsidianafuzz",
             downloadUrl: "",
             videoId: "aB9-BHBiv2M",
             docsHash: "#obsidiana",
@@ -327,30 +331,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // CTA & Docs Links
     const ctaBtn = document.getElementById('pg-cta-btn');
-    const paypalContainer = document.getElementById('paypal-button-container');
+    const purchaseContainer = document.getElementById('purchase-container');
     const downloadSection = document.getElementById('pg-download-section');
     const downloadBtn = document.getElementById('pg-download-btn');
 
     if (data.price) {
-        // Plugin de pago: Inyectar formulario de PayPal HTML
+        // Plugin de pago: Inyectar formulario HTML
         ctaBtn.style.display = 'none';
-        paypalContainer.style.display = 'block';
+        purchaseContainer.style.display = 'block';
 
         const langData = data.translations[currentLang];
 
         const prexPrice = (parseFloat(data.price) / 2).toFixed(2);
 
-        paypalContainer.innerHTML = `
-            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                <input type="hidden" name="cmd" value="_xclick">
-                <input type="hidden" name="business" value="nathiamaro@gmail.com">
-                <input type="hidden" name="item_name" value="${langData.title}">
-                <input type="hidden" name="amount" value="${data.price}">
-                <input type="hidden" name="currency_code" value="USD">
-                <input type="hidden" name="return" value="${window.location.origin}/gracias.html?id=${data.id}">
-                <input type="hidden" name="cancel_return" value="${window.location.origin}/cancelado.html">
-                <button type="submit" class="btn btn-primary btn-block glow-effect" style="margin-top: 15px;">Comprar — $${data.price} USD</button>
-            </form>
+        purchaseContainer.innerHTML = `
+            <a href="${data.gumroadUrl}" target="_blank" class="btn btn-primary btn-block glow-effect" style="margin-top: 15px; display: inline-block; text-align: center; text-decoration: none;">Comprar en Gumroad — $${data.price} USD</a>
+            
             <div style="margin-top: 20px; padding: 15px; border: 1px solid rgba(175, 122, 235, 0.3); border-radius: var(--radius); background: rgba(175, 122, 235, 0.05); text-align: center;">
                 <p style="color: var(--clr-amethyst-light); font-weight: 600; margin-bottom: 12px; font-size: 0.9rem;">¿Tienes PREX? (Argentina / Uruguay)</p>
                 <div class="donate-btn-option" style="cursor: pointer; margin-bottom: 0;" onclick="document.getElementById('plugin-prex-details').classList.toggle('show')">
@@ -368,7 +364,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         // Plugin gratuito: usar el enlace CTA predeterminado (por defecto link de descarga directo)
         ctaBtn.style.display = 'block';
-        paypalContainer.style.display = 'none';
+        purchaseContainer.style.display = 'none';
         ctaBtn.href = data.downloadUrl || '#';
     }
 
