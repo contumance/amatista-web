@@ -152,8 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             "modal-donate-title": "Apoyar el Proyecto",
             "modal-donate-desc": "Tu apoyo me permite seguir desarrollando herramientas de audio de alta calidad y mantener muchas de ellas accesibles.",
-            "modal-paypal": "Donar vía PayPal",
-            "modal-paypal-desc": "Internacional, rápido y seguro.",
+
             "modal-prex": "Transferencia PREX",
             "modal-prex-desc": "Transferencia directa (LATAM).",
             "modal-prex-name": "A nombre de Álvaro (Cuenta Uruguay)",
@@ -238,8 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             "modal-donate-title": "Support the Project",
             "modal-donate-desc": "Your support allows me to continue developing high-quality audio tools and keeping many of them accessible.",
-            "modal-paypal": "Donate via PayPal",
-            "modal-paypal-desc": "International, fast and secure.",
+
             "modal-prex": "PREX Transfer",
             "modal-prex-desc": "Direct transfer (LATAM region).",
             "modal-prex-name": "In the name of Álvaro (Uruguay Account)",
@@ -550,10 +548,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p data-i18n="modal-donate-desc">Tu apoyo me permite seguir desarrollando herramientas de audio de alta calidad y mantener muchas de ellas accesibles.</p>
                     </div>
                     <div class="donation-options">
-                        <a href="https://paypal.me/alvagonz" target="_blank" class="donate-btn-option">
-                            <strong data-i18n="modal-paypal">Donar vía PayPal</strong>
-                            <span data-i18n="modal-paypal-desc">Internacional, rápido y seguro.</span>
-                        </a>
+
                         <div class="donate-btn-option" id="btn-prex-trigger">
                             <strong data-i18n="modal-prex">Transferencia PREX</strong>
                             <span data-i18n="modal-prex-desc">Transferencia directa (LATAM).</span>
