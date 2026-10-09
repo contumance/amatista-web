@@ -3,6 +3,11 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Auto-navigate to plugins section on start
+    if ((window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || window.location.pathname.endsWith('amatista-web/')) && !window.location.hash) {
+        window.location.replace(window.location.pathname + '#plugins');
+    }
+
     // 1. Sticky Navbar Effect with Glassmorphism switch
     const navbar = document.getElementById('navbar');
 
@@ -19,15 +24,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (mobileMenuBtn && navbar) {
         mobileMenuBtn.addEventListener('click', () => {
             navbar.classList.toggle('nav-active');
-            
+
             // Reemplazar icono si está activo o no
-            if(navbar.classList.contains('nav-active')) {
+            if (navbar.classList.contains('nav-active')) {
                 mobileMenuBtn.innerHTML = '<svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>';
             } else {
                 mobileMenuBtn.innerHTML = '<svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>';
             }
         });
-        
+
         const navItems = document.querySelectorAll('.nav-links a, .nav-right a');
         navItems.forEach(item => {
             item.addEventListener('click', () => {
@@ -64,10 +69,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const targetId = this.getAttribute('href');
-            
+
             // Si el href cambió dinámicamente y ya no es un ancla, no hacemos nada
             if (!targetId || !targetId.startsWith('#')) return;
-            
+
             e.preventDefault();
             if (targetId === '#') return;
 
@@ -113,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // correo
-    const EMAIL_ADDRESS = "amatista.efectos@icloud.com";
+    const EMAIL_ADDRESS = "orders@amatista-efectos.online";
 
     // 5. Language Switcher Logic
     const translations = {
@@ -126,19 +131,21 @@ document.addEventListener('DOMContentLoaded', () => {
             "nav-pact": "Pacto Creativo",
             // Hero
             "hero-title": "SONIDO <span class=\"highlight\">EN ESTADO PURO</span>",
-            "hero-subtitle": "Efectos digitales boutique diseñados con una obsesión por el detalle y estética minimalista. Creamos herramientas de alta resolución para el músico contemporáneo, logrando una sensación sonora inspirada en hardware real para definir tonos modernos y afinaciones bajas con precisión absoluta.",
+            "hero-subtitle": "Herramientas precisas inspiradas en hardware real, diseñadas para esculpir tonos modernos y afinaciones bajas definidas.",
             "hero-btn-primary": "Descubrir Plugins",
             "hero-btn-secondary": "Conocer la Marca",
             // About
             "about-title": "Sobre <span class=\"highlight\">Amatista</span>",
-            "about-p1": "¡Hola, soy Álvaro! Desde Uruguay, combino mi profesión con mi mayor pasión: la <strong>música</strong> y, muy especialmente, el <strong>metal</strong>. Como músico aficionado, sé de primera mano lo obsesivos que podemos llegar a ser en la búsqueda de ese tono perfecto para nuestros instrumentos.",
-            "about-p2": "De la intersección de estos dos mundos —<strong>el desarrollo de software y la música</strong>— surge <strong>Amatista Efectos</strong>. Me sumergí en el apasionante mundo del <strong>DSP</strong> (Digital Signal Processing) con un objetivo claro: emular la física del sonido al detalle y crear herramientas diseñadas para la exigencia de este género. Más que simples líneas de código, estos plugins son mi forma de compartir mi visión sobre estas herramientas musicales.",
-            "about-p3": "Este proyecto no evoluciona en solitario. Quiero agradecer de corazón a todos los <strong>músicos y testers</strong> que colaboran actualmente y a los que lo harán en el futuro, probando los plugins. Su feedback constante y su nivel de exigencia son el motor que hace posible la mejora continua, asegurando que cada actualización suene y se sienta mejor que la anterior.",
+            "about-p1": "¡Hola! Soy Álvaro, creador de Amatista Efectos. Desde Montevideo, Uruguay, combino mi experiencia en el desarrollo de sistemas con mi mayor pasión: el tono de la guitarra eléctrica en el metal. Como músico, comprendo la dedicación y el perfeccionismo que requiere la búsqueda del tono ideal.",
+            "about-p2": "Amatista Efectos nace en la intersección de estos dos mundos, impulsado por una necesidad personal: crear las herramientas que yo mismo buscaba como músico. A través del Procesamiento Digital de Señales (DSP), encontré el medio exacto para materializar esas ideas en soluciones diseñadas para las exigencias de la producción actual. Más que algoritmos, estos plugins representan mi visión sobre el tono moderno.",
+            "about-p3": "La evolución de este proyecto no ocurre en solitario. Agradezco profundamente a los músicos y testers que colaboran en cada desarrollo. Su nivel de exigencia y feedback constante son el motor de nuestra mejora continua, garantizando que cada herramienta ofrezca una experiencia sonora superior.",
             // Plugins
             "plugins-title": "Nuestros <span class=\"highlight\">Plugins</span>",
             "tab-guitar": "Guitarra",
             "tab-bass": "Bajo",
             "tab-collab": "Colaboraciones",
+            "tab-free-title": "Gratis",
+            "family-collab": "Colaboraciones <span class=\"highlight\">Especiales</span>",
             "family-impulso": "Familia <span class=\"highlight\">Impulso Primario</span>",
             "family-frecuencia-base": "Familia <span class=\"highlight\">Frecuencia Base</span>",
             "tag-free": "Gratis",
@@ -177,12 +184,16 @@ document.addEventListener('DOMContentLoaded', () => {
             "feat-ama-1": "Preamp + Power Stage condensado en un pedal",
             "feat-ama-2": "Tono moderno, claridad y presencia",
 
+            "desc-syko": "La colaboración definitiva con SYKO Cabs. Un ecosistema completo, 4 amps, cabs, efectos y un set de herramientas suficiente para construir tu sonido moderno de guitarras, tanto en estudio como en vivo.",
+            "feat-syko-1": "Suite completa (Plugin y Standalone)",
+            "feat-syko-2": "Versatilidad total desde tonos cleans hasta highgain",
+
             "os-win-only": "Solo Windows (macOS próximamente)",
             "os-win-mac": "Windows / macOS (Unsigned)",
 
             "coming-soon-title": "Próximamente",
             "coming-soon-bass": "Estamos forjando las herramientas de frecuencias subgraves.",
-            "coming-soon-collab": "Alianzas con artistas del metal moderno en camino.",
+            "coming-soon-collab": "Alianzas con artistas referentes del sonido moderno en camino.",
 
             // Media
             "media-title": "En <span class=\"highlight\">Acción</span>",
@@ -211,20 +222,22 @@ document.addEventListener('DOMContentLoaded', () => {
             "nav-pact": "Creative Pact",
             // Hero
             "hero-title": "PURE <span class=\"highlight\">SOUND</span>",
-            "hero-subtitle": "Boutique digital effects designed with an obsession for detail and minimalist aesthetics. We create high-resolution tools for the contemporary musician, achieving a hardware-inspired sonic feel to define modern tones and low tunings with absolute precision.",
+            "hero-subtitle": "Precise tools inspired by real hardware, designed to sculpt modern tones and low tunings without compromise.",
             "hero-btn-primary": "Discover Plugins",
             "hero-btn-secondary": "Know the Brand",
             // About
             "about-title": "About <span class=\"highlight\">Amatista</span>",
-            "about-p1": "Hi, I'm Álvaro! From <strong>Uruguay</strong>, I combine my profession with my greatest passion: <strong>music</strong> and, very especially, <strong>metal</strong>. As a musician amateur, I know firsthand how obsessive we can get when searching for that perfect tone for our instruments.",
-            "about-p2": "To unite these two worlds—<strong>software development and music</strong>—I created <strong>Amatista Efectos</strong>. What started as a huge technical challenge led me to dive deep into <strong>DSP (Digital Signal Processing)</strong> with a clear goal: to emulate the physics of sound in detail and create tools designed specifically for the demands of this genre. More than just lines of code, these plugins are my way of sharing the tools I always wanted with other musicians.",
-            "about-p3": "This project doesn't evolve alone. I want to sincerely thank all the <strong>musicians and testers</strong> who currently collaborate and those who will do so in the future by testing the plugins. Your constant feedback and high standards are the driving force behind continuous improvement, ensuring that each update sounds and feels better than the last.",
+            "about-p1": "Hello! I'm Álvaro, creator of Amatista Efectos. From Montevideo, Uruguay, I combine my experience in systems development with my greatest passion: electric guitar tone in metal. As a musician, I understand the dedication and perfectionism required in the search for the ideal tone.",
+            "about-p2": "Amatista Efectos is born at the intersection of these two worlds, driven by a personal need: to create the tools I myself was looking for as a musician. Through Digital Signal Processing (DSP), I found the exact medium to materialize those ideas into solutions designed for the demands of current production. More than just algorithms, these plugins represent my vision of modern tone.",
+            "about-p3": "The evolution of this project does not happen alone. I deeply thank the musicians and testers who collaborate on each development. Their high standards and constant feedback are the engine of our continuous improvement, ensuring that every tool offers a superior sonic experience.",
             // Plugins
             "plugins-title": "Our <span class=\"highlight\">Plugins</span>",
             "tab-guitar": "Guitar",
             "tab-bass": "Bass",
             "tab-collab": "Collaborations",
-            "family-impulso": "Family <span class=\"highlight\">Primal Impulse</span>",
+            "tab-free-title": "Free",
+            "family-collab": "Special <span class=\"highlight\">Collaborations</span>",
+            "family-impulso": "Family <span class=\"highlight\">Impulso Primario</span>",
             "family-frecuencia-base": "Family <span class=\"highlight\">Frecuencia Base</span>",
             "tag-free": "Free",
             "tag-paid": "Premium",
@@ -246,7 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "feat-carb-1": "+20dB of pure clean boost",
             "feat-carb-2": "One-knob EQ design",
 
-            "desc-impulsoprimario": "Primal Impulse is the AMATISTA gain ecosystem, with a modern and versatile approach.",
+            "desc-impulsoprimario": "Impulso Primario is the AMATISTA gain ecosystem, with a modern and versatile approach.",
             "feat-impulsoprimario-1": "Coherent architecture",
             "feat-impulsoprimario-2": "Each pedal serves its purpose",
 
@@ -266,12 +279,16 @@ document.addEventListener('DOMContentLoaded', () => {
             "feat-granate-1": "Controlled blend (Clean/Drive)",
             "feat-granate-2": "Definition in low tunings",
 
+            "desc-syko": "The ultimate collaboration with SYKO Cabs. A complete ecosystem, 4 amps, cabs, effects and an essential toolset to build your modern guitar tone, both in the studio and live.",
+            "feat-syko-1": "Complete suite (Plugin and Standalone)",
+            "feat-syko-2": "Total versatility from clean tones to high gain",
+
             "os-win-only": "Windows only (macOS coming soon)",
             "os-win-mac": "Windows / macOS (Unsigned)",
 
             "coming-soon-title": "Coming Soon",
             "coming-soon-bass": "We are forging the sub-bass frequency tools.",
-            "coming-soon-collab": "Alliances with modern metal artists on the way.",
+            "coming-soon-collab": "Alliances with modern guitar tone artists on the way.",
 
             // Media
             "media-title": "In <span class=\"highlight\">Action</span>",

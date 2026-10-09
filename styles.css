@@ -82,6 +82,10 @@ img {
     padding: 10rem 0;
 }
 
+.plugins-section {
+    padding-top: 5rem;
+}
+
 .section-title {
     font-size: 2.5rem;
     font-weight: 300;
@@ -340,8 +344,8 @@ strong {
    ========================================= */
 .hero {
     position: relative;
-    height: 100vh;
-    min-height: 700px;
+    height: 75vh;
+    min-height: 600px;
     display: flex;
     align-items: center;
     justify-content: center;

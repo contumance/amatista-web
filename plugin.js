@@ -3,6 +3,47 @@ document.addEventListener('DOMContentLoaded', () => {
     const pluginId = urlParams.get('id');
 
     const pluginDatabase = {
+        "syko-one": {
+            id: "syko-one",
+            badgeClass: "tag-paid",
+            osWinOnly: true,
+            images: ["assets/sykoOne.png", "assets/sykoOne_cab.png", "assets/sykoOne_pedalboard.png", "assets/sykoOne_purple_amp.png", "assets/sykoOne_midiController.png"],
+            price: "99.00",
+            gumroadUrl: "https://amatistaefectos.gumroad.com/",
+            downloadUrl: "",
+            videoId: "",
+            docsHash: "#sykoone",
+            translations: {
+                es: {
+                    badge: "Premium",
+                    ctaText: "Adquirir",
+                    osText: "Solo Windows (macOS próximamente)",
+                    title: "SYKO One",
+                    family: "Colaboraciones Especiales",
+                    description: "La colaboración definitiva con SYKO Cabs. Un ecosistema completo, 4 amps, cabs, efectos y un set de herramientas suficiente para construir tu sonido moderno de guitarras, tanto en estudio como en vivo.",
+                    features: [
+                        "Suite completa (Plugin y Standalone)",
+                        "Versatilidad total desde tonos cleans hasta highgain",
+                        "Tonos optimizados para mezcla y directo",
+                        "Respuesta ultra-dinámica"
+                    ]
+                },
+                en: {
+                    badge: "Premium",
+                    ctaText: "Get it",
+                    osText: "Windows only (macOS coming soon)",
+                    title: "SYKO One",
+                    family: "Special Collaborations",
+                    description: "The ultimate collaboration with SYKO Cabs. A complete ecosystem, 4 amps, cabs, effects and an essential toolset to build your modern guitar tone, both in the studio and live.",
+                    features: [
+                        "Complete suite (Plugin and Standalone)",
+                        "Total versatility from clean tones to high gain",
+                        "Optimized tones for mix and live performances",
+                        "Ultra-dynamic response"
+                    ]
+                }
+            }
+        },
         "carbonado": {
             id: "carbonado",
             badgeClass: "tag-free",
@@ -32,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     ctaText: "Download Free",
                     osText: "Windows / macOS (Unsigned)",
                     title: "Carbonado Boost",
-                    family: "Primal Impulse Family",
+                    family: "Impulso Primario Family",
                     description: "Carbonado is a fast, aggressive booster designed to push whatever comes next. It doesn't color unnecessarily. It just pushes and clarifies the signal.<br><br><strong>What happens inside</strong><br>2x Oversampling to avoid artifacts, Tightening (High Pass filter ~100Hz) applied before the gain stage, followed by an op-amp style saturation simulating real electrical limits at high pressures.",
                     features: [
                         "+22dB of aggressive, musical boost",
@@ -70,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     features: [
                         "4 herramientas de ganancia en resoluciones altas (2x/4x Oversampling)",
                         "Carbonado: Boost estricto y claro",
-                        "Ónix: Overdrive enfocado para Metal/Djent",
+                        "Ónix: Overdrive enfocado para sonido moderno y afinaciones bajas",
                         "Amatista: Preamplificación cortante y articulada",
                         "Obsidiana: Caos masivo para tunings bajos"
                     ]
@@ -79,13 +120,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     badge: "Premium",
                     ctaText: "Get it",
                     osText: "Windows only (macOS coming soon)",
-                    title: "Primal Impulse Pack",
+                    title: "Impulso Primario Pack",
                     family: "Bundle",
                     description: "This bundle includes the complete AMATISTA gain suite: <strong>Carbonado Boost, Ónix Overdrive, Amatista Distortion, and Obsidiana Fuzz.</strong><br><br>Designed as a natural progression of sound, where each element redefines the limit of the other. It is not a simple collection of effects; it is an ecosystem created under the visual and auditory philosophy of the brand to cover the entire modern and experimental gain spectrum.",
                     features: [
                         "4 gain tools in high resolutions (2x/4x Oversampling)",
                         "Carbonado: Strict and clear boost",
-                        "Ónix: Focused overdrive for Metal/Djent",
+                        "Ónix: Focused overdrive for modern tone and low tunings",
                         "Amatista: Cutting and articulate pre-amplification",
                         "Obsidiana: Massive chaos for low tunings"
                     ]
@@ -122,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     ctaText: "Get it",
                     osText: "Windows only (macOS coming soon)",
                     title: "Ónix Overdrive",
-                    family: "Primal Impulse Family",
+                    family: "Impulso Primario Family",
                     description: "Ónix is the precise tool for tightening high-gain amplifiers in modern contexts. It tightens the lows, adds bite to the high-mids, and injects exactly the right amount of aggression without blurring the outcome.<br><br>Unlike classic overdrives, Ónix possesses a Clean-Overdrive topology (dynamic Clean-blend) asymmetrized in combination with a Mid-Boost filter tuned to ~720Hz giving the guitar extreme articulation.",
                     features: [
                         "Double filtering layer: Bass Pre-shaping and mid injection",
@@ -163,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     ctaText: "Get it",
                     osText: "Windows only (macOS coming soon)",
                     title: "Amatista Distortion",
-                    family: "Primal Impulse Family",
+                    family: "Impulso Primario Family",
                     description: "The brand's flagship. Amatista is a completely independent Preamp and Power Stage compressed into the format of an analog pedal. Where most gut frequencies, Amatista sculpts.<br><br>Featuring a radical <strong>Structure</strong> knob: Between 0 and 0.3 it acts like a tight Djent amplifier. Pushed further, the distortion changes rules and clips heavily simulating voltage sink (SAG effect).",
                     features: [
                         "Multiple gain stages (Pre and Power)",
@@ -191,7 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     osText: "Solo Windows (macOS próximamente)",
                     title: "Obsidiana Fuzz",
                     family: "Familia Impulso Primario",
-                    description: "Obsidiana no es discreto, busca imponer presencia. Base sólida para tonos masivos y densos. Saturación orgánica, abierta con graves profundos y presentes. Muro de sonido y textura con carácter real.<br><br>Construcción basada en una etapa limitadora tanh no lineal agresiva. Hecho para Doom, Sludge y Modern Metal masivo.",
+                    description: "Obsidiana no es discreto, busca imponer presencia. Base sólida para tonos masivos y densos. Saturación orgánica, abierta con graves profundos y presentes. Muro de sonido y textura con carácter real.<br><br>Construcción basada en una etapa limitadora tanh no lineal agresiva. Hecho para Doom, Sludge y sonidos modernos masivos.",
                     features: [
                         "Nivel de caos interactivo e implacable",
                         "Saturación de alta no-linealidad",
@@ -204,8 +245,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     ctaText: "Get it",
                     osText: "Windows only (macOS coming soon)",
                     title: "Obsidiana Fuzz",
-                    family: "Primal Impulse Family",
-                    description: "Obsidiana isn’t subtle, it aims to dominate the mix. A solid foundation for massive, dense tones. Organic, open saturation with deep, present lows. A wall of sound and texture with real character.<br><br>Construction based on an aggressive non-linear tanh limiting stage. Made for Doom, Sludge, and massive Modern Metal.",
+                    family: "Impulso Primario Family",
+                    description: "Obsidiana isn’t subtle, it aims to dominate the mix. A solid foundation for massive, dense tones. Organic, open saturation with deep, present lows. A wall of sound and texture with real character.<br><br>Construction based on an aggressive non-linear tanh limiting stage. Made for Doom, Sludge, and massive modern sounds.",
                     features: [
                         "Interactive and unrelenting level of chaos",
                         "High non-linearity saturation",
@@ -342,7 +383,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const langData = data.translations[currentLang];
 
-        const prexPrice = (parseFloat(data.price) / 2).toFixed(2);
+        let discountMultiplier = 0.5;
+        let discountLabel = "50% OFF";
+        let promoText = "a mitad de precio";
+
+        if (data.id === "syko-one") {
+            discountMultiplier = 0.67; // 33% OFF -> pay 67%
+            discountLabel = "33% OFF";
+            promoText = "con descuento";
+        }
+
+        const prexPrice = (parseFloat(data.price) * discountMultiplier).toFixed(2);
 
         purchaseContainer.innerHTML = `
             <a href="${data.gumroadUrl}" target="_blank" class="btn btn-primary btn-block glow-effect" style="margin-top: 15px; display: inline-block; text-align: center; text-decoration: none;">Comprar en Gumroad — $${data.price} USD</a>
@@ -350,14 +401,14 @@ document.addEventListener('DOMContentLoaded', () => {
             <div style="margin-top: 20px; padding: 15px; border: 1px solid rgba(175, 122, 235, 0.3); border-radius: var(--radius); background: rgba(175, 122, 235, 0.05); text-align: center;">
                 <p style="color: var(--clr-amethyst-light); font-weight: 600; margin-bottom: 12px; font-size: 0.9rem;">¿Tienes PREX? (Argentina / Uruguay)</p>
                 <div class="donate-btn-option" style="cursor: pointer; margin-bottom: 0;" onclick="document.getElementById('plugin-prex-details').classList.toggle('show')">
-                    <strong>Transferencia PREX (50% OFF)</strong>
+                    <strong>Transferencia PREX (${discountLabel})</strong>
                     <span>Pago directo y envío de comprobante.</span>
                 </div>
                 <div id="plugin-prex-details" class="prex-details-card">
                     <p style="color: var(--clr-text-muted); font-size: 0.9rem; margin-bottom: 15px;">Monto exacto a transferir: <strong style="color: #1ed760; font-size: 1.1rem;">$${prexPrice} USD</strong></p>
                     <p style="margin-bottom: 5px; color: var(--clr-text-muted); font-size: 0.9rem;">A nombre de Álvaro (Cuenta Uruguay)</p>
                     <h4 style="color: white; letter-spacing: 2px; font-size: 1.4rem;">PREX: 1840539</h4>
-                    <p style="color: var(--clr-text-muted); margin-top: 15px; font-size: 0.85rem; line-height: 1.4;">Envía tu comprobante de pago a <strong style="color: #fff;">amatista.efectos@icloud.com</strong> para recibir el plugin de forma manual a mitad de precio.</p>
+                    <p style="color: var(--clr-text-muted); margin-top: 15px; font-size: 0.85rem; line-height: 1.4;">Envía tu comprobante de pago a <strong style="color: #fff;">orders@amatista-efectos.online</strong> para recibir el plugin de forma manual ${promoText}.</p>
                 </div>
             </div>
         `;
