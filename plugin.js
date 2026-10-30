@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
             isReleased: SYKO_ONE_RELEASED,
             badgeClass: "tag-paid",
             osWinOnly: true,
-            images: ["assets/sykoOne.png", "assets/sykoOne_screenshot.png", "assets/sykoOne_combo.png", "assets/sykoOne_pedalboard.png", "assets/sykoOne_purple_amp.png", "assets/sykoOne_midiController.png"],
+            images: ["assets/sykoOne.png", "assets/sykoOne_screenshot.png", "assets/sykoOne_combo.png", "assets/sykoOne_pedalboard.png", "assets/sykoOne_purple_amp.png"],
             price: "99.00",
             gumroadUrl: "https://amatistaefectos.gumroad.com/l/sykoone",
             downloadUrl: "",
@@ -928,8 +928,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         </h3>
                         <p class="coming-soon-desc">
                             ${lang === 'en'
-                                ? 'SYKO One will be available for purchase and download on November 11th. In the meantime, you can explore the user manual and technical specifications below.'
-                                : 'SYKO One estará disponible para adquisición y descarga a partir del 11 de Noviembre. Mientras tanto, puedes explorar las especificaciones y el manual de usuario a continuación.'}
+                        ? 'SYKO One will be available for purchase and download on November 11th. In the meantime, you can explore the user manual and technical specifications below.'
+                        : 'SYKO One estará disponible para adquisición y descarga a partir del 11 de Noviembre. Mientras tanto, puedes explorar las especificaciones y el manual de usuario a continuación.'}
                         </p>
                         <button class="btn btn-primary btn-block btn-coming-soon" disabled>
                             ${lang === 'en' ? 'Available on 11/11' : 'Próximamente lanzamiento 11/11'}
