@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
             id: "syko-one",
             badgeClass: "tag-paid",
             osWinOnly: true,
-            images: ["assets/sykoOne.png", "assets/sykoOne_cab.png", "assets/sykoOne_pedalboard.png", "assets/sykoOne_purple_amp.png", "assets/sykoOne_midiController.png"],
+            images: ["assets/sykoOne.png", "assets/sykoOne_screenshot.png", "assets/sykoOne_combo.png", "assets/sykoOne_pedalboard.png", "assets/sykoOne_purple_amp.png", "assets/sykoOne_midiController.png"],
             price: "99.00",
             gumroadUrl: "https://amatistaefectos.gumroad.com/",
             downloadUrl: "",
@@ -41,6 +41,366 @@ document.addEventListener('DOMContentLoaded', () => {
                         "Optimized tones for mix and live performances",
                         "Ultra-dynamic response"
                     ]
+                }
+            },
+            specs: {
+                es: {
+                    headerBadge: "SPECS",
+                    headerTitle: "Especificaciones <span class='highlight'>SYKO One</span>",
+                    headerSubtitle: "Un ecosistema de modelado valvular y convolución diseñado para el sonido moderno de guitarras en estudio y vivo.",
+                    labels: {
+                        character: "Carácter Sonoro",
+                        dsp: "Topología DSP & Sag"
+                    },
+                    ampsTitle: "1. Los 4 Amplificadores Virtuales",
+                    ampsDesc: "Arquitecturas modeladas al componente con ecualización dinámica y emulación natural de compresión de válvulas (Power Sag).",
+                    amps: [
+                        {
+                            class: "amp-orange",
+                            badge: "High-Gain Británico",
+                            icon: "🟠",
+                            name: "ORANGE",
+                            inspiration: "Inspirado en Rockerverb / Carácter británico clásico",
+                            character: "Oscuro, denso y con grano valvular grueso. Pared masiva de medios con filtro anti-fizz para evitar asperezas.",
+                            dsp: "Saturación asimétrica con compresión elástica y respuesta esponjosa al pulsar con fuerza.",
+                            tags: ["Doom", "Stoner Rock", "Sludge", "Grunge"]
+                        },
+                        {
+                            class: "amp-black",
+                            badge: "American Modern High-Gain",
+                            icon: "⚫",
+                            name: "BLACK",
+                            inspiration: "Inspirado en Bogner Uberschall & Shiva",
+                            character: "High-Gain moderno, articulado y enfocado. Graves profundos y controlados con máxima definición en afinaciones bajas.",
+                            dsp: "Saturación profunda con balance armónico calibrado nota por nota.",
+                            tags: ["Metal Moderno", "Hard Rock", "Rítmicas Pesadas"]
+                        },
+                        {
+                            class: "amp-white",
+                            badge: "Boutique Quirúrgico",
+                            icon: "⚪",
+                            name: "WHITE",
+                            inspiration: "Inspirado en amplificación Fortin",
+                            character: "Ultra High-Gain quirúrgico y agresivo con ataque percusivo instantáneo.",
+                            dsp: "Respuesta ultrarrápida sin bola de graves y saturación cortante en medios-altos.",
+                            tags: ["Djent", "Metalcore", "7 & 8 Cuerdas", "Chugs"]
+                        },
+                        {
+                            class: "amp-purple",
+                            badge: "Boutique Clean / Dynamic",
+                            icon: "🟣",
+                            name: "PURPLE",
+                            inspiration: "Inspirado en Morgan & Matchless",
+                            character: "Desde limpios cristalinos y tridimensionales hasta saturación orgánica al romper la señal (Edge of Breakup).",
+                            dsp: "Compresor óptico virtual integrado y saturación dinámica reactiva al tacto de la púa.",
+                            tags: ["Clean", "Indie", "Shoegaze", "Ambient"]
+                        }
+                    ],
+                    cabTitle: "2. Sección de Cabinas: Dual Cab Simulator & IR Loader",
+                    cabDesc: "Convolución estéreo dual de latencia cero capturada en gabinete real con balance continuo.",
+                    cabCol1Title: "Arquitectura & Mezcla",
+                    cabCol1Items: [
+                        { name: "Mezcla Continua (Dual IR Blend)", desc: "Balance fluido entre Cab 1 y Cab 2 para posicionar armónicamente el sonido en estéreo." },
+                        { name: "Latencia Cero", desc: "Motor optimizado para tocar en directo y grabar con respuesta inmediata sin retardo." }
+                    ],
+                    cabCol2Title: "Altavoces & Micrófonos",
+                    cabCol2Items: [
+                        { name: "Altavoces Disponibles", desc: "Greenback (medios cálidos y agudos sedosos) y Vintage 30 (pegada contundente y medios agresivos)." },
+                        { name: "Micrófonos de Estudio", desc: "SM57 (ataque clásico), SM7B (cuerpo cálido) y VR1 (cinta sedoso y natural)." }
+                    ],
+                    cabCol3Title: "Posicionamiento & Custom IR",
+                    cabCol3Items: [
+                        { name: "Micro-Posicionamiento Continuo", desc: "Desplazamiento gradual del micrófono desde el centro hacia el borde exterior del cono." },
+                        { name: "Cargador Custom IR", desc: "Carga cualquier impulso externo arrastrando el archivo, con ajuste y normalización automática." }
+                    ],
+                    preFxTitle: "3. Pedales Pre-Amplificador (Input FX)",
+                    preFxDesc: "Pedales analógicos virtuales para moldear el ataque, limpiar ruidos y empujar la saturación antes del amplificador.",
+                    preFx: [
+                        {
+                            name: "Noise Gate Inteligente",
+                            tag: "Sidechain Gate",
+                            desc: "Puerta de ruido rápida diseñada para riffs entrecortados y silencios absolutos.",
+                            points: [
+                                "Monitoriza la entrada limpia antes de saturar",
+                                "Corta silenciosamente a la salida del amplificador",
+                                "Conserva intactas las colas naturales de Delay y Reverb"
+                            ]
+                        },
+                        {
+                            name: "Carbonado Boost",
+                            tag: "Clean Boost",
+                            desc: "Inspirado en Fortin 33. Booster transparente que aprieta la señal y define el ataque.",
+                            points: [
+                                "Empuje limpio que compacta los graves y resalta el ataque",
+                                "Filtro pre-configurado para eliminar frecuencias que ensucian la distorsión",
+                                "Control sencillo mediante perilla Pressure"
+                            ]
+                        },
+                        {
+                            name: "Ónix Overdrive",
+                            tag: "Mid-Boost Overdrive",
+                            desc: "Inspirado en Tube Screamer con acento en frecuencias medias para cortar en la mezcla.",
+                            points: [
+                                "Curva de medios optimizada para destacar guitarras en la mezcla",
+                                "Clipping asimétrico cálido y orgánico",
+                                "Controles de Drive, Tone y Level con empuje extra de volumen"
+                            ]
+                        }
+                    ],
+                    postFxTitle: "4. Pedales Post-Amplificador (Loop FX / Tiempo & Espacio)",
+                    postFxDesc: "Efectos de modulación y ambiente ubicados después de la etapa de ganancia para máxima claridad.",
+                    postFx: [
+                        {
+                            name: "Ámbar Delay",
+                            tag: "Multi-Mode Stereo",
+                            desc: "Retardo estéreo versátil con controles de repetición y mezcla, con 3 modos seleccionables:",
+                            points: [
+                                "Normal: Repeticiones digitales nítidas y prístinas",
+                                "Vintage: Eco analógico de cinta con modulación cálida",
+                                "Drone: Textura shimmer y retardo en reversa con movimiento estéreo"
+                            ]
+                        },
+                        {
+                            name: "Ágata Reverb",
+                            tag: "Modulated Space",
+                            desc: "Reverberación envolvente de sala y catedral con procesado tridimensional.",
+                            points: [
+                                "Pre-delay integrado para proteger la definición de la púa",
+                                "Chorus estéreo interno que aporta amplitud y riqueza espacial",
+                                "Controles intuitivos de tamaño, absorción y mezcla"
+                            ]
+                        },
+                        {
+                            name: "Stereo Doubler",
+                            tag: "Efecto Haas",
+                            desc: "Simulador de guitarra doblada que ensancha pistas mono creando una imagen estéreo amplia.",
+                            points: [
+                                "Desfase calibrado para dar sensación de dos tomas de guitarra",
+                                "Procesamiento alineado para evitar cancelaciones de fase",
+                                "Ideal para rítmicas masivas y envolventes"
+                            ]
+                        }
+                    ],
+                    eqTitle: "5. Ecualizador Gráfico Maestro",
+                    eqDesc: "Módulo post-amplificador y pre-cabina para esculpir de forma precisa el tono general.",
+                    eqFilters: "<strong>Filtros Continuos:</strong> Filtros Pasa-Altos y Pasa-Bajos para limpiar subgraves y suavizar agudos extremos.",
+                    eqBands: [
+                        { f: "Subgraves", r: "Resonancia y profundidad" },
+                        { f: "Graves", r: "Pegada y peso del cuerpo" },
+                        { f: "Medios-Bajos", r: "Limpieza de barro" },
+                        { f: "Cuerpo", r: "Presencia y densidad" },
+                        { f: "Ataque", r: "Mordida y toque de púa" },
+                        { f: "Articulación", r: "Definición en la mezcla" },
+                        { f: "Distorsión", r: "Claridad armónica" },
+                        { f: "Brillo", r: "Apertura y claridad" },
+                        { f: "Aire", r: "Sheen y espacio armónico" }
+                    ],
+                    utilTitle: "6. Flujo de Trabajo & Utilidades",
+                    utilDesc: "Herramientas integradas para agilizar tu flujo tanto en sesión de estudio como en vivo.",
+                    utils: [
+                        { name: "Afinador Cromático", desc: "Detección rápida en tiempo real con opción de silenciar la señal (Auto-Mute)." },
+                        { name: "Sistema de 8 Escenas", desc: "Cambio instantáneo entre configuraciones mediante clics, teclado o pedalera MIDI." },
+                        { name: "Gestor de Presets", desc: "Navegador de fábrica, artistas y usuario con importación y exportación rápida." },
+                        { name: "Controles Maestros", desc: "Ajuste general de entrada y salida, balance Dry/Wet y bypass total de la suite." }
+                    ],
+                    live: {
+                        badge: "MODO ESCENARIO",
+                        title: "La Sección LIVE (LIVE View)",
+                        desc: "Transforma SYKO One en una herramienta optimizada para presentaciones en directo. La interfaz oculta los parámetros detallados de diseño sonoro y despliega una pantalla de alto contraste centrada únicamente en lo esencial para el escenario.",
+                        features: [
+                            {
+                                title: "Afinador de Gran Visibilidad",
+                                desc: "Afinador cromático central de gran tamaño, diseñado para ser leído claramente a distancia bajo cualquier iluminación."
+                            },
+                            {
+                                title: "Estado Inmediato del Rig",
+                                desc: "Indicadores claros e instantáneos de los pedales encendidos y el canal de amplificador activo."
+                            },
+                            {
+                                title: "Control MIDI en Vivo",
+                                desc: "Operación fluida mediante pedalera de piso para cambiar escenas y efectos sin tocar el ordenador, manteniendo tu enfoque absoluto en la interpretación."
+                            }
+                        ]
+                    }
+                },
+                en: {
+                    headerBadge: "SPECS",
+                    headerTitle: "<span class='highlight'>SYKO One</span> Specifications",
+                    headerSubtitle: "A tube modeling and convolution ecosystem engineered for the modern guitar sound in the studio and live.",
+                    labels: {
+                        character: "Sonic Character",
+                        dsp: "DSP Topology & Sag"
+                    },
+                    ampsTitle: "1. The 4 Virtual Amplifiers",
+                    ampsDesc: "Component-level modeled architectures with dynamic EQ and natural tube power supply compression (Power Sag).",
+                    amps: [
+                        {
+                            class: "amp-orange",
+                            badge: "Classic British High-Gain",
+                            icon: "🟠",
+                            name: "ORANGE",
+                            inspiration: "Inspired by Rockerverb / Classic British high-gain",
+                            character: "Dark, thick tube grain with a massive midrange wall and anti-fizz filtering to tame harshness.",
+                            dsp: "Asymmetrical saturation with elastic compression and a spongy feel under hard picking.",
+                            tags: ["Doom", "Stoner Rock", "Sludge", "Grunge"]
+                        },
+                        {
+                            class: "amp-black",
+                            badge: "American Modern High-Gain",
+                            icon: "⚫",
+                            name: "BLACK",
+                            inspiration: "Inspired by Bogner Uberschall & Shiva",
+                            character: "Modern, articulate high-gain with deep, controlled lows and maximum clarity in low tunings.",
+                            dsp: "Deep saturation with harmonic balance calibrated note by note.",
+                            tags: ["Modern Metal", "Hard Rock", "Tight Rhythms"]
+                        },
+                        {
+                            class: "amp-white",
+                            badge: "Surgical Boutique",
+                            icon: "⚪",
+                            name: "WHITE",
+                            inspiration: "Inspired by Fortin amplification",
+                            character: "Surgical, aggressive ultra high-gain with instant percussive pick attack.",
+                            dsp: "Ultra-fast response with zero low-end mud and razor-sharp upper-midrange saturation.",
+                            tags: ["Djent", "Metalcore", "7 & 8 Strings", "Chugs"]
+                        },
+                        {
+                            class: "amp-purple",
+                            badge: "Boutique Clean / Dynamic",
+                            icon: "🟣",
+                            name: "PURPLE",
+                            inspiration: "Inspired by Morgan & Matchless",
+                            character: "From pristine 3D cleans to organic breakup when digging into the strings (Edge of Breakup).",
+                            dsp: "Integrated virtual optical compressor with touch-sensitive dynamic response.",
+                            tags: ["Clean", "Indie", "Shoegaze", "Ambient"]
+                        }
+                    ],
+                    cabTitle: "2. Dual Cab Simulator & IR Loader",
+                    cabDesc: "Zero-latency dual stereo convolution captured from a real cabinet with smooth blending.",
+                    cabCol1Title: "Architecture & Blend",
+                    cabCol1Items: [
+                        { name: "Continuous Dual IR Blend", desc: "Smooth balance between Cab 1 and Cab 2 to position your tone harmoniously across the stereo field." },
+                        { name: "Zero Latency", desc: "Optimized engine for live performance and recording with instant response." }
+                    ],
+                    cabCol2Title: "Speakers & Microphones",
+                    cabCol2Items: [
+                        { name: "Available Speakers", desc: "Greenback (warm woody mids, silky highs) and Vintage 30 (punchy lows and aggressive midrange)." },
+                        { name: "Studio Microphones", desc: "SM57 (classic attack), SM7B (warm body), and VR1 (silky passive ribbon)." }
+                    ],
+                    cabCol3Title: "Positioning & Custom IR",
+                    cabCol3Items: [
+                        { name: "Continuous Micro-Positioning", desc: "Smooth, gradual microphone placement from cone center to outer edge." },
+                        { name: "Custom IR Loader", desc: "Drag and drop any third-party impulse response with automatic adjustment." }
+                    ],
+                    preFxTitle: "3. Pre-Amp Pedalboard (Input FX)",
+                    preFxDesc: "Virtual analog pedals to sculpt pick attack, eliminate unwanted noise, and push saturation before the amp.",
+                    preFx: [
+                        {
+                            name: "Smart Noise Gate",
+                            tag: "Sidechain Gate",
+                            desc: "Fast, surgical noise gate built for staccato riffing and dead silence.",
+                            points: [
+                                "Monitors the clean guitar input before saturation",
+                                "Silently attenuates at the amplifier output",
+                                "Preserves Delay and Reverb tails completely intact"
+                            ]
+                        },
+                        {
+                            name: "Carbonado Boost",
+                            tag: "Clean Boost",
+                            desc: "Inspired by Fortin 33. Transparent booster designed to tighten the front end and define pick attack.",
+                            points: [
+                                "Clean push that compacts low frequencies and enhances definition",
+                                "Pre-configured filtering to remove mud before high gain",
+                                "Single-knob Pressure control for immediate results"
+                            ]
+                        },
+                        {
+                            name: "Ónix Overdrive",
+                            tag: "Mid-Boost Overdrive",
+                            desc: "Inspired by Tube Screamer with a focused midrange bump to cut cleanly through any mix.",
+                            points: [
+                                "Mid-focused curve to highlight lead and rhythm guitars",
+                                "Organic, warm asymmetrical clipping",
+                                "Drive, Tone, and Level controls with generous output boost"
+                            ]
+                        }
+                    ],
+                    postFxTitle: "4. Post-Amp FX (Time & Space / FX Loop)",
+                    postFxDesc: "Modulation and spatial processing placed after the gain stages for pristine, spacious definition.",
+                    postFx: [
+                        {
+                            name: "Ámbar Delay",
+                            tag: "Multi-Mode Stereo",
+                            desc: "Versatile stereo delay with feedback and mix controls, featuring 3 selectable modes:",
+                            points: [
+                                "Normal: Crisp, high-fidelity digital repeats",
+                                "Vintage: Warm tape echo with subtle modulation",
+                                "Drone: Shimmer texture and reverse ambient delay with stereo movement"
+                            ]
+                        },
+                        {
+                            name: "Ágata Reverb",
+                            tag: "Modulated Space",
+                            desc: "Enveloping room and cathedral reverberation with three-dimensional depth.",
+                            points: [
+                                "Integrated pre-delay to protect note attack definition",
+                                "Internal stereo chorus that expands width and richness",
+                                "Intuitive controls for room size, damping, and mix"
+                            ]
+                        },
+                        {
+                            name: "Stereo Doubler",
+                            tag: "Haas Effect",
+                            desc: "Double-track simulator that widens mono tracks into an expansive stereo wall of sound.",
+                            points: [
+                                "Calibrated delay offset giving the feel of two tracked guitars",
+                                "Phase-aligned processing to avoid destructive cancellation",
+                                "Ideal for instant massive rhythm tracks"
+                            ]
+                        }
+                    ],
+                    eqTitle: "5. Master Graphic Equalizer",
+                    eqDesc: "Post-amplifier and pre-cabinet module to sculpt the overall tonal balance with precision.",
+                    eqFilters: "<strong>Continuous Filters:</strong> High-Pass and Low-Pass filters to clean sub-lows and smooth out harsh highs.",
+                    eqBands: [
+                        { f: "Sub-Bass", r: "Cabinet resonance and depth" },
+                        { f: "Lows", r: "Body punch and weight" },
+                        { f: "Low-Mids", r: "Mud cleanup" },
+                        { f: "Body", r: "Presence and density" },
+                        { f: "Attack", r: "Pick bite and clarity" },
+                        { f: "Articulation", r: "Mix cut and definition" },
+                        { f: "Distortion", r: "Harmonic clarity" },
+                        { f: "Brightness", r: "Openness and sheen" },
+                        { f: "Air", r: "Top-end space" }
+                    ],
+                    utilTitle: "6. Workflow & Utilities",
+                    utilDesc: "Built-in tools to streamline your creative process both in the studio and live.",
+                    utils: [
+                        { name: "Chromatic Tuner", desc: "Real-time accurate pitch detection with silent tuning (Auto-Mute)." },
+                        { name: "8 Instant Scenes", desc: "Instant preset switching via mouse clicks, keyboard hotkeys, or MIDI." },
+                        { name: "Preset Manager", desc: "Categorized browser for factory, artist, and user patches with fast import/export." },
+                        { name: "Master Controls", desc: "Master input/output gain, Dry/Wet mix balance, and complete suite bypass." }
+                    ],
+                    live: {
+                        badge: "STAGE MODE",
+                        title: "LIVE View (Stage Section)",
+                        desc: "Transforms SYKO One into an optimized stage tool. The interface conceals detailed sound design knobs and reveals a high-contrast display focused strictly on what matters during live performance.",
+                        features: [
+                            {
+                                title: "High-Visibility Tuner",
+                                desc: "Large central chromatic tuner engineered to be clearly readable from a distance under any stage lighting conditions."
+                            },
+                            {
+                                title: "Immediate Rig Status",
+                                desc: "Clear, instant indicators showing active stompbox states and the current amplifier channel."
+                            },
+                            {
+                                title: "Hands-Free MIDI Control",
+                                desc: "Seamless floorboard operation for switching scenes and effects without touching your computer, keeping your focus on playing."
+                            }
+                        ]
+                    }
                 }
             }
         },
@@ -329,6 +689,204 @@ document.addEventListener('DOMContentLoaded', () => {
             osAlert.innerHTML = `<span>${langData.osText}</span>`;
             osAlert.style.color = 'var(--clr-text-muted)';
         }
+
+        renderSpecs(lang);
+    }
+
+    function renderSpecs(lang) {
+        const specsContainer = document.getElementById('pg-specs-section');
+        if (!specsContainer) return;
+
+        if (!data.specs) {
+            specsContainer.style.display = 'none';
+            return;
+        }
+
+        const s = data.specs[lang] || data.specs['es'];
+        specsContainer.style.display = 'block';
+
+        specsContainer.innerHTML = `
+            <div class="specs-header">
+                <span class="specs-badge">${s.headerBadge}</span>
+                <h2 class="specs-title">${s.headerTitle}</h2>
+                <p class="specs-subtitle">${s.headerSubtitle}</p>
+            </div>
+
+            <!-- 1. Los 4 Amplificadores -->
+            <div class="specs-block">
+                <div class="specs-block-header">
+                    <h3 class="specs-block-title">${s.ampsTitle}</h3>
+                    <p class="specs-block-desc">${s.ampsDesc}</p>
+                </div>
+                <div class="specs-amps-grid">
+                    ${s.amps.map(amp => `
+                        <div class="amp-spec-card ${amp.class}">
+                            <div class="amp-header">
+                                <span class="amp-badge">${amp.badge}</span>
+                                <span style="font-size: 1.1rem;">${amp.icon}</span>
+                            </div>
+                            <h4 class="amp-title">${amp.name}</h4>
+                            <div class="amp-sub">${amp.inspiration}</div>
+                            <div class="amp-spec-item">
+                                <span class="label">${s.labels.character}</span>
+                                <span class="val">${amp.character}</span>
+                            </div>
+                            <div class="amp-spec-item">
+                                <span class="label">${s.labels.dsp}</span>
+                                <span class="val">${amp.dsp}</span>
+                            </div>
+                            <div class="amp-tags">
+                                ${amp.tags.map(t => `<span class="amp-tag">${t}</span>`).join('')}
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+
+            <!-- 2. Dual Cab Simulator & IR Loader -->
+            <div class="specs-block">
+                <div class="specs-block-header">
+                    <h3 class="specs-block-title">${s.cabTitle}</h3>
+                    <p class="specs-block-desc">${s.cabDesc}</p>
+                </div>
+                <div class="specs-cab-container">
+                    <div>
+                        <h4 class="cab-col-title">${s.cabCol1Title}</h4>
+                        <div class="cab-pill-group">
+                            ${s.cabCol1Items.map(item => `
+                                <div class="cab-pill-item">
+                                    <strong>${item.name}</strong>
+                                    <span>${item.desc}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="cab-col-title">${s.cabCol2Title}</h4>
+                        <div class="cab-pill-group">
+                            ${s.cabCol2Items.map(item => `
+                                <div class="cab-pill-item">
+                                    <strong>${item.name}</strong>
+                                    <span>${item.desc}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="cab-col-title">${s.cabCol3Title}</h4>
+                        <div class="cab-pill-group">
+                            ${s.cabCol3Items.map(item => `
+                                <div class="cab-pill-item">
+                                    <strong>${item.name}</strong>
+                                    <span>${item.desc}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Pre-Amp Pedalboard (Input FX) -->
+            <div class="specs-block">
+                <div class="specs-block-header">
+                    <h3 class="specs-block-title">${s.preFxTitle}</h3>
+                    <p class="specs-block-desc">${s.preFxDesc}</p>
+                </div>
+                <div class="specs-cards-grid">
+                    ${s.preFx.map(fx => `
+                        <div class="fx-spec-card">
+                            <div class="fx-top">
+                                <span class="fx-name">${fx.name}</span>
+                                <span class="fx-tag">${fx.tag}</span>
+                            </div>
+                            <p class="fx-desc">${fx.desc}</p>
+                            <ul class="fx-features-list">
+                                ${fx.points.map(p => `<li>${p}</li>`).join('')}
+                            </ul>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+
+            <!-- 4. Post-Amp FX (Tiempo & Espacio) -->
+            <div class="specs-block">
+                <div class="specs-block-header">
+                    <h3 class="specs-block-title">${s.postFxTitle}</h3>
+                    <p class="specs-block-desc">${s.postFxDesc}</p>
+                </div>
+                <div class="specs-cards-grid">
+                    ${s.postFx.map(fx => `
+                        <div class="fx-spec-card">
+                            <div class="fx-top">
+                                <span class="fx-name">${fx.name}</span>
+                                <span class="fx-tag">${fx.tag}</span>
+                            </div>
+                            <p class="fx-desc">${fx.desc}</p>
+                            <ul class="fx-features-list">
+                                ${fx.points.map(p => `<li>${p}</li>`).join('')}
+                            </ul>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+
+            <!-- 5 & 6. EQ Maestro & Utilidades Globales -->
+            <div class="specs-block">
+                <div class="specs-split-grid">
+                    <!-- EQ Maestro -->
+                    <div class="specs-panel">
+                        <h3 class="specs-panel-title">${s.eqTitle}</h3>
+                        <p class="specs-panel-sub">${s.eqDesc}</p>
+                        <div style="font-size: 0.82rem; color: #cbd5e1; margin-bottom: 0.8rem; background: rgba(255,255,255,0.03); padding: 8px 12px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.06);">
+                            ${s.eqFilters}
+                        </div>
+                        <div class="eq-bands-wrapper">
+                            ${s.eqBands.map(b => `
+                                <div class="eq-band-chip">
+                                    <span class="freq">${b.f}</span>
+                                    <span class="role">${b.r}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Utilidades Globales -->
+                    <div class="specs-panel">
+                        <h3 class="specs-panel-title">${s.utilTitle}</h3>
+                        <p class="specs-panel-sub">${s.utilDesc}</p>
+                        <div class="util-grid">
+                            ${s.utils.map(u => `
+                                <div class="util-card">
+                                    <strong>${u.name}</strong>
+                                    <p>${u.desc}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7. Modo LIVE -->
+            ${s.live ? `
+            <div class="specs-block" style="margin-bottom: 1rem;">
+                <div class="specs-live-card">
+                    <div class="specs-live-header">
+                        <span class="specs-live-badge">${s.live.badge}</span>
+                        <h3 class="specs-live-title">${s.live.title}</h3>
+                        <p class="specs-live-desc">${s.live.desc}</p>
+                    </div>
+                    <div class="specs-live-grid">
+                        ${s.live.features.map(f => `
+                            <div class="specs-live-feature">
+                                <strong>${f.title}</strong>
+                                <p>${f.desc}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            </div>
+            ` : ''}
+        `;
     }
 
     const currentLang = document.documentElement.lang || 'es';
@@ -396,7 +954,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const prexPrice = (parseFloat(data.price) * discountMultiplier).toFixed(2);
 
         purchaseContainer.innerHTML = `
-            <a href="${data.gumroadUrl}" target="_blank" class="btn btn-primary btn-block glow-effect" style="margin-top: 15px; display: inline-block; text-align: center; text-decoration: none;">Comprar en Gumroad — $${data.price} USD</a>
+            <a href="${data.gumroadUrl}" target="_blank" class="btn btn-primary btn-block glow-effect" style="margin-top: 15px; display: inline-block; text-align: center; text-decoration: none;">Comprar — $${data.price} USD</a>
             
             <div style="margin-top: 20px; padding: 15px; border: 1px solid rgba(175, 122, 235, 0.3); border-radius: var(--radius); background: rgba(175, 122, 235, 0.05); text-align: center;">
                 <p style="color: var(--clr-amethyst-light); font-weight: 600; margin-bottom: 12px; font-size: 0.9rem;">¿Tienes PREX? (Argentina / Uruguay)</p>
