@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             tags: ["Clean", "Indie", "Shoegaze", "Ambient"]
                         }
                     ],
-                    cabTitle: "2. Sección de Cabinas: Dual Cab Simulator & IR Loader",
+                    cabTitle: "2. Cabinas SYKO 4x12: Dual Cab Simulator & IR Loader",
                     cabDesc: "Convolución estéreo dual de latencia cero capturada en gabinete real con balance continuo.",
                     cabCol1Title: "Arquitectura & Mezcla",
                     cabCol1Items: [
