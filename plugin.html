@@ -10,15 +10,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2">
 
 </head>
 
 <body>
     <nav id="navbar" class="navbar scrolled">
         <div class="nav-container">
-            <a href="index.html" class="brand-logo">
-                AMATISTA
+            <a href="index.html" class="brand-logo" aria-label="Amatista">
+                <img src="assets/amatista_logo_horizontal.png" alt="Amatista Logo" class="brand-logo-img">
+                <span class="brand-logo-text">AMATISTA</span>
             </a>
             <ul class="nav-links">
                 <li><a href="index.html#about" data-i18n="nav-about">Sobre Amatista</a></li>
@@ -94,6 +95,10 @@
                         <p class="os-alert" id="pg-os-alert" style="font-size: 0.85rem; margin-bottom: 15px;">
                             <!-- OS Alert -->
                         </p>
+
+                        <!-- Coming Soon Container (Se muestra si isReleased es false) -->
+                        <div id="pg-coming-soon-container" style="display: none;"></div>
+
                         <a href="#" id="pg-cta-btn" target="_blank"
                             class="btn btn-primary btn-block glow-effect">Adquirir</a>
 
@@ -118,6 +123,11 @@
                 </div>
             </div>
 
+            <!-- Specs & Components Section -->
+            <div class="plugin-specs-section fade-in-section is-visible" id="pg-specs-section" style="display: none; margin-top: 5rem;">
+                <!-- Populated via JS -->
+            </div>
+
             <div class="plugin-video-section fade-in-section" id="pg-video-section"
                 style="display: none; margin-top: 6rem;">
                 <h2 class="section-title center" data-i18n="media-title">En <span class="highlight">Acción</span></h2>
@@ -132,8 +142,9 @@
     <footer class="footer" style="margin-top: 4rem;">
         <div class="container footer-content">
             <div class="footer-brand">
-                <a href="index.html" class="brand-logo footer-logo">
-                    AMATISTA
+                <a href="index.html" class="brand-logo footer-logo" aria-label="Amatista">
+                    <img src="assets/amatista_logo_horizontal.png" alt="Amatista Logo" class="brand-logo-img">
+                    <span class="brand-logo-text">AMATISTA</span>
                 </a>
                 <p data-i18n="footer-desc">Efectos digitales boutique.</p>
             </div>
@@ -159,7 +170,7 @@
                         <li><a href="docs.html" data-i18n="footer-docs">Manuales y Docs</a></li>
                         <li><a href="docs.html#pacto-creativo" data-i18n="footer-pact" class="footer-pact">Pacto
                                 Creativo</a></li>
-                        <li><a href="#" data-i18n="footer-support">Soporte: amatista.efectos@icloud.com</a></li>
+                        <li><a href="#" data-i18n="footer-support">Soporte: orders@amatista-efectos.online</a></li>
                         <li><a href="#" class="btn-donate"
                                 style="color: var(--clr-amethyst-light); font-weight: 600; display: inline-flex; align-items: center; gap: 6px;"><svg
                                     xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
@@ -181,7 +192,7 @@
     </footer>
 
     <script src="script.js"></script>
-    <script src="plugin.js"></script>
+    <script src="plugin.js?v=3"></script>
 </body>
 
 </html>

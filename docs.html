@@ -145,6 +145,10 @@
             margin-bottom: 15px;
         }
 
+        .plugin-manual p, .plugin-manual ul, .plugin-manual ol, .plugin-manual li {
+            font-size: 0.95rem;
+        }
+
         .plugin-manual {
             background: #fff;
             border: 1px solid var(--docs-border);
@@ -380,6 +384,10 @@
                                 <a href="#granate" style="font-weight: 400; font-size: 0.95rem; text-decoration: none;">&bull; Granate Bass Saturator</a>
                                 <button class="print-btn" onclick="printSection('granate')" title="Imprimir manual a PDF">PDF</button>
                             </li>
+                            <li style="margin-bottom: 8px;">
+                                <a href="#sykoone" style="font-weight: 400; font-size: 0.95rem; text-decoration: none;">&bull; SYKO One</a>
+                                <button class="print-btn" onclick="printSection('sykoone')" title="Imprimir manual a PDF">PDF</button>
+                            </li>
                         </ul>
                     </li>
                 </ul>
@@ -401,7 +409,14 @@
 
     </div>
 
-    <!-- Script de traducciones de la documentación -->
+    <!-- Script de traducciones de la documentación modulares -->
+    <script src="docs/common.js"></script>
+    <script src="docs/bienvenida.js"></script>
+    <script src="docs/pactoCreativo.js"></script>
+    <script src="docs/instalacion.js"></script>
+    <script src="docs/impulsoPrimario.js"></script>
+    <script src="docs/frecuenciaBase.js"></script>
+    <script src="docs/sykoOne.js"></script>
     <script src="docs.js"></script>
     <script>
         function printSection(id) {
