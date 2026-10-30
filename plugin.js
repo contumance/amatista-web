@@ -2,14 +2,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const pluginId = urlParams.get('id');
 
+    // =========================================================================
+    // CONFIGURACIÓN DE PUESTA EN PRODUCCIÓN (FEATURE FLAGS)
+    // =========================================================================
+    // false = Muestra aviso "Próximamente lanzamiento 11/11" y bloquea compra/descarga
+    // true  = Deja la página habilitada con los enlaces de compra y descarga activos
+    const SYKO_ONE_RELEASED = false;
+
     const pluginDatabase = {
         "syko-one": {
             id: "syko-one",
+            isReleased: SYKO_ONE_RELEASED,
             badgeClass: "tag-paid",
             osWinOnly: true,
             images: ["assets/sykoOne.png", "assets/sykoOne_screenshot.png", "assets/sykoOne_combo.png", "assets/sykoOne_pedalboard.png", "assets/sykoOne_purple_amp.png", "assets/sykoOne_midiController.png"],
             price: "99.00",
-            gumroadUrl: "https://amatistaefectos.gumroad.com/",
+            gumroadUrl: "https://amatistaefectos.gumroad.com/l/sykoone",
             downloadUrl: "",
             videoId: "",
             docsHash: "#sykoone",
@@ -690,6 +698,7 @@ document.addEventListener('DOMContentLoaded', () => {
             osAlert.style.color = 'var(--clr-text-muted)';
         }
 
+        renderActionBox(lang);
         renderSpecs(lang);
     }
 
@@ -889,6 +898,111 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
     }
 
+    function renderActionBox(lang) {
+        const ctaBtn = document.getElementById('pg-cta-btn');
+        const purchaseContainer = document.getElementById('purchase-container');
+        const downloadSection = document.getElementById('pg-download-section');
+        const comingSoonContainer = document.getElementById('pg-coming-soon-container');
+
+        // Soporte opcional para probar rápidamente vía URL: ?released=true o ?released=false
+        const urlReleased = urlParams.get('released');
+        const isReleased = (urlReleased !== null)
+            ? (urlReleased === 'true' || urlReleased === '1')
+            : (data.isReleased !== false);
+
+        if (!isReleased) {
+            // ==========================================
+            // MODO PRE-LANZAMIENTO: Aviso de lanzamiento 11/11
+            // ==========================================
+            if (ctaBtn) ctaBtn.style.display = 'none';
+            if (purchaseContainer) purchaseContainer.style.display = 'none';
+            if (downloadSection) downloadSection.style.display = 'none';
+
+            if (comingSoonContainer) {
+                comingSoonContainer.style.display = 'block';
+                comingSoonContainer.innerHTML = `
+                    <div class="coming-soon-box">
+                        <div class="coming-soon-icon">🚀</div>
+                        <h3 class="coming-soon-title">
+                            ${lang === 'en' ? 'Coming Soon: Launch 11/11' : 'Próximamente lanzamiento 11/11'}
+                        </h3>
+                        <p class="coming-soon-desc">
+                            ${lang === 'en'
+                                ? 'SYKO One will be available for purchase and download on November 11th. In the meantime, you can explore the user manual and technical specifications below.'
+                                : 'SYKO One estará disponible para adquisición y descarga a partir del 11 de Noviembre. Mientras tanto, puedes explorar las especificaciones y el manual de usuario a continuación.'}
+                        </p>
+                        <button class="btn btn-primary btn-block btn-coming-soon" disabled>
+                            ${lang === 'en' ? 'Available on 11/11' : 'Próximamente lanzamiento 11/11'}
+                        </button>
+                    </div>
+                `;
+            }
+
+            const badgeEl = document.getElementById('pg-badge');
+            if (badgeEl) {
+                badgeEl.innerHTML = lang === 'en' ? 'Coming Soon (11/11)' : 'Próximamente (11/11)';
+            }
+            return;
+        }
+
+        // ==========================================
+        // MODO PRODUCCIÓN: Habilitado para compra/descarga
+        // ==========================================
+        if (comingSoonContainer) {
+            comingSoonContainer.style.display = 'none';
+            comingSoonContainer.innerHTML = '';
+        }
+
+        const langData = data.translations[lang] || data.translations['es'];
+        const badgeEl = document.getElementById('pg-badge');
+        if (badgeEl) {
+            badgeEl.innerHTML = langData.badge;
+        }
+
+        if (data.price) {
+            // Plugin de pago: Inyectar formulario HTML
+            if (ctaBtn) ctaBtn.style.display = 'none';
+            if (purchaseContainer) purchaseContainer.style.display = 'block';
+
+            let discountMultiplier = 0.5;
+            let discountLabel = "50% OFF";
+            let promoText = "a mitad de precio";
+
+            if (data.id === "syko-one") {
+                discountMultiplier = 0.67; // 33% OFF -> pay 67%
+                discountLabel = "33% OFF";
+                promoText = "con descuento";
+            }
+
+            const prexPrice = (parseFloat(data.price) * discountMultiplier).toFixed(2);
+
+            purchaseContainer.innerHTML = `
+                <a href="${data.gumroadUrl}" target="_blank" class="btn btn-primary btn-block glow-effect" style="margin-top: 15px; display: inline-block; text-align: center; text-decoration: none;">Comprar — $${data.price} USD</a>
+                
+                <div style="margin-top: 20px; padding: 15px; border: 1px solid rgba(175, 122, 235, 0.3); border-radius: var(--radius); background: rgba(175, 122, 235, 0.05); text-align: center;">
+                    <p style="color: var(--clr-amethyst-light); font-weight: 600; margin-bottom: 12px; font-size: 0.9rem;">¿Tienes PREX? (Argentina / Uruguay)</p>
+                    <div class="donate-btn-option" style="cursor: pointer; margin-bottom: 0;" onclick="document.getElementById('plugin-prex-details').classList.toggle('show')">
+                        <strong>Transferencia PREX (${discountLabel})</strong>
+                        <span>Pago directo y envío de comprobante.</span>
+                    </div>
+                    <div id="plugin-prex-details" class="prex-details-card">
+                        <p style="color: var(--clr-text-muted); font-size: 0.9rem; margin-bottom: 15px;">Monto exacto a transferir: <strong style="color: #1ed760; font-size: 1.1rem;">$${prexPrice} USD</strong></p>
+                        <p style="margin-bottom: 5px; color: var(--clr-text-muted); font-size: 0.9rem;">A nombre de Álvaro (Cuenta Uruguay)</p>
+                        <h4 style="color: white; letter-spacing: 2px; font-size: 1.4rem;">PREX: 1840539</h4>
+                        <p style="color: var(--clr-text-muted); margin-top: 15px; font-size: 0.85rem; line-height: 1.4;">Envía tu comprobante de pago a <strong style="color: #fff;">orders@amatista-efectos.online</strong> para recibir el plugin de forma manual ${promoText}.</p>
+                    </div>
+                </div>
+            `;
+        } else {
+            // Plugin gratuito: usar el enlace CTA predeterminado (link de descarga directo)
+            if (ctaBtn) {
+                ctaBtn.style.display = 'block';
+                ctaBtn.href = data.downloadUrl || '#';
+            }
+            if (purchaseContainer) purchaseContainer.style.display = 'none';
+        }
+    }
+
     const currentLang = document.documentElement.lang || 'es';
     updatePluginContent(currentLang);
 
@@ -926,55 +1040,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('pg-price').innerText = `$${data.price} USD`;
     } else {
         priceContainer.style.display = 'none';
-    }
-
-    // CTA & Docs Links
-    const ctaBtn = document.getElementById('pg-cta-btn');
-    const purchaseContainer = document.getElementById('purchase-container');
-    const downloadSection = document.getElementById('pg-download-section');
-    const downloadBtn = document.getElementById('pg-download-btn');
-
-    if (data.price) {
-        // Plugin de pago: Inyectar formulario HTML
-        ctaBtn.style.display = 'none';
-        purchaseContainer.style.display = 'block';
-
-        const langData = data.translations[currentLang];
-
-        let discountMultiplier = 0.5;
-        let discountLabel = "50% OFF";
-        let promoText = "a mitad de precio";
-
-        if (data.id === "syko-one") {
-            discountMultiplier = 0.67; // 33% OFF -> pay 67%
-            discountLabel = "33% OFF";
-            promoText = "con descuento";
-        }
-
-        const prexPrice = (parseFloat(data.price) * discountMultiplier).toFixed(2);
-
-        purchaseContainer.innerHTML = `
-            <a href="${data.gumroadUrl}" target="_blank" class="btn btn-primary btn-block glow-effect" style="margin-top: 15px; display: inline-block; text-align: center; text-decoration: none;">Comprar — $${data.price} USD</a>
-            
-            <div style="margin-top: 20px; padding: 15px; border: 1px solid rgba(175, 122, 235, 0.3); border-radius: var(--radius); background: rgba(175, 122, 235, 0.05); text-align: center;">
-                <p style="color: var(--clr-amethyst-light); font-weight: 600; margin-bottom: 12px; font-size: 0.9rem;">¿Tienes PREX? (Argentina / Uruguay)</p>
-                <div class="donate-btn-option" style="cursor: pointer; margin-bottom: 0;" onclick="document.getElementById('plugin-prex-details').classList.toggle('show')">
-                    <strong>Transferencia PREX (${discountLabel})</strong>
-                    <span>Pago directo y envío de comprobante.</span>
-                </div>
-                <div id="plugin-prex-details" class="prex-details-card">
-                    <p style="color: var(--clr-text-muted); font-size: 0.9rem; margin-bottom: 15px;">Monto exacto a transferir: <strong style="color: #1ed760; font-size: 1.1rem;">$${prexPrice} USD</strong></p>
-                    <p style="margin-bottom: 5px; color: var(--clr-text-muted); font-size: 0.9rem;">A nombre de Álvaro (Cuenta Uruguay)</p>
-                    <h4 style="color: white; letter-spacing: 2px; font-size: 1.4rem;">PREX: 1840539</h4>
-                    <p style="color: var(--clr-text-muted); margin-top: 15px; font-size: 0.85rem; line-height: 1.4;">Envía tu comprobante de pago a <strong style="color: #fff;">orders@amatista-efectos.online</strong> para recibir el plugin de forma manual ${promoText}.</p>
-                </div>
-            </div>
-        `;
-    } else {
-        // Plugin gratuito: usar el enlace CTA predeterminado (por defecto link de descarga directo)
-        ctaBtn.style.display = 'block';
-        purchaseContainer.style.display = 'none';
-        ctaBtn.href = data.downloadUrl || '#';
     }
 
     if (data.docsHash) {
