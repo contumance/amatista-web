@@ -277,6 +277,32 @@
             border-left-color: #ef4444;
         }
 
+        /* Callouts en Bienvenida y Documentación */
+        .docs-page .rule {
+            height: 1px;
+            background: var(--docs-border);
+            margin: 24px 0;
+        }
+
+        .docs-page .callout {
+            padding: 1.15rem 1.35rem;
+            border-radius: 8px;
+            border: 1px solid var(--docs-border);
+            border-left: 4px solid var(--docs-accent);
+            background: var(--docs-surface);
+            margin-bottom: 15px;
+        }
+
+        .docs-page .callout-accent {
+            border-left-color: var(--docs-accent);
+            background: rgba(192, 132, 252, 0.06);
+        }
+
+        .docs-page .callout-mint {
+            border-left-color: #7cf1c6;
+            background: rgba(124, 241, 198, 0.06);
+        }
+
         .parameter-list {
             list-style: none;
             padding-left: 0;
@@ -482,7 +508,8 @@
             }
 
             .plugin-manual,
-            #pacto-creativo {
+            #pacto-creativo,
+            .docs-page .callout {
                 background: #ffffff !important;
                 border: 1px solid #dee2e6 !important;
                 border-left: 4px solid #5a2ca0 !important;
@@ -610,14 +637,14 @@
     </div>
 
     <!-- Script de traducciones de la documentación modulares -->
-    <script src="docs/common.js"></script>
-    <script src="docs/bienvenida.js"></script>
-    <script src="docs/pactoCreativo.js"></script>
-    <script src="docs/instalacion.js"></script>
-    <script src="docs/impulsoPrimario.js"></script>
-    <script src="docs/frecuenciaBase.js"></script>
-    <script src="docs/sykoOne.js"></script>
-    <script src="docs.js?v=4"></script>
+    <script src="docs/common.js?v=5"></script>
+    <script src="docs/bienvenida.js?v=5"></script>
+    <script src="docs/pactoCreativo.js?v=5"></script>
+    <script src="docs/instalacion.js?v=5"></script>
+    <script src="docs/impulsoPrimario.js?v=5"></script>
+    <script src="docs/frecuenciaBase.js?v=5"></script>
+    <script src="docs/sykoOne.js?v=5"></script>
+    <script src="docs.js?v=5"></script>
     <script>
         function printSection(id) {
             const el = document.getElementById(id);
