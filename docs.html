@@ -5,81 +5,117 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manuales y Documentación | Amatista Efectos</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <!-- Main CSS -->
-    <link rel="stylesheet" href="styles.css?v=3">
-    <!-- Docs Specific CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=4">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2">
     <style>
-        /* CSS específico para la página de documentación orientada a lectura/impresión */
+        /* =====================================================
+           Amatista Documentation Center
+           Dark Hardware Theme on Screen · Pure Light on Print
+           ===================================================== */
         :root {
-            --docs-bg: #f8f9fa;
-            --docs-text: #212529;
-            --docs-heading: #121416;
-            --docs-border: #dee2e6;
-            --docs-accent: #6f42c1;
-            /* Púrpura más oscuro y legible sobre blanco */
+            --docs-bg: #09090c;
+            --docs-surface: #121217;
+            --docs-elevated: #181820;
+            --docs-text: #d4d8e2;
+            --docs-heading: #ffffff;
+            --docs-muted: #8f96a6;
+            --docs-border: rgba(255, 255, 255, 0.08);
+            --docs-accent: #c084fc;
+            --docs-accent-strong: #9d4edd;
         }
 
         body.docs-page {
             background-color: var(--docs-bg);
             color: var(--docs-text);
-            font-family: 'Outfit', sans-serif;
-            line-height: 1.6;
+            font-family: var(--font-main);
+            line-height: 1.65;
         }
 
-        /* Overrides to prevent styles.css dark theme from hiding text */
-        .docs-page p, .docs-page ul, .docs-page ol, .docs-page li {
-            color: var(--docs-text) !important;
+        .docs-topbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(9, 9, 12, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--docs-border);
+            padding: 0.9rem 0;
         }
-        
-        .docs-page strong, .docs-page b {
-            color: var(--docs-heading) !important;
+
+        .docs-topbar-inner {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
         }
-        
-        .docs-page .muted {
-            color: #6c757d !important;
+
+        .docs-topbar-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
 
         .docs-container {
-            max-width: 900px;
+            max-width: 1240px;
             margin: 0 auto;
-            padding: 40px 20px;
-            background: white;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            padding: 3rem 2rem 5rem;
             min-height: 100vh;
         }
 
         .docs-header {
             text-align: center;
-            padding-bottom: 2rem;
+            padding-bottom: 2.5rem;
             margin-bottom: 3rem;
-            border-bottom: 2px solid var(--docs-border);
+            border-bottom: 1px solid var(--docs-border);
         }
 
         .docs-header h1 {
             color: var(--docs-heading);
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 4.5vw, 2.85rem);
+            font-weight: 800;
             margin-bottom: 0.5rem;
-            letter-spacing: -1px;
+            letter-spacing: -0.5px;
         }
 
         .docs-header p {
-            color: #6c757d;
+            color: var(--docs-muted);
             font-size: 1.1rem;
+            margin-bottom: 0;
         }
 
+        .docs-layout {
+            display: grid;
+            grid-template-columns: 290px 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        /* Sticky Sidebar Navigation */
         .docs-nav {
-            background: #f1f3f5;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 3rem;
+            position: sticky;
+            top: 90px;
+            background: linear-gradient(180deg, #14141b 0%, #0e0e13 100%);
+            border: 1px solid var(--docs-border);
+            border-top: 1px solid rgba(255, 255, 255, 0.14);
+            padding: 1.35rem;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
         }
 
         .docs-nav h3 {
-            margin-top: 0;
+            margin: 0;
             color: var(--docs-heading);
-            margin-bottom: 0;
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .docs-nav details > summary {
@@ -88,19 +124,21 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--docs-border);
         }
-        
+
         .docs-nav details > summary::-webkit-details-marker {
             display: none;
         }
-        
+
         .docs-nav details > summary::after {
             content: '▼';
-            font-size: 0.8em;
+            font-size: 0.75em;
             color: var(--docs-accent);
             transition: transform 0.3s ease;
         }
-        
+
         .docs-nav details[open] > summary::after {
             transform: rotate(-180deg);
         }
@@ -108,54 +146,135 @@
         .docs-nav ul {
             list-style: none;
             padding-left: 0;
-            column-count: 1;
-            margin-top: 20px;
+            margin-top: 1rem;
         }
 
         .docs-nav li {
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .docs-nav .sub-nav-list {
+            width: 100%;
+            padding-left: 14px;
+            list-style-type: none;
+            margin-top: 8px;
+            border-left: 2px solid rgba(192, 132, 252, 0.25);
+            margin-left: 4px;
         }
 
         .docs-nav a {
-            color: var(--docs-accent);
+            color: var(--docs-text);
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.2s;
         }
 
         .docs-nav a:hover {
-            text-decoration: underline;
+            color: var(--docs-accent);
+        }
+
+        .docs-main {
+            min-width: 0;
         }
 
         .docs-section {
             margin-bottom: 4rem;
+            scroll-margin-top: 95px;
         }
 
         .docs-section h2 {
             color: var(--docs-heading);
-            font-size: 1.8rem;
+            font-size: clamp(1.5rem, 3vw, 1.95rem);
+            font-weight: 700;
             border-bottom: 1px solid var(--docs-border);
-            padding-bottom: 10px;
+            padding-bottom: 12px;
             margin-bottom: 20px;
+            letter-spacing: -0.3px;
         }
 
         .docs-section h3 {
             color: var(--docs-heading);
-            font-size: 1.4rem;
-            margin-top: 30px;
-            margin-bottom: 15px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-top: 28px;
+            margin-bottom: 14px;
         }
 
-        .plugin-manual p, .plugin-manual ul, .plugin-manual ol, .plugin-manual li {
-            font-size: 0.95rem;
+        .docs-section h4 {
+            color: #e2e8f0;
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-top: 16px;
+            margin-bottom: 8px;
+        }
+
+        .docs-page p,
+        .docs-page ul,
+        .docs-page ol,
+        .docs-page li {
+            color: var(--docs-text);
+        }
+
+        .docs-page strong,
+        .docs-page b {
+            color: var(--docs-heading);
+        }
+
+        .docs-page .muted {
+            color: var(--docs-muted) !important;
         }
 
         .plugin-manual {
-            background: #fff;
+            background: var(--docs-surface);
             border: 1px solid var(--docs-border);
-            border-left: 4px solid var(--docs-accent);
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 4px;
+            border-left: 4px solid var(--docs-accent-strong);
+            padding: 1.6rem;
+            margin-bottom: 1.5rem;
+            border-radius: 10px;
+            scroll-margin-top: 95px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+        }
+
+        .plugin-manual h3 {
+            margin-top: 0;
+            color: #ffffff;
+        }
+
+        .plugin-manual p,
+        .plugin-manual ul,
+        .plugin-manual ol,
+        .plugin-manual li {
+            font-size: 0.96rem;
+        }
+
+        .plugin-manual ul,
+        .plugin-manual ol {
+            padding-left: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .plugin-manual li {
+            margin-bottom: 0.45rem;
+        }
+
+        .plugin-manual.manual-aside {
+            background: var(--docs-elevated);
+        }
+
+        .plugin-manual.manual-recipes {
+            background: rgba(56, 189, 248, 0.05);
+            border-left-color: #38bdf8;
+        }
+
+        .plugin-manual.manual-recipes-bass {
+            background: rgba(239, 68, 68, 0.05);
+            border-left-color: #ef4444;
         }
 
         .parameter-list {
@@ -173,73 +292,36 @@
             color: var(--docs-heading);
         }
 
-        .back-link {
-            display: inline-block;
-            margin-bottom: 20px;
+        .docs-aside-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .docs-page code {
+            font-family: var(--font-mono);
+            overflow-wrap: anywhere;
+            word-break: break-word;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             color: var(--docs-accent);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .back-link:hover {
-            text-decoration: underline;
-        }
-
-        /* Utilidad para evitar cortes feos al imprimir */
-        .page-break {
-            page-break-before: always;
-        }
-
-        /* Optimizaciones para impresión */
-        @media print {
-            body.docs-page {
-                background: white;
-            }
-
-            .docs-container {
-                box-shadow: none;
-                margin: 0;
-                padding: 0;
-                max-width: 100%;
-            }
-
-            .docs-nav,
-            .back-link {
-                display: none;
-                /* No imprimir la navegación ni el botón de volver */
-            }
-
-            .docs-section {
-                margin-bottom: 2rem;
-            }
-
-            a[href^="http"]:after {
-                content: " (" attr(href) ")";
-                font-size: 90%;
-            }
-
-            h2,
-            h3 {
-                page-break-after: avoid;
-            }
-
-            p,
-            ul,
-            .plugin-manual {
-                page-break-inside: avoid;
-            }
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.85em;
         }
 
         /* Estilos Destacados para Pacto Creativo */
         #pacto-creativo {
-            background: linear-gradient(135deg, #ffffff 0%, #f9f6fd 100%);
-            border: 2px solid var(--docs-accent);
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(111, 66, 193, 0.12);
+            background: linear-gradient(135deg, #161422 0%, #0e0e14 100%);
+            border: 1px solid rgba(192, 132, 252, 0.35);
+            border-top: 1px solid rgba(216, 180, 254, 0.5);
+            padding: 2.75rem;
+            border-radius: 14px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55);
             position: relative;
             overflow: hidden;
-            margin-top: 2rem;
+            margin-top: 1rem;
             margin-bottom: 4rem;
         }
 
@@ -260,90 +342,81 @@
             color: var(--docs-accent);
             border-bottom: none;
             text-align: center;
-            font-size: 2.2rem;
+            font-size: clamp(1.65rem, 3.5vw, 2.2rem);
             font-weight: 800;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             padding-bottom: 0;
             letter-spacing: -0.5px;
         }
 
         #pacto-creativo p {
-            font-size: 1.05rem;
-            line-height: 1.7;
+            font-size: 1.02rem;
+            line-height: 1.75;
         }
 
         #pacto-creativo h3 {
             color: var(--docs-heading);
-            border-left: 4px solid var(--docs-accent);
-            padding-left: 10px;
-            margin-top: 30px;
+            border-left: 3px solid var(--docs-accent);
+            padding-left: 12px;
+            margin-top: 28px;
         }
 
         /* Botones de impresión por sección */
         .print-btn {
-            background: none;
-            border: 1px solid var(--docs-accent);
+            font-family: var(--font-mono);
+            background: rgba(192, 132, 252, 0.08);
+            border: 1px solid rgba(192, 132, 252, 0.35);
             border-radius: 4px;
             cursor: pointer;
             color: var(--docs-accent);
-            opacity: 0.5;
-            margin-left: 10px;
-            font-size: 0.70rem;
-            padding: 2px 6px;
-            vertical-align: text-bottom;
+            font-size: 0.65rem;
+            padding: 2px 7px;
             transition: all 0.2s ease;
-            font-family: inherit;
             font-weight: 600;
+            letter-spacing: 0.5px;
+            flex-shrink: 0;
         }
-        
+
         .print-btn:hover {
-            opacity: 1;
-            background: rgba(111, 66, 193, 0.1);
+            background: var(--docs-accent-strong);
+            border-color: var(--docs-accent);
+            color: #ffffff;
         }
 
         #print-container {
             display: none;
         }
 
-        .docs-aside-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 20px;
+        .page-break {
+            page-break-before: always;
         }
 
-        .docs-page code {
-            overflow-wrap: anywhere;
-            word-break: break-word;
-            background: #f1f3f5;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 0.9em;
+        @media (max-width: 960px) {
+            .docs-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .docs-nav {
+                position: static;
+            }
         }
 
         @media (max-width: 640px) {
+            .docs-topbar-inner {
+                padding: 0 1.25rem;
+            }
+
             .docs-container {
-                padding: 24px 16px;
+                padding: 2rem 1.25rem 4rem;
             }
 
-            .docs-header h1 {
-                font-size: 1.9rem;
-            }
-
-            .docs-section h2 {
-                font-size: 1.45rem;
-            }
-
-            .docs-section h3 {
-                font-size: 1.2rem;
+            .plugin-manual {
+                padding: 1.25rem;
             }
 
             #pacto-creativo {
-                padding: 24px 16px;
-            }
-
-            #pacto-creativo h2 {
-                font-size: 1.65rem;
+                padding: 1.75rem 1.25rem;
             }
 
             .docs-aside-grid {
@@ -356,19 +429,83 @@
             }
         }
 
+        /* =====================================================
+           MODO IMPRESIÓN / EXPORTACIÓN PDF (Fondo Blanco Puro)
+           ===================================================== */
         @media print {
+            :root {
+                --docs-bg: #ffffff;
+                --docs-surface: #ffffff;
+                --docs-elevated: #f8f9fa;
+                --docs-text: #212529;
+                --docs-heading: #111111;
+                --docs-muted: #555555;
+                --docs-border: #dee2e6;
+                --docs-accent: #5a2ca0;
+            }
+
+            body.docs-page {
+                background: #ffffff !important;
+                color: #212529 !important;
+            }
+
+            .docs-topbar,
+            .docs-nav,
+            .back-link,
+            .print-btn {
+                display: none !important;
+            }
+
+            .docs-container,
+            .docs-layout {
+                display: block !important;
+                max-width: 100% !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                box-shadow: none !important;
+            }
+
+            .docs-page p,
+            .docs-page ul,
+            .docs-page ol,
+            .docs-page li {
+                color: #212529 !important;
+            }
+
+            .docs-page strong,
+            .docs-page b,
+            .docs-section h2,
+            .docs-section h3,
+            .docs-section h4,
+            .plugin-manual h3 {
+                color: #111111 !important;
+            }
+
+            .plugin-manual,
+            #pacto-creativo {
+                background: #ffffff !important;
+                border: 1px solid #dee2e6 !important;
+                border-left: 4px solid #5a2ca0 !important;
+                box-shadow: none !important;
+                page-break-inside: avoid;
+            }
+
+            .docs-page code {
+                background: #f1f3f5 !important;
+                color: #333333 !important;
+                border: 1px solid #dee2e6 !important;
+            }
+
             body.is-printing-single > .docs-container {
                 display: none !important;
             }
+
             body.is-printing-single #print-container {
                 display: block !important;
-                background: white;
+                background: white !important;
                 padding: 20px;
                 max-width: 900px;
                 margin: 0 auto;
-            }
-            body.is-printing-single .print-btn {
-                display: none !important;
             }
         }
     </style>
@@ -376,88 +513,100 @@
 
 <body class="docs-page">
 
-    <div class="docs-container">
-        <!-- Top bar con Back y Lang Switcher -->
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-            <a href="index.html" class="back-link" style="margin-bottom:0;" data-i18n="back">← Volver a la Web Principal</a>
-            <div class="lang-switch docs-nav-btn" style="background: #f1f3f5; padding: 5px 15px; border-radius: 20px; border: 1px solid var(--docs-border);">
-                <button class="lang-btn active" data-lang="es" style="font-family: 'Outfit', sans-serif; background:none; border:none; cursor:pointer; font-weight:600; color:var(--docs-heading); font-size:14px;">ES</button>
-                <span class="lang-sep" style="color:#ccc; margin:0 5px;">|</span>
-                <button class="lang-btn" data-lang="en" style="font-family: 'Outfit', sans-serif; background:none; border:none; cursor:pointer; font-weight:400; color:#888; font-size:14px;">EN</button>
+    <!-- Topbar consistente con Amatista -->
+    <header class="docs-topbar">
+        <div class="docs-topbar-inner">
+            <a href="index.html" class="brand-logo" aria-label="Amatista">
+                <img src="assets/amatista_logo_horizontal.png" alt="Amatista Logo" class="brand-logo-img">
+                <span class="brand-logo-text">AMATISTA</span>
+            </a>
+            <div class="docs-topbar-right">
+                <a href="index.html" class="back-link" data-i18n="back">← Volver a la Web Principal</a>
+                <div class="lang-switch">
+                    <button class="lang-btn active" data-lang="es">ES</button>
+                    <span class="lang-sep">|</span>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                </div>
             </div>
         </div>
+    </header>
 
+    <div class="docs-container">
         <header class="docs-header">
+            <span class="section-eyebrow">DOCUMENTACIÓN & MANUALES</span>
             <h1 data-i18n="headerTitle">Amatista Efectos</h1>
             <p data-i18n="headerDesc">Manuales de Usuario y Documentación Técnica</p>
         </header>
 
-        <!-- Índice -->
-        <nav class="docs-nav">
-            <details open>
-                <summary>
-                    <h3 data-i18n="indexTitle" style="margin: 0;">Índice</h3>
-                </summary>
-                <ul>
-                    <li style="margin-bottom: 12px;">
-                        <a href="#bienvenida" data-i18n="idx1">1. Bienvenida</a>
-                        <button class="print-btn" onclick="printSection('bienvenida')" title="Imprimir sección a PDF">PDF</button>
-                    </li>
-                    <li style="margin-bottom: 12px;">
-                        <a href="#pacto-creativo" data-i18n="idx2">2. Nuestro Pacto Creativo</a>
-                        <button class="print-btn" onclick="printSection('pacto-creativo')" title="Imprimir sección a PDF">PDF</button>
-                    </li>
-                    <li style="margin-bottom: 12px;">
-                        <a href="#instalacion" data-i18n="idx3">3. Guía de Instalación</a>
-                        <button class="print-btn" onclick="printSection('instalacion')" title="Imprimir sección a PDF">PDF</button>
-                    </li>
-                    <li style="margin-bottom: 12px;">
-                        <a href="#manuales" data-i18n="idx4">4. Manuales de Plugins</a>
-                        <button class="print-btn" onclick="printSection('manuales')" title="Imprimir todos los manuales a PDF">PDF</button>
-                        <ul style="padding-left: 20px; list-style-type: none; margin-top: 10px; border-left: 2px solid var(--docs-border); margin-left: 5px;">
-                            <li style="margin-bottom: 8px;">
-                                <a href="#carbonado" style="font-weight: 400; font-size: 0.95rem; text-decoration: none;">&bull; Carbonado Boost</a>
-                                <button class="print-btn" onclick="printSection('carbonado')" title="Imprimir manual a PDF">PDF</button>
-                            </li>
-                            <li style="margin-bottom: 8px;">
-                                <a href="#onix" style="font-weight: 400; font-size: 0.95rem; text-decoration: none;">&bull; Ónix Overdrive</a>
-                                <button class="print-btn" onclick="printSection('onix')" title="Imprimir manual a PDF">PDF</button>
-                            </li>
-                            <li style="margin-bottom: 8px;">
-                                <a href="#amatista" style="font-weight: 400; font-size: 0.95rem; text-decoration: none;">&bull; Amatista Distortion</a>
-                                <button class="print-btn" onclick="printSection('amatista')" title="Imprimir manual a PDF">PDF</button>
-                            </li>
-                            <li style="margin-bottom: 8px;">
-                                <a href="#obsidiana" style="font-weight: 400; font-size: 0.95rem; text-decoration: none;">&bull; Obsidiana Fuzz</a>
-                                <button class="print-btn" onclick="printSection('obsidiana')" title="Imprimir manual a PDF">PDF</button>
-                            </li>
-                            <li style="margin-bottom: 8px;">
-                                <a href="#granate" style="font-weight: 400; font-size: 0.95rem; text-decoration: none;">&bull; Granate Bass Saturator</a>
-                                <button class="print-btn" onclick="printSection('granate')" title="Imprimir manual a PDF">PDF</button>
-                            </li>
-                            <li style="margin-bottom: 8px;">
-                                <a href="#sykoone" style="font-weight: 400; font-size: 0.95rem; text-decoration: none;">&bull; SYKO One</a>
-                                <button class="print-btn" onclick="printSection('sykoone')" title="Imprimir manual a PDF">PDF</button>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </details>
-        </nav>
+        <div class="docs-layout">
+            <!-- Índice Lateral Sticky -->
+            <nav class="docs-nav">
+                <details open>
+                    <summary>
+                        <h3 data-i18n="indexTitle">Índice</h3>
+                    </summary>
+                    <ul>
+                        <li>
+                            <a href="#bienvenida" data-i18n="idx1">1. Bienvenida</a>
+                            <button class="print-btn" onclick="printSection('bienvenida')" title="Imprimir sección a PDF">PDF</button>
+                        </li>
+                        <li>
+                            <a href="#pacto-creativo" data-i18n="idx2">2. Nuestro Pacto Creativo</a>
+                            <button class="print-btn" onclick="printSection('pacto-creativo')" title="Imprimir sección a PDF">PDF</button>
+                        </li>
+                        <li>
+                            <a href="#instalacion" data-i18n="idx3">3. Guía de Instalación</a>
+                            <button class="print-btn" onclick="printSection('instalacion')" title="Imprimir sección a PDF">PDF</button>
+                        </li>
+                        <li>
+                            <a href="#manuales" data-i18n="idx4">4. Manuales de Plugins</a>
+                            <button class="print-btn" onclick="printSection('manuales')" title="Imprimir todos los manuales a PDF">PDF</button>
+                            <ul class="sub-nav-list">
+                                <li>
+                                    <a href="#carbonado">&bull; Carbonado Boost</a>
+                                    <button class="print-btn" onclick="printSection('carbonado')" title="Imprimir manual a PDF">PDF</button>
+                                </li>
+                                <li>
+                                    <a href="#onix">&bull; Ónix Overdrive</a>
+                                    <button class="print-btn" onclick="printSection('onix')" title="Imprimir manual a PDF">PDF</button>
+                                </li>
+                                <li>
+                                    <a href="#amatista">&bull; Amatista Distortion</a>
+                                    <button class="print-btn" onclick="printSection('amatista')" title="Imprimir manual a PDF">PDF</button>
+                                </li>
+                                <li>
+                                    <a href="#obsidiana">&bull; Obsidiana Fuzz</a>
+                                    <button class="print-btn" onclick="printSection('obsidiana')" title="Imprimir manual a PDF">PDF</button>
+                                </li>
+                                <li>
+                                    <a href="#granate">&bull; Granate Bass Saturator</a>
+                                    <button class="print-btn" onclick="printSection('granate')" title="Imprimir manual a PDF">PDF</button>
+                                </li>
+                                <li>
+                                    <a href="#sykoone">&bull; SYKO One</a>
+                                    <button class="print-btn" onclick="printSection('sykoone')" title="Imprimir manual a PDF">PDF</button>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </details>
+            </nav>
 
-        <!-- Secciones Dinámicas -->
-        <section id="bienvenida" class="docs-section"></section>
-        
-        <section id="pacto-creativo" class="docs-section"></section>
-        
-        <div class="page-break"></div>
-        
-        <section id="instalacion" class="docs-section"></section>
-        
-        <div class="page-break"></div>
-        
-        <section id="manuales" class="docs-section"></section>
-
+            <!-- Contenido Principal -->
+            <main class="docs-main">
+                <section id="bienvenida" class="docs-section"></section>
+                
+                <section id="pacto-creativo" class="docs-section"></section>
+                
+                <div class="page-break"></div>
+                
+                <section id="instalacion" class="docs-section"></section>
+                
+                <div class="page-break"></div>
+                
+                <section id="manuales" class="docs-section"></section>
+            </main>
+        </div>
     </div>
 
     <!-- Script de traducciones de la documentación modulares -->
@@ -468,7 +617,7 @@
     <script src="docs/impulsoPrimario.js"></script>
     <script src="docs/frecuenciaBase.js"></script>
     <script src="docs/sykoOne.js"></script>
-    <script src="docs.js"></script>
+    <script src="docs.js?v=4"></script>
     <script>
         function printSection(id) {
             const el = document.getElementById(id);
@@ -487,7 +636,7 @@
             printContainer.innerHTML = '';
             
             const header = document.querySelector('.docs-header');
-            if(header) {
+            if (header) {
                 const headClone = header.cloneNode(true);
                 headClone.style.marginBottom = "2rem";
                 printContainer.appendChild(headClone);

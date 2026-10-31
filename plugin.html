@@ -8,14 +8,13 @@
     <meta name="description" content="Detalles del plugin Amatista Efectos.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=3">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=4">
     <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2">
-
 </head>
 
 <body>
-    <nav id="navbar" class="navbar scrolled">
+    <nav id="navbar" class="navbar scrolled always-scrolled">
         <div class="nav-container">
             <a href="index.html" class="brand-logo" aria-label="Amatista">
                 <img src="assets/amatista_logo_horizontal.png" alt="Amatista Logo" class="brand-logo-img">
@@ -47,7 +46,7 @@
     </nav>
 
     <!-- Espacio para el navbar fijo -->
-    <div style="height: 100px;"></div>
+    <div style="height: 90px;"></div>
 
     <section class="section plugin-single-section">
         <div class="container fade-in-section is-visible">
@@ -58,9 +57,10 @@
             <div class="plugin-single-grid">
                 <!-- Columna Izquierda: Galería -->
                 <div class="plugin-gallery">
-                    <div class="main-image-container">
+                    <div class="main-image-container" id="pg-main-img-wrap">
                         <img src="" alt="Plugin Image" id="pg-main-img" class="plugin-img">
                         <div class="overlay-glow"></div>
+                        <span class="zoom-hint" data-i18n="zoom-hint">🔍 Clic para ampliar</span>
                     </div>
                     <div class="gallery-thumbnails" id="pg-thumbnails">
                         <!-- Thumbnails injected via JS -->
@@ -69,12 +69,12 @@
 
                 <!-- Columna Derecha: Info -->
                 <div class="plugin-extended-info">
+                    <h3 class="family-label" id="pg-family">Familia</h3>
+
                     <div class="title-wrap">
                         <h1 id="pg-title">Plugin Title</h1>
                         <span class="tag" id="pg-badge">Premium</span>
                     </div>
-
-                    <h3 class="family-label" id="pg-family">Familia</h3>
 
                     <div class="price-wrap" id="pg-price-container">
                         <span class="price-large" id="pg-price">$0.00 USD</span>
@@ -92,9 +92,11 @@
                     </div>
 
                     <div class="action-box">
-                        <p class="os-alert" id="pg-os-alert" style="font-size: 0.85rem; margin-bottom: 15px;">
-                            <!-- OS Alert -->
-                        </p>
+                        <div style="margin-bottom: 14px;">
+                            <p class="os-alert" id="pg-os-alert">
+                                <!-- OS Alert -->
+                            </p>
+                        </div>
 
                         <!-- Coming Soon Container (Se muestra si isReleased es false) -->
                         <div id="pg-coming-soon-container" style="display: none;"></div>
@@ -102,7 +104,7 @@
                         <a href="#" id="pg-cta-btn" target="_blank"
                             class="btn btn-primary btn-block glow-effect">Adquirir</a>
 
-                        <!-- PayPal Button Container -->
+                        <!-- Purchase / PayPal / PREX Container -->
                         <div id="purchase-container" style="display: none; margin-top: 15px;"></div>
 
                         <!-- Download Section (Hidden until payment success) -->
@@ -118,7 +120,7 @@
                         </div>
 
                         <a href="docs.html" id="pg-docs-btn" class="btn btn-secondary btn-block"
-                            style="margin-top: 10px;" data-i18n="btn-read-manual">Leer manual de usuario</a>
+                            style="margin-top: 12px;" data-i18n="btn-read-manual">Leer manual de usuario</a>
                     </div>
                 </div>
             </div>
@@ -128,9 +130,12 @@
                 <!-- Populated via JS -->
             </div>
 
-            <div class="plugin-video-section fade-in-section" id="pg-video-section"
-                style="display: none; margin-top: 6rem;">
-                <h2 class="section-title center" data-i18n="media-title">En <span class="highlight">Acción</span></h2>
+            <div class="plugin-video-section fade-in-section is-visible" id="pg-video-section"
+                style="display: none; margin-top: 5rem;">
+                <div class="section-header">
+                    <span class="section-eyebrow" data-i18n="media-eyebrow">DEMOS & REVIEWS</span>
+                    <h2 class="section-title center" data-i18n="media-title">En <span class="highlight">Acción</span></h2>
+                </div>
                 <div class="single-video-container" id="pg-video-container">
                     <!-- Video injected via JS -->
                 </div>
@@ -143,7 +148,7 @@
         <div class="container footer-content">
             <div class="footer-brand">
                 <a href="index.html" class="brand-logo footer-logo" aria-label="Amatista">
-                    <img src="assets/amatista_logo_horizontal.png" alt="Amatista Logo" class="brand-logo-img">
+                    <img src="assets/amatista_logo_horizontal.png" alt="Amatista Logo" class="brand-logo-img" loading="lazy">
                     <span class="brand-logo-text">AMATISTA</span>
                 </a>
                 <p data-i18n="footer-desc">Efectos digitales boutique.</p>
@@ -160,8 +165,8 @@
                 <div class="link-column">
                     <h4>Social</h4>
                     <ul>
-                        <li><a href="https://instagram.com/amatista.efectos">Instagram</a></li>
-                        <li><a href="https://youtube.com/@amatistaefectos">YouTube</a></li>
+                        <li><a href="https://instagram.com/amatista.efectos" target="_blank" rel="noopener">Instagram</a></li>
+                        <li><a href="https://youtube.com/@amatistaefectos" target="_blank" rel="noopener">YouTube</a></li>
                     </ul>
                 </div>
                 <div class="link-column">
@@ -170,7 +175,7 @@
                         <li><a href="docs.html" data-i18n="footer-docs">Manuales y Docs</a></li>
                         <li><a href="docs.html#pacto-creativo" data-i18n="footer-pact" class="footer-pact">Pacto
                                 Creativo</a></li>
-                        <li><a href="#" data-i18n="footer-support">Soporte: orders@amatista-efectos.online</a></li>
+                        <li><a href="mailto:orders@amatista-efectos.online" data-i18n="footer-support">Soporte: orders@amatista-efectos.online</a></li>
                         <li><a href="#" class="btn-donate"
                                 style="color: var(--clr-amethyst-light); font-weight: 600; display: inline-flex; align-items: center; gap: 6px;"><svg
                                     xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
@@ -191,8 +196,8 @@
         </div>
     </footer>
 
-    <script src="script.js?v=3"></script>
-    <script src="plugin.js?v=4"></script>
+    <script src="script.js?v=4"></script>
+    <script src="plugin.js?v=5"></script>
 </body>
 
 </html>

@@ -3,21 +3,18 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Auto-navigate to plugins section on start
-    if ((window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || window.location.pathname.endsWith('amatista-web/')) && !window.location.hash) {
-        window.location.replace(window.location.pathname + '#plugins');
-    }
-
     // 1. Sticky Navbar Effect with Glassmorphism switch
     const navbar = document.getElementById('navbar');
 
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
+    if (navbar && !navbar.classList.contains('always-scrolled')) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    }
 
     // 1.5. Mobile Fullscreen Menu Logic
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
@@ -45,8 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 2. Intersection Observer for Fade-in effects
-    // Nota: threshold debe ser 0 (no 0.1) porque en móviles las secciones altas (ej. #plugins con 7 cards apiladas ~6000px)
-    // superan más de 10 veces el alto del viewport de Safari iOS, por lo que un threshold de 0.1 nunca se cumple.
+    // threshold: 0 garantiza que secciones muy altas en móviles (como #plugins) siempre disparen is-visible
     const faders = document.querySelectorAll('.fade-in-section');
 
     if ('IntersectionObserver' in window) {
@@ -85,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetElement = document.querySelector(targetId);
 
             if (targetElement) {
-                const navHeight = navbar.offsetHeight;
+                const navHeight = navbar ? navbar.offsetHeight : 0;
                 const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight;
 
                 window.scrollTo({
@@ -96,34 +92,46 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 4. Tabs Logic
+    // 4. Unified Catalog Filtering & Tabs Logic
     const tabBtns = document.querySelectorAll('.tab-btn');
-    const tabPanes = document.querySelectorAll('.tab-pane');
+    const catalogPane = document.getElementById('catalog-pane');
+    const pluginCards = document.querySelectorAll('.plugin-card[data-categories]');
+    const pluginFamilies = document.querySelectorAll('.plugin-family[data-family-cats]');
 
     tabBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            // Remove active class from all buttons and panes
             tabBtns.forEach(b => b.classList.remove('active'));
-            tabPanes.forEach(p => p.classList.remove('active', 'is-visible'));
-
-            // Add active class to clicked button
             btn.classList.add('active');
 
-            // Show corresponding pane
-            const targetId = btn.getAttribute('data-target');
-            const targetPane = document.getElementById(targetId);
-            if (targetPane) {
-                targetPane.classList.add('active');
+            const targetCategory = btn.getAttribute('data-target');
 
-                // Allow CSS transition to take effect
-                setTimeout(() => {
-                    targetPane.classList.add('is-visible');
-                }, 50);
+            if (pluginCards.length > 0 && catalogPane) {
+                catalogPane.style.animation = 'none';
+                void catalogPane.offsetWidth; // trigger reflow for smooth fade animation
+                catalogPane.style.animation = 'fadeInTab 0.35s ease forwards';
+
+                pluginCards.forEach(card => {
+                    const cats = (card.getAttribute('data-categories') || '').split(/\s+/);
+                    if (cats.includes(targetCategory)) {
+                        card.classList.remove('is-hidden');
+                    } else {
+                        card.classList.add('is-hidden');
+                    }
+                });
+
+                pluginFamilies.forEach(family => {
+                    const fCats = (family.getAttribute('data-family-cats') || '').split(/\s+/);
+                    if (fCats.includes(targetCategory)) {
+                        family.classList.remove('is-hidden');
+                    } else {
+                        family.classList.add('is-hidden');
+                    }
+                });
             }
         });
     });
 
-    // correo
+    // Correo de contacto
     const EMAIL_ADDRESS = "orders@amatista-efectos.online";
 
     // 5. Language Switcher Logic
@@ -136,16 +144,22 @@ document.addEventListener('DOMContentLoaded', () => {
             "nav-cta": "Ver Catálogo",
             "nav-pact": "Pacto Creativo",
             // Hero
+            "hero-eyebrow": "DSP AUDIO ENGINEERING · MONTEVIDEO, UY",
             "hero-title": "SONIDO <span class=\"highlight\">EN ESTADO PURO</span>",
             "hero-subtitle": "Herramientas precisas inspiradas en hardware real, diseñadas para esculpir tonos modernos y afinaciones bajas definidas.",
             "hero-btn-primary": "Descubrir Plugins",
             "hero-btn-secondary": "Conocer la Marca",
+            "hero-spec-1": "Oversampling hasta 4x",
+            "hero-spec-3": "Respuesta en Tiempo Real",
+            "hero-spec-4": "Sin DRM Invasivo",
             // About
+            "about-eyebrow": "NUESTRA FILOSOFÍA",
             "about-title": "Sobre <span class=\"highlight\">Amatista</span>",
             "about-p1": "¡Hola! Soy Álvaro, creador de Amatista Efectos. Desde Montevideo, Uruguay, combino mi experiencia en el desarrollo de sistemas con mi mayor pasión: el tono de la guitarra eléctrica en el metal. Como músico, comprendo la dedicación y el perfeccionismo que requiere la búsqueda del tono ideal.",
             "about-p2": "Amatista Efectos nace en la intersección de estos dos mundos, impulsado por una necesidad personal: crear las herramientas que yo mismo buscaba como músico. A través del Procesamiento Digital de Señales (DSP), encontré el medio exacto para materializar esas ideas en soluciones diseñadas para las exigencias de la producción actual. Más que algoritmos, estos plugins representan mi visión sobre el tono moderno.",
             "about-p3": "La evolución de este proyecto no ocurre en solitario. Agradezco profundamente a los músicos y testers que colaboran en cada desarrollo. Su nivel de exigencia y feedback constante son el motor de nuestra mejora continua, garantizando que cada herramienta ofrezca una experiencia sonora superior.",
             // Plugins
+            "plugins-eyebrow": "CATÁLOGO DE SOFTWARE",
             "plugins-title": "Nuestros <span class=\"highlight\">Plugins</span>",
             "tab-todos": "Todos",
             "tab-guitar": "Guitarra",
@@ -163,6 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "btn-back": "← Volver al catálogo",
             "btn-read-manual": "Leer manual de usuario",
             "plugin-features-title": "Características Principales",
+            "zoom-hint": "🔍 Clic para ampliar",
 
             "modal-donate-title": "Apoyar el Proyecto",
             "modal-donate-desc": "Tu apoyo me permite seguir desarrollando herramientas de audio de alta calidad y mantener muchas de ellas accesibles.",
@@ -207,8 +222,10 @@ document.addEventListener('DOMContentLoaded', () => {
             "coming-soon-collab": "Alianzas con artistas referentes del sonido moderno en camino.",
 
             // Media
+            "media-eyebrow": "DEMOS & REVIEWS",
             "media-title": "En <span class=\"highlight\">Acción</span>",
             // Pact
+            "pact-eyebrow": "MANIFIESTO DE ÉTICA",
             "pact-title": "Nuestro <span class=\"highlight\">Pacto Creativo</span>",
             "pact-desc": "Creemos en la transparencia y el respeto por tu herramienta de trabajo. Sin suscripciones, sin DRM invasivo, sin obsolescencia programada. Herramientas que compras una vez y son tuyas para siempre.",
             "pact-btn": "Leer el Pacto Completo",
@@ -233,16 +250,22 @@ document.addEventListener('DOMContentLoaded', () => {
             "nav-cta": "View Catalog",
             "nav-pact": "Creative Pact",
             // Hero
+            "hero-eyebrow": "DSP AUDIO ENGINEERING · MONTEVIDEO, UY",
             "hero-title": "PURE <span class=\"highlight\">SOUND</span>",
             "hero-subtitle": "Precise tools inspired by real hardware, designed to sculpt modern tones and low tunings without compromise.",
             "hero-btn-primary": "Discover Plugins",
             "hero-btn-secondary": "Know the Brand",
+            "hero-spec-1": "Up to 4x Oversampling",
+            "hero-spec-3": "Real-Time Response",
+            "hero-spec-4": "Zero Invasive DRM",
             // About
+            "about-eyebrow": "OUR PHILOSOPHY",
             "about-title": "About <span class=\"highlight\">Amatista</span>",
             "about-p1": "Hello! I'm Álvaro, creator of Amatista Efectos. From Montevideo, Uruguay, I combine my experience in systems development with my greatest passion: electric guitar tone in metal. As a musician, I understand the dedication and perfectionism required in the search for the ideal tone.",
             "about-p2": "Amatista Efectos is born at the intersection of these two worlds, driven by a personal need: to create the tools I myself was looking for as a musician. Through Digital Signal Processing (DSP), I found the exact medium to materialize those ideas into solutions designed for the demands of current production. More than just algorithms, these plugins represent my vision of modern tone.",
             "about-p3": "The evolution of this project does not happen alone. I deeply thank the musicians and testers who collaborate on each development. Their high standards and constant feedback are the engine of our continuous improvement, ensuring that every tool offers a superior sonic experience.",
             // Plugins
+            "plugins-eyebrow": "SOFTWARE CATALOG",
             "plugins-title": "Our <span class=\"highlight\">Plugins</span>",
             "tab-todos": "All",
             "tab-guitar": "Guitar",
@@ -260,6 +283,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "btn-back": "← Back to catalog",
             "btn-read-manual": "Read user manual",
             "plugin-features-title": "Key Features",
+            "zoom-hint": "🔍 Click to enlarge",
 
             "modal-donate-title": "Support the Project",
             "modal-donate-desc": "Your support allows me to continue developing high-quality audio tools and keeping many of them accessible.",
@@ -304,8 +328,10 @@ document.addEventListener('DOMContentLoaded', () => {
             "coming-soon-collab": "Alliances with modern guitar tone artists on the way.",
 
             // Media
+            "media-eyebrow": "DEMOS & REVIEWS",
             "media-title": "In <span class=\"highlight\">Action</span>",
             // Pact
+            "pact-eyebrow": "ETHICAL MANIFESTO",
             "pact-title": "Our <span class=\"highlight\">Creative Pact</span>",
             "pact-desc": "We believe in transparency and respect for your working tools. No subscriptions, no invasive DRM, no planned obsolescence. Tools you buy once and own forever.",
             "pact-btn": "Read Full Pact",
@@ -327,7 +353,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const langBtns = document.querySelectorAll('.lang-btn');
 
     function setLanguage(lang) {
-        // Update active button state
         langBtns.forEach(btn => {
             if (btn.dataset.lang === lang) {
                 btn.classList.add('active');
@@ -336,13 +361,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Update document lang attribute
         document.documentElement.lang = lang;
         try {
             localStorage.setItem('amatista_lang', lang);
         } catch (e) {}
 
-        // Replace texts (including any dynamically injected elements)
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const translationKey = el.getAttribute('data-i18n');
             if (translations[lang] && translations[lang][translationKey]) {
@@ -358,8 +381,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Initialize the default language on page load
-    setLanguage('es');
+    // Initialize language from localStorage or default to 'es'
+    let initialLang = 'es';
+    try {
+        initialLang = localStorage.getItem('amatista_lang') || 'es';
+    } catch (e) {}
+    setLanguage(initialLang);
 
     // 6. Hero Parallax & Particle System
     const bgCanvas = document.getElementById('parallax-bg');
@@ -392,13 +419,12 @@ document.addEventListener('DOMContentLoaded', () => {
             constructor(isForeground) {
                 this.isForeground = isForeground;
                 this.reset();
-                this.y = Math.random() * height; // initial random y
+                this.y = Math.random() * height;
             }
 
             reset() {
                 this.x = Math.random() * width;
                 this.y = height + Math.random() * 100;
-                // Optimization: Background particles larger & more transparent (bokeh effect) instead of using expensive blur filters
                 this.size = this.isForeground ? Math.random() * 2 + 1 : Math.random() * 5 + 3;
                 this.speedY = this.isForeground ? -(Math.random() * 0.4 + 0.1) : -(Math.random() * 0.2 + 0.05);
                 this.speedX = (Math.random() - 0.5) * 0.3;
@@ -417,7 +443,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     this.reset();
                 }
 
-                // Smooth mouse tracking / parallax
                 const dx = (mx - width / 2) * this.parallaxFactor;
                 const dy = (my - height / 2) * this.parallaxFactor;
 
@@ -439,7 +464,6 @@ document.addEventListener('DOMContentLoaded', () => {
         let isAnimating = true;
         const heroSection = document.querySelector('.hero');
 
-        // Performance optimization: Pause particle animation when hero is off-screen
         const heroObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 isAnimating = entry.isIntersecting;
@@ -454,7 +478,6 @@ document.addEventListener('DOMContentLoaded', () => {
         function animate() {
             if (!isAnimating) return;
 
-            // Smooth mouse interpolation (easing)
             mouseX += (targetMouseX - mouseX) * 0.05;
             mouseY += (targetMouseY - mouseY) * 0.05;
 
@@ -476,11 +499,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         animate();
     }
+
     // =========================================
     // RENDERIZADO DINÁMICO DE VIDEOS (YOUTUBE)
     // =========================================
-
-    // 1. Define tu catálogo de videos aquí
     const youtubeVideos = [
         {
             id: "NYB2dtHThKo",
@@ -506,11 +528,8 @@ document.addEventListener('DOMContentLoaded', () => {
             id: "Xu1i8GOV_Lg",
             title: "Wil Amatista (Demo)"
         }
-
-        // Puedes agregar más objetos aquí en el futuro
     ];
 
-    // 2. Función para inyectar los videos en el DOM
     function renderizarVideos() {
         const gallery = document.getElementById('youtube-gallery');
 
@@ -518,11 +537,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let HTMLContenido = '';
 
-        // Performance Optimization: Lazy Load YouTube videos using static placeholder and Facade pattern
         youtubeVideos.forEach(video => {
             HTMLContenido += `
                 <div class="video-container lazy-video" data-videoid="${video.id}" data-title="${video.title}">
-                    <div class="video-placeholder" style="background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.8) 0%, rgba(20, 20, 24, 0.4) 100%), url('https://img.youtube.com/vi/${video.id}/sddefault.jpg');">
+                    <div class="video-placeholder" style="background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.85) 0%, rgba(20, 20, 24, 0.35) 100%), url('https://img.youtube.com/vi/${video.id}/sddefault.jpg');">
                         <div class="play-btn">▶</div>
                         <p>${video.title}</p>
                     </div>
@@ -532,7 +550,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         gallery.innerHTML = HTMLContenido;
 
-        // Attach click listener to hot-load the iframe only on demand
         document.querySelectorAll('.lazy-video').forEach(videoNode => {
             videoNode.addEventListener('click', function () {
                 const vid = this.dataset.videoid;
@@ -551,7 +568,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3. Ejecutar al cargar
     renderizarVideos();
 
     // Make plugin image containers clickable linking to their plugin pages
@@ -581,14 +597,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p data-i18n="modal-donate-desc">Tu apoyo me permite seguir desarrollando herramientas de audio de alta calidad y mantener muchas de ellas accesibles.</p>
                     </div>
                     <div class="donation-options">
-
                         <div class="donate-btn-option" id="btn-prex-trigger">
                             <strong data-i18n="modal-prex">Transferencia PREX</strong>
                             <span data-i18n="modal-prex-desc">Transferencia directa (LATAM).</span>
                         </div>
                         <div id="prex-details" class="prex-details-card">
                             <p style="margin-bottom: 5px; color: var(--clr-text-muted); font-size: 0.9rem;" data-i18n="modal-prex-name">A nombre de Álvaro</p>
-                            <h4 style="color: white; letter-spacing: 2px; font-size: 1.4rem;">PREX: <span id="prex-account">1840539</span></h4>
+                            <h4 style="color: white; letter-spacing: 2px; font-size: 1.4rem; font-family: var(--font-mono);">PREX: <span id="prex-account">1840539</span></h4>
                         </div>
                     </div>
                 </div>
@@ -596,7 +611,6 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         document.body.insertAdjacentHTML('beforeend', modalHTML);
 
-        // Events
         const modal = document.getElementById('donation-modal');
         const closeBtn = document.getElementById('close-donation');
         const prexTrigger = document.getElementById('btn-prex-trigger');
@@ -612,20 +626,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Capture all clicks on any element with .btn-donate globally
     document.body.addEventListener('click', (e) => {
         const donateBtn = e.target.closest('.btn-donate');
         if (donateBtn) {
             e.preventDefault();
             createDonationModal();
 
-            // Force translation pass on the new modal HTML
-            const savedLang = localStorage.getItem('amatista_lang') || 'es';
+            let savedLang = 'es';
+            try {
+                savedLang = localStorage.getItem('amatista_lang') || 'es';
+            } catch (err) {}
             setLanguage(savedLang);
 
-            // Show modal
             document.getElementById('donation-modal').classList.add('active');
         }
     });
-
 });

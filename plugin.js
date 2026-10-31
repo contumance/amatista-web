@@ -450,6 +450,82 @@ document.addEventListener('DOMContentLoaded', () => {
                         "Enhance the definition without altering the amp’s character"
                     ]
                 }
+            },
+            pedalSpecs: {
+                es: {
+                    badge: "DSP ARCHITECTURE",
+                    title: "Especificaciones Técnicas · <span class='highlight'>Carbonado Boost</span>",
+                    subtitle: "Etapa de pre-énfasis y empuje limpio diseñada para compactar graves antes de amplificadores de alta ganancia.",
+                    cards: [
+                        {
+                            name: "Topología DSP Interna",
+                            tag: "2x Oversampling",
+                            desc: "Procesamiento de alta precisión que elimina artefactos de aliasing y modela los límites reales de un operacional analógico.",
+                            points: [
+                                "Tightening (High Pass ~100 Hz): Recorta subgraves antes del boost",
+                                "Anti-Hiss (Low Pass ~10 kHz): Suaviza agudos extremos",
+                                "Saturación tipo Op-Amp a altas presiones de entrada"
+                            ]
+                        },
+                        {
+                            name: "Controles & Comportamiento",
+                            tag: "+22 dB Gain",
+                            desc: "Interfaz directa de un solo parámetro calibrada con curva de respuesta musical no lineal.",
+                            points: [
+                                "Pressure: Hasta +22 dB de empuje progresivo",
+                                "Bypass: Ruta de señal limpia directa",
+                                "Ideal como primer eslabón de la cadena de guitarra"
+                            ]
+                        },
+                        {
+                            name: "Modos de Uso Recomendados",
+                            tag: "Studio & Live",
+                            desc: "Ajustes de referencia para distintos contextos de afinación y ganancia:",
+                            points: [
+                                "Tight Boost (Pressure 40–70%): Ataque percusivo antes de distorsión",
+                                "Clean Push (Pressure 10–30%): Realce de nivel y articulación",
+                                "Formatos incluidos: VST3 (Windows/macOS) y AU (macOS)"
+                            ]
+                        }
+                    ]
+                },
+                en: {
+                    badge: "DSP ARCHITECTURE",
+                    title: "Technical Specifications · <span class='highlight'>Carbonado Boost</span>",
+                    subtitle: "Pre-emphasis and clean boost stage engineered to tighten low frequencies before high-gain amplifiers.",
+                    cards: [
+                        {
+                            name: "Internal DSP Topology",
+                            tag: "2x Oversampling",
+                            desc: "High-precision processing that prevents aliasing artifacts and models real op-amp electrical limits.",
+                            points: [
+                                "Tightening (High Pass ~100 Hz): Trims sub-lows prior to boost",
+                                "Anti-Hiss (Low Pass ~10 kHz): Smooths extreme high frequencies",
+                                "Op-Amp style saturation under high input pressure"
+                            ]
+                        },
+                        {
+                            name: "Controls & Response",
+                            tag: "+22 dB Gain",
+                            desc: "Direct single-parameter interface calibrated with a musical, non-linear response curve.",
+                            points: [
+                                "Pressure: Up to +22 dB of progressive push",
+                                "Bypass: True clean signal path",
+                                "Optimal as the very first pedal in your signal chain"
+                            ]
+                        },
+                        {
+                            name: "Recommended Usage Modes",
+                            tag: "Studio & Live",
+                            desc: "Reference settings for different tuning and gain contexts:",
+                            points: [
+                                "Tight Boost (Pressure 40–70%): Percussive attack before distortion",
+                                "Clean Push (Pressure 10–30%): Level lift and pick clarity",
+                                "Included formats: VST3 (Windows/macOS) and AU (macOS)"
+                            ]
+                        }
+                    ]
+                }
             }
         },
         "impulso-primario": {
@@ -499,6 +575,84 @@ document.addEventListener('DOMContentLoaded', () => {
                         "Obsidiana: Massive chaos for low tunings"
                     ]
                 }
+            },
+            pedalSpecs: {
+                es: {
+                    badge: "ECOSISTEMA DE GANANCIA",
+                    title: "Arquitectura de la Saturación · <span class='highlight'>Impulso Primario</span>",
+                    subtitle: "Cuatro procesadores complementarios diseñados para encadenarse (Gain Stacking) o trabajar de forma independiente.",
+                    cards: [
+                        {
+                            name: "1. Cadena de Señal Recomendada",
+                            tag: "Gain Staging",
+                            desc: "Guitarra → Carbonado → Ónix → Amatista → Obsidiana → Amp / IR.",
+                            points: [
+                                "Carbonado (Boost): Impulsa y recorta subgraves (~100 Hz)",
+                                "Ónix (Overdrive): Enfoca medios (~720 Hz) con mezcla limpia dinámica",
+                                "Amatista (Distortion): Estructura Preamp + Power Stage con SAG",
+                                "Obsidiana (Fuzz): Colapso armónico y densidad extrema"
+                            ]
+                        },
+                        {
+                            name: "2. Recetas Rápidas de Estudio",
+                            tag: "Tonal Recipes",
+                            desc: "Combinaciones probadas para esculpir guitarras modernas:",
+                            points: [
+                                "Tight Riffs: Carbonado (50–70%) → Ónix (Tone alto) → Amatista (Structure bajo)",
+                                "Muro Denso: Ónix → Obsidiana (Gain alto, Bass alto) → Amatista (Structure alto)",
+                                "Clean Boost + Edge: Carbonado → Ónix (Drive bajo)"
+                            ]
+                        },
+                        {
+                            name: "3. Estándar Técnico de la Suite",
+                            tag: "2x / 4x DSP",
+                            desc: "Optimizado para apilar múltiples instancias sin degradar la articulación de la púa.",
+                            points: [
+                                "Oversampling interno 2x (Carbonado / Amatista) y 4x (Ónix / Obsidiana)",
+                                "Respuesta altamente sensible al potenciómetro de volumen de la guitarra",
+                                "Formato VST3 para Windows 10 o superior"
+                            ]
+                        }
+                    ]
+                },
+                en: {
+                    badge: "GAIN ECOSYSTEM",
+                    title: "Saturation Architecture · <span class='highlight'>Impulso Primario</span>",
+                    subtitle: "Four complementary processors engineered for seamless gain-stacking or standalone operation.",
+                    cards: [
+                        {
+                            name: "1. Recommended Signal Chain",
+                            tag: "Gain Staging",
+                            desc: "Guitar → Carbonado → Ónix → Amatista → Obsidiana → Amp / IR.",
+                            points: [
+                                "Carbonado (Boost): Pushes and trims sub-lows (~100 Hz)",
+                                "Ónix (Overdrive): Focuses midrange (~720 Hz) with dynamic clean blend",
+                                "Amatista (Distortion): Preamp + Power Stage structure with SAG",
+                                "Obsidiana (Fuzz): Harmonic collapse and extreme density"
+                            ]
+                        },
+                        {
+                            name: "2. Quick Studio Recipes",
+                            tag: "Tonal Recipes",
+                            desc: "Battle-tested combinations for modern guitar production:",
+                            points: [
+                                "Tight Riffs: Carbonado (50–70%) → Ónix (High Tone) → Amatista (Low Structure)",
+                                "Dense Wall: Ónix → Obsidiana (High Gain, High Bass) → Amatista (High Structure)",
+                                "Clean Boost + Edge: Carbonado → Ónix (Low Drive)"
+                            ]
+                        },
+                        {
+                            name: "3. Suite Technical Standard",
+                            tag: "2x / 4x DSP",
+                            desc: "Optimized for stacking multiple pedals without losing pick articulation.",
+                            points: [
+                                "Internal 2x (Carbonado / Amatista) and 4x (Ónix / Obsidiana) Oversampling",
+                                "Highly reactive to your guitar's volume knob and picking dynamics",
+                                "VST3 format for Windows 10 or later"
+                            ]
+                        }
+                    ]
+                }
             }
         },
         "onix": {
@@ -538,6 +692,82 @@ document.addEventListener('DOMContentLoaded', () => {
                         "Organic tone asymmetric clipping",
                         "High quality internal 4x Oversampling",
                         "Optimized Drive, Tone, and Level knobs"
+                    ]
+                }
+            },
+            pedalSpecs: {
+                es: {
+                    badge: "DSP ARCHITECTURE",
+                    title: "Especificaciones Técnicas · <span class='highlight'>Ónix Overdrive</span>",
+                    subtitle: "Overdrive moderno refinado para eliminar el barro en graves y proyectar los medios con claridad quirúrgica.",
+                    cards: [
+                        {
+                            name: "Topología DSP Interna",
+                            tag: "4x Oversampling",
+                            desc: "Doble etapa de pre-modelado y saturación asimétrica con mezcla limpia dependiente de la ganancia.",
+                            points: [
+                                "Mid Boost (~720 Hz): Refuerzo calibrado para cortar en la mezcla",
+                                "Pre-Shaping: Recorte controlado de graves antes de saturar",
+                                "Mezcla Dinámica: A menor Drive se preserva mayor señal limpia"
+                            ]
+                        },
+                        {
+                            name: "Controles & Parámetros",
+                            tag: "3 Perillas",
+                            desc: "Rango amplio de ganancia y volumen de salida para empujar cualquier amplificador.",
+                            points: [
+                                "Drive: Incrementa saturación y compresión sin perder definición",
+                                "Tone: Filtro pasa-bajos dinámico sobre el contenido armónico",
+                                "Level: Volumen de salida de -18 dB a +12 dB"
+                            ]
+                        },
+                        {
+                            name: "Modos de Uso Recomendados",
+                            tag: "Tightener & Crunch",
+                            desc: "Configuraciones clave para rítmicas modernas y solos:",
+                            points: [
+                                "Clean Boost / Tightener: Drive 0–15%, Tone 50–70%, Level alto",
+                                "Crunch Moderno: Drive 30–60%, Tone 50%",
+                                "Formato VST3 para Windows 10 o superior"
+                            ]
+                        }
+                    ]
+                },
+                en: {
+                    badge: "DSP ARCHITECTURE",
+                    title: "Technical Specifications · <span class='highlight'>Ónix Overdrive</span>",
+                    subtitle: "Modern overdrive refined to eliminate low-end mud and project midrange frequencies with surgical clarity.",
+                    cards: [
+                        {
+                            name: "Internal DSP Topology",
+                            tag: "4x Oversampling",
+                            desc: "Dual pre-shaping and asymmetrical clipping stage with gain-dependent dynamic clean blend.",
+                            points: [
+                                "Mid Boost (~720 Hz): Calibrated midrange push to cut through dense mixes",
+                                "Pre-Shaping: Controlled bass trimming before saturation",
+                                "Dynamic Blend: Lower Drive settings preserve more clean transient signal"
+                            ]
+                        },
+                        {
+                            name: "Controls & Parameters",
+                            tag: "3 Knobs",
+                            desc: "Wide gain and output level range to push any amplifier front-end.",
+                            points: [
+                                "Drive: Increases saturation and compression without losing definition",
+                                "Tone: Dynamic low-pass filter shaping harmonic content",
+                                "Level: Output volume ranging from -18 dB to +12 dB"
+                            ]
+                        },
+                        {
+                            name: "Recommended Usage Modes",
+                            tag: "Tightener & Crunch",
+                            desc: "Key settings for modern rhythm and lead work:",
+                            points: [
+                                "Clean Boost / Tightener: Drive 0–15%, Tone 50–70%, High Level",
+                                "Modern Crunch: Drive 30–60%, Tone 50%",
+                                "VST3 format for Windows 10 or later"
+                            ]
+                        }
                     ]
                 }
             }
@@ -581,6 +811,82 @@ document.addEventListener('DOMContentLoaded', () => {
                         "Independent EQ for Body (120Hz) and Presence (3.8kHz)"
                     ]
                 }
+            },
+            pedalSpecs: {
+                es: {
+                    badge: "FLAGSHIP DISTORTION",
+                    title: "Especificaciones Técnicas · <span class='highlight'>Amatista Distortion</span>",
+                    subtitle: "Preamp + Power Stage condensado con control continuo de simetría, headroom y caída de voltaje (SAG).",
+                    cards: [
+                        {
+                            name: "Topología Preamp + Power Stage",
+                            tag: "2x Oversampling",
+                            desc: "Arquitectura multietapa con simulación de colapso de fuente y filtrado dinámico de asperezas.",
+                            points: [
+                                "Preamp & Distortion Stage: Clipping suave y asimétrico controlado",
+                                "Simulación SAG: En valores altos de Structure la señal cede dinámicamente",
+                                "Filtro De-Fizz: Suaviza agudos abrasivos sin apagar el ataque"
+                            ]
+                        },
+                        {
+                            name: "El Control Structure (ADN)",
+                            tag: "Morphing Topology",
+                            desc: "Modifica internamente la simetría de recorte y el techo limpio del pedal:",
+                            points: [
+                                "0.00 – 0.30 (Tight / Modern): Ataque quirúrgico para Djent y Metal moderno",
+                                "0.30 – 0.65 (Amp-Like): Respuesta orgánica de amplificador valvular",
+                                "0.65 – 1.00 (Collapse / Textural): Saturación densa con caída de voltaje"
+                            ]
+                        },
+                        {
+                            name: "Ecualización Activa & Modos",
+                            tag: "Body & Presence",
+                            desc: "Controles dedicados post-saturación para encajar en cualquier gabinete o IR:",
+                            points: [
+                                "Body (~120 Hz Low Shelf): Peso y resonancia de caja",
+                                "Presence (~3.8 kHz High Shelf): Claridad, corte y mordida de púa",
+                                "Modern High Gain Tight: Gain 50–70%, Structure 10–25%"
+                            ]
+                        }
+                    ]
+                },
+                en: {
+                    badge: "FLAGSHIP DISTORTION",
+                    title: "Technical Specifications · <span class='highlight'>Amatista Distortion</span>",
+                    subtitle: "Condensed Preamp + Power Stage featuring continuous control over clipping symmetry, headroom, and voltage SAG.",
+                    cards: [
+                        {
+                            name: "Preamp + Power Stage Topology",
+                            tag: "2x Oversampling",
+                            desc: "Multi-stage architecture with power supply sag simulation and dynamic harshness filtering.",
+                            points: [
+                                "Preamp & Distortion Stage: Controlled smooth asymmetrical clipping",
+                                "SAG Simulation: High Structure settings introduce dynamic voltage dip",
+                                "De-Fizz Filter: Tames abrasive highs without dulling pick attack"
+                            ]
+                        },
+                        {
+                            name: "The Structure Knob (DNA)",
+                            tag: "Morphing Topology",
+                            desc: "Internally morphs clipping symmetry and headroom across three zones:",
+                            points: [
+                                "0.00 – 0.30 (Tight / Modern): Surgical attack for Djent and Modern Metal",
+                                "0.30 – 0.65 (Amp-Like): Organic tube amplifier feel",
+                                "0.65 – 1.00 (Collapse / Textural): Dense saturation with heavy voltage sag"
+                            ]
+                        },
+                        {
+                            name: "Active EQ & Usage Modes",
+                            tag: "Body & Presence",
+                            desc: "Dedicated post-saturation shelving filters to sit in any cabinet or IR:",
+                            points: [
+                                "Body (~120 Hz Low Shelf): Low-end weight and cabinet thump",
+                                "Presence (~3.8 kHz High Shelf): Clarity, mix cut, and pick bite",
+                                "Modern High Gain Tight: Gain 50–70%, Structure 10–25%"
+                            ]
+                        }
+                    ]
+                }
             }
         },
         "obsidiana": {
@@ -620,6 +926,82 @@ document.addEventListener('DOMContentLoaded', () => {
                         "High non-linearity saturation",
                         "Advanced management of low frequencies (Bass Cut/Boost +-12dB)",
                         "Massive Internal Oversampling (4x) for digital clipping restraint"
+                    ]
+                }
+            },
+            pedalSpecs: {
+                es: {
+                    badge: "EXTREME FUZZ ENGINE",
+                    title: "Especificaciones Técnicas · <span class='highlight'>Obsidiana Fuzz</span>",
+                    subtitle: "Generador de masa armónica densa con rectificación tipo octave-fuzz y control de graves de ±12 dB.",
+                    cards: [
+                        {
+                            name: "No-Linealidad & Rectificación",
+                            tag: "4x Oversampling",
+                            desc: "Etapa híbrida de saturación hiperbólica (tanh), hard clipping y mezcla con señal rectificada.",
+                            points: [
+                                "Pre-Filtering: Limpieza de subgraves antes de entrar al bloque de fuzz",
+                                "Octave-Style Rectification: Armónicos superiores complejos e interactivos",
+                                "Post-Filtering: Contención de 'fizz' para mantener peso en mezcla"
+                            ]
+                        },
+                        {
+                            name: "Controles de Furia & Caos",
+                            tag: "4 Parámetros",
+                            desc: "Cada perilla altera profundamente el carácter de compresión y el techo frecuencial:",
+                            points: [
+                                "Level (Collapse): Volumen de salida de -18 dB a +12 dB",
+                                "Gain (Fury): Intensidad del fuzz hasta compresión extrema",
+                                "Bass (±12 dB @ ~100 Hz) & Treble (Caos): Moldeado de peso y mordida"
+                            ]
+                        },
+                        {
+                            name: "Modos de Uso Recomendados",
+                            tag: "Doom / Modern",
+                            desc: "Dos personalidades extremas según el ajuste de Bass y Treble:",
+                            points: [
+                                "Tight Modern High Gain: Gain 60–80%, Bass 30–45%, Treble 60–75%",
+                                "Doom / Sludge Wall: Gain alto, Bass 70–100%, Treble bajo",
+                                "Altamente reactivo al volumen de tu guitarra"
+                            ]
+                        }
+                    ]
+                },
+                en: {
+                    badge: "EXTREME FUZZ ENGINE",
+                    title: "Technical Specifications · <span class='highlight'>Obsidiana Fuzz</span>",
+                    subtitle: "Dense harmonic mass generator featuring octave-fuzz style rectification and ±12 dB low-end sculpting.",
+                    cards: [
+                        {
+                            name: "Non-Linearity & Rectification",
+                            tag: "4x Oversampling",
+                            desc: "Hybrid stage combining hyperbolic tangent (tanh) saturation, hard clipping, and rectified signal blending.",
+                            points: [
+                                "Pre-Filtering: Sub-bass cleanup before entering the fuzz stage",
+                                "Octave-Style Rectification: Complex, interactive upper harmonics",
+                                "Post-Filtering: Fizz containment to preserve mix weight"
+                            ]
+                        },
+                        {
+                            name: "Fury & Chaos Controls",
+                            tag: "4 Parameters",
+                            desc: "Each control deeply alters compression behavior and frequency ceiling:",
+                            points: [
+                                "Level (Collapse): Output volume from -18 dB to +12 dB",
+                                "Gain (Fury): Fuzz intensity up to extreme brickwall compression",
+                                "Bass (±12 dB @ ~100 Hz) & Treble (Chaos): Weight and bite sculpting"
+                            ]
+                        },
+                        {
+                            name: "Recommended Usage Modes",
+                            tag: "Doom / Modern",
+                            desc: "Two distinct sonic personalities depending on Bass and Treble balance:",
+                            points: [
+                                "Tight Modern High Gain: Gain 60–80%, Bass 30–45%, Treble 60–75%",
+                                "Doom / Sludge Wall: High Gain, Bass 70–100%, Low Treble",
+                                "Highly interactive with your guitar's volume knob"
+                            ]
+                        }
                     ]
                 }
             }
@@ -662,6 +1044,82 @@ document.addEventListener('DOMContentLoaded', () => {
                         "Definition and punch preserved regardless of Drive scale"
                     ]
                 }
+            },
+            pedalSpecs: {
+                es: {
+                    badge: "PARALLEL BASS DSP",
+                    title: "Especificaciones Técnicas · <span class='highlight'>Granate Bass</span>",
+                    subtitle: "Procesamiento paralelo para bajo eléctrico que blinda tus subgraves mientras tritura los medios-altos.",
+                    cards: [
+                        {
+                            name: "Arquitectura de Doble Vía",
+                            tag: "2x Oversampling",
+                            desc: "División interna en ruta limpia (Clean Path) y ruta saturada (Drive Path) con fase coherente.",
+                            points: [
+                                "Clean Path: Preserva intacto el peso fundamental y subgrave",
+                                "Dynamic High-Pass (120–260 Hz): Sube automáticamente al aumentar Drive",
+                                "Low-Pass (~4.5 kHz) en la vía saturada para controlar aspereza"
+                            ]
+                        },
+                        {
+                            name: "Controles & Clank",
+                            tag: "2.2 kHz Bite",
+                            desc: "Diseñado para resaltar el ataque metálico de cuerdas nuevas, púa o dedos agresivos:",
+                            points: [
+                                "Granate (Drive): Cantidad de saturación asimétrica en medios-altos",
+                                "Clank (Switch): Énfasis en ~2.2 kHz previo a la distorsión",
+                                "Blend & Output: Balance Clean/Drive y nivel final (-18 a +12 dB)"
+                            ]
+                        },
+                        {
+                            name: "Recetas de Bajo en Mezcla",
+                            tag: "Mix Ready",
+                            desc: "Configuraciones recomendadas según el rol del bajo en la producción:",
+                            points: [
+                                "Modern Metal Pick: Granate 60–80%, Clank ON, Blend 50–65%",
+                                "Warm Rock Grit: Granate 30–45%, Clank OFF, Blend 35–50%",
+                                "Formatos incluidos: VST3 (Windows/macOS) y AU (macOS)"
+                            ]
+                        }
+                    ]
+                },
+                en: {
+                    badge: "PARALLEL BASS DSP",
+                    title: "Technical Specifications · <span class='highlight'>Granate Bass</span>",
+                    subtitle: "Parallel bass processing that locks in your fundamental sub-lows while grinding the upper midrange.",
+                    cards: [
+                        {
+                            name: "Dual-Path Architecture",
+                            tag: "2x Oversampling",
+                            desc: "Phase-coherent split into a pristine Clean Path and a filtered Drive Path.",
+                            points: [
+                                "Clean Path: Preserves fundamental low-end weight untouched",
+                                "Dynamic High-Pass (120–260 Hz): Rises automatically as Drive increases",
+                                "Low-Pass (~4.5 kHz) on the saturated path to eliminate harshness"
+                            ]
+                        },
+                        {
+                            name: "Controls & Clank Circuit",
+                            tag: "2.2 kHz Bite",
+                            desc: "Engineered to bring out the metallic attack of fresh strings, pick, or aggressive fingerstyle:",
+                            points: [
+                                "Granate (Drive): Asymmetrical mid-high saturation amount",
+                                "Clank (Switch): Pre-distortion emphasis centered at ~2.2 kHz",
+                                "Blend & Output: Clean/Drive balance and final level (-18 to +12 dB)"
+                            ]
+                        },
+                        {
+                            name: "Mix-Ready Bass Recipes",
+                            tag: "Mix Ready",
+                            desc: "Recommended settings depending on the bass role in your production:",
+                            points: [
+                                "Modern Metal Pick: Granate 60–80%, Clank ON, Blend 50–65%",
+                                "Warm Rock Grit: Granate 30–45%, Clank OFF, Blend 35–50%",
+                                "Included formats: VST3 (Windows/macOS) and AU (macOS)"
+                            ]
+                        }
+                    ]
+                }
             }
         }
     };
@@ -692,10 +1150,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const osAlert = document.getElementById('pg-os-alert');
         if (data.osWinOnly) {
             osAlert.innerHTML = `⚠️ <span>${langData.osText}</span>`;
-            osAlert.style.color = '#ff9800';
+            osAlert.className = 'os-alert os-win-badge';
         } else {
             osAlert.innerHTML = `<span>${langData.osText}</span>`;
-            osAlert.style.color = 'var(--clr-text-muted)';
+            osAlert.className = 'os-alert';
         }
 
         renderActionBox(lang);
@@ -706,196 +1164,223 @@ document.addEventListener('DOMContentLoaded', () => {
         const specsContainer = document.getElementById('pg-specs-section');
         if (!specsContainer) return;
 
-        if (!data.specs) {
-            specsContainer.style.display = 'none';
-            return;
-        }
+        // 1. Si el plugin tiene specs completas estilo SYKO One
+        if (data.specs) {
+            const s = data.specs[lang] || data.specs['es'];
+            specsContainer.style.display = 'block';
 
-        const s = data.specs[lang] || data.specs['es'];
-        specsContainer.style.display = 'block';
-
-        specsContainer.innerHTML = `
-            <div class="specs-header">
-                <span class="specs-badge">${s.headerBadge}</span>
-                <h2 class="specs-title">${s.headerTitle}</h2>
-                <p class="specs-subtitle">${s.headerSubtitle}</p>
-            </div>
-
-            <!-- 1. Los 4 Amplificadores -->
-            <div class="specs-block">
-                <div class="specs-block-header">
-                    <h3 class="specs-block-title">${s.ampsTitle}</h3>
-                    <p class="specs-block-desc">${s.ampsDesc}</p>
+            specsContainer.innerHTML = `
+                <div class="specs-header">
+                    <span class="specs-badge">${s.headerBadge}</span>
+                    <h2 class="specs-title">${s.headerTitle}</h2>
+                    <p class="specs-subtitle">${s.headerSubtitle}</p>
                 </div>
-                <div class="specs-amps-grid">
-                    ${s.amps.map(amp => `
-                        <div class="amp-spec-card ${amp.class}">
-                            <div class="amp-header">
-                                <span class="amp-badge">${amp.badge}</span>
-                                <span style="font-size: 1.1rem;">${amp.icon}</span>
-                            </div>
-                            <h4 class="amp-title">${amp.name}</h4>
-                            <div class="amp-sub">${amp.inspiration}</div>
-                            <div class="amp-spec-item">
-                                <span class="label">${s.labels.character}</span>
-                                <span class="val">${amp.character}</span>
-                            </div>
-                            <div class="amp-spec-item">
-                                <span class="label">${s.labels.dsp}</span>
-                                <span class="val">${amp.dsp}</span>
-                            </div>
-                            <div class="amp-tags">
-                                ${amp.tags.map(t => `<span class="amp-tag">${t}</span>`).join('')}
-                            </div>
-                        </div>
-                    `).join('')}
-                </div>
-            </div>
 
-            <!-- 2. Dual Cab Simulator & IR Loader -->
-            <div class="specs-block">
-                <div class="specs-block-header">
-                    <h3 class="specs-block-title">${s.cabTitle}</h3>
-                    <p class="specs-block-desc">${s.cabDesc}</p>
-                </div>
-                <div class="specs-cab-container">
-                    <div>
-                        <h4 class="cab-col-title">${s.cabCol1Title}</h4>
-                        <div class="cab-pill-group">
-                            ${s.cabCol1Items.map(item => `
-                                <div class="cab-pill-item">
-                                    <strong>${item.name}</strong>
-                                    <span>${item.desc}</span>
+                <!-- 1. Los 4 Amplificadores -->
+                <div class="specs-block">
+                    <div class="specs-block-header">
+                        <h3 class="specs-block-title">${s.ampsTitle}</h3>
+                        <p class="specs-block-desc">${s.ampsDesc}</p>
+                    </div>
+                    <div class="specs-amps-grid">
+                        ${s.amps.map(amp => `
+                            <div class="amp-spec-card ${amp.class}">
+                                <div class="amp-header">
+                                    <span class="amp-badge">${amp.badge}</span>
+                                    <span style="font-size: 1.1rem;">${amp.icon}</span>
                                 </div>
-                            `).join('')}
-                        </div>
-                    </div>
-                    <div>
-                        <h4 class="cab-col-title">${s.cabCol2Title}</h4>
-                        <div class="cab-pill-group">
-                            ${s.cabCol2Items.map(item => `
-                                <div class="cab-pill-item">
-                                    <strong>${item.name}</strong>
-                                    <span>${item.desc}</span>
+                                <h4 class="amp-title">${amp.name}</h4>
+                                <div class="amp-sub">${amp.inspiration}</div>
+                                <div class="amp-spec-item">
+                                    <span class="label">${s.labels.character}</span>
+                                    <span class="val">${amp.character}</span>
                                 </div>
-                            `).join('')}
-                        </div>
-                    </div>
-                    <div>
-                        <h4 class="cab-col-title">${s.cabCol3Title}</h4>
-                        <div class="cab-pill-group">
-                            ${s.cabCol3Items.map(item => `
-                                <div class="cab-pill-item">
-                                    <strong>${item.name}</strong>
-                                    <span>${item.desc}</span>
+                                <div class="amp-spec-item">
+                                    <span class="label">${s.labels.dsp}</span>
+                                    <span class="val">${amp.dsp}</span>
                                 </div>
-                            `).join('')}
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 3. Pre-Amp Pedalboard (Input FX) -->
-            <div class="specs-block">
-                <div class="specs-block-header">
-                    <h3 class="specs-block-title">${s.preFxTitle}</h3>
-                    <p class="specs-block-desc">${s.preFxDesc}</p>
-                </div>
-                <div class="specs-cards-grid">
-                    ${s.preFx.map(fx => `
-                        <div class="fx-spec-card">
-                            <div class="fx-top">
-                                <span class="fx-name">${fx.name}</span>
-                                <span class="fx-tag">${fx.tag}</span>
-                            </div>
-                            <p class="fx-desc">${fx.desc}</p>
-                            <ul class="fx-features-list">
-                                ${fx.points.map(p => `<li>${p}</li>`).join('')}
-                            </ul>
-                        </div>
-                    `).join('')}
-                </div>
-            </div>
-
-            <!-- 4. Post-Amp FX (Tiempo & Espacio) -->
-            <div class="specs-block">
-                <div class="specs-block-header">
-                    <h3 class="specs-block-title">${s.postFxTitle}</h3>
-                    <p class="specs-block-desc">${s.postFxDesc}</p>
-                </div>
-                <div class="specs-cards-grid">
-                    ${s.postFx.map(fx => `
-                        <div class="fx-spec-card">
-                            <div class="fx-top">
-                                <span class="fx-name">${fx.name}</span>
-                                <span class="fx-tag">${fx.tag}</span>
-                            </div>
-                            <p class="fx-desc">${fx.desc}</p>
-                            <ul class="fx-features-list">
-                                ${fx.points.map(p => `<li>${p}</li>`).join('')}
-                            </ul>
-                        </div>
-                    `).join('')}
-                </div>
-            </div>
-
-            <!-- 5 & 6. EQ Maestro & Utilidades Globales -->
-            <div class="specs-block">
-                <div class="specs-split-grid">
-                    <!-- EQ Maestro -->
-                    <div class="specs-panel">
-                        <h3 class="specs-panel-title">${s.eqTitle}</h3>
-                        <p class="specs-panel-sub">${s.eqDesc}</p>
-                        <div style="font-size: 0.82rem; color: #cbd5e1; margin-bottom: 0.8rem; background: rgba(255,255,255,0.03); padding: 8px 12px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.06);">
-                            ${s.eqFilters}
-                        </div>
-                        <div class="eq-bands-wrapper">
-                            ${s.eqBands.map(b => `
-                                <div class="eq-band-chip">
-                                    <span class="freq">${b.f}</span>
-                                    <span class="role">${b.r}</span>
+                                <div class="amp-tags">
+                                    ${amp.tags.map(t => `<span class="amp-tag">${t}</span>`).join('')}
                                 </div>
-                            `).join('')}
-                        </div>
-                    </div>
-
-                    <!-- Utilidades Globales -->
-                    <div class="specs-panel">
-                        <h3 class="specs-panel-title">${s.utilTitle}</h3>
-                        <p class="specs-panel-sub">${s.utilDesc}</p>
-                        <div class="util-grid">
-                            ${s.utils.map(u => `
-                                <div class="util-card">
-                                    <strong>${u.name}</strong>
-                                    <p>${u.desc}</p>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 7. Modo LIVE -->
-            ${s.live ? `
-            <div class="specs-block" style="margin-bottom: 1rem;">
-                <div class="specs-live-card">
-                    <div class="specs-live-header">
-                        <span class="specs-live-badge">${s.live.badge}</span>
-                        <h3 class="specs-live-title">${s.live.title}</h3>
-                        <p class="specs-live-desc">${s.live.desc}</p>
-                    </div>
-                    <div class="specs-live-grid">
-                        ${s.live.features.map(f => `
-                            <div class="specs-live-feature">
-                                <strong>${f.title}</strong>
-                                <p>${f.desc}</p>
                             </div>
                         `).join('')}
                     </div>
                 </div>
-            </div>
-            ` : ''}
-        `;
+
+                <!-- 2. Dual Cab Simulator & IR Loader -->
+                <div class="specs-block">
+                    <div class="specs-block-header">
+                        <h3 class="specs-block-title">${s.cabTitle}</h3>
+                        <p class="specs-block-desc">${s.cabDesc}</p>
+                    </div>
+                    <div class="specs-cab-container">
+                        <div>
+                            <h4 class="cab-col-title">${s.cabCol1Title}</h4>
+                            <div class="cab-pill-group">
+                                ${s.cabCol1Items.map(item => `
+                                    <div class="cab-pill-item">
+                                        <strong>${item.name}</strong>
+                                        <span>${item.desc}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="cab-col-title">${s.cabCol2Title}</h4>
+                            <div class="cab-pill-group">
+                                ${s.cabCol2Items.map(item => `
+                                    <div class="cab-pill-item">
+                                        <strong>${item.name}</strong>
+                                        <span>${item.desc}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="cab-col-title">${s.cabCol3Title}</h4>
+                            <div class="cab-pill-group">
+                                ${s.cabCol3Items.map(item => `
+                                    <div class="cab-pill-item">
+                                        <strong>${item.name}</strong>
+                                        <span>${item.desc}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Pre-Amp Pedalboard (Input FX) -->
+                <div class="specs-block">
+                    <div class="specs-block-header">
+                        <h3 class="specs-block-title">${s.preFxTitle}</h3>
+                        <p class="specs-block-desc">${s.preFxDesc}</p>
+                    </div>
+                    <div class="specs-cards-grid">
+                        ${s.preFx.map(fx => `
+                            <div class="fx-spec-card">
+                                <div class="fx-top">
+                                    <span class="fx-name">${fx.name}</span>
+                                    <span class="fx-tag">${fx.tag}</span>
+                                </div>
+                                <p class="fx-desc">${fx.desc}</p>
+                                <ul class="fx-features-list">
+                                    ${fx.points.map(p => `<li>${p}</li>`).join('')}
+                                </ul>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <!-- 4. Post-Amp FX (Tiempo & Espacio) -->
+                <div class="specs-block">
+                    <div class="specs-block-header">
+                        <h3 class="specs-block-title">${s.postFxTitle}</h3>
+                        <p class="specs-block-desc">${s.postFxDesc}</p>
+                    </div>
+                    <div class="specs-cards-grid">
+                        ${s.postFx.map(fx => `
+                            <div class="fx-spec-card">
+                                <div class="fx-top">
+                                    <span class="fx-name">${fx.name}</span>
+                                    <span class="fx-tag">${fx.tag}</span>
+                                </div>
+                                <p class="fx-desc">${fx.desc}</p>
+                                <ul class="fx-features-list">
+                                    ${fx.points.map(p => `<li>${p}</li>`).join('')}
+                                </ul>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <!-- 5 & 6. EQ Maestro & Utilidades Globales -->
+                <div class="specs-block">
+                    <div class="specs-split-grid">
+                        <div class="specs-panel">
+                            <h3 class="specs-panel-title">${s.eqTitle}</h3>
+                            <p class="specs-panel-sub">${s.eqDesc}</p>
+                            <div style="font-size: 0.82rem; color: #cbd5e1; margin-bottom: 0.8rem; background: rgba(255,255,255,0.03); padding: 8px 12px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.06);">
+                                ${s.eqFilters}
+                            </div>
+                            <div class="eq-bands-wrapper">
+                                ${s.eqBands.map(b => `
+                                    <div class="eq-band-chip">
+                                        <span class="freq">${b.f}</span>
+                                        <span class="role">${b.r}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+
+                        <div class="specs-panel">
+                            <h3 class="specs-panel-title">${s.utilTitle}</h3>
+                            <p class="specs-panel-sub">${s.utilDesc}</p>
+                            <div class="util-grid">
+                                ${s.utils.map(u => `
+                                    <div class="util-card">
+                                        <strong>${u.name}</strong>
+                                        <p>${u.desc}</p>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7. Modo LIVE -->
+                ${s.live ? `
+                <div class="specs-block" style="margin-bottom: 1rem;">
+                    <div class="specs-live-card">
+                        <div class="specs-live-header">
+                            <span class="specs-live-badge">${s.live.badge}</span>
+                            <h3 class="specs-live-title">${s.live.title}</h3>
+                            <p class="specs-live-desc">${s.live.desc}</p>
+                        </div>
+                        <div class="specs-live-grid">
+                            ${s.live.features.map(f => `
+                                <div class="specs-live-feature">
+                                    <strong>${f.title}</strong>
+                                    <p>${f.desc}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+                ` : ''}
+            `;
+            return;
+        }
+
+        // 2. Especificaciones técnicas para pedales individuales y bundle (pedalSpecs)
+        if (data.pedalSpecs) {
+            const ps = data.pedalSpecs[lang] || data.pedalSpecs['es'];
+            specsContainer.style.display = 'block';
+            specsContainer.innerHTML = `
+                <div class="specs-header">
+                    <span class="specs-badge">${ps.badge}</span>
+                    <h2 class="specs-title">${ps.title}</h2>
+                    <p class="specs-subtitle">${ps.subtitle}</p>
+                </div>
+                <div class="specs-cards-grid">
+                    ${ps.cards.map(c => `
+                        <div class="fx-spec-card">
+                            <div class="fx-top">
+                                <span class="fx-name">${c.name}</span>
+                                <span class="fx-tag">${c.tag}</span>
+                            </div>
+                            <p class="fx-desc">${c.desc}</p>
+                            <ul class="fx-features-list">
+                                ${c.points.map(p => `<li>${p}</li>`).join('')}
+                            </ul>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            return;
+        }
+
+        specsContainer.style.display = 'none';
     }
 
     function renderActionBox(lang) {
@@ -904,16 +1389,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const downloadSection = document.getElementById('pg-download-section');
         const comingSoonContainer = document.getElementById('pg-coming-soon-container');
 
-        // Soporte opcional para probar rápidamente vía URL: ?released=true o ?released=false
         const urlReleased = urlParams.get('released');
         const isReleased = (urlReleased !== null)
             ? (urlReleased === 'true' || urlReleased === '1')
             : (data.isReleased !== false);
 
         if (!isReleased) {
-            // ==========================================
-            // MODO PRE-LANZAMIENTO: Aviso de lanzamiento 11/11
-            // ==========================================
             if (ctaBtn) ctaBtn.style.display = 'none';
             if (purchaseContainer) purchaseContainer.style.display = 'none';
             if (downloadSection) downloadSection.style.display = 'none';
@@ -945,9 +1426,6 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // ==========================================
-        // MODO PRODUCCIÓN: Habilitado para compra/descarga
-        // ==========================================
         if (comingSoonContainer) {
             comingSoonContainer.style.display = 'none';
             comingSoonContainer.innerHTML = '';
@@ -960,50 +1438,65 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (data.price) {
-            // Plugin de pago: Inyectar formulario HTML
             if (ctaBtn) ctaBtn.style.display = 'none';
             if (purchaseContainer) purchaseContainer.style.display = 'block';
 
             let discountMultiplier = 0.5;
             let discountLabel = "50% OFF";
-            let promoText = "a mitad de precio";
+            let promoTextEs = "a mitad de precio";
+            let promoTextEn = "at 50% off";
 
             if (data.id === "syko-one") {
-                discountMultiplier = 0.67; // 33% OFF -> pay 67%
+                discountMultiplier = 0.67;
                 discountLabel = "33% OFF";
-                promoText = "con descuento";
+                promoTextEs = "con descuento";
+                promoTextEn = "at a discounted price";
             }
 
             const prexPrice = (parseFloat(data.price) * discountMultiplier).toFixed(2);
+            const isEn = lang === 'en';
 
             purchaseContainer.innerHTML = `
-                <a href="${data.gumroadUrl}" target="_blank" class="btn btn-primary btn-block glow-effect" style="margin-top: 15px; display: inline-block; text-align: center; text-decoration: none;">Comprar — $${data.price} USD</a>
+                <a href="${data.gumroadUrl}" target="_blank" rel="noopener" class="btn btn-primary btn-block glow-effect">
+                    ${isEn ? `Buy Now — $${data.price} USD` : `Comprar — $${data.price} USD`}
+                </a>
                 
-                <div style="margin-top: 20px; padding: 15px; border: 1px solid rgba(175, 122, 235, 0.3); border-radius: var(--radius); background: rgba(175, 122, 235, 0.05); text-align: center;">
-                    <p style="color: var(--clr-amethyst-light); font-weight: 600; margin-bottom: 12px; font-size: 0.9rem;">¿Tienes PREX? (Argentina / Uruguay)</p>
-                    <div class="donate-btn-option" style="cursor: pointer; margin-bottom: 0;" onclick="document.getElementById('plugin-prex-details').classList.toggle('show')">
-                        <strong>Transferencia PREX (${discountLabel})</strong>
-                        <span>Pago directo y envío de comprobante.</span>
+                <div class="prex-promo-box">
+                    <p class="prex-promo-title">${isEn ? 'Do you use PREX? (Argentina / Uruguay)' : '¿Tienes PREX? (Argentina / Uruguay)'}</p>
+                    <div class="donate-btn-option" style="margin-bottom: 0;" onclick="document.getElementById('plugin-prex-details').classList.toggle('show')">
+                        <strong>${isEn ? `PREX Transfer (${discountLabel})` : `Transferencia PREX (${discountLabel})`}</strong>
+                        <span>${isEn ? 'Direct transfer & receipt confirmation.' : 'Pago directo y envío de comprobante.'}</span>
                     </div>
                     <div id="plugin-prex-details" class="prex-details-card">
-                        <p style="color: var(--clr-text-muted); font-size: 0.9rem; margin-bottom: 15px;">Monto exacto a transferir: <strong style="color: #1ed760; font-size: 1.1rem;">$${prexPrice} USD</strong></p>
-                        <p style="margin-bottom: 5px; color: var(--clr-text-muted); font-size: 0.9rem;">A nombre de Álvaro (Cuenta Uruguay)</p>
-                        <h4 style="color: white; letter-spacing: 2px; font-size: 1.4rem;">PREX: 1840539</h4>
-                        <p style="color: var(--clr-text-muted); margin-top: 15px; font-size: 0.85rem; line-height: 1.4;">Envía tu comprobante de pago a <strong style="color: #fff;">orders@amatista-efectos.online</strong> para recibir el plugin de forma manual ${promoText}.</p>
+                        <p style="color: var(--clr-text-muted); font-size: 0.9rem; margin-bottom: 12px;">
+                            ${isEn ? 'Exact amount to transfer:' : 'Monto exacto a transferir:'}
+                            <strong style="color: #1ed760; font-size: 1.1rem; font-family: var(--font-mono);">$${prexPrice} USD</strong>
+                        </p>
+                        <p style="margin-bottom: 5px; color: var(--clr-text-muted); font-size: 0.88rem;">
+                            ${isEn ? 'Account holder: Álvaro (Uruguay Account)' : 'A nombre de Álvaro (Cuenta Uruguay)'}
+                        </p>
+                        <h4 style="color: white; letter-spacing: 2px; font-size: 1.35rem; font-family: var(--font-mono);">PREX: 1840539</h4>
+                        <p style="color: var(--clr-text-muted); margin-top: 12px; font-size: 0.84rem; line-height: 1.45; margin-bottom: 0;">
+                            ${isEn
+                    ? `Send your payment receipt to <strong style="color: #fff;">orders@amatista-efectos.online</strong> to receive your plugin manually ${promoTextEn}.`
+                    : `Envía tu comprobante de pago a <strong style="color: #fff;">orders@amatista-efectos.online</strong> para recibir el plugin de forma manual ${promoTextEs}.`}
+                        </p>
                     </div>
                 </div>
             `;
         } else {
-            // Plugin gratuito: usar el enlace CTA predeterminado (link de descarga directo)
             if (ctaBtn) {
-                ctaBtn.style.display = 'block';
+                ctaBtn.style.display = 'flex';
                 ctaBtn.href = data.downloadUrl || '#';
             }
             if (purchaseContainer) purchaseContainer.style.display = 'none';
         }
     }
 
-    const currentLang = document.documentElement.lang || 'es';
+    let currentLang = 'es';
+    try {
+        currentLang = localStorage.getItem('amatista_lang') || document.documentElement.lang || 'es';
+    } catch (e) {}
     updatePluginContent(currentLang);
 
     // Watch for click events on the language buttons via event delegation over the body
@@ -1015,6 +1508,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Populate images
     const mainImg = document.getElementById('pg-main-img');
+    const mainImgWrap = document.getElementById('pg-main-img-wrap');
     mainImg.src = data.images[0] || '';
 
     const thumbsContainer = document.getElementById('pg-thumbnails');
@@ -1022,6 +1516,7 @@ document.addEventListener('DOMContentLoaded', () => {
         data.images.forEach((imgSrc, idx) => {
             const thumb = document.createElement('img');
             thumb.src = imgSrc;
+            thumb.alt = `${data.id} view ${idx + 1}`;
             thumb.className = idx === 0 ? 'thumb active' : 'thumb';
             thumb.onclick = () => {
                 mainImg.src = imgSrc;
@@ -1029,6 +1524,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 thumb.classList.add('active');
             };
             thumbsContainer.appendChild(thumb);
+        });
+    }
+
+    // Lightbox modal for inspecting plugin image in high resolution
+    if (mainImgWrap && mainImg) {
+        mainImgWrap.addEventListener('click', () => {
+            let lightbox = document.getElementById('plugin-lightbox');
+            if (!lightbox) {
+                lightbox = document.createElement('div');
+                lightbox.id = 'plugin-lightbox';
+                lightbox.className = 'lightbox-overlay';
+                lightbox.innerHTML = `
+                    <button class="lightbox-close" aria-label="Close">&times;</button>
+                    <img src="" alt="Plugin Fullscreen Preview" id="lightbox-img">
+                `;
+                document.body.appendChild(lightbox);
+
+                lightbox.addEventListener('click', () => {
+                    lightbox.classList.remove('active');
+                });
+            }
+            document.getElementById('lightbox-img').src = mainImg.src;
+            lightbox.classList.add('active');
         });
     }
 
@@ -1053,10 +1571,10 @@ document.addEventListener('DOMContentLoaded', () => {
         videoSection.classList.add('is-visible');
         const videoContainer = document.getElementById('pg-video-container');
         videoContainer.innerHTML = `
-            <div class="video-container lazy-video" style="max-width: 800px; margin: 0 auto; border: 1px solid var(--clr-border); border-radius: var(--radius); overflow: hidden; cursor: pointer;">
-                <div class="video-placeholder" style="background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.8) 0%, rgba(20, 20, 24, 0.4) 100%), url('https://img.youtube.com/vi/${data.videoId}/sddefault.jpg'); display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; aspect-ratio: 16/9; background-size: cover; background-position: center;">
+            <div class="video-container lazy-video" style="max-width: 820px; margin: 0 auto;">
+                <div class="video-placeholder" style="background-image: linear-gradient(0deg, rgba(5, 5, 7, 0.85) 0%, rgba(20, 20, 24, 0.35) 100%), url('https://img.youtube.com/vi/${data.videoId}/sddefault.jpg'); display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; aspect-ratio: 16/9; background-size: cover; background-position: center;">
                     <div class="play-btn">▶</div>
-                    <p style="color: white; font-weight: 600; text-shadow: 0 2px 4px rgba(0,0,0,0.8);">Test Demo Video</p>
+                    <p>Demo & Review Video</p>
                 </div>
             </div>
         `;

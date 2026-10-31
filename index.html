@@ -8,8 +8,8 @@
     <meta name="description" content="Amatista Efectos: Premium audio plugins for modern and low-tuned guitar tones.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=3">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=4">
     <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2">
 </head>
 
@@ -50,6 +50,7 @@
         <canvas id="hero-particles"></canvas>
         <div class="hero-overlay"></div>
         <div class="hero-content">
+            <div class="hero-eyebrow" data-i18n="hero-eyebrow">DSP AUDIO ENGINEERING · MONTEVIDEO, UY</div>
             <h1 class="hero-title" data-i18n="hero-title">SONIDO <span class="highlight">EN ESTADO PURO</span></h1>
             <p class="hero-subtitle" data-i18n="hero-subtitle">Herramientas precisas inspiradas en hardware real,
                 diseñadas para esculpir tonos modernos y afinaciones bajas definidas.</p>
@@ -59,69 +60,85 @@
                 <a href="#about" class="btn btn-secondary" data-i18n="hero-btn-secondary">Conocer la Marca</a>
             </div>
         </div>
+        <div class="hero-specs-strip">
+            <span class="hero-spec-pill"><strong>DSP</strong> <span data-i18n="hero-spec-1">Oversampling hasta 4x</span></span>
+            <span class="hero-spec-pill"><strong>FORMATS</strong> <span>VST3 · AU · STANDALONE</span></span>
+            <span class="hero-spec-pill"><strong>LATENCY</strong> <span data-i18n="hero-spec-3">Respuesta en Tiempo Real</span></span>
+            <span class="hero-spec-pill"><strong>LICENSE</strong> <span data-i18n="hero-spec-4">Sin DRM Invasivo</span></span>
+        </div>
     </header>
 
     <section id="plugins" class="section plugins-section">
         <div class="container fade-in-section is-visible">
-            <h2 class="section-title center" data-i18n="plugins-title">Nuestros <span class="highlight">Plugins</span>
-            </h2>
+            <div class="section-header">
+                <span class="section-eyebrow" data-i18n="plugins-eyebrow">CATÁLOGO DE SOFTWARE</span>
+                <h2 class="section-title center" data-i18n="plugins-title">Nuestros <span class="highlight">Plugins</span></h2>
+            </div>
 
-            <div class="tabs-nav">
-                <button class="tab-btn" data-target="tab-free" data-i18n="tab-free-title">Gratis</button>
-                <button class="tab-btn active" data-target="tab-todos" data-i18n="tab-todos">Todos</button>
-                <button class="tab-btn" data-target="tab-guitar" data-i18n="tab-guitar">Guitarra</button>
-                <button class="tab-btn" data-target="tab-bass" data-i18n="tab-bass">Bajo</button>
-                <button class="tab-btn" data-target="tab-collab" data-i18n="tab-collab">Colaboraciones</button>
+            <div class="tabs-nav-wrapper">
+                <div class="tabs-nav" role="tablist">
+                    <button class="tab-btn" data-target="tab-free" data-i18n="tab-free-title">Gratis</button>
+                    <button class="tab-btn active" data-target="tab-todos" data-i18n="tab-todos">Todos</button>
+                    <button class="tab-btn" data-target="tab-guitar" data-i18n="tab-guitar">Guitarra</button>
+                    <button class="tab-btn" data-target="tab-bass" data-i18n="tab-bass">Bajo</button>
+                    <button class="tab-btn" data-target="tab-collab" data-i18n="tab-collab">Colaboraciones</button>
+                </div>
             </div>
 
             <div class="tabs-content">
+                <div id="catalog-pane" class="tab-pane active fade-in-section is-visible">
 
-                <div id="tab-todos" class="tab-pane active fade-in-section is-visible">
-
-                    <div class="plugin-family">
+                    <!-- 1. Colaboraciones Especiales -->
+                    <div class="plugin-family" data-family-cats="tab-todos tab-guitar tab-collab">
                         <h3 class="family-title" data-i18n="family-collab">Colaboraciones <span
                                 class="highlight">Especiales</span></h3>
                         <div class="plugins-grid">
-                            <div class="plugin-card">
+                            <div class="plugin-card plugin-card-featured" data-accent="syko"
+                                data-categories="tab-todos tab-guitar tab-collab">
                                 <div class="plugin-image-container">
                                     <img src="assets/sykoOne.png" alt="SYKO One Plugin" class="plugin-img"
-                                        style="width: 85%;">
+                                        loading="lazy" decoding="async">
                                     <div class="overlay-glow"></div>
                                 </div>
                                 <div class="plugin-info">
                                     <h3>SYKO One <span class="tag tag-paid" data-i18n="tag-paid">Premium</span></h3>
                                     <p data-i18n="desc-syko">La colaboración definitiva con SYKO Cabs. Un ecosistema
                                         completo, 4 amps, cabs, efectos y un set de herramientas suficiente para
-                                        construir tu
-                                        sonido moderno de guitarras, tanto en estudio como en vivo.</p>
+                                        construir tu sonido moderno de guitarras, tanto en estudio como en vivo.</p>
                                     <ul class="features">
                                         <li data-i18n="feat-syko-1">Suite completa (Plugin y Standalone)</li>
-                                        <li data-i18n="feat-syko-2">Versatilidad total desde tonos cleans hasta highgain
-                                        </li>
+                                        <li data-i18n="feat-syko-2">Versatilidad total desde tonos cleans hasta highgain</li>
                                     </ul>
                                     <div class="plugin-action">
-                                        <div class="price">$99.00 USD</div>
-                                        <p class="os-alert"
-                                            style="font-size: 0.75rem; color: #ff9800; margin-bottom: 5px; text-align: center;">
-                                            ⚠️ <span data-i18n="os-win-only">Solo Windows (macOS próximamente)</span>
-                                        </p>
-                                        <a href="plugin.html?id=syko-one" class="btn btn-secondary btn-block"
-                                            data-i18n="btn-learn-more" style="margin-top: 5px;">Ver más</a>
-                                        <a href="plugin.html?id=syko-one" class="btn btn-primary btn-block"
-                                            data-i18n="btn-buy" style="margin-top: 5px;">Adquirir</a>
+                                        <div class="plugin-meta-row">
+                                            <div class="price">$99.00 USD</div>
+                                            <p class="os-alert os-win-badge">
+                                                ⚠️ <span data-i18n="os-win-only">Solo Windows (macOS próximamente)</span>
+                                            </p>
+                                        </div>
+                                        <div class="plugin-buttons-row">
+                                            <a href="plugin.html?id=syko-one" class="btn btn-secondary btn-block"
+                                                data-i18n="btn-learn-more">Ver más</a>
+                                            <a href="plugin.html?id=syko-one" class="btn btn-primary btn-block"
+                                                data-i18n="btn-buy">Adquirir</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="plugin-family">
+                    <!-- 2. Familia Impulso Primario -->
+                    <div class="plugin-family" data-family-cats="tab-todos tab-guitar tab-free">
                         <h3 class="family-title" data-i18n="family-impulso">Familia <span class="highlight">Impulso
                                 Primario</span></h3>
                         <div class="plugins-grid">
-                            <div class="plugin-card">
+                            <!-- Carbonado Boost -->
+                            <div class="plugin-card" data-accent="carbonado"
+                                data-categories="tab-todos tab-guitar tab-free">
                                 <div class="plugin-image-container">
-                                    <img src="assets/carbonado.png" alt="Carbonado Boost Plugin" class="plugin-img">
+                                    <img src="assets/carbonado.png" alt="Carbonado Boost Plugin" class="plugin-img"
+                                        loading="lazy" decoding="async">
                                     <div class="overlay-glow"></div>
                                 </div>
                                 <div class="plugin-info">
@@ -135,75 +152,96 @@
                                         <li data-i18n="feat-carb-2">Ecualizador de un solo botón</li>
                                     </ul>
                                     <div class="plugin-action">
-                                        <p class="os-alert"
-                                            style="font-size: 0.75rem; color: var(--clr-text-muted); margin-bottom: 5px; text-align: center;">
-                                            <span data-i18n="os-win-mac">Windows / macOS (Unsigned)</span>
-                                        </p>
-                                        <a href="plugin.html?id=carbonado" class="btn btn-secondary btn-block"
-                                            data-i18n="btn-learn-more" style="margin-top: 5px;">Ver más</a>
-                                        <a href="plugin.html?id=carbonado" class="btn btn-primary btn-block"
-                                            data-i18n="btn-download" style="margin-top: 5px;">Descargar Gratis</a>
+                                        <div class="plugin-meta-row">
+                                            <div class="price-free" data-i18n="tag-free">Gratis</div>
+                                            <p class="os-alert">
+                                                <span data-i18n="os-win-mac">Windows / macOS (Unsigned)</span>
+                                            </p>
+                                        </div>
+                                        <div class="plugin-buttons-row">
+                                            <a href="plugin.html?id=carbonado" class="btn btn-secondary btn-block"
+                                                data-i18n="btn-learn-more">Ver más</a>
+                                            <a href="plugin.html?id=carbonado" class="btn btn-primary btn-block"
+                                                data-i18n="btn-download">Descargar Gratis</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="plugin-card">
+
+                            <!-- Impulso Primario Pack -->
+                            <div class="plugin-card" data-accent="bundle"
+                                data-categories="tab-todos tab-guitar">
                                 <div class="plugin-image-container">
                                     <img src="assets/bundle_impulso_primario.png" alt="Bundle Impulso Primario"
-                                        class="plugin-img">
+                                        class="plugin-img" loading="lazy" decoding="async">
                                     <div class="overlay-glow"></div>
                                 </div>
                                 <div class="plugin-info">
-                                    <h3>Impulso Primario Pack<span class="tag tag-paid"
+                                    <h3>Impulso Primario Pack <span class="tag tag-paid"
                                             data-i18n="tag-paid">Premium</span></h3>
-                                    <p data-i18n="desc-impulsoprimario">Impulso primario es el ecosistema de ganancia de
-                                        AMATISTA</p>
+                                    <p data-i18n="desc-impulsoprimario">Impulso Primario es el ecosistema de ganancia de
+                                        AMATISTA, con un enfoque moderno y versátil.</p>
                                     <ul class="features">
                                         <li data-i18n="feat-impulsoprimario-1">Arquitectura coherente</li>
                                         <li data-i18n="feat-impulsoprimario-2">Cada pedal cumple su función</li>
                                     </ul>
                                     <div class="plugin-action">
-                                        <div class="price">$40.00 USD</div>
-                                        <p class="os-alert"
-                                            style="font-size: 0.75rem; color: #ff9800; margin-bottom: 5px; text-align: center;">
-                                            ⚠️ <span data-i18n="os-win-only">Solo Windows (macOS próximamente)</span>
-                                        </p>
-                                        <a href="plugin.html?id=impulso-primario" class="btn btn-secondary btn-block"
-                                            data-i18n="btn-learn-more" style="margin-top: 5px;">Ver más</a>
-                                        <a href="plugin.html?id=impulso-primario" class="btn btn-primary btn-block"
-                                            data-i18n="btn-buy" style="margin-top: 5px;">Adquirir</a>
+                                        <div class="plugin-meta-row">
+                                            <div class="price">$40.00 USD</div>
+                                            <p class="os-alert os-win-badge">
+                                                ⚠️ <span data-i18n="os-win-only">Solo Windows (macOS próximamente)</span>
+                                            </p>
+                                        </div>
+                                        <div class="plugin-buttons-row">
+                                            <a href="plugin.html?id=impulso-primario" class="btn btn-secondary btn-block"
+                                                data-i18n="btn-learn-more">Ver más</a>
+                                            <a href="plugin.html?id=impulso-primario" class="btn btn-primary btn-block"
+                                                data-i18n="btn-buy">Adquirir</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="plugin-card">
+
+                            <!-- Ónix Overdrive -->
+                            <div class="plugin-card" data-accent="onix"
+                                data-categories="tab-todos tab-guitar">
                                 <div class="plugin-image-container">
-                                    <img src="assets/onix.png" alt="Onix Overdrive Plugin" class="plugin-img">
+                                    <img src="assets/onix.png" alt="Onix Overdrive Plugin" class="plugin-img"
+                                        loading="lazy" decoding="async">
                                     <div class="overlay-glow"></div>
                                 </div>
                                 <div class="plugin-info">
                                     <h3>Ónix Overdrive <span class="tag tag-paid" data-i18n="tag-paid">Premium</span>
                                     </h3>
-                                    <p data-i18n="desc-onix">El empuje perfecto de alta ganancia. Aprieta los bajos y
-                                        define los medios altos con violencia analógica oscura.</p>
+                                    <p data-i18n="desc-onix">Inspirado en lo clásico pero ajustado para rigs modernos.
+                                        Empuje y presencia. Saturación para riffs articulados y leads definidos.</p>
                                     <ul class="features">
                                         <li data-i18n="feat-onix-1">Filtro 'Tight' variable</li>
-                                        <li data-i18n="feat-onix-2">Riffs articulados y leads definidos</li>
+                                        <li data-i18n="feat-onix-2">Modelador de la señal, recorte controlado de low end, respuesta dinámica natural</li>
                                     </ul>
                                     <div class="plugin-action">
-                                        <div class="price">$17.00 USD</div>
-                                        <p class="os-alert"
-                                            style="font-size: 0.75rem; color: #ff9800; margin-bottom: 5px; text-align: center;">
-                                            ⚠️ <span data-i18n="os-win-only">Solo Windows (macOS próximamente)</span>
-                                        </p>
-                                        <a href="plugin.html?id=onix" class="btn btn-secondary btn-block"
-                                            data-i18n="btn-learn-more" style="margin-top: 5px;">Ver más</a>
-                                        <a href="plugin.html?id=onix" class="btn btn-primary btn-block"
-                                            data-i18n="btn-buy" style="margin-top: 5px;">Adquirir</a>
+                                        <div class="plugin-meta-row">
+                                            <div class="price">$17.00 USD</div>
+                                            <p class="os-alert os-win-badge">
+                                                ⚠️ <span data-i18n="os-win-only">Solo Windows (macOS próximamente)</span>
+                                            </p>
+                                        </div>
+                                        <div class="plugin-buttons-row">
+                                            <a href="plugin.html?id=onix" class="btn btn-secondary btn-block"
+                                                data-i18n="btn-learn-more">Ver más</a>
+                                            <a href="plugin.html?id=onix" class="btn btn-primary btn-block"
+                                                data-i18n="btn-buy">Adquirir</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="plugin-card">
+
+                            <!-- Obsidiana Fuzz -->
+                            <div class="plugin-card" data-accent="obsidiana"
+                                data-categories="tab-todos tab-guitar">
                                 <div class="plugin-image-container">
-                                    <img src="assets/obsidiana.png" alt="Obsidiana Fuzz Plugin" class="plugin-img">
+                                    <img src="assets/obsidiana.png" alt="Obsidiana Fuzz Plugin" class="plugin-img"
+                                        loading="lazy" decoding="async">
                                     <div class="overlay-glow"></div>
                                 </div>
                                 <div class="plugin-info">
@@ -216,21 +254,28 @@
                                         <li data-i18n="feat-obs-2">Moldea el caos con intención</li>
                                     </ul>
                                     <div class="plugin-action">
-                                        <div class="price">$17.00 USD</div>
-                                        <p class="os-alert"
-                                            style="font-size: 0.75rem; color: #ff9800; margin-bottom: 5px; text-align: center;">
-                                            ⚠️ <span data-i18n="os-win-only">Solo Windows (macOS próximamente)</span>
-                                        </p>
-                                        <a href="plugin.html?id=obsidiana" class="btn btn-secondary btn-block"
-                                            data-i18n="btn-learn-more" style="margin-top: 5px;">Ver más</a>
-                                        <a href="plugin.html?id=obsidiana" class="btn btn-primary btn-block"
-                                            data-i18n="btn-buy" style="margin-top: 5px;">Adquirir</a>
+                                        <div class="plugin-meta-row">
+                                            <div class="price">$17.00 USD</div>
+                                            <p class="os-alert os-win-badge">
+                                                ⚠️ <span data-i18n="os-win-only">Solo Windows (macOS próximamente)</span>
+                                            </p>
+                                        </div>
+                                        <div class="plugin-buttons-row">
+                                            <a href="plugin.html?id=obsidiana" class="btn btn-secondary btn-block"
+                                                data-i18n="btn-learn-more">Ver más</a>
+                                            <a href="plugin.html?id=obsidiana" class="btn btn-primary btn-block"
+                                                data-i18n="btn-buy">Adquirir</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="plugin-card">
+
+                            <!-- Amatista Distortion -->
+                            <div class="plugin-card" data-accent="amatista"
+                                data-categories="tab-todos tab-guitar">
                                 <div class="plugin-image-container">
-                                    <img src="assets/amatista.png" alt="Amatista Distortion Plugin" class="plugin-img">
+                                    <img src="assets/amatista.png" alt="Amatista Distortion Plugin" class="plugin-img"
+                                        loading="lazy" decoding="async">
                                     <div class="overlay-glow"></div>
                                 </div>
                                 <div class="plugin-info">
@@ -243,29 +288,35 @@
                                         <li data-i18n="feat-ama-2">Tono moderno, claridad y presencia</li>
                                     </ul>
                                     <div class="plugin-action">
-                                        <div class="price">$17.00 USD</div>
-                                        <p class="os-alert"
-                                            style="font-size: 0.75rem; color: #ff9800; margin-bottom: 5px; text-align: center;">
-                                            ⚠️ <span data-i18n="os-win-only">Solo Windows (macOS próximamente)</span>
-                                        </p>
-                                        <a href="plugin.html?id=amatista" class="btn btn-secondary btn-block"
-                                            data-i18n="btn-learn-more" style="margin-top: 5px;">Ver más</a>
-                                        <a href="plugin.html?id=amatista" class="btn btn-primary btn-block"
-                                            data-i18n="btn-buy" style="margin-top: 5px;">Adquirir</a>
+                                        <div class="plugin-meta-row">
+                                            <div class="price">$17.00 USD</div>
+                                            <p class="os-alert os-win-badge">
+                                                ⚠️ <span data-i18n="os-win-only">Solo Windows (macOS próximamente)</span>
+                                            </p>
+                                        </div>
+                                        <div class="plugin-buttons-row">
+                                            <a href="plugin.html?id=amatista" class="btn btn-secondary btn-block"
+                                                data-i18n="btn-learn-more">Ver más</a>
+                                            <a href="plugin.html?id=amatista" class="btn btn-primary btn-block"
+                                                data-i18n="btn-buy">Adquirir</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="plugin-family" style="margin-top: 3rem;">
+                    <!-- 3. Familia Frecuencia Base -->
+                    <div class="plugin-family" data-family-cats="tab-todos tab-bass tab-free">
                         <h3 class="family-title" data-i18n="family-frecuencia-base">Familia <span
                                 class="highlight">Frecuencia Base</span></h3>
                         <div class="plugins-grid">
-                            <!-- descomentar cuando se lance el plugin -->
-                            <div class="plugin-card">
+                            <!-- Granate Bass -->
+                            <div class="plugin-card" data-accent="granate"
+                                data-categories="tab-todos tab-bass tab-free">
                                 <div class="plugin-image-container">
-                                    <img src="assets/granate.png" alt="Granate Bass Saturator" class="plugin-img">
+                                    <img src="assets/granate.png" alt="Granate Bass Saturator" class="plugin-img"
+                                        loading="lazy" decoding="async">
                                     <div class="overlay-glow"></div>
                                 </div>
                                 <div class="plugin-info">
@@ -277,339 +328,24 @@
                                         <li data-i18n="feat-granate-2">Definición en afinaciones graves</li>
                                     </ul>
                                     <div class="plugin-action">
-                                        <p class="os-alert"
-                                            style="font-size: 0.75rem; color: var(--clr-text-muted); margin-bottom: 5px; text-align: center;">
-                                            <span data-i18n="os-win-mac">Windows / macOS (Unsigned)</span>
-                                        </p>
-                                        <a href="plugin.html?id=granate" class="btn btn-secondary btn-block"
-                                            data-i18n="btn-learn-more" style="margin-top: 5px;">Ver más</a>
-                                        <a href="plugin.html?id=granate" class="btn btn-primary btn-block"
-                                            data-i18n="btn-download" style="margin-top: 5px;">Descargar Gratis</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="tab-guitar" class="tab-pane fade-in-section">
-                    <div class="plugin-family">
-                        <h3 class="family-title" data-i18n="family-collab">Colaboraciones <span
-                                class="highlight">Especiales</span></h3>
-                        <div class="plugins-grid">
-                            <div class="plugin-card">
-                                <div class="plugin-image-container">
-                                    <img src="assets/sykoOne.png" alt="SYKO One Plugin" class="plugin-img"
-                                        style="width: 85%;">
-                                    <div class="overlay-glow"></div>
-                                </div>
-                                <div class="plugin-info">
-                                    <h3>SYKO One <span class="tag tag-paid" data-i18n="tag-paid">Premium</span></h3>
-                                    <p data-i18n="desc-syko">La colaboración definitiva con SYKO Cabs. Un ecosistema
-                                        completo, 4 amps, cabs, efectos y un set de herramientas suficiente para
-                                        construir tu
-                                        sonido moderno de guitarras, tanto en estudio como en vivo.</p>
-                                    <ul class="features">
-                                        <li data-i18n="feat-syko-1">Suite completa (Plugin y Standalone)</li>
-                                        <li data-i18n="feat-syko-2">Versatilidad total desde tonos cleans hasta highgain
-                                        </li>
-                                    </ul>
-                                    <div class="plugin-action">
-                                        <div class="price">$99.00 USD</div>
-                                        <p class="os-alert"
-                                            style="font-size: 0.75rem; color: #ff9800; margin-bottom: 5px; text-align: center;">
-                                            ⚠️ <span data-i18n="os-win-only">Solo Windows (macOS próximamente)</span>
-                                        </p>
-                                        <a href="plugin.html?id=syko-one" class="btn btn-secondary btn-block"
-                                            data-i18n="btn-learn-more" style="margin-top: 5px;">Ver más</a>
-                                        <a href="plugin.html?id=syko-one" class="btn btn-primary btn-block"
-                                            data-i18n="btn-buy" style="margin-top: 5px;">Adquirir</a>
+                                        <div class="plugin-meta-row">
+                                            <div class="price-free" data-i18n="tag-free">Gratis</div>
+                                            <p class="os-alert">
+                                                <span data-i18n="os-win-mac">Windows / macOS (Unsigned)</span>
+                                            </p>
+                                        </div>
+                                        <div class="plugin-buttons-row">
+                                            <a href="plugin.html?id=granate" class="btn btn-secondary btn-block"
+                                                data-i18n="btn-learn-more">Ver más</a>
+                                            <a href="plugin.html?id=granate" class="btn btn-primary btn-block"
+                                                data-i18n="btn-download">Descargar Gratis</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="plugin-family">
-                        <h3 class="family-title" data-i18n="family-impulso">Familia <span class="highlight">Impulso
-                                Primario</span></h3>
-                        <div class="plugins-grid">
-                            <div class="plugin-card">
-                                <div class="plugin-image-container">
-                                    <img src="assets/carbonado.png" alt="Carbonado Boost Plugin" class="plugin-img">
-                                    <div class="overlay-glow"></div>
-                                </div>
-                                <div class="plugin-info">
-                                    <h3>Carbonado Boost <span class="tag tag-free" data-i18n="tag-free">Gratis</span>
-                                    </h3>
-                                    <p data-i18n="desc-carbonado">Ideal en contexto de afinaciones bajas hi-gain. Empuje
-                                        transparente para limpiar y apretar tu señal antes del amplificador. Endurece el
-                                        ataque y mejora la definición.</p>
-                                    <ul class="features">
-                                        <li data-i18n="feat-carb-1">+20dB de limpieza pura</li>
-                                        <li data-i18n="feat-carb-2">Ecualizador de un solo botón</li>
-                                    </ul>
-                                    <div class="plugin-action">
-                                        <p class="os-alert"
-                                            style="font-size: 0.75rem; color: var(--clr-text-muted); margin-bottom: 5px; text-align: center;">
-                                            <span data-i18n="os-win-mac">Windows / macOS (Unsigned)</span>
-                                        </p>
-                                        <a href="plugin.html?id=carbonado" class="btn btn-secondary btn-block"
-                                            data-i18n="btn-learn-more" style="margin-top: 5px;">Ver más</a>
-                                        <a href="plugin.html?id=carbonado" class="btn btn-primary btn-block"
-                                            data-i18n="btn-download" style="margin-top: 5px;">Descargar Gratis</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="plugin-card">
-                                <div class="plugin-image-container">
-                                    <img src="assets/bundle_impulso_primario.png" alt="Bundle Impulso Primario"
-                                        class="plugin-img">
-                                    <div class="overlay-glow"></div>
-                                </div>
-                                <div class="plugin-info">
-                                    <h3>Impulso Primario Pack<span class="tag tag-paid"
-                                            data-i18n="tag-paid">Premium</span>
-                                    </h3>
-                                    <p data-i18n="desc-impulsoprimario">Impulso primario es el ecosistema de ganancia de
-                                        AMATISTA</p>
-                                    <ul class="features">
-                                        <li data-i18n="feat-impulsoprimario-1">Arquitectura coherente</li>
-                                        <li data-i18n="feat-impulsoprimario-2">Cada pedal cumple su función</li>
-                                    </ul>
-                                    <div class="plugin-action">
-                                        <div class="price">$40.00 USD</div>
-                                        <p class="os-alert"
-                                            style="font-size: 0.75rem; color: #ff9800; margin-bottom: 5px; text-align: center;">
-                                            ⚠️ <span data-i18n="os-win-only">Solo Windows (macOS próximamente)</span>
-                                        </p>
-                                        <a href="plugin.html?id=impulso-primario" class="btn btn-secondary btn-block"
-                                            data-i18n="btn-learn-more" style="margin-top: 5px;">Ver más</a>
-                                        <a href="plugin.html?id=impulso-primario" class="btn btn-primary btn-block"
-                                            data-i18n="btn-buy" style="margin-top: 5px;">Adquirir</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="plugin-card">
-                                <div class="plugin-image-container">
-                                    <img src="assets/onix.png" alt="Onix Overdrive Plugin" class="plugin-img">
-                                    <div class="overlay-glow"></div>
-                                </div>
-                                <div class="plugin-info">
-                                    <h3>Ónix Overdrive <span class="tag tag-paid" data-i18n="tag-paid">Premium</span>
-                                    </h3>
-                                    <p data-i18n="desc-onix">El empuje perfecto de alta ganancia. Aprieta los bajos y
-                                        define los medios altos con violencia analógica oscura.</p>
-                                    <ul class="features">
-                                        <li data-i18n="feat-onix-1">Filtro 'Tight' variable</li>
-                                        <li data-i18n="feat-onix-2">Riffs articulados y leads definidos</li>
-                                    </ul>
-                                    <div class="plugin-action">
-                                        <div class="price">$17.00 USD</div>
-                                        <p class="os-alert"
-                                            style="font-size: 0.75rem; color: #ff9800; margin-bottom: 5px; text-align: center;">
-                                            ⚠️ <span data-i18n="os-win-only">Solo Windows (macOS próximamente)</span>
-                                        </p>
-                                        <a href="plugin.html?id=onix" class="btn btn-secondary btn-block"
-                                            data-i18n="btn-learn-more" style="margin-top: 5px;">Ver más</a>
-                                        <a href="plugin.html?id=onix" class="btn btn-primary btn-block"
-                                            data-i18n="btn-buy" style="margin-top: 5px;">Adquirir</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="plugin-card">
-                                <div class="plugin-image-container">
-                                    <img src="assets/obsidiana.png" alt="Obsidiana Fuzz Plugin" class="plugin-img">
-                                    <div class="overlay-glow"></div>
-                                </div>
-                                <div class="plugin-info">
-                                    <h3>Obsidiana Fuzz <span class="tag tag-paid" data-i18n="tag-paid">Premium</span>
-                                    </h3>
-                                    <p data-i18n="desc-obsidiana">Fuzz denso y masivo. Un muro de sonido oscuro e
-                                        impenetrable para afinaciones extremadamente graves.</p>
-                                    <ul class="features">
-                                        <li data-i18n="feat-obs-1">Sustain infinito</li>
-                                        <li data-i18n="feat-obs-2">Moldea el caos con intención
-                                        </li>
-                                    </ul>
-                                    <div class="plugin-action">
-                                        <div class="price">$17.00 USD</div>
-                                        <p class="os-alert"
-                                            style="font-size: 0.75rem; color: #ff9800; margin-bottom: 5px; text-align: center;">
-                                            ⚠️ <span data-i18n="os-win-only">Solo Windows (macOS próximamente)</span>
-                                        </p>
-                                        <a href="plugin.html?id=obsidiana" class="btn btn-secondary btn-block"
-                                            data-i18n="btn-learn-more" style="margin-top: 5px;">Ver más</a>
-                                        <a href="plugin.html?id=obsidiana" class="btn btn-primary btn-block"
-                                            data-i18n="btn-buy" style="margin-top: 5px;">Adquirir</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="plugin-card">
-                                <div class="plugin-image-container">
-                                    <img src="assets/amatista.png" alt="Amatista Distortion Plugin" class="plugin-img">
-                                    <div class="overlay-glow"></div>
-                                </div>
-                                <div class="plugin-info">
-                                    <h3>Amatista Distortion <span class="tag tag-paid"
-                                            data-i18n="tag-paid">Premium</span>
-                                    </h3>
-                                    <p data-i18n="desc-amatista">La distorsión definitiva. Corte afilado, agudos
-                                        precisos y el tono insignia de la marca.</p>
-                                    <ul class="features">
-                                        <li data-i18n="feat-ama-1">Preamp + Power Stage condensado en un pedal</li>
-                                        <li data-i18n="feat-ama-2">Tono moderno, claridad y presencia</li>
-                                    </ul>
-                                    <div class="plugin-action">
-                                        <div class="price">$17.00 USD</div>
-                                        <p class="os-alert"
-                                            style="font-size: 0.75rem; color: #ff9800; margin-bottom: 5px; text-align: center;">
-                                            ⚠️ <span data-i18n="os-win-only">Solo Windows (macOS próximamente)</span>
-                                        </p>
-                                        <a href="plugin.html?id=amatista" class="btn btn-secondary btn-block"
-                                            data-i18n="btn-learn-more" style="margin-top: 5px;">Ver más</a>
-                                        <a href="plugin.html?id=amatista" class="btn btn-primary btn-block"
-                                            data-i18n="btn-buy" style="margin-top: 5px;">Adquirir</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="tab-bass" class="tab-pane fade-in-section">
-                    <div class="plugin-family">
-                        <h3 class="family-title" data-i18n="family-frecuencia-base">Familia <span
-                                class="highlight">Frecuencia Base</span></h3>
-                        <div class="plugins-grid">
-                            <!-- descomentar -->
-                            <div class="plugin-card">
-                                <div class="plugin-image-container">
-                                    <img src="assets/granate.png" alt="Granate Bass Saturator" class="plugin-img">
-                                    <div class="overlay-glow"></div>
-                                </div>
-                                <div class="plugin-info">
-                                    <h3>Granate Bass <span class="tag tag-free" data-i18n="tag-free">Gratis</span></h3>
-                                    <p data-i18n="desc-granate">Saturación moderna con procesamiento paralelo: mantiene
-                                        el low-end sólido mientras aporta carácter y textura al rango medio.</p>
-                                    <ul class="features">
-                                        <li data-i18n="feat-granate-1">Mezcla controlada (Clean/Drive)</li>
-                                        <li data-i18n="feat-granate-2">Definición en afinaciones graves</li>
-                                    </ul>
-                                    <div class="plugin-action">
-                                        <p class="os-alert"
-                                            style="font-size: 0.75rem; color: var(--clr-text-muted); margin-bottom: 5px; text-align: center;">
-                                            <span data-i18n="os-win-mac">Windows / macOS (Unsigned)</span>
-                                        </p>
-                                        <a href="plugin.html?id=granate" class="btn btn-secondary btn-block"
-                                            data-i18n="btn-learn-more" style="margin-top: 5px;">Ver más</a>
-                                        <a href="plugin.html?id=granate" class="btn btn-primary btn-block"
-                                            data-i18n="btn-download" style="margin-top: 5px;">Descargar Gratis</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="tab-collab" class="tab-pane fade-in-section">
-                    <div class="plugin-family">
-                        <h3 class="family-title" data-i18n="family-collab">Colaboraciones <span
-                                class="highlight">Especiales</span></h3>
-                        <div class="plugins-grid">
-                            <div class="plugin-card">
-                                <div class="plugin-image-container">
-                                    <img src="assets/sykoOne.png" alt="SYKO One Plugin" class="plugin-img"
-                                        style="width: 85%;">
-                                    <div class="overlay-glow"></div>
-                                </div>
-                                <div class="plugin-info">
-                                    <h3>SYKO One <span class="tag tag-paid" data-i18n="tag-paid">Premium</span></h3>
-                                    <p data-i18n="desc-syko">La colaboración definitiva con SYKO Cabs. Un ecosistema
-                                        completo, 4 amps, cabs, efectos y un set de herramientas suficiente para
-                                        construir tu
-                                        sonido moderno de guitarras, tanto en estudio como en vivo.</p>
-                                    <ul class="features">
-                                        <li data-i18n="feat-syko-1">Suite completa (Plugin y Standalone)</li>
-                                        <li data-i18n="feat-syko-2">Versatilidad total desde tonos cleans hasta highgain
-                                        </li>
-                                    </ul>
-                                    <div class="plugin-action">
-                                        <div class="price">$99.00 USD</div>
-                                        <p class="os-alert"
-                                            style="font-size: 0.75rem; color: #ff9800; margin-bottom: 5px; text-align: center;">
-                                            ⚠️ <span data-i18n="os-win-only">Solo Windows (macOS próximamente)</span>
-                                        </p>
-                                        <a href="plugin.html?id=syko-one" class="btn btn-secondary btn-block"
-                                            data-i18n="btn-learn-more" style="margin-top: 5px;">Ver más</a>
-                                        <a href="plugin.html?id=syko-one" class="btn btn-primary btn-block"
-                                            data-i18n="btn-buy" style="margin-top: 5px;">Adquirir</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="tab-free" class="tab-pane fade-in-section">
-                    <div class="plugins-grid">
-                        <div class="plugin-card">
-                            <div class="plugin-image-container">
-                                <img src="assets/carbonado.png" alt="Carbonado Boost Plugin" class="plugin-img">
-                                <div class="overlay-glow"></div>
-                            </div>
-                            <div class="plugin-info">
-                                <h3>Carbonado Boost <span class="tag tag-free" data-i18n="tag-free">Gratis</span></h3>
-                                <p data-i18n="desc-carbonado">Ideal en contexto de afinaciones bajas hi-gain. Empuje
-                                    transparente para limpiar y apretar tu señal antes del amplificador. Endurece el
-                                    ataque y mejora la definición.</p>
-                                <ul class="features">
-                                    <li data-i18n="feat-carb-1">+20dB de limpieza pura</li>
-                                    <li data-i18n="feat-carb-2">Ecualizador de un solo botón</li>
-                                </ul>
-                                <div class="plugin-action">
-                                    <p class="os-alert"
-                                        style="font-size: 0.75rem; color: var(--clr-text-muted); margin-bottom: 5px; text-align: center;">
-                                        <span data-i18n="os-win-mac">Windows / macOS (Unsigned)</span>
-                                    </p>
-                                    <a href="plugin.html?id=carbonado" class="btn btn-secondary btn-block"
-                                        data-i18n="btn-learn-more" style="margin-top: 5px;">Ver más</a>
-                                    <a href="plugin.html?id=carbonado" class="btn btn-primary btn-block"
-                                        data-i18n="btn-download" style="margin-top: 5px;">Descargar Gratis</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="plugin-card">
-                            <div class="plugin-image-container">
-                                <img src="assets/granate.png" alt="Granate Bass Saturator" class="plugin-img">
-                                <div class="overlay-glow"></div>
-                            </div>
-                            <div class="plugin-info">
-                                <h3>Granate Bass <span class="tag tag-free" data-i18n="tag-free">Gratis</span></h3>
-                                <p data-i18n="desc-granate">Saturación moderna con procesamiento paralelo: mantiene el
-                                    low-end sólido mientras aporta carácter y textura al rango medio.</p>
-                                <ul class="features">
-                                    <li data-i18n="feat-granate-1">Mezcla controlada (Clean/Drive)</li>
-                                    <li data-i18n="feat-granate-2">Definición en afinaciones graves</li>
-                                </ul>
-                                <div class="plugin-action">
-                                    <p class="os-alert"
-                                        style="font-size: 0.75rem; color: var(--clr-text-muted); margin-bottom: 5px; text-align: center;">
-                                        <span data-i18n="os-win-mac">Windows / macOS (Unsigned)</span>
-                                    </p>
-                                    <a href="plugin.html?id=granate" class="btn btn-secondary btn-block"
-                                        data-i18n="btn-learn-more" style="margin-top: 5px;">Ver más</a>
-                                    <a href="plugin.html?id=granate" class="btn btn-primary btn-block"
-                                        data-i18n="btn-download" style="margin-top: 5px;">Descargar Gratis</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -617,7 +353,10 @@
 
     <section id="media" class="section media-section">
         <div class="container fade-in-section">
-            <h2 class="section-title center" data-i18n="media-title">En <span class="highlight">Acción</span></h2>
+            <div class="section-header">
+                <span class="section-eyebrow" data-i18n="media-eyebrow">DEMOS & REVIEWS</span>
+                <h2 class="section-title center" data-i18n="media-title">En <span class="highlight">Acción</span></h2>
+            </div>
 
             <div id="youtube-gallery" class="media-grid">
             </div>
@@ -629,7 +368,8 @@
         <div class="container fade-in-section">
             <div class="about-grid">
                 <div class="about-text">
-                    <h2 class="section-title" data-i18n="about-title">Sobre <span class="highlight">Amatista</span>
+                    <span class="section-eyebrow" data-i18n="about-eyebrow">NUESTRA FILOSOFÍA</span>
+                    <h2 class="section-title" data-i18n="about-title" style="margin-bottom: 1.5rem;">Sobre <span class="highlight">Amatista</span>
                     </h2>
                     <p data-i18n="about-p1">¡Hola! Soy Álvaro, creador de Amatista Efectos. Desde Montevideo, Uruguay, combino mi experiencia en el desarrollo de sistemas con mi mayor pasión: el tono de la guitarra eléctrica en el metal. Como músico, comprendo la dedicación y el perfeccionismo que requiere la búsqueda del tono ideal.</p>
                     <p data-i18n="about-p2">Amatista Efectos nace en la intersección de estos dos mundos, impulsado por una necesidad personal: crear las herramientas que yo mismo buscaba como músico. A través del Procesamiento Digital de Señales (DSP), encontré el medio exacto para materializar esas ideas en soluciones diseñadas para las exigencias de la producción actual. Más que algoritmos, estos plugins representan mi visión sobre el tono moderno.</p>
@@ -637,7 +377,7 @@
                 </div>
                 <div class="about-visual">
                     <div class="about-img-container">
-                        <img src="assets/alvaro_guitar.png" alt="Álvaro con guitarra" class="about-img">
+                        <img src="assets/alvaro_guitar.png" alt="Álvaro con guitarra" class="about-img" loading="lazy" decoding="async">
                     </div>
                 </div>
             </div>
@@ -648,10 +388,13 @@
     <section id="pacto-creativo" class="section pacto-section">
         <div class="container fade-in-section">
             <div class="pacto-container">
-                <h2 class="section-title center" data-i18n="pact-title" style="margin-bottom: 2rem;">Nuestro <span
+                <div style="text-align: center;">
+                    <span class="section-eyebrow" data-i18n="pact-eyebrow">MANIFIESTO DE ÉTICA</span>
+                </div>
+                <h2 class="section-title center" data-i18n="pact-title" style="margin-bottom: 1.5rem;">Nuestro <span
                         class="highlight">Pacto Creativo</span></h2>
                 <p class="center" data-i18n="pact-desc"
-                    style="max-width: 800px; margin: 0 auto 2rem; font-size: 1.15rem; color: var(--clr-text-muted);">
+                    style="max-width: 780px; margin: 0 auto 2.25rem; font-size: 1.1rem; color: var(--clr-text-muted); text-align: center;">
                     Creemos en la transparencia y el respeto por tu herramienta de trabajo. Sin suscripciones, sin DRM
                     invasivo, sin obsolescencia programada. Herramientas que compras una vez y son tuyas para siempre.
                 </p>
@@ -668,7 +411,7 @@
         <div class="container footer-content">
             <div class="footer-brand">
                 <a href="index.html" class="brand-logo footer-logo" aria-label="Amatista">
-                    <img src="assets/amatista_logo_horizontal.png" alt="Amatista Logo" class="brand-logo-img">
+                    <img src="assets/amatista_logo_horizontal.png" alt="Amatista Logo" class="brand-logo-img" loading="lazy">
                     <span class="brand-logo-text">AMATISTA</span>
                 </a>
                 <p data-i18n="footer-desc">Efectos digitales boutique.</p>
@@ -685,8 +428,8 @@
                 <div class="link-column">
                     <h4>Social</h4>
                     <ul>
-                        <li><a href="https://instagram.com/amatista.efectos">Instagram</a></li>
-                        <li><a href="https://youtube.com/@amatistaefectos">YouTube</a></li>
+                        <li><a href="https://instagram.com/amatista.efectos" target="_blank" rel="noopener">Instagram</a></li>
+                        <li><a href="https://youtube.com/@amatistaefectos" target="_blank" rel="noopener">YouTube</a></li>
                     </ul>
                 </div>
                 <div class="link-column">
@@ -695,7 +438,7 @@
                         <li><a href="docs.html" data-i18n="footer-docs">Manuales y Docs</a></li>
                         <li><a href="docs.html#pacto-creativo" data-i18n="footer-pact" class="footer-pact">Pacto
                                 Creativo</a></li>
-                        <li><a href="#" data-i18n="footer-support">Soporte: orders@amatista-efectos.online</a></li>
+                        <li><a href="mailto:orders@amatista-efectos.online" data-i18n="footer-support">Soporte: orders@amatista-efectos.online</a></li>
                         <li><a href="#" class="btn-donate"
                                 style="color: var(--clr-amethyst-light); font-weight: 600; display: inline-flex; align-items: center; gap: 6px;"><svg
                                     xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
@@ -716,7 +459,7 @@
         </div>
     </footer>
 
-    <script src="script.js?v=3"></script>
+    <script src="script.js?v=4"></script>
 </body>
 
 </html>
