@@ -1050,6 +1050,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (data.videoId) {
         const videoSection = document.getElementById('pg-video-section');
         videoSection.style.display = 'block';
+        videoSection.classList.add('is-visible');
         const videoContainer = document.getElementById('pg-video-container');
         videoContainer.innerHTML = `
             <div class="video-container lazy-video" style="max-width: 800px; margin: 0 auto; border: 1px solid var(--clr-border); border-radius: var(--radius); overflow: hidden; cursor: pointer;">

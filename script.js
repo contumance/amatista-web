@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (mobileMenuBtn && navbar) {
         mobileMenuBtn.addEventListener('click', () => {
             navbar.classList.toggle('nav-active');
+            document.body.style.overflow = navbar.classList.contains('nav-active') ? 'hidden' : '';
 
             // Reemplazar icono si está activo o no
             if (navbar.classList.contains('nav-active')) {
@@ -37,33 +38,38 @@ document.addEventListener('DOMContentLoaded', () => {
         navItems.forEach(item => {
             item.addEventListener('click', () => {
                 navbar.classList.remove('nav-active');
+                document.body.style.overflow = '';
                 mobileMenuBtn.innerHTML = '<svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>';
             });
         });
     }
 
     // 2. Intersection Observer for Fade-in effects
+    // Nota: threshold debe ser 0 (no 0.1) porque en móviles las secciones altas (ej. #plugins con 7 cards apiladas ~6000px)
+    // superan más de 10 veces el alto del viewport de Safari iOS, por lo que un threshold de 0.1 nunca se cumple.
     const faders = document.querySelectorAll('.fade-in-section');
 
-    const appearOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px"
-    };
+    if ('IntersectionObserver' in window) {
+        const appearOptions = {
+            threshold: 0,
+            rootMargin: "0px 0px -20px 0px"
+        };
 
-    const appearOnScroll = new IntersectionObserver(function (entries, observer) {
-        entries.forEach(entry => {
-            if (!entry.isIntersecting) {
-                return;
-            } else {
-                entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target);
-            }
+        const appearOnScroll = new IntersectionObserver(function (entries, observer) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, appearOptions);
+
+        faders.forEach(fader => {
+            appearOnScroll.observe(fader);
         });
-    }, appearOptions);
-
-    faders.forEach(fader => {
-        appearOnScroll.observe(fader);
-    });
+    } else {
+        faders.forEach(fader => fader.classList.add('is-visible'));
+    }
 
     // 3. Smooth scrolling for internal anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -141,6 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "about-p3": "La evolución de este proyecto no ocurre en solitario. Agradezco profundamente a los músicos y testers que colaboran en cada desarrollo. Su nivel de exigencia y feedback constante son el motor de nuestra mejora continua, garantizando que cada herramienta ofrezca una experiencia sonora superior.",
             // Plugins
             "plugins-title": "Nuestros <span class=\"highlight\">Plugins</span>",
+            "tab-todos": "Todos",
             "tab-guitar": "Guitarra",
             "tab-bass": "Bajo",
             "tab-collab": "Colaboraciones",
@@ -184,6 +191,10 @@ document.addEventListener('DOMContentLoaded', () => {
             "feat-ama-1": "Preamp + Power Stage condensado en un pedal",
             "feat-ama-2": "Tono moderno, claridad y presencia",
 
+            "desc-granate": "Saturación moderna con procesamiento paralelo: mantiene el low-end sólido mientras aporta carácter y textura al rango medio.",
+            "feat-granate-1": "Mezcla controlada (Clean/Drive)",
+            "feat-granate-2": "Definición en afinaciones graves",
+
             "desc-syko": "La colaboración definitiva con SYKO Cabs. Un ecosistema completo, 4 amps, cabs, efectos y un set de herramientas suficiente para construir tu sonido moderno de guitarras, tanto en estudio como en vivo.",
             "feat-syko-1": "Suite completa (Plugin y Standalone)",
             "feat-syko-2": "Versatilidad total desde tonos cleans hasta highgain",
@@ -205,7 +216,8 @@ document.addEventListener('DOMContentLoaded', () => {
             "footer-desc": "Efectos digitales boutique.",
             "footer-nav": "Navegación",
             "footer-home": "Inicio",
-            "footer-legal": "Legal",
+            "footer-legal": "Legal & Help",
+            "footer-docs": "Manuales y Docs",
             "footer-terms": "Términos de Servicio",
             "footer-privacy": "Privacidad",
             "footer-support": `Soporte: ${EMAIL_ADDRESS}`,
@@ -232,6 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "about-p3": "The evolution of this project does not happen alone. I deeply thank the musicians and testers who collaborate on each development. Their high standards and constant feedback are the engine of our continuous improvement, ensuring that every tool offers a superior sonic experience.",
             // Plugins
             "plugins-title": "Our <span class=\"highlight\">Plugins</span>",
+            "tab-todos": "All",
             "tab-guitar": "Guitar",
             "tab-bass": "Bass",
             "tab-collab": "Collaborations",
@@ -300,7 +313,8 @@ document.addEventListener('DOMContentLoaded', () => {
             "footer-desc": "Boutique digital effects.",
             "footer-nav": "Navigation",
             "footer-home": "Home",
-            "footer-legal": "Legal",
+            "footer-legal": "Legal & Help",
+            "footer-docs": "Manuals & Docs",
             "footer-terms": "Terms of Service",
             "footer-privacy": "Privacy",
             "footer-support": `Support: ${EMAIL_ADDRESS}`,
@@ -311,7 +325,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const langBtns = document.querySelectorAll('.lang-btn');
-    const translatableElements = document.querySelectorAll('[data-i18n]');
 
     function setLanguage(lang) {
         // Update active button state
@@ -325,9 +338,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Update document lang attribute
         document.documentElement.lang = lang;
+        try {
+            localStorage.setItem('amatista_lang', lang);
+        } catch (e) {}
 
-        // Replace texts
-        translatableElements.forEach(el => {
+        // Replace texts (including any dynamically injected elements)
+        document.querySelectorAll('[data-i18n]').forEach(el => {
             const translationKey = el.getAttribute('data-i18n');
             if (translations[lang] && translations[lang][translationKey]) {
                 el.innerHTML = translations[lang][translationKey];

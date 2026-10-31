@@ -8,7 +8,7 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <!-- Main CSS -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=3">
     <!-- Docs Specific CSS -->
     <style>
         /* CSS específico para la página de documentación orientada a lectura/impresión */
@@ -303,6 +303,57 @@
 
         #print-container {
             display: none;
+        }
+
+        .docs-aside-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .docs-page code {
+            overflow-wrap: anywhere;
+            word-break: break-word;
+            background: #f1f3f5;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 640px) {
+            .docs-container {
+                padding: 24px 16px;
+            }
+
+            .docs-header h1 {
+                font-size: 1.9rem;
+            }
+
+            .docs-section h2 {
+                font-size: 1.45rem;
+            }
+
+            .docs-section h3 {
+                font-size: 1.2rem;
+            }
+
+            #pacto-creativo {
+                padding: 24px 16px;
+            }
+
+            #pacto-creativo h2 {
+                font-size: 1.65rem;
+            }
+
+            .docs-aside-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .parameter-list li {
+                flex-direction: column;
+                gap: 2px;
+            }
         }
 
         @media print {
