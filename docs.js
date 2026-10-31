@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 html += t.impulsoPrimario.sections.join('');
 
-                html += `<div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px; margin-top:20px;">`;
+                html += `<div class="docs-aside-grid">`;
                 html += `<div class="plugin-manual" style="background:#f8f9fa;">`;
                 html += `<h4>${t.impulsoPrimario.asideTitle}</h4>`;
                 html += t.impulsoPrimario.asideBody.join('');
@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 html += t.frecuenciaBase.sections.join('');
 
-                html += `<div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px; margin-top:20px;">`;
+                html += `<div class="docs-aside-grid">`;
                 html += `<div class="plugin-manual" style="background:#f8f9fa;">`;
                 html += `<h4>${t.frecuenciaBase.asideTitle}</h4>`;
                 html += t.frecuenciaBase.asideBody.join('');
