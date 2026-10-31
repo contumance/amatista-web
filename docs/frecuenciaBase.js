@@ -34,7 +34,7 @@ window.docsTranslations.es.frecuenciaBase = {
     "asideBody": [
         "<p><strong>Antes del amp sim:</strong> Actúa como si fuera un pedal físico empujando el amplificador. Ataque definido y graves firmes.</p>",
         "<p><strong>Después del amp sim:</strong> No empuja el ampli, colorea el resultado final. Sensación más controlada, ideal para estudio.</p>",
-        "<p class='muted' style='color:#666; font-size:0.9em; margin-top:10px;'>Tip: Granate antes del compresor te da una distorsión más estable y 'tight'. Después del compresor suena más homogéneo y procesado.</p>"
+        "<p class='muted' style='font-size:0.9em; margin-top:10px;'>Tip: Granate antes del compresor te da una distorsión más estable y 'tight'. Después del compresor suena más homogéneo y procesado.</p>"
     ],
     "asideNoteTitle": "Filosofía",
     "asideNoteBody": "Granate no busca cubrir el bajo de distorsión. Busca reforzar su carácter. Punto de partida: GRANATE 45%, CLANK 40%, BLEND 50%.",
@@ -80,7 +80,7 @@ window.docsTranslations.en.frecuenciaBase = {
     "asideBody": [
         "<p><strong>Before amp sim:</strong> Acts like a physical pedal pushing the amp. Defined attack and tight lows.</p>",
         "<p><strong>After amp sim:</strong> Doesn't push the amp, colors the final result. More controlled feel, ideal for studio.</p>",
-        "<p class='muted' style='color:#666; font-size:0.9em; margin-top:10px;'>Tip: Granate before a compressor gives a more stable and 'tight' distortion. After a compressor, it sounds more homogeneous and processed.</p>"
+        "<p class='muted' style='font-size:0.9em; margin-top:10px;'>Tip: Granate before a compressor gives a more stable and 'tight' distortion. After a compressor, it sounds more homogeneous and processed.</p>"
     ],
     "asideNoteTitle": "Philosophy",
     "asideNoteBody": "Granate doesn't seek to cover the bass in distortion. It seeks to reinforce its character. Starting point: GRANATE 45%, CLANK 40%, BLEND 50%.",

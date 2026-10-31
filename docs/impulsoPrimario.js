@@ -36,7 +36,7 @@ window.docsTranslations.es.impulsoPrimario = {
     "asideBody": [
         "<p><strong>Cadena base:</strong> Guitarra &rarr; Carbonado &rarr; Ónix &rarr; Amatista &rarr; Obsidiana &rarr; Amp / IR</p>",
         "<p>Pensalo as&iacute;: Carbonado empuja, Ónix limpia, Amatista construye, Obsidiana destruye.</p>",
-        "<p class='muted' style='color:#666; font-size:0.9em; margin-top:10px;'>Tip: Stackear pedales con menos gain suena mejor que uno solo al m&aacute;ximo.</p>"
+        "<p class='muted' style='font-size:0.9em; margin-top:10px;'>Tip: Stackear pedales con menos gain suena mejor que uno solo al m&aacute;ximo.</p>"
     ],
     "asideNoteTitle": "El input manda",
     "asideNoteBody": "Todo responde a tu guitarra, pickups y ataque. Baj&aacute; el volumen de la guitarra y prob&aacute;: vas a descubrir otro pedal dentro del mismo.",
@@ -87,7 +87,7 @@ window.docsTranslations.en.impulsoPrimario = {
     "asideBody": [
         "<p><strong>Base chain:</strong> Guitar &rarr; Carbonado &rarr; Ónix &rarr; Amatista &rarr; Obsidiana &rarr; Amp / IR</p>",
         "<p><strong>Think of it like this:</strong> Carbonado pushes, Ónix cleans, Amatista builds, Obsidiana destroys.</p>",
-        "<p class='muted' style='color:#666; font-size:0.9em; margin-top:10px;'>Tip: Less gain, more level and balance usually sounds heavier.</p>"
+        "<p class='muted' style='font-size:0.9em; margin-top:10px;'>Tip: Less gain, more level and balance usually sounds heavier.</p>"
     ],
     "asideNoteTitle": "The input rules",
     "asideNoteBody": "Everything responds to your guitar, pickups, and attack. Lower the guitar volume to discover another pedal inside the same one.",

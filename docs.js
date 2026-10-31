@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const secPacto = document.getElementById('pacto-creativo');
         if (secPacto && t.pactoCreativo) {
             let html = `<h2>${t.common.idx2}: ${t.pactoCreativo.title}</h2>`;
-            html += `<p class="muted" style="color:#666;">${t.pactoCreativo.subtitle}</p>`;
+            html += `<p class="muted">${t.pactoCreativo.subtitle}</p>`;
             html += `<p>${t.pactoCreativo.p1}</p><p>${t.pactoCreativo.p2}</p><p>${t.pactoCreativo.p3}</p>`;
 
             html += `<h3>${t.pactoCreativo.h_support}</h3>`;
@@ -61,14 +61,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const secInst = document.getElementById('instalacion');
         if (secInst && t.instalacion) {
             let html = `<h2>${t.common.idx3}: ${t.instalacion.title}</h2>`;
-            html += `<p class="muted" style="color:#666;">${t.instalacion.subtitle}</p>`;
+            html += `<p class="muted">${t.instalacion.subtitle}</p>`;
 
             html += `<h3>${t.instalacion.systemRequirementsTitle}</h3>`;
             html += `<h4>${t.instalacion.macTitle}</h4><ul style="padding-left:20px;">${t.instalacion.macReq.map(li => `<li>${li}</li>`).join('')}</ul>`;
             html += `<h4>${t.instalacion.winTitle}</h4><ul style="padding-left:20px; margin-bottom:15px;">${t.instalacion.winReq.map(li => `<li>${li}</li>`).join('')}</ul>`;
 
-            html += `<div class="plugin-manual" style="background:#f8f9fa;">`;
-            html += `<h4>${t.instalacion.testedTitle}</h4><p style="font-size:0.9em; color:#666;">${t.instalacion.testedNote}</p>`;
+            html += `<div class="plugin-manual manual-aside">`;
+            html += `<h4>${t.instalacion.testedTitle}</h4><p class="muted" style="font-size:0.9em;">${t.instalacion.testedNote}</p>`;
             html += `<ul style="padding-left:20px; font-size:0.95em;">${t.instalacion.testedDaws.map(li => `<li>${li}</li>`).join('')}</ul>`;
             html += `</div>`;
 
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
             html += `<h4 style="margin-top:20px;">${t.instalacion.macInstallTitle}</h4>`;
             html += `<p><strong>${t.instalacion.unsignedTitle}</strong>: ${t.instalacion.unsignedBody}</p>`;
             html += `<ul style="list-style:none; padding-left:0;">`;
-            html += `<li><strong>${t.instalacion.vst3Label}</strong> <code>${t.instalacion.vst3PathMac}</code></li>`;
+            html += `<li style="margin-bottom:8px;"><strong>${t.instalacion.vst3Label}</strong> <code>${t.instalacion.vst3PathMac}</code></li>`;
             html += `<li><strong>${t.instalacion.auLabel}</strong> <code>${t.instalacion.auPathMac}</code></li>`;
             html += `</ul>`;
 
@@ -105,23 +105,23 @@ document.addEventListener('DOMContentLoaded', () => {
             if (t.impulsoPrimario) {
                 html += `<div class="manual-family">`;
                 html += `<h2>${t.common.idx4}: ${t.impulsoPrimario.title}</h2>`;
-                html += `<p class="muted" style="color:#666;">${t.impulsoPrimario.subtitle}</p>`;
+                html += `<p class="muted">${t.impulsoPrimario.subtitle}</p>`;
 
                 html += t.impulsoPrimario.sections.join('');
 
                 html += `<div class="docs-aside-grid">`;
-                html += `<div class="plugin-manual" style="background:#f8f9fa;">`;
+                html += `<div class="plugin-manual manual-aside">`;
                 html += `<h4>${t.impulsoPrimario.asideTitle}</h4>`;
                 html += t.impulsoPrimario.asideBody.join('');
                 html += `</div>`;
 
-                html += `<div class="plugin-manual" style="background:#f8f9fa;">`;
+                html += `<div class="plugin-manual manual-aside">`;
                 html += `<h4>${t.impulsoPrimario.asideNoteTitle}</h4>`;
                 html += `<p>${t.impulsoPrimario.asideNoteBody}</p>`;
                 html += `</div>`;
                 html += `</div>`;
 
-                html += `<div class="plugin-manual" style="background:#eef0f2; border-left-color:#33ccff;">`;
+                html += `<div class="plugin-manual manual-recipes">`;
                 html += `<h4>${t.impulsoPrimario.asideRecipesTitle}</h4>`;
                 html += `<p>${t.impulsoPrimario.asideRecipesBody}</p>`;
                 html += `</div>`;
@@ -131,23 +131,23 @@ document.addEventListener('DOMContentLoaded', () => {
             if (t.frecuenciaBase) {
                 html += `<div class="manual-family" style="margin-top: 60px;">`;
                 html += `<h2>${t.frecuenciaBase.title}</h2>`;
-                html += `<p class="muted" style="color:#666;">${t.frecuenciaBase.subtitle}</p>`;
+                html += `<p class="muted">${t.frecuenciaBase.subtitle}</p>`;
 
                 html += t.frecuenciaBase.sections.join('');
 
                 html += `<div class="docs-aside-grid">`;
-                html += `<div class="plugin-manual" style="background:#f8f9fa;">`;
+                html += `<div class="plugin-manual manual-aside">`;
                 html += `<h4>${t.frecuenciaBase.asideTitle}</h4>`;
                 html += t.frecuenciaBase.asideBody.join('');
                 html += `</div>`;
 
-                html += `<div class="plugin-manual" style="background:#f8f9fa;">`;
+                html += `<div class="plugin-manual manual-aside">`;
                 html += `<h4>${t.frecuenciaBase.asideNoteTitle}</h4>`;
                 html += `<p>${t.frecuenciaBase.asideNoteBody}</p>`;
                 html += `</div>`;
                 html += `</div>`;
 
-                html += `<div class="plugin-manual" style="background:#eef0f2; border-left-color:#ff4d4d;">`;
+                html += `<div class="plugin-manual manual-recipes-bass">`;
                 html += `<h4>${t.frecuenciaBase.asideRecipesTitle}</h4>`;
                 html += `<p>${t.frecuenciaBase.asideRecipesBody}</p>`;
                 html += `</div>`;
@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (t.sykoOne) {
                 html += `<div class="manual-family" style="margin-top: 60px;">`;
                 html += `<h2>${t.sykoOne.title}</h2>`;
-                html += `<p class="muted" style="color:#666;">${t.sykoOne.subtitle}</p>`;
+                html += `<p class="muted">${t.sykoOne.subtitle}</p>`;
 
                 html += t.sykoOne.sections.join('');
 
@@ -167,29 +167,30 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Toggle logic Event Listeners
+    function applyDocsLang(lang) {
+        langBtns.forEach(b => {
+            if (b.dataset.lang === lang) {
+                b.classList.add('active');
+            } else {
+                b.classList.remove('active');
+            }
+        });
+        document.documentElement.lang = lang;
+        try {
+            localStorage.setItem('amatista_lang', lang);
+        } catch (e) {}
+        renderDocs(lang);
+    }
+
     langBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            const lang = btn.dataset.lang;
-            // set active state visually on the buttons
-            langBtns.forEach(b => b.classList.remove('active'));
-            // since docs.html may have its own structure, toggle colors carefully
-            langBtns.forEach(b => {
-                if (b.dataset.lang === lang) {
-                    b.classList.add('active');
-                    b.style.fontWeight = '600';
-                    b.style.color = 'var(--docs-heading)';
-                } else {
-                    b.style.fontWeight = '400';
-                    b.style.color = '#888';
-                }
-            });
-
-            document.documentElement.lang = lang;
-            renderDocs(lang);
+            applyDocsLang(btn.dataset.lang);
         });
     });
 
-    // Auto-init based on page language, or default to Spanish
-    renderDocs('es');
+    let initialLang = 'es';
+    try {
+        initialLang = localStorage.getItem('amatista_lang') || 'es';
+    } catch (e) {}
+    applyDocsLang(initialLang);
 });
