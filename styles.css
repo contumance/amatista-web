@@ -559,6 +559,20 @@ strong {
     font-weight: 600;
 }
 
+.hero-spec-link {
+    text-decoration: none;
+    transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.hero-spec-link:hover {
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+.hero-spec-link:hover strong {
+    text-shadow: 0 0 10px rgba(192, 132, 252, 0.55);
+}
+
 /* =========================================
    About Section
    ========================================= */
