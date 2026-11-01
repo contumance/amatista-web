@@ -149,9 +149,14 @@ document.addEventListener('DOMContentLoaded', () => {
             "hero-subtitle": "Herramientas precisas inspiradas en hardware real, diseñadas para esculpir tonos modernos y afinaciones bajas definidas.",
             "hero-btn-primary": "Descubrir Plugins",
             "hero-btn-secondary": "Conocer la Marca",
-            "hero-spec-1": "Oversampling hasta 4x",
-            "hero-spec-3": "Respuesta en Tiempo Real",
-            "hero-spec-4": "Sin DRM Invasivo",
+            "hero-spec-1-label": "DESARROLLO",
+            "hero-spec-1": "Independiente",
+            "hero-spec-2-label": "FILOSOFÍA",
+            "hero-spec-2": "Simplicidad y Carácter Sonoro",
+            "hero-spec-3-label": "PACTO CREATIVO",
+            "hero-spec-3": "Libre de DRM · Basado en Confianza",
+            "hero-spec-4-label": "COMUNIDAD",
+            "hero-spec-4": "Pertenencia y Aporte Activo",
             // About
             "about-eyebrow": "NUESTRA FILOSOFÍA",
             "about-title": "Sobre <span class=\"highlight\">Amatista</span>",
@@ -255,9 +260,14 @@ document.addEventListener('DOMContentLoaded', () => {
             "hero-subtitle": "Precise tools inspired by real hardware, designed to sculpt modern tones and low tunings without compromise.",
             "hero-btn-primary": "Discover Plugins",
             "hero-btn-secondary": "Know the Brand",
-            "hero-spec-1": "Up to 4x Oversampling",
-            "hero-spec-3": "Real-Time Response",
-            "hero-spec-4": "Zero Invasive DRM",
+            "hero-spec-1-label": "DEVELOPMENT",
+            "hero-spec-1": "Independent",
+            "hero-spec-2-label": "PHILOSOPHY",
+            "hero-spec-2": "Simplicity & Sonic Character",
+            "hero-spec-3-label": "CREATIVE PACT",
+            "hero-spec-3": "DRM-Free · Built on Trust",
+            "hero-spec-4-label": "COMMUNITY",
+            "hero-spec-4": "Belonging & Active Contribution",
             // About
             "about-eyebrow": "OUR PHILOSOPHY",
             "about-title": "About <span class=\"highlight\">Amatista</span>",
@@ -364,7 +374,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.documentElement.lang = lang;
         try {
             localStorage.setItem('amatista_lang', lang);
-        } catch (e) {}
+        } catch (e) { }
 
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const translationKey = el.getAttribute('data-i18n');
@@ -385,7 +395,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let initialLang = 'es';
     try {
         initialLang = localStorage.getItem('amatista_lang') || 'es';
-    } catch (e) {}
+    } catch (e) { }
     setLanguage(initialLang);
 
     // 6. Hero Parallax & Particle System
@@ -635,7 +645,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let savedLang = 'es';
             try {
                 savedLang = localStorage.getItem('amatista_lang') || 'es';
-            } catch (err) {}
+            } catch (err) { }
             setLanguage(savedLang);
 
             document.getElementById('donation-modal').classList.add('active');
