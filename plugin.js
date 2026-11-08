@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
             isReleased: SYKO_ONE_RELEASED,
             badgeClass: "tag-paid",
             osWinOnly: true,
-            images: ["assets/sykoOne.png", "assets/sykoOne_screenshot.png", "assets/sykoOne_combo.png", "assets/sykoOne_pedalboard.png", "assets/sykoOne_purple_amp.png"],
+            images: ["assets/sykoOne_screenshot.png", "assets/sykoOne_pedalboard.png", "assets/sykoOne_live.png", "assets/sykoOne_eq.png"],
             price: "99.00",
             gumroadUrl: "https://amatistaefectos.gumroad.com/l/sykoone",
             downloadUrl: "",
@@ -1496,7 +1496,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentLang = 'es';
     try {
         currentLang = localStorage.getItem('amatista_lang') || document.documentElement.lang || 'es';
-    } catch (e) {}
+    } catch (e) { }
     updatePluginContent(currentLang);
 
     // Watch for click events on the language buttons via event delegation over the body
