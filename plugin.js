@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // =========================================================================
     // false = Muestra aviso "Próximamente lanzamiento 11/11" y bloquea compra/descarga
     // true  = Deja la página habilitada con los enlaces de compra y descarga activos
-    const SYKO_ONE_RELEASED = false;
+    const SYKO_ONE_RELEASED = true;
 
     const pluginDatabase = {
         "syko-one": {
