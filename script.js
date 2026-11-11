@@ -515,6 +515,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // =========================================
     const youtubeVideos = [
         {
+            id: "G0m3svTBVRk",
+            title: "SYKO One (Demo)"
+        },
+        {
             id: "NYB2dtHThKo",
             title: "GFF Impulso Primario (Review)"
         },

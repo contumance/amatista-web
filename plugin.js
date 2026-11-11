@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
             price: "99.00",
             gumroadUrl: "https://amatistaefectos.gumroad.com/l/sykoone",
             downloadUrl: "",
-            videoId: "",
+            videoId: "G0m3svTBVRk",
             docsHash: "#sykoone",
             translations: {
                 es: {
