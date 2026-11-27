@@ -2,7 +2,25 @@
  * Amatista Efectos - Core Scripts
  */
 
+// =========================================================================
+// CONFIGURACIÓN DE PROMOCIONES (FEATURE FLAG GLOBAL)
+// =========================================================================
+// true  = Activa Black Friday (50% OFF en todo el catálogo y fichas)
+// false = Muestra los precios regulares normales
+window.BLACK_FRIDAY_ACTIVE = true;
+
 document.addEventListener('DOMContentLoaded', () => {
+    // 0. Black Friday / Catalog Price Rendering
+    document.querySelectorAll('.plugin-action .price[data-regular-price]').forEach(priceEl => {
+        const regular = parseFloat(priceEl.getAttribute('data-regular-price'));
+        if (isNaN(regular)) return;
+        if (window.BLACK_FRIDAY_ACTIVE) {
+            const sale = (regular * 0.5).toFixed(2);
+            priceEl.innerHTML = `<span class="price-old">$${regular.toFixed(2)}</span> $${sale} USD <span class="badge-bf">BLACK FRIDAY -50%</span>`;
+        } else {
+            priceEl.textContent = `$${regular.toFixed(2)} USD`;
+        }
+    });
     // 1. Sticky Navbar Effect with Glassmorphism switch
     const navbar = document.getElementById('navbar');
 

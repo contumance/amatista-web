@@ -1027,6 +1027,32 @@ strong {
     font-weight: 700;
     color: #ffffff;
     letter-spacing: 0.5px;
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.price-old {
+    font-family: var(--font-mono);
+    font-size: 0.85em;
+    font-weight: 500;
+    color: var(--clr-text-muted);
+    text-decoration: line-through;
+    opacity: 0.75;
+}
+
+.badge-bf {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: #ffffff;
+    background: linear-gradient(135deg, #e11d48 0%, #9d4edd 100%);
+    padding: 3px 8px;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(225, 29, 72, 0.3);
 }
 
 .plugin-action .price-free {
@@ -1625,6 +1651,13 @@ strong {
     text-transform: uppercase;
     letter-spacing: 2px;
     margin: 0;
+}
+
+.price-wrap {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
 }
 
 .price-large {
