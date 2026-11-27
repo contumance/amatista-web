@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
             osWinOnly: true,
             images: ["assets/sykoOne_screenshot.png", "assets/sykoOne_pedalboard.png", "assets/sykoOne_live.png", "assets/sykoOne_eq.png"],
             price: "99.00",
-            gumroadUrl: "https://amatistaefectos.gumroad.com/l/sykoone",
+            gumroadUrl: "https://amatistaefectos.gumroad.com/l/sykoone/BLACKAMATISTA",
             downloadUrl: "",
             videoId: "G0m3svTBVRk",
             docsHash: "#sykoone",
@@ -540,7 +540,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "assets/obsidiana.png"
             ],
             price: "40.00",
-            gumroadUrl: "https://amatistaefectos.gumroad.com/l/impulsoprimario",
+            gumroadUrl: "https://amatistaefectos.gumroad.com/l/impulsoprimario/BLACKAMATISTA",
             downloadUrl: "",
             videoId: "NYB2dtHThKo",
             docsHash: "#manuales",
@@ -661,7 +661,7 @@ document.addEventListener('DOMContentLoaded', () => {
             osWinOnly: true,
             images: ["assets/onix.png"],
             price: "17.00",
-            gumroadUrl: "https://amatistaefectos.gumroad.com/l/onixoverdrive",
+            gumroadUrl: "https://amatistaefectos.gumroad.com/l/onixoverdrive/BLACKAMATISTA",
             downloadUrl: "",
             videoId: "BYmKtey9NVg",
             docsHash: "#onix",
@@ -778,7 +778,7 @@ document.addEventListener('DOMContentLoaded', () => {
             osWinOnly: true,
             images: ["assets/amatista.png"],
             price: "17.00",
-            gumroadUrl: "https://amatistaefectos.gumroad.com/l/amatistadistortion",
+            gumroadUrl: "https://amatistaefectos.gumroad.com/l/amatistadistortion/BLACKAMATISTA",
             downloadUrl: "",
             videoId: "Xu1i8GOV_Lg",
             docsHash: "#amatista",
@@ -895,7 +895,7 @@ document.addEventListener('DOMContentLoaded', () => {
             osWinOnly: true,
             images: ["assets/obsidiana.png"],
             price: "17.00",
-            gumroadUrl: "https://amatistaefectos.gumroad.com/l/obsidianafuzz",
+            gumroadUrl: "https://amatistaefectos.gumroad.com/l/obsidianafuzz/BLACKAMATISTA",
             downloadUrl: "",
             videoId: "aB9-BHBiv2M",
             docsHash: "#obsidiana",
@@ -1441,24 +1441,32 @@ document.addEventListener('DOMContentLoaded', () => {
             if (ctaBtn) ctaBtn.style.display = 'none';
             if (purchaseContainer) purchaseContainer.style.display = 'block';
 
-            let discountMultiplier = 0.5;
+            const isBlackFriday = Boolean(window.BLACK_FRIDAY_ACTIVE);
+            const regularPrice = parseFloat(data.price);
+            const displayPrice = isBlackFriday ? (regularPrice * 0.5).toFixed(2) : regularPrice.toFixed(2);
+
             let discountLabel = "50% OFF";
             let promoTextEs = "a mitad de precio";
             let promoTextEn = "at 50% off";
+            let prexPrice = (regularPrice * 0.5).toFixed(2);
 
-            if (data.id === "syko-one") {
-                discountMultiplier = 0.67;
+            if (isBlackFriday) {
+                discountLabel = "BLACK FRIDAY 50% OFF";
+                promoTextEs = "al 50% OFF de Black Friday";
+                promoTextEn = "at 50% off for Black Friday";
+                prexPrice = displayPrice;
+            } else if (data.id === "syko-one") {
                 discountLabel = "33% OFF";
                 promoTextEs = "con descuento";
                 promoTextEn = "at a discounted price";
+                prexPrice = (regularPrice * 0.67).toFixed(2);
             }
 
-            const prexPrice = (parseFloat(data.price) * discountMultiplier).toFixed(2);
             const isEn = lang === 'en';
 
             purchaseContainer.innerHTML = `
                 <a href="${data.gumroadUrl}" target="_blank" rel="noopener" class="btn btn-primary btn-block glow-effect">
-                    ${isEn ? `Buy Now — $${data.price} USD` : `Comprar — $${data.price} USD`}
+                    ${isEn ? `Buy Now — $${displayPrice} USD` : `Comprar — $${displayPrice} USD`}
                 </a>
                 
                 <div class="prex-promo-box">
@@ -1555,7 +1563,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const priceContainer = document.getElementById('pg-price-container');
     if (data.price) {
-        document.getElementById('pg-price').innerText = `$${data.price} USD`;
+        const regularPrice = parseFloat(data.price);
+        if (window.BLACK_FRIDAY_ACTIVE) {
+            const salePrice = (regularPrice * 0.5).toFixed(2);
+            priceContainer.innerHTML = `
+                <span class="price-old" style="font-size: 1.25rem;">$${regularPrice.toFixed(2)} USD</span>
+                <span class="price-large" id="pg-price">$${salePrice} USD</span>
+                <span class="badge-bf">BLACK FRIDAY -50%</span>
+            `;
+        } else {
+            document.getElementById('pg-price').innerText = `$${regularPrice.toFixed(2)} USD`;
+        }
     } else {
         priceContainer.style.display = 'none';
     }
